@@ -1,0 +1,11 @@
+$heading-font: 'Overlock', serif; 
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#{headings()} {
+  font-family: $heading-font;
+}

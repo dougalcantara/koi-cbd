@@ -1,0 +1,48 @@
+$padding-xs: 6.25em;
+$padding-sm: 9.375em;
+$padding-md: 12.5em;
+$padding-lg: 25em;
+
+.k-block {
+  &--md {
+    padding: $padding-xs;
+  }
+}
+
+.k-inner {
+  margin: auto;
+
+  &--sm,
+  &--md,
+  &--lg {
+    width: 90%;
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-block {
+    &--md {
+      padding: $padding-sm;
+    }
+  }
+
+  .k-inner {
+    &--md {
+      width: 80%;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-block {
+    &--md {
+      padding: $padding-md;
+    }
+  }
+
+  .k-inner {
+    &--lg {
+      width: 88%;
+    }
+  }
+}
