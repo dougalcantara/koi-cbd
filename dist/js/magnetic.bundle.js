@@ -3557,10 +3557,22 @@ eval("/**\n * Copyright (c) 2014-present, Facebook, Inc.\n *\n * This source cod
 /*!***********************!*\
   !*** ./src/js/app.js ***!
   \***********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/site-header */ \"./src/js/components/site-header.js\");\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_site_header__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
+
+/***/ }),
+
+/***/ "./src/js/components/site-header.js":
+/*!******************************************!*\
+  !*** ./src/js/components/site-header.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("var header = document.querySelector('header.k-header');\nvar headerHeight = header.querySelector('.k-header--main').clientHeight;\nvar nav = header.querySelector('.k-header--nav');\nvar navTrigger = document.querySelector('#k-nav-trigger');\nnavTrigger.addEventListener('click', function () {\n  var isActive = header.classList.contains('is-open');\n\n  if (isActive) {\n    header.classList.remove('is-open');\n  } else {\n    header.classList.add('is-open');\n  }\n});\ndocument.addEventListener('DOMContentLoaded', function () {\n  nav.style.top = \"\".concat(headerHeight, \"px\");\n});\n\n//# sourceURL=webpack:///./src/js/components/site-header.js?");
 
 /***/ }),
 

@@ -25,8 +25,11 @@ $ease-in-out-expo:  cubic-bezier(1.000,  0.000, 0.000, 1.000);
 $ease-in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860);
 $ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
-$white: #fff;
-$black: #000;
+$true-white: #fff;
+$true-black: #000;
+$black: #080907;
+$primary: #f4b13e;
+$primary-dark: darken($primary, 15%);
 
 $bp-sm: 580px;
 $bp-md: 767px;

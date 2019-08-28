@@ -9,3 +9,12 @@ body {
 #{headings()} {
   font-family: $heading-font;
 }
+
+a {
+  text-decoration: none;
+  transition: color .4s $ease-out-quart;
+
+  &:hover {
+    color: $primary !important;
+  }
+}
