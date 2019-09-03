@@ -17,7 +17,6 @@ const PATHS = {
   },
   html: {
     input: './**/*.php',
-    output: './dist/',
   },
 };
 

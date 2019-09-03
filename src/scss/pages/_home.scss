@@ -1,3 +1,202 @@
 .k-overview {
-  
+  position: relative;
+  overflow: hidden;
+
+  &--item {
+    margin-bottom: 2em;
+
+    .k-figure {
+      width: 90%;
+      overflow: visible;
+    }
+  }
+
+  &--intro {
+    .k-preheading {
+      span {
+        color: $highlight;
+      }
+    }
+
+    &__text {
+      margin-bottom: 1.5em;
+    }
+
+    &__card {
+      position: relative;
+
+      .k-figure {
+        &--liner {
+          padding-bottom: 144.23%;
+        }
+      }
+
+      .k-cornerimg {
+        bottom: -2.5em; right: -10%;
+        width: 40%;
+      }
+    }
+  }
+
+  .k-cornerimg {
+    position: absolute;
+  }
+
+  &--topicals {
+    .k-figure {
+      &--liner {
+        padding-bottom: 62.96%;
+      }
+    }
+
+    .k-cornerimg {
+      bottom: -2.5em; right: -10%;
+      width: 50%;
+    }
+  }
+
+  &--pets {
+    // this one's a little fucky rn. need an asset w/ no whitespace
+    .k-figure {
+      margin-bottom: -20%;
+      width: 100%;
+      overflow: hidden;
+
+      &--liner {
+        padding-bottom: 61.63%;
+      }
+    }
+  }
+
+  &--edibles {
+    .k-figure {
+      &--liner {
+        padding-bottom: 58.82%;
+      }
+    }
+
+    .k-cornerimg {
+      bottom: -2.5em; right: -25%;
+      width: 50%;
+    }
+  }
+
+  &--vape {
+    &__card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .k-figure {
+      flex-basis: 40%;
+
+      &--liner {
+        padding-bottom: 144.64%;
+      }
+    }
+
+    &__text {
+      flex-basis: 50%;
+
+      .k-headline {
+        margin-top: 0;
+      }
+    }
+
+    .k-cornerimg {
+      bottom: -2.5em; right: -10%;
+      width: 40%;
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-overview {
+    &--item {
+      margin-bottom: 0;
+
+      .k-figure {
+        width: 100%;
+      }
+    }
+
+    &--intro {
+      display: flex;
+      justify-content: space-between;
+
+      &__text {
+        flex-basis: 55%;
+        margin-bottom: 0;
+      }
+
+      &__card {
+        flex-basis: 40%;
+
+        .k-cornerimg {
+          right: -16.5%;
+        }
+      }
+
+      .k-textbody {
+        margin-bottom: 2em;
+      }
+    }
+
+    &--topicals {
+      width: 55%;
+      margin-top: -8em;
+    }
+
+    &--pets {
+      margin: -8em 0 2em 60%;
+    }
+
+    &--edibles {
+      width: 55%;
+
+      &__text {
+        max-width: 24.72em;
+      }
+    }
+
+    &--vape {
+      margin: 2em 0 0 33.33%;
+      width: auto;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-overview {
+    &--intro {
+      &__text {
+        max-width: 38em;
+      }
+
+      &__card {
+        max-width: 28em;
+      }
+    }
+
+    &--topicals {
+      margin-top: -12em;
+      max-width: 30em;
+    }
+
+    &--pets {
+      margin: 0 0 0 auto;
+      max-width: 21.66em;
+    }
+
+    &--edibles {
+      max-width: 42em;
+      margin-top: -10em;
+    }
+
+    &--vape {
+      margin-left: 33.33em;
+      max-width: 44.16em;
+    }
+  }
 }

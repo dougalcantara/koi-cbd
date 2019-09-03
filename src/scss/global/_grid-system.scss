@@ -17,6 +17,10 @@ $padding-lg: 15.625em;
   &--lg {
     width: 90%;
   }
+
+  &--sm {
+    max-width: 58.33em;
+  }
 }
 
 @media(min-width: $bp-md) {

@@ -6,11 +6,11 @@ function k_product_card($args) {
   <div class="k-productcard">
     <div class="k-productcard--liner">
 
-      <div class="k-figure">
+      <figure class="k-figure">
         <div class="k-figure--liner">
-          <img src="<?php echo $args['product_image_url'] ?>" alt="">
+          <img class="k-figure--img" src="<?php echo $args['product_image_url'] ?>" alt="">
         </div>
-      </div>
+      </figure>
 
       <div class="k-productcard--title">
         <h3>Blue Koi Vape Juice</h3>

@@ -1,8 +1,28 @@
 .k-figure {
+  margin: 0; padding: 0;
   position: relative;
   overflow: hidden;
 
-  img {
+  &--rounded {
+    .k-figure--liner {
+      border-radius: .667em;
+      overflow: hidden;
+    }
+  }
+
+  &--img {
     @include fill-parent();
+  }
+}
+
+.koi-bg {
+  position: absolute;
+  z-index: -1;
+  height: 100%; width: auto;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+
+  path {
+    fill: lighten($accent-text, 10%);
   }
 }

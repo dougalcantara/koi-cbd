@@ -19,6 +19,10 @@
 
   &--action {
     margin-top: 2em;
+
+    .k-button {
+      display: block;
+    }
   }
 
   &--reviews {

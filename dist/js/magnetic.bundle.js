@@ -3561,7 +3561,7 @@ eval("/**\n * Copyright (c) 2014-present, Facebook, Inc.\n *\n * This source cod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global/ui */ \"./src/js/global/ui.js\");\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_global_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/site-header */ \"./src/js/components/site-header.js\");\n/* harmony import */ var _components_promo_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/promo-slider */ \"./src/js/components/promo-slider.js\");\n\n\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global/ui */ \"./src/js/global/ui.js\");\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_global_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/site-header */ \"./src/js/components/site-header.js\");\n/* harmony import */ var _components_promo_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/promo-slider */ \"./src/js/components/promo-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/testimonial-slider */ \"./src/js/components/testimonial-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ }),
 
@@ -3586,6 +3586,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hel
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _global_selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../global/selectors */ \"./src/js/global/selectors.js\");\n/* harmony import */ var _helpers_debounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/debounce */ \"./src/js/helpers/debounce.js\");\n\n\n\nvar headerHeight = function headerHeight() {\n  return _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].clientHeight;\n};\n\nvar nav = _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].querySelector('.k-header--nav');\nvar navTrigger = document.querySelector('#k-nav-trigger');\n\nfunction toggleNavDrawer() {\n  var isActive = _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].classList.contains('is-open');\n\n  if (isActive) {\n    _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].classList.remove('is-open');\n  } else {\n    _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].classList.add('is-open');\n  }\n}\n\nfunction doHeaderOffsets() {\n  if (window.innerWidth < 767) {\n    nav.style.top = \"\".concat(headerHeight(), \"px\");\n  } else {\n    console.log('removing it');\n    nav.removeAttribute('style');\n  }\n\n  _global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"getsHeaderMargin\"].style.marginTop = \"\".concat(_global_selectors__WEBPACK_IMPORTED_MODULE_0__[\"header\"].clientHeight, \"px\");\n}\n\nvar interval;\nnavTrigger.addEventListener('click', toggleNavDrawer);\nwindow.addEventListener('resize', function () {\n  return Object(_helpers_debounce__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(doHeaderOffsets, interval);\n});\ndocument.addEventListener('DOMContentLoaded', doHeaderOffsets);\n\n//# sourceURL=webpack:///./src/js/components/site-header.js?");
+
+/***/ }),
+
+/***/ "./src/js/components/testimonial-slider.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/testimonial-slider.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var carousel = document.querySelector('.k-testimonialslider .k-testimonialslider--carousel');\nvar flkty;\nvar flktyOpts = {\n  // groupCells: 1,\n  cellSelector: '.k-testimonialslider--slide',\n  cellAlign: 'center',\n  pageDots: true,\n  prevNextButtons: false,\n  dragThreshold: 10\n};\n\nfunction initializeSlider() {\n  flkty = new Flickity(carousel, flktyOpts);\n}\n\ndocument.addEventListener('DOMContentLoaded', initializeSlider);\n\n//# sourceURL=webpack:///./src/js/components/testimonial-slider.js?");
 
 /***/ }),
 

@@ -3,6 +3,7 @@
   top: 0; width: 100%;
   z-index: 99;
   background: $true-white;
+  box-shadow: 0 0 5px -3px $black;
 
   &.is-open {
     .k-header {

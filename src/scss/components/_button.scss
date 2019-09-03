@@ -40,6 +40,6 @@
 @media(min-width: $bp-sm) {
   .k-button {
     padding: 1.4em 3.25em;
-    width: auto;
+    display: inline-block;
   }
 }

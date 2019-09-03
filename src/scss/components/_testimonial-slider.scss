@@ -1,0 +1,16 @@
+.k-testimonialslider {
+  &--slide {
+    text-align: center;
+    width: 100%;
+    margin-right: 2em;
+
+    .k-figure {
+      max-width: 8.05em;
+      margin: auto;
+
+      &--liner {
+        padding-bottom: 100%;
+      }
+    }
+  }
+}
