@@ -1,0 +1,30 @@
+.k-promoslider {
+  .k-productcard {
+    width: 100%;
+    margin-right: 1.5em;
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-promoslider {
+    .k-productcard {
+      width: 50%;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-promoslider {
+    .k-productcard {
+      width: 33.3333%;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-promoslider {
+    .k-productcard {
+      width: 25%;
+    }
+  }
+}

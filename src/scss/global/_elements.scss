@@ -1,0 +1,8 @@
+.k-figure {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    @include fill-parent();
+  }
+}

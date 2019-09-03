@@ -1,0 +1,45 @@
+.k-button {
+  appearance: none;
+  display: block;
+  color: $true-white;
+  padding: 1.4em 1.5em;
+  border-radius: .4em;
+  text-align: center;
+  border: 1px solid;
+  transition: background 1s $ease-out-circ,
+              color 1s $ease-out-circ,
+              border-color 1s $ease-out-circ;
+
+  &:hover {
+    cursor: pointer;
+    background: $true-white;
+    color: $primary;
+  }
+
+  &--primary {
+    background: $primary;
+    border-color: $primary;
+  }
+
+  &--secondary {
+    background: transparent;
+  }
+
+  &--default {
+    background: $true-white;
+    color: $primary;
+    border-color: $accent-text;
+
+    &:hover {
+      background: $primary;
+      color: $true-white;
+    }
+  }
+}
+
+@media(min-width: $bp-sm) {
+  .k-button {
+    padding: 1.4em 3.25em;
+    width: auto;
+  }
+}

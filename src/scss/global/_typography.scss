@@ -1,13 +1,91 @@
-$heading-font: 'Overlock', serif; 
+@font-face {
+  font-family: 'Recolata Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../dist/fonts/Recoleta-Regular.eot') format('eot');
+}
+@font-face {
+  font-family: 'Recolata Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../dist/fonts/Recoleta-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Recolata Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../dist/fonts/Recoleta-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recolata Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../dist/fonts/Recoleta-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Recolata Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../dist/fonts/RecoletaRegular.otf') format('otf');
+}
+
+$heading-font: 'Recoleta Regular', serif; 
+$body-font: sans-serif;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 320px;
+  font-family: $body-font;
+  line-height: 1.4;
 }
 
 #{headings()} {
   font-family: $heading-font;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.k-headline {
+  &--lg {
+    font-size: 3em;
+  }
+
+  &--fake {
+    font-size: 1em;
+    font-family: $body-font;
+    line-height: 1.4;
+  }
+}
+
+.k-weight {
+  &--sm {
+    font-weight: 300;
+  }
+
+  &--md {
+    font-weight: 400;
+  }
+
+  &--lg {
+    font-weight: 700;
+  }
+}
+
+.k-accent-text {
+  color: $accent-text;
 }
 
 a {
@@ -16,5 +94,62 @@ a {
 
   &:hover {
     color: $primary !important;
+  }
+}
+
+.k-upcase {
+  text-transform: uppercase;
+}
+
+@media(min-width: $bp-md) {
+  .k-headline {
+    &--lg {
+      font-size: 3.5em;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-headline {
+    &--lg {
+      font-size: 3.8em;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-headline {
+    &--lg {
+      font-size: 4.5em;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-headline {
+    &--lg {
+      font-size: 5em;
+    }
+  }
+}
+
+@media(min-width: $bp-xxl) {
+  .k-headline {
+    &--lg {
+      font-size: 6em;
+    }
+  }
+}
+
+@media(min-width: $bp-max) {
+  body {
+    font-size: .89vw;
+    transition: font-size .2s $ease-out-circ;
+  }
+
+  .k-headline {
+    &--lg {
+      font-size: 6.55em;
+    }
   }
 }

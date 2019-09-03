@@ -1,0 +1,48 @@
+.k-productcard {
+  .k-figure {
+    width: 50%;
+    margin: auto;
+
+    &--liner {
+      padding-bottom: 147.77%;
+    } 
+  }
+
+  &--title {
+    text-align: center;
+    margin-top: 2em;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  &--action {
+    margin-top: 2em;
+  }
+
+  &--reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .k-accent-text {
+      font-size: 80%;
+      flex-basis: 33%;
+    }
+
+    ul {
+      flex-basis: 66.6667%;
+      list-style-type: none;
+      padding: 0; margin: 0;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    svg {
+      width: 1em;
+    }
+  }
+}
