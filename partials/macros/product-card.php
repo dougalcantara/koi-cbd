@@ -26,7 +26,7 @@ function k_product_card($args) {
         <ul>
           <?php
           for ($i = 0; $i < 5; $i++) { ?>
-            <li><?php get_template_part('partials/gold-star'); ?></li>
+            <li><?php get_template_part('partials/svg/gold-star'); ?></li>
           <?php } ?>
         </ul>
       </div>

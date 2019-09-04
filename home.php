@@ -8,6 +8,8 @@
   get_template_part('partials/promo-slider');
   get_template_part('partials/home-overview');
   get_template_part('partials/testimonial-slider');
+  get_template_part('partials/cta-banner');
+  get_template_part('partials/video-gallery');
 
   get_footer();
 ?>

@@ -26,3 +26,43 @@
     fill: lighten($accent-text, 10%);
   }
 }
+
+.koi-svg {
+  position: relative;
+
+  svg {
+    @include fill-parent();
+    overflow: hidden;
+  }
+}
+
+.has-play-button {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: block; content: '';
+    width: 0; height: 0; 
+    border-top: .67em solid transparent;
+    border-bottom: .67em solid transparent;
+    border-left: 1em solid $black;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.k-play-button {
+  fill: $true-white;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .6s $ease-out-circ;
+  width: 30%; max-width: 7.8125em;
+
+  &:hover {
+    cursor: pointer;
+    transform: translate(-50%, -50%) rotate(360deg) scale(.8, .8);
+  }
+}

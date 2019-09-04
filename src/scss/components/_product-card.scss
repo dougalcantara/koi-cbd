@@ -26,17 +26,16 @@
   }
 
   &--reviews {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
 
     .k-accent-text {
       font-size: 80%;
-      flex-basis: 33%;
     }
 
     ul {
-      flex-basis: 66.6667%;
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
       list-style-type: none;
       padding: 0; margin: 0;
     }

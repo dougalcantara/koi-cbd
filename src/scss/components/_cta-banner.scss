@@ -1,0 +1,48 @@
+.k-ctabanner {
+  position: relative;
+
+  .k-inner--xl {
+    position: relative;
+    border-radius: .75em;
+    overflow: hidden;
+
+    &:before {
+      display: block; content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: $black;
+      opacity: .33;
+      z-index: -1;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &--bgimg {
+    @include fill-parent();
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+
+  &--content {
+    color: $true-white;
+    max-width: 40em;
+
+    .k-preheading {
+      color: $highlight;
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-ctabanner {
+    .k-inner--xl {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

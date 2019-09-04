@@ -4,7 +4,7 @@
 
 <section class="k-overview k-block k-block--lg">
   <div class="k-overview--bgimg">
-    <?php get_template_part('partials/koi-bg'); ?>
+    <?php get_template_part('partials/svg/koi-bg'); ?>
   </div>
   <div class="k-inner k-inner--md">
 
@@ -30,7 +30,7 @@
           </div>
           <img src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
-        <h3 class="k-headline k-headline--sm">CBD Tinctures</h3>
+        <h3 class="k-headline k-headline--xs">CBD Tinctures</h3>
         <div class="k-rte-content">
           <p>Consume beneath your tongue, or add to your favorite recipes. Our all-natural CBD oils are available in 6 great-tasting flavors, 2 sizes, and 4 strengths. Contains 0% THC. Not for vaping.</p>
           <a href="#0">Shop Now &rarr;</a>
@@ -46,7 +46,7 @@
           </div>
           <img src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
-        <h3 class="k-headline k-headline--sm">CBD Topicals</h3>
+        <h3 class="k-headline k-headline--xs">CBD Topicals</h3>
         <div class="k-rte-content">
           <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
           <a href="#0">Shop Now &rarr;</a>
@@ -61,7 +61,7 @@
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
           </div>
         </figure>
-        <h3 class="k-headline k-headline--sm">CBD For Pets</h3>
+        <h3 class="k-headline k-headline--xs">CBD For Pets</h3>
         <div class="k-rte-content">
           <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
           <a href="#0">Shop Now &rarr;</a>
@@ -78,7 +78,7 @@
           <img src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <div class="k-overview--edibles__text">
-          <h3 class="k-headline k-headline--sm">CBD Edibles</h3>
+          <h3 class="k-headline k-headline--xs">CBD Edibles</h3>
           <div class="k-rte-content">
             <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
             <a href="#0">Shop Now &rarr;</a>
@@ -96,7 +96,7 @@
           <img src="<?php echo $root.'/dist/img/koi-vape-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <div class="k-overview--vape__text">
-          <h3 class="k-headline k-headline--sm">CBD Vape</h3>
+          <h3 class="k-headline k-headline--xs">CBD Vape</h3>
           <div class="k-rte-content">
             <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
             <a href="#0">Shop Now &rarr;</a>

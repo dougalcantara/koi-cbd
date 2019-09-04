@@ -19,7 +19,6 @@ function doHeaderOffsets() {
   if (window.innerWidth < 767) {
     nav.style.top = `${headerHeight()}px`;
   } else {
-    console.log('removing it');
     nav.removeAttribute('style');
   }
 

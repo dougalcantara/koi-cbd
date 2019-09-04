@@ -50,7 +50,7 @@ body {
   min-width: 320px;
   font-family: $body-font;
   line-height: 1.4;
-  min-height: 5000px;
+  min-height: 10000px;
 }
 
 #{headings()} {
@@ -60,8 +60,14 @@ body {
 }
 
 .k-headline {
-  &--sm {
+  font-family: $heading-font;
+
+  &--xs {
     font-size: 1.5em;
+  }
+
+  &--sm {
+    font-size: 1.9em;
   }
 
   &--md {
@@ -97,6 +103,10 @@ body {
   color: $accent-text;
 }
 
+.k-underline {
+  text-decoration: underline;
+}
+
 .k-rte-content {
   a {
     color: $black;
@@ -104,6 +114,12 @@ body {
     &:hover {
       color: $primary;
       text-decoration: underline;
+    }
+  }
+
+  p {
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -159,6 +175,10 @@ a {
 
 @media(min-width: $bp-xl) {
   .k-headline {
+    &--sm {
+      font-size: 2.5em;
+    }
+
     &--md {
       font-size: 3.8em;
     }
@@ -171,8 +191,12 @@ a {
 
 @media(min-width: $bp-xxl) {
   .k-headline {
-    &--sm {
+    &--xs {
       font-size: 1.85em;
+    }
+
+    &--sm {
+      font-size: 2.8em;
     }
 
     &--md {
@@ -187,13 +211,17 @@ a {
 
 @media(min-width: $bp-max) {
   body {
-    font-size: .89vw;
+    font-size: calc(.89vw * .9);
     transition: font-size .2s $ease-out-circ;
   }
 
   .k-headline {
-    &--sm {
+    &--xs {
       font-size: 2.15em;
+    }
+    
+    &--sm {
+      font-size: 3.2em;
     }
 
     &--md {
@@ -205,3 +233,9 @@ a {
     }
   }
 }
+
+// @media(min-width: 2000px) {
+//   body {
+//     font-size: .865vw;
+//   }
+// }

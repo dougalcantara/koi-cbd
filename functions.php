@@ -1,3 +1,3 @@
 <?php
-  include_once('partials/product-card.php');
+  include_once('partials/macros/product-card.php');
 ?>

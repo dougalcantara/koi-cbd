@@ -14,12 +14,23 @@ $padding-lg: 15.625em;
 
   &--sm,
   &--md,
-  &--lg {
+  &--lg,
+  &--xl {
     width: 90%;
   }
 
   &--sm {
     max-width: 58.33em;
+  }
+}
+
+.k-half-padding {
+  &--top {
+    padding-top: 4.75em !important;
+  }
+
+  &--bottom {
+    padding-bottom: 4.75em !important;
   }
 }
 
@@ -34,6 +45,12 @@ $padding-lg: 15.625em;
     &--md {
       width: 80%;
     }
+
+    &--xl {
+      .k-inner--md {
+        width: 88.889%;
+      }
+    }
   }
 }
 
@@ -47,6 +64,14 @@ $padding-lg: 15.625em;
   .k-inner {
     &--lg {
       width: 88%;
+    }
+
+    &--xl {
+      width: 94.44%;
+
+      .k-inner--md {
+        width: 84.711%;
+      }
     }
   }
 }
