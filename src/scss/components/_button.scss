@@ -35,6 +35,17 @@
       color: $true-white;
     }
   }
+
+  &--dark {
+    background: $bg-dark;
+    border-color: $bg-dark;
+
+    &:hover {
+      color: $primary;
+      border-color: $primary;
+      background: $bg-dark;
+    }
+  }
 }
 
 @media(min-width: $bp-sm) {

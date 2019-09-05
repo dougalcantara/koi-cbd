@@ -1,0 +1,158 @@
+.k-footer {
+  position: relative;
+
+  &--top .k-inner {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  &--bottom .k-inner {
+    padding: 2em 0;
+    border-top: 1px solid #cccccc;
+  }
+
+  &--bgimg {
+    @include fill-parent();
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .koi-logo-full {
+    position: relative;
+    margin-bottom: 1em;
+    max-width: 8.75em;
+
+    .k-svg-wrapper {
+      padding-bottom: 110.42%;
+    }
+
+    svg {
+      @include fill-parent();
+      overflow: hidden;
+    }
+  }
+
+  &--logo {
+    flex-basis: 50%;
+  }
+
+  &--social {
+    a {
+      display: block;
+
+      // &:first-child {
+      //   position: relative;
+      //   margin-right: 1em;
+
+      //   &:after {
+      //     display: block;
+      //     content: '';
+      //     position: absolute;
+      //     top: 50%; right: -.6em;
+      //     height: 50%; width: 1px;
+      //     background: $black;
+      //     transform: translateY(-50%);
+      //   }
+      // }
+    }
+  }
+
+  &--links {
+    flex-basis: 50%;
+    text-align: right;
+
+    &__item {
+      margin-bottom: 1em;
+    }
+
+    h4 {
+      font-family: $body-font;
+      margin: 0 0 1em 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0; margin: 0;
+    }
+  }
+
+  &--badges {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    img {
+      flex-basis: 33%;
+      max-width: 6.25em;
+    }
+  }
+
+  &--disclaimer p {
+    font-size: 65%;
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-footer {
+    &--links {
+      text-align: left;
+    }
+
+    &--badges {
+      flex-basis: 50%;
+      margin-top: -10em;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-footer {
+    &--top .k-inner {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+
+    &--bottom {
+      .k-inner {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+      }
+
+      .k-footer--copy {
+        flex-basis: 25%;
+      }
+
+      .k-footer--disclaimer {
+        flex-basis: 75%;
+      }
+    }
+
+    &--logo {
+      flex-basis: 25%;
+    }
+
+    &--links {
+      flex-basis: 50%;
+      display: flex;
+      justify-content: space-between;
+      
+      &__item {
+        flex-basis: 31%;
+      }
+    }
+
+    &--badges {
+      flex-basis: 20%;
+      margin-top: 0;
+    }
+
+    &--copy,
+    &--disclaimer p {
+      font-size: 80%;
+    }
+  }
+}

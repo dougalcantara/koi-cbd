@@ -3561,7 +3561,7 @@ eval("/**\n * Copyright (c) 2014-present, Facebook, Inc.\n *\n * This source cod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global/ui */ \"./src/js/global/ui.js\");\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_global_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/site-header */ \"./src/js/components/site-header.js\");\n/* harmony import */ var _components_promo_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/promo-slider */ \"./src/js/components/promo-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/testimonial-slider */ \"./src/js/components/testimonial-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global/ui */ \"./src/js/global/ui.js\");\n/* harmony import */ var _global_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_global_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_site_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/site-header */ \"./src/js/components/site-header.js\");\n/* harmony import */ var _components_promo_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/promo-slider */ \"./src/js/components/promo-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/testimonial-slider */ \"./src/js/components/testimonial-slider.js\");\n/* harmony import */ var _components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_testimonial_slider__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _components_video_gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/video-gallery */ \"./src/js/components/video-gallery.js\");\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ }),
 
@@ -3600,6 +3600,18 @@ eval("var carousel = document.querySelector('.k-testimonialslider .k-testimonial
 
 /***/ }),
 
+/***/ "./src/js/components/video-gallery.js":
+/*!********************************************!*\
+  !*** ./src/js/components/video-gallery.js ***!
+  \********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/dom */ \"./src/js/helpers/dom.js\");\n\nvar videoGallery = document.querySelector('.k-videogallery');\nvar videoSelectTriggers = videoGallery.querySelectorAll('.k-videogallery--actions__item');\nObject(_helpers_dom__WEBPACK_IMPORTED_MODULE_0__[\"addEventListeners\"])(videoSelectTriggers, 'click', function (_ref) {\n  var target = _ref.target;\n  Object(_helpers_dom__WEBPACK_IMPORTED_MODULE_0__[\"removeClass\"])(videoSelectTriggers, 'active');\n  target.classList.add('active');\n});\n\n//# sourceURL=webpack:///./src/js/components/video-gallery.js?");
+
+/***/ }),
+
 /***/ "./src/js/global/selectors.js":
 /*!************************************!*\
   !*** ./src/js/global/selectors.js ***!
@@ -3632,6 +3644,18 @@ eval("\n\n//# sourceURL=webpack:///./src/js/global/ui.js?");
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (cb, interval) {\n  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 250;\n  clearInterval(interval);\n  interval = setInterval(function () {\n    clearInterval(interval);\n    cb();\n  }, 250);\n});\n\n//# sourceURL=webpack:///./src/js/helpers/debounce.js?");
+
+/***/ }),
+
+/***/ "./src/js/helpers/dom.js":
+/*!*******************************!*\
+  !*** ./src/js/helpers/dom.js ***!
+  \*******************************/
+/*! exports provided: addEventListeners, removeClass */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addEventListeners\", function() { return addEventListeners; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeClass\", function() { return removeClass; });\nfunction addEventListeners(nodeList, evt, fn) {\n  [].forEach.call(nodeList, function (item) {\n    return item.addEventListener(evt, fn, false);\n  });\n  return nodeList;\n}\nfunction removeClass(from, str) {\n  var isNodeList = NodeList.prototype.isPrototypeOf(from);\n\n  if (isNodeList) {\n    from.forEach(function (item) {\n      return item.classList.remove(str);\n    });\n  } else {\n    from.classList.remove(str);\n  }\n\n  return from;\n}\n\n//# sourceURL=webpack:///./src/js/helpers/dom.js?");
 
 /***/ }),
 

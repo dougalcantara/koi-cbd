@@ -42,5 +42,3 @@ $root = get_template_directory_uri();
     </div>
   </div>
 </header>
-
-<main>

@@ -13,7 +13,7 @@ function k_product_card($args) {
       </figure>
 
       <div class="k-productcard--title">
-        <h3>Blue Koi Vape Juice</h3>
+        <h3 class="k-headline k-headline--fake k-weight--lg">Blue Koi Vape Juice</h3>
         <p class="k-accent-text">Blue Raspberry. Vape it in & balance out.</p>
       </div>
 

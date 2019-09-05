@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="k-videogallery--item k-videogallery--video has-play-button">
-      <figure class="k-figure">
+      <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
           <img src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
         </div>
@@ -40,7 +40,7 @@
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>Maintaining Taste & Terpenes</p>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>Accredited 3rd Party Testing</p>
         </div>
       </div>
 
@@ -62,7 +62,7 @@
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>Single Vessel Bottling</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>Whole Plant Extraction</p>
         </div>
       </div>
 
@@ -84,13 +84,13 @@
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>Traceability & Quality Control</p>
         </div>
       </div>
     </div>
     <div class="k-videogallery--item k-videogallery--description k-rte-content">
       <p class="k-headline k-headline--xs">It all starts at our organic hemp farms in Kentucky, Colorado & Oklahoma, each carefully selected to meet highest standards of agricultural quality and consistency.</p>
-      <a class="k-underline" href="#0">Get The Full Story</a>
+      <a class="k-underline k-weight--lg" href="#0">Get The Full Story</a>
     </div>
   </div>
 </section>

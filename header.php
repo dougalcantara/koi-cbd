@@ -14,5 +14,5 @@ $root = get_template_directory_uri();
   <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css' ?>" />
 </head>
 <body>
-
   <?php get_template_part('partials/site-header'); ?>
+  <main role="main" id="k-main">
