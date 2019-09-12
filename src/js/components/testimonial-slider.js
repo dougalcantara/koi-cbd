@@ -12,6 +12,7 @@ const flktyOpts = {
 };
 
 function initializeSlider() {
+  if (!carousel) return;
   flkty = new Flickity(carousel, flktyOpts);
 }
 

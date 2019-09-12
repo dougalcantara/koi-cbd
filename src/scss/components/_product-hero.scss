@@ -1,0 +1,262 @@
+.k-producthero {
+  .k-inner--xl {
+    background: $bg-gray;
+    border-radius: .5em;
+  }
+
+  &--gallery {
+    padding-top: 2em;
+  }
+
+  &--slide {
+    width: 100%;
+
+    .k-figure {
+      &--liner {
+        padding-bottom: 100%;
+      }
+    }
+  }
+
+  &--details {
+    &__content {
+      padding: 2em 1em;
+    }
+  }
+}
+
+.k-productform {
+  &--liner {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--variants {
+    flex-basis: 100%;
+  }
+
+  &--variantselect {
+    position: relative;
+    display: block;
+    margin-bottom: .5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--quantity,
+  &--price {
+    display: inline-block;
+    width: 48.5%;
+  }
+
+  &--quantity {
+    position: relative;
+    margin-top: .5em;
+
+    input[type="number"] {
+      width: 100%;
+      text-align: center;
+      padding: 1.25em 3em;
+      border: 1px solid $bg-dark;
+      border-radius: .25em;
+      box-shadow: none;
+      background: $true-white;
+      outline: none;
+    }
+
+    #k-reduce,
+    #k-increase {
+      position: absolute;
+      top: 50%; left: .5em;
+      transform: translateY(-50%);
+      appearance: none;
+      background: none;
+      border: none;
+    }
+
+    #k-increase {
+      right: .5em;
+      left: auto;
+    }
+  }
+
+  &--price {
+    text-align: right;
+
+    p {
+      margin: 0;
+      font-size: 2em;
+    }
+  }
+
+  &--submit {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 1em;
+
+    .k-button {
+      width: 100%;
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    visibility: hidden;
+
+    & + label {
+      position: relative;
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: .25em;
+      color: #ddd;
+      text-align: center;
+      padding: .667em 1.15em;
+      transition: color .4s $ease-out-circ;
+      overflow: hidden;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      span {
+        position: relative;
+        z-index: 2;
+        pointer-events: none;
+      }
+      
+      &:after {
+        display: block; content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: $bg-dark;
+        transition: transform .2s $ease-out-circ;
+        transform: scale(1, 0);
+        transform-origin: bottom center;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+
+    &.selected,
+    &:checked {
+      & + label {
+        color: $true-white;
+
+        &:after {
+          transition: transform .2s $ease-out-circ;
+          transform: scale(1, 1);
+          transform-origin: top center;
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-sm) {
+  .k-producthero {
+    &--details {
+      &__content {
+        padding: 2em;
+      }
+    }
+  }
+
+  .k-productform {
+    &--item {
+      order: 1 !important;
+    }
+
+    &--quantity,
+    &--price,
+    &--submit {
+      margin-top: .5em;
+    }
+
+    &--quantity,
+    &--price {
+      flex-basis: 25%;
+    }
+
+    &--submit {
+      flex-basis: 40%;
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-productform {
+    &--variantselect {
+      display: inline-block;
+      margin-right: 1em;
+    }
+
+    &--quantity,
+    &--submit,
+    &--price {
+      margin-top: 2em;
+    }
+
+    &--quantity {
+      flex-basis: 5.55em;
+
+      input[type="number"] {
+        padding: 1.25em 0;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-producthero {
+    .k-inner {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: row nowrap;
+      padding: 6em 0;
+    }
+
+    &--gallery {
+      padding-top: 0;
+      flex-basis: 40%;
+      margin-right: 5%;
+    }
+
+    &--details {
+      flex-basis: 50%;
+
+      &__content {
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-xxl) {
+  .k-producthero {
+    .k-inner {
+      padding: 9.5em 0;
+    }
+
+    &--gallery {
+      flex-basis: 50%;
+      margin-right: 5%;
+    }
+
+    &--details {
+      flex-basis: 40%;
+
+      &__content {
+        padding: 0;
+      }
+
+      .k-rte-content {
+        max-width: 75%;
+      }
+    }
+  }
+}

@@ -13,6 +13,6 @@ $root = get_template_directory_uri();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
   <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css' ?>" />
 </head>
-<body>
+<body <?php body_class(); ?>>
   <?php get_template_part('partials/site-header'); ?>
   <main role="main" id="k-main">

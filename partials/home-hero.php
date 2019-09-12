@@ -5,9 +5,9 @@
   <div class="k-hero--bgimg" style="background-image: url(<?php echo $root.'/dist/img/koi-home-hero.jpg' ?>)"></div>
   <div class="k-inner k-inner--md">
     <div class="k-hero--text">
-      <h2 class="k-headline k-headline--lg">Create Balance Daily.</h2>
+      <h2 class="k-headline k-headline--lg"><?php echo $hero_fields['headline']; ?></h2>
       <div class="k-hero--bigtext">
-        <h1 class="k-headline--fake">Better practices, prices & days ahead. Restore your balance naturally with koi CBD.</h1>
+        <h1 class="k-headline--fake"><?php echo $hero_fields['body']; ?></h1>
       </div>
     </div>
     <div class="k-hero--action">

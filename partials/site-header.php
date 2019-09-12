@@ -4,7 +4,7 @@ $root = get_template_directory_uri();
 
 <header class="k-header">
   <div class="k-header--top k-promobanner">
-    <div class="k-inner k-inner--lg">
+    <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
         <span class="k-upcase">Free shipping & returns for all US orders</span>
       </div>
@@ -30,7 +30,7 @@ $root = get_template_directory_uri();
         </ul>
       </div>
     </div>
-    <div class="k-inner k-inner--lg">
+    <div class="k-inner k-inner--xl">
       <div class="k-header--logo">
         <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="">
       </div>

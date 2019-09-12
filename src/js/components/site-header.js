@@ -5,6 +5,8 @@ const headerHeight = () => header.clientHeight;
 const nav = header.querySelector('.k-header--nav');
 const navTrigger = document.querySelector('#k-nav-trigger');
 
+let didScroll = false;
+
 function toggleNavDrawer() {
   const isActive = header.classList.contains('is-open');
 
@@ -25,8 +27,22 @@ function doHeaderOffsets() {
   getsHeaderMargin.style.marginTop = `${header.clientHeight}px`;
 }
 
+(function handleScroll() {
+  if (didScroll) {
+    if (window.pageYOffset) {
+      header.classList.add('k-header--traveling');
+    } else {
+      header.classList.remove('k-header--traveling');
+    }
+    didScroll = false;
+  }
+
+  requestAnimationFrame(handleScroll);
+})();
+
 let interval;
 
 navTrigger.addEventListener('click', toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));
+window.addEventListener('scroll', () => didScroll = true);
 document.addEventListener('DOMContentLoaded', doHeaderOffsets);

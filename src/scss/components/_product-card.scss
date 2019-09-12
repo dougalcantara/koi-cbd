@@ -4,7 +4,7 @@
     margin: auto;
 
     &--liner {
-      padding-bottom: 147.77%;
+      padding-bottom: 100%;
     } 
   }
 
@@ -27,6 +27,10 @@
 
     .k-button {
       display: block;
+      
+      &:hover {
+        color: $true-white !important;
+      }
     }
   }
 

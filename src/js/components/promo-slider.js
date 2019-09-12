@@ -15,5 +15,6 @@ const flktyOpts = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (!promoSlider) return;
   flkty = new Flickity(promoSlider, flktyOpts);
 });

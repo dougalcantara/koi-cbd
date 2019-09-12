@@ -2,7 +2,7 @@
   appearance: none;
   display: block;
   color: $true-white;
-  padding: 1.4em 1.5em;
+  padding: 1.25em 1.15em;
   border-radius: .4em;
   text-align: center;
   border: 1px solid;
@@ -50,7 +50,7 @@
 
 @media(min-width: $bp-sm) {
   .k-button {
-    padding: 1.4em 3.25em;
+    padding: 1.25em 3em;
     display: inline-block;
   }
 }
