@@ -22,5 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     pageDots: false,
     contain: true,
     dragThreshold: 10,
+    imagesLoaded: true,
   })
 });

@@ -24,6 +24,16 @@ $padding-lg: 15.625em;
   }
 }
 
+.k-no-padding {
+  &--top {
+    padding-top: 0 !important;
+  }
+
+  &--bottom {
+    padding-bottom: 0 !important;
+  }
+}
+
 .k-half-padding {
   &--top {
     padding-top: 4.75em !important;

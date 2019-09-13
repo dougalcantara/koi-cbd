@@ -1,0 +1,129 @@
+.k-productdetails {
+  &--image {
+    .k-figure {
+      border-radius: .667em;
+
+      &--liner {
+        padding-bottom: 128.57%;
+        background: $bg-gray;
+      }
+    }
+  }
+
+  &--accordion {
+    ul {
+      @include unstyle-list();
+    }
+
+    li {
+      position: relative;
+      padding-left: 1em;
+      margin-bottom: .5em;
+
+      p {
+        margin: 0;
+        font-size: 125%;
+        font-weight: 300;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:before {
+        display: block; content: '';
+        position: absolute;
+        top: 1.1em; left: 0;
+        width: .125em; height: .125em;
+        border-radius: 50%;
+        background: $black;
+        transform: translateY(-50%);
+      }
+    }
+
+    &__item {
+      border-bottom: 1px solid #ddd;
+
+      &.open {
+        span {
+          transform: translateY(-50%) rotate(405deg);
+        }
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &__trigger {
+      padding: 1em 0;
+
+      p {
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        font-size: 125%;
+      }
+
+      span {
+        color: $primary;
+        position: absolute;
+        right: -1em; top: 42.5%;
+        font-size: 150%;
+        transform: translateY(-50%) rotate(0);
+        transition: transform .5s $ease-out-back;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__drawer {
+      height: 0;
+      overflow: hidden;
+      transition: height .2s $ease-out-circ;
+
+      ul {
+        padding-bottom: 1em;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-productdetails {
+    &--headline {
+      text-align: center;
+    }
+
+    &--main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-flow: row nowrap;
+      padding-top: 2em;
+    }
+
+    &--accordion,
+    &--image {
+      flex-basis: 45%;
+    }
+
+    &--image {
+      order: 2;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-productdetails {
+    &--accordion {
+      flex-basis: 35%;
+    }
+
+    &--image {
+      flex-basis: 50%;
+    }
+  }
+}

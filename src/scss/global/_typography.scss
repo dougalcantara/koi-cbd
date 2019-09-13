@@ -179,6 +179,7 @@ body {
 .k-rte-content {
   a {
     color: $black;
+    text-decoration: underline;
 
     &:hover {
       color: $primary;

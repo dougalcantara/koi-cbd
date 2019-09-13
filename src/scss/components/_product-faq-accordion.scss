@@ -1,0 +1,88 @@
+.k-productfaq {
+  .k-inner--xl {
+    background: $bg-gray;
+    border-radius: .75em;
+  }
+
+  &--title {
+    .k-headline {
+      margin: 0;
+    }
+  }
+
+  &--accordion {
+    ul {
+      @include unstyle-list();
+    }
+
+    &__item {
+      border-bottom: 1px solid #ddd;
+
+      &:first-child {
+        .k-productfaq--accordion__trigger {
+          padding-top: 0;
+        }
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .k-headline {
+        margin: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__trigger {
+      padding: 2em 0 1em 0;
+    }
+
+    &__drawer {
+      height: 0;
+      overflow: hidden;
+      transition: height .2s $ease-out-circ;
+
+      &--liner {
+        padding: 0 0 2em 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-productfaq {
+    .k-inner--md {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+
+    &--title {
+      flex-basis: 25%;
+    }
+    
+    &--accordion {
+      flex-basis: 62.5%;
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-productfaq {
+    &--accordion {
+      &__drawer {
+        p {
+          max-width: 75%;
+        }
+      }
+    }
+  }
+}

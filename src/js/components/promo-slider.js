@@ -12,6 +12,7 @@ const flktyOpts = {
   prevNextButtons: false,
   contain: true,
   dragThreshold: 10,
+  imagesLoaded: true,
 };
 
 document.addEventListener('DOMContentLoaded', () => {

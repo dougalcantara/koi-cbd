@@ -33,6 +33,16 @@
     align-items: center;
   }
 
+  &--reviews {
+    p, div {
+      display: inline-block;
+    }
+  }
+
+  &--heading {
+    margin-bottom: .5em;
+  }
+
   &--variants {
     flex-basis: 100%;
   }
@@ -58,8 +68,11 @@
     margin-top: .5em;
 
     input[type="number"] {
+      appearance: none;
       width: 100%;
       text-align: center;
+      font-weight: 500;
+      font-weight: 500;
       padding: 1.25em 3em;
       border: 1px solid $bg-dark;
       border-radius: .25em;
@@ -76,6 +89,11 @@
       appearance: none;
       background: none;
       border: none;
+      font-weight: 500;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     #k-increase {
@@ -134,7 +152,7 @@
         top: 0; left: 0;
         width: 100%; height: 100%;
         background: $bg-dark;
-        transition: transform .2s $ease-out-circ;
+        transition: transform .4s $ease-out-circ;
         transform: scale(1, 0);
         transform-origin: bottom center;
         pointer-events: none;
@@ -190,9 +208,14 @@
 
 @media(min-width: $bp-md) {
   .k-productform {
+    &--variants {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+
     &--variantselect {
-      display: inline-block;
-      margin-right: 1em;
+      flex-basis: 23.5%;
     }
 
     &--quantity,
@@ -202,8 +225,15 @@
     }
 
     &--quantity {
-      flex-basis: 5.55em;
+      flex-basis: 15%;
+      margin-right: 10%;
+    }
 
+    &--submit {
+      flex-basis: 50%;
+    }
+
+    &--quantity {
       input[type="number"] {
         padding: 1.25em 0;
       }
@@ -211,27 +241,45 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media(min-width: $bp-lg) {
   .k-producthero {
     .k-inner {
-      display: flex;
-      justify-content: flex-start;
-      flex-flow: row nowrap;
-      padding: 6em 0;
+      @include clearfix();
+      padding: 4em 5%;
+    }
+
+    &--gallery,
+    &--details {
+      float: left;
     }
 
     &--gallery {
-      padding-top: 0;
-      flex-basis: 40%;
+      width: 40%;
       margin-right: 5%;
+      padding: 0;
     }
 
     &--details {
-      flex-basis: 50%;
+      width: 50%;
 
       &__content {
         padding: 0;
       }
+    }
+  }
+
+  .k-productform {
+    &--quantity {
+      flex-basis: 20%;
+      margin-right: 0;
+    }
+
+    &--submit {
+      flex-basis: 45%;
+    }
+
+    &--price {
+      flex-basis: 20%;
     }
   }
 }
@@ -239,24 +287,26 @@
 @media(min-width: $bp-xxl) {
   .k-producthero {
     .k-inner {
-      padding: 9.5em 0;
+      padding: 8em 5%;
     }
 
     &--gallery {
-      flex-basis: 50%;
-      margin-right: 5%;
+      margin-right: 15%;
     }
 
     &--details {
-      flex-basis: 40%;
+      width: 45%;
+    }
+  }
 
-      &__content {
-        padding: 0;
-      }
+  .k-rte-content,
+  .k-productform {
+    width: 75%;
+  }
 
-      .k-rte-content {
-        max-width: 75%;
-      }
+  .k-productform {
+    &--variantselect {
+      flex-basis: 22.5%;
     }
   }
 }

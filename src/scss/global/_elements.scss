@@ -6,7 +6,20 @@
   &--rounded {
     img {
       border-radius: .667em;
-      // overflow: hidden;
+    }
+  }
+
+  &--fpo {
+    &:after {
+      display: block; content: 'F P O';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      font-family: $heading-font;
+      font-size: 400%;
+      color: $true-white;
     }
   }
 
@@ -69,5 +82,16 @@
 }
 
 .k-goldstar {
+  display: inline-block;
   width: 1em;
+  position: relative;
+
+  &--liner {
+    padding-bottom: 100%;
+  }
+
+  svg {
+    @include fill-parent();
+    overflow: hidden;
+  }
 }

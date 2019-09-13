@@ -45,7 +45,9 @@ function scss(done) {
     .pipe(smaps.init())
     .pipe(sass({ outputStyle: 'expanded' }))
     .on('error', sass.logError)
-    .pipe(prefix())
+    .pipe(prefix({
+      cascade: false,
+    }))
     .pipe(smaps.write())
     .pipe(gulp.dest(PATHS.css.output))
     .pipe(browserSync.stream());

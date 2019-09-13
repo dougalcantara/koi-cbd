@@ -5,3 +5,5 @@ import './components/promo-slider';
 import './components/testimonial-slider';
 import './components/video-gallery';
 import './components/product-hero';
+import './components/product-details-accordion';
+import './components/product-faq-accordion';

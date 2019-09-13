@@ -1,0 +1,253 @@
+.k-latestbatch {
+  &--intro {
+    margin-bottom: 2em;
+  }
+
+  &--title {
+    .k-headline {
+      margin: 0;
+    }
+  }
+
+  &--tabs {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid #ddd;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__tab {
+      flex-basis: 25%;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      padding: .5em 0;
+
+      span {
+        font-size: 75%;
+        color: $accent-text;
+      }
+
+      &.active {
+        background: $bg-dark;
+
+        span {
+          color: $true-white;
+        }
+      }
+
+      &:first-child {
+        border-left: 1px solid #ddd;
+      }
+    }
+  }
+
+  &--results {
+
+    &__liner {
+      background: $bg-gray-light;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-flow: row wrap;
+    }
+
+    &__column {
+      flex-basis: 100%;
+      border-bottom: 1px solid #ddd;
+      padding: 1em 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:nth-child(3) {
+        p {
+          font-size: 200%;
+          font-weight: 300;
+
+          span {
+            font-size: .5em;
+            vertical-align: text-top;
+          }
+        }
+      }
+
+      &:last-child {
+        margin-top: 1em;
+        padding: 2em 0;
+        border-bottom: 0;
+        position: relative;
+        background: red;
+        transition: background .4s $ease-out-circ;
+        border-radius: .33em;
+
+        a {
+          @include fill-parent();
+        }
+
+        span {
+          color: $true-white;
+          position: absolute;
+          top: 50%; left: 50%;
+          width: 100%;
+          text-align: center;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        }
+
+        &:hover {
+          background: darken(red, 5%);
+        }
+      }
+
+      div {
+        &:first-child {
+          margin-bottom: 1em;
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-sm) {
+  .k-latestbatch {
+    &--tabs {
+      &__tab {
+        padding: 1em;
+
+        span {
+          font-size: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-latestbatch {
+    &--intro {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+      margin-bottom: 4em;
+    }
+
+    &--title,
+    &--description {
+      flex-basis: 48.5%;
+    }
+
+    &--description {
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-latestbatch {
+    &--tabs {
+      max-width: 50%;
+      border-bottom: none;
+    }
+
+    &--results {
+      &__liner {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 3.75em;
+      }
+
+      &__column {
+        border: none;
+        padding: 0;
+        margin-right: 5%;
+
+        p {
+          line-height: 1.1;
+        }
+
+        &:first-child {
+          flex-basis: 10%;
+        }
+
+        &:nth-child(2) {
+          flex-basis: 30%;
+        }
+
+        &:nth-child(3) {
+          flex-basis: 25%;
+
+          p:first-child {
+            margin-bottom: .5em;
+          }
+        }
+
+        &:last-child {
+          margin: 0 0 0 auto;
+          flex-basis: 20%;
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-xxl) {
+  .k-latestbatch {
+    &--intro {
+      justify-content: flex-start;
+      margin-bottom: 6em;
+    }
+
+    &--title {
+      margin-right: 1.5%;
+    }
+
+    &--description {
+      flex-basis: 35%;
+    }
+
+    &--results {
+      &__liner {
+        padding: 4em;
+      }
+
+      &__column {
+        div:first-child {
+          margin-bottom: 2.33em;
+        }
+
+        &:nth-child(2) {
+          flex-basis: 25%;
+        }
+
+        &:nth-child(3) {
+          flex-basis: 35%;
+
+          p {
+            font-size: 250%;
+  
+            span {
+              font-size: .5em;
+            }
+          }
+        }
+
+        &:last-child {
+          flex-basis: 15%;
+        }
+      }
+    }
+  }
+}

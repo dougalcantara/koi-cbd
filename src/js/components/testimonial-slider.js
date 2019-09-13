@@ -9,6 +9,7 @@ const flktyOpts = {
   pageDots: true,
   prevNextButtons: false,
   dragThreshold: 10,
+  imagesLoaded: true,
 };
 
 function initializeSlider() {
