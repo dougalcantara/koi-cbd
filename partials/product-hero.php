@@ -1,9 +1,3 @@
-<?php
-  $root = get_template_directory_uri();
-
-  $product_category = get_the_terms($product->get_id(), 'product_cat')[0]->name;
-?>
-
 <section class="k-producthero k-headermargin" data-yotpo-product-id="<?php echo $post->ID ?>">
   <div class="k-inner k-inner--xl">
 
@@ -40,7 +34,7 @@
     <div class="k-producthero--details">
       <div class="k-producthero--details__content">
         <div class="k-producthero--titlerow">
-          <span class="k-producthero--preheading"><?php echo $product_category ?></span>
+          <span class="k-producthero--preheading"><?php echo $product_type; ?></span>
           
           <h1 class="k-headline k-headline--sm"><?php the_title(); ?></h1>
           

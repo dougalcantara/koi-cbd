@@ -15,8 +15,6 @@ addEventListeners(variantToggles, 'click', ({ target }) => {
 document.addEventListener('DOMContentLoaded', () => {
   if (!productHeroCarousel) return;
 
-  console.log(variantToggles);
-
   flkty = new Flickity(productHeroCarousel , {
     cellSelector: '.k-producthero--slide',
     pageDots: false,

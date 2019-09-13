@@ -95,3 +95,36 @@
     overflow: hidden;
   }
 }
+
+.k-arrow {
+  width: 1.5em;
+  position: relative;
+
+  &--liner {
+    padding-bottom: 100%;
+  }
+
+  svg {
+    @include fill-parent();
+    overflow: hidden;
+
+    circle,
+    polyline,
+    line {
+      stroke: $accent-text;
+      transition: stroke .4s $ease-out-circ;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    svg {
+      circle,
+      polyline,
+      line {
+        stroke: $bg-dark;
+      }
+    }
+  }
+}

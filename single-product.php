@@ -31,12 +31,15 @@
       }
 
       $product_acf = get_fields();
+      $product_type = get_the_terms($product->get_id(), 'product_cat')[0]->name;
 
       // NOTE: all `include`s get access to vars from this scope
       include(locate_template('partials/product-hero.php'));
       include(locate_template('partials/product-details.php'));
       include(locate_template('partials/product-latest-batch.php'));
       include(locate_template('partials/product-faq-accordion.php'));
+      include(locate_template('partials/product-reviews.php'));
+      include(locate_template('partials/product-video.php'));
     }
   }
 
