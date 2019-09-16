@@ -1,6 +1,7 @@
 <?php
   $root = get_template_directory_uri();
   $fields = get_fields();
+  $homepage_fields = get_fields(584240);
 
   /* Template Name: 2019 Homepage */
   get_header();
@@ -16,6 +17,7 @@
   $slider_fields = array(
     'headline' => $fields['product_slider_headline'],
     'products' => $fields['product_slider_default_products'],
+    'half_padding_top' => true,
   );
 
   include(locate_template('partials/promo-slider.php'));

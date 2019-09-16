@@ -30,6 +30,7 @@
         $all_image_ids = $product->get_gallery_image_ids();
       }
 
+      $product_id = $product->get_id();
       $product_acf = get_fields();
       $product_type = get_the_terms($product->get_id(), 'product_cat')[0]->name;
 
@@ -40,6 +41,14 @@
       include(locate_template('partials/product-faq-accordion.php'));
       include(locate_template('partials/product-reviews.php'));
       include(locate_template('partials/product-video.php'));
+
+      $slider_fields = array(
+        'headline' => 'Shop Customer Favorites',
+        'products' => $product_acf['other_recommended_products'],
+      );
+
+      include(locate_template('partials/promo-slider.php'));
+      get_template_part('partials/cta-takeover');
     }
   }
 

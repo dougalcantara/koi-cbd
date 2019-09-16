@@ -1,4 +1,4 @@
-<section class="k-producthero k-headermargin" data-yotpo-product-id="<?php echo $post->ID ?>">
+<section class="k-producthero k-headermargin" data-yotpo-product-id="<?php echo $product_id ?>">
   <div class="k-inner k-inner--xl">
 
     <div class="k-producthero--gallery">
@@ -44,7 +44,7 @@
           
           <div class="k-productform--reviews">
             <p>
-              <a href="#0">Reviews (<span class="k-productcard--numreviews">0</span>) </a>
+              <a href="#product-reviews">Reviews (<span class="k-productcard--numreviews">0</span>) </a>
               <span class="k-productcard--reviewavg ">5.0</span>
             </p>
             <?php get_template_part('partials/svg/gold-star'); ?>

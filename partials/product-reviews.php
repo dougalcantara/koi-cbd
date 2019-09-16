@@ -1,13 +1,13 @@
-<section class="k-productreviews k-block k-block--md">
+<section class="k-productreviews k-block k-block--md" id="product-reviews">
   <div class="k-inner k-inner--md">
 
     <div class="k-productreviews--title">
-      <h2 class="k-headline k-headline--sm"><?php the_title(); ?> Reviews</h2>
+      <h2 class="k-headline k-headline--sm"><?php echo $product_type; ?> Reviews</h2>
     </div>
 
     <div class="k-productreviews--main">
     <?php
-      $request = wp_remote_get('https://api.yotpo.com/v1/widget/MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG/products/205491/reviews.json');
+      $request = wp_remote_get('https://api.yotpo.com/v1/widget/MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG/products/'.$product_id.'/reviews.json');
       $reviews = json_decode($request['body'])->response->reviews;
 
       foreach($reviews as $review) {

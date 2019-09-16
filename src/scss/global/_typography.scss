@@ -111,6 +111,11 @@ $body-font: 'GT America', sans-serif;
   box-sizing: border-box;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -124,6 +129,14 @@ body {
   font-family: $heading-font;
   line-height: 1;
   font-weight: 400;
+}
+
+h1 {
+
+}
+
+h2 {
+  font-size: 1.8em;
 }
 
 .k-headline {
@@ -187,7 +200,23 @@ body {
     }
   }
 
+  .k-button {
+    text-decoration: none;
+
+    &--dark {
+      color: $true-white;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   p {
+    &:first-child {
+      margin-top: 0;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -205,6 +234,10 @@ a {
 
 .k-upcase {
   text-transform: uppercase;
+}
+
+.k-bg-dark {
+  background: $bg-gray;
 }
 
 @media(min-width: $bp-md) {
