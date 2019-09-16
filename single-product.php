@@ -21,13 +21,16 @@
       */
       $all_variants;
       $all_image_ids;
+      $all_bundled_items;
 
       if (get_class($product) === 'WC_Product_Variable') {
         // "variations" include their own attached images, we can get those from that object
         $all_variants = $product->get_available_variations();
-      } else {
+      } else if (get_class($product) === 'WC_Product_Simple') {
         // assume this is not a Variable product, just get the images straight from the post
         $all_image_ids = $product->get_gallery_image_ids();
+      } else if (get_class($product) === 'WC_Product_Bundle') {
+        $all_bundled_items = $product->get_bundled_items();
       }
 
       $product_id = $product->get_id();

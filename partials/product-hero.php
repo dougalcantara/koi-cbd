@@ -1,36 +1,11 @@
-<section class="k-producthero k-headermargin" data-yotpo-product-id="<?php echo $product_id ?>">
+<section
+  class="k-producthero k-headermargin"
+  data-yotpo-product-id="<?php echo $product_id ?>"
+>
   <div class="k-inner k-inner--xl">
-
-    <div class="k-producthero--gallery">
-      <?php
-      if ($all_variants) {
-        foreach($all_variants as $variant) { ?>
-          <div class="k-producthero--slide">
-            <div class="k-figure">
-              <div class="k-figure--liner">
-                <img src="<?php echo $variant['image']['url'] ?>" alt="" class="k-figure--img" />
-              </div>
-            </div>
-          </div>
-        <?php
-        }
-        ?>
-      <?php
-      } else {
-        foreach($all_image_ids as $image_id) { ?>
-          <div class="k-producthero--slide">
-            <div class="k-figure">
-              <div class="k-figure--liner">
-                <img src="<?php echo wp_get_attachment_url($image_id) ?>" alt="" class="k-figure--img" />
-              </div>
-            </div>
-          </div>
-        <?php
-        }
-      }
-      ?>
-    </div>
-
+    <?php
+    include(locate_template('partials/components/product-hero/image-gallery.php'));
+    ?>
     <div class="k-producthero--details">
       <div class="k-producthero--details__content">
         <div class="k-producthero--titlerow">
@@ -42,7 +17,7 @@
             <p><?php echo strip_tags(get_the_excerpt()); ?></p>
           </div>
           
-          <div class="k-productform--reviews">
+          <div class="k-producthero--reviews">
             <p>
               <a href="#product-reviews">Reviews (<span class="k-productcard--numreviews">0</span>) </a>
               <span class="k-productcard--reviewavg ">5.0</span>
@@ -52,65 +27,42 @@
           
         </div>
 
-        <form class="k-productform">
+        <form class="k-productform <?php echo $all_bundled_items ? 'k-productform--bundle' : '' ?>">
           <div class="k-productform--liner">
+          <?php
 
-            <?php 
-              if ($all_variants) { ?>
-                <p class="k-productform--item k-productform--heading">Strength</p>
-                <div class="k-productform--item k-productform--variants">
-                  <?php
-                  $i = 0; // index needed to make the first variant `checked` by default
-                  // var_dump($all_variants);
-                  foreach($all_variants as $variant) {
-                    $price = $variant['display_price'];
-                    $strength;
+          if ($all_variants) {
+            include(locate_template('partials/components/product-hero/variant-select.php'));
+          }
 
-                    if ($variant['attributes']['attribute_strength']) {
-                      // some products have attributes attached differently
-                      $strength = $variant['attributes']['attribute_strength'];
-                    } else {
-                      $strength = $variant['attributes']['attribute_pa_strength'];
-                    }
-                  ?>
-                    <div class="k-productform--variantselect">
-                      <input
-                        type="radio"
-                        name="variant-select"
-                        id="<?php echo $strength.$i; ?>"
-                        value="<?php echo $strength; ?>"
-                        <?php if ($i == 0) { ?> checked <?php } ?>
-                      />
-                      <label
-                        for="<?php echo $strength.$i; ?>"
-                        class="k-productform--varianttoggle"
-                        data-product-price="<?php echo $variant['display_price']; ?>"
-                        data-product-strength="<?php echo $strength; ?>"
-                      >
-                        <span><?php echo $strength; ?></span>
-                      </label>
-                    </div>
-                  <?php
-                    $i++;
-                  }
-                  ?>
-                </div>
-              <?php
-              }
-              ?>
-
+          if ($all_bundled_items) {
+            include(locate_template('partials/components/product-hero/bundled-items.php'));
+          } else { ?>
             <div class="k-productform--item k-productform--quantity">
               <button id="k-reduce">-</button>
               <input id="k-num-to-add" type="number" value="1" />
               <button id="k-increase">+</button>
             </div>
+          <?php
+          }
+          ?>
 
             <div class="k-productform--item k-productform--submit">
               <button type="submit" class="k-button k-button--primary">Buy Now &rarr;</button>
             </div>
 
             <div class="k-productform--item k-productform--price">
-              <p>$<span class="k-productform--pricetarget"><?php echo $product->price; ?></span></p>
+              <p>
+              <?php
+              if ($product->regular_price != $product->$price) { ?>
+                $<span class="k-productform--pricetarget"><?php echo $product->price; ?><sup>was <?php echo $product->regular_price; ?></sup></span>
+              <?php
+              } else { ?>
+                $<span class="k-productform--pricetarget"><?php echo $product->price; ?></span>
+              <?php
+              }
+              ?>
+              </p>
             </div>
 
           </div>

@@ -1,7 +1,7 @@
 const triggers = document.querySelectorAll('.k-productfaq--accordion__trigger');
 
 function handleDrawerState(clickedElement) {
-  if (!triggers) return;
+  if (!triggers || !clickedElement) return;
 
   const container = clickedElement.parentElement;
   const targetDrawer = clickedElement.nextElementSibling;
