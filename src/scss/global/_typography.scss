@@ -223,6 +223,20 @@ h2 {
   }
 }
 
+.k-align {
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}
+
 a {
   text-decoration: none;
   transition: color .4s $ease-out-quart;

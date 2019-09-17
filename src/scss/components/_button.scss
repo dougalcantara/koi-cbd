@@ -23,6 +23,11 @@
 
   &--secondary {
     background: transparent;
+
+    &.on-light {
+      border-color: #ccc;
+      color: #ccc;
+    }
   }
 
   &--default {

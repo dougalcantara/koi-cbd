@@ -48,7 +48,7 @@
           ?>
 
             <div class="k-productform--item k-productform--submit">
-              <button type="submit" class="k-button k-button--primary">Buy Now &rarr;</button>
+              <button type="submit" rel="<?php echo $product_id; ?>" class="k-button k-button--primary k-add-to-cart">Buy Now &rarr;</button>
             </div>
 
             <div class="k-productform--item k-productform--price">
