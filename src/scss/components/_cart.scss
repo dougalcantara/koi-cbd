@@ -41,10 +41,6 @@
 
 .k-cartcontents {
 
-  &--col {
-    flex-basis: 25%;
-  }
-
   &--titlerow {
     display: flex;
     flex-flow: row nowrap;
@@ -70,21 +66,38 @@
     padding: 1em 0;
   }
 
+  &--image {
+    flex-basis: 20%;
+    margin-right: 5%;
+  }
+
+  &--name {
+    flex-basis: 30%;
+
+    * {
+      margin: 0;
+    }
+
+    .k-cart-remove-item {
+      margin-top: 2em;
+    }
+  }
+
+  &--quantity {
+    flex-basis: 20%;
+    margin: 0;
+  }
+
+  &--price {
+    flex-basis: 25%;
+  }
+
   .k-figure {
     &--liner {
       padding-bottom: 100%;
     }
   }
 
-  &--name {
-    * {
-      margin: 0;
-    }
-  }
-
-  &--quantity {
-    text-align: center;
-  }
 }
 
 @media(min-width: $bp-lg) {

@@ -1,5 +1,6 @@
 <?php
 $root = get_template_directory_uri();
+$url = site_url();
 ?>
 
 <header class="k-header">
@@ -17,16 +18,23 @@ $root = get_template_directory_uri();
     <div class="k-header--nav">
       <div class="k-header--nav__content">
         <ul>
-          <li><a class="k-upcase" href="/shop">Shop</a></li>
-          <li><a class="k-upcase" href="/cbd-101">CBD 101</a></li>
-          <li><a class="k-upcase" href="/resources">Resources</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/shop">Shop</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/cbd-101">CBD 101</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/resources">Resources</a></li>
         </ul>
         <ul>
-          <li><a class="k-upcase" href="/community">Community</a></li>
-          <li><a class="k-upcase" href="/about-us">About Us</a></li>
-          <li><a class="k-upcase" href="/account">Account</a></li>
-          <li><a href="/cart"><i class="icon-bag"></i></a></li>
-          <li><a href="/search"><i class="icon-magnifier"></i></a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/community">Community</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/about-us">About Us</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/account">Account</a></li>
+
+          <li class="k-header--cart">
+            <a href="<?php echo $url; ?>/cart">
+              <i class="icon-bag"></i>
+              <span id="k-cartnum" class="">0</span>
+            </a>
+          </li>
+
+          <li><a href="<?php echo $url; ?>/search"><i class="icon-magnifier"></i></a></li>
         </ul>
       </div>
     </div>
