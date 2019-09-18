@@ -32,17 +32,18 @@ function numItemsInCart(items) {
   return numInCart;
 }
 
-async function removeItemFromCart(id) {
+async function removeItemFromCart(key) {
   const request = {
     method: 'POST',
     url,
     data: {
       action: 'nopriv_remove_cart_item',
-      product_id: id,
+      cart_item_key: key,
     },
     dataType: 'json',
     success: cart => updateCartStatus(Object.values(cart)),
     error: err => console.log(err),
+    complete: res => console.log(res),
   };
 
   return $.ajax(request);
@@ -88,10 +89,12 @@ $addToCartButtons.click(function(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const productId = $t.attr('rel');
+  // calling this a "purchase ID" because it could either be the id of a product, variant, or bundle
+  const purchaseId = $t.data('purchase-id');
+
   const data = {
     action: 'nopriv_add_product',
-    product_id: productId,
+    product_id: purchaseId,
   };
 
   $t.attr('disabled', true);
@@ -113,9 +116,10 @@ $addToCartButtons.click(function(e) {
 
 $removeFromCartTrigger.click(async function() {
   const $t = $(this);
-  const id = $t.data('product-id');
+  const key = $t.data('cart-item-key');
 
-  await removeItemFromCart(id);
+  await removeItemFromCart(key);
+  
   window.location.reload();
 });
 

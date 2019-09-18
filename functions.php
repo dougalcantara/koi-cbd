@@ -34,10 +34,11 @@ add_action('wp_ajax_nopriv_get_cart', 'k_ajax_get_cart');
  * args - product_id
  */
 function k_ajax_remove_cart_item() {
-  $product_id = intval($_POST['product_id']);
+  $this_item_key = intval($_POST['cart_item_key']);
+  $cart_items = WC()->cart->get_cart();
 
-  foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-    if ($cart_item['product_id'] == $product_id) {
+  foreach ($cart_items as $cart_item_key => $cart_item) {
+    if ($cart_item_key == $this_item_key) {
       WC()->cart->remove_cart_item($cart_item_key);
     }
   }

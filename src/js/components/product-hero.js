@@ -1,44 +1,62 @@
-import { addEventListeners, removeClass } from '../helpers/dom';
+import { $doc } from '../global/selectors';
 
-const productHeroCarousel = document.querySelector('.k-producthero--gallery');
-const variantToggles = document.querySelectorAll('.k-productform--variants .k-productform--varianttoggle');
-const priceTarget = document.querySelector('.k-productform--pricetarget');
-const bundledItemSelects = document.querySelectorAll('.k-productform--select-bundled-item');
+const $productHeroCarousel = $('.k-producthero--gallery');
+const $variantToggles = $('.k-productform--variants .k-productform--varianttoggle');
+const $priceTarget = $('.k-productform--pricetarget');
+const $bundledItemSelects = $('.k-productform--select-bundled-item');
+const $addToCartTrigger = $('.k-productform .k-add-to-cart');
 
 let flkty;
 
-addEventListeners(variantToggles, 'click', ({ target }) => {
-  const { productPrice } = target.dataset;
+$variantToggles.click(function() {
+  const $t = $(this);
+  const variantPrice = $t.data('variant-price');
+  const variantId = $t.data('variant-id');
 
-  priceTarget.innerHTML = productPrice;
+  $priceTarget.text(variantPrice);
+  $addToCartTrigger.attr('data-purchase-id', variantId);
 });
 
-addEventListeners(bundledItemSelects, 'click', ({ target }) => {
-  const targetDrawer = [].filter.call(target.parentNode.children, child => child !== target).pop();
-  const targetHeight = `${targetDrawer.firstChild.nextElementSibling.clientHeight}px`;
+$bundledItemSelects.click(function() {
+  const $t = $(this);
 
-  const numOfCheckedItems = document.querySelectorAll('.k-productform--select-bundled-item:checked').length;
+  const $targetDrawer = $t.siblings().last();
+  const targetHeight = $targetDrawer.children().first().outerHeight();
+
+  const numOfCheckedItems = $('.k-productform--select-bundled-item:checked').length;
 
   if (numOfCheckedItems > 5) {
     target.checked = false;
     return alert('May only select 5 items.');
   }
   
-  if (target.checked) {
-    targetDrawer.style.height = targetHeight;
+  if ($t.is(':checked')) {
+    $targetDrawer.height(targetHeight);
   } else {
-    targetDrawer.style.height = '0px';
+    $targetDrawer.height(0);
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (!productHeroCarousel) return;
+$doc.ready(function() {
+  if (!$productHeroCarousel.length) return;
 
-  flkty = new Flickity(productHeroCarousel , {
+  flkty = new Flickity($productHeroCarousel[0], {
     cellSelector: '.k-producthero--slide',
     pageDots: false,
     contain: true,
     dragThreshold: 10,
     imagesLoaded: true,
-  })
+  });
+
+  $variantToggles.each(function() {
+    const $t = $(this);
+
+    if ($t.siblings().first().is(':checked')) {
+      const variantPrice = $t.data('variant-price');
+      const variantId = $t.data('variant-id');
+    
+      $priceTarget.text(variantPrice);
+      $addToCartTrigger.attr('data-purchase-id', variantId);
+    }
+  });
 });

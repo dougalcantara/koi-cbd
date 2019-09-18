@@ -48,7 +48,21 @@
           ?>
 
             <div class="k-productform--item k-productform--submit">
-              <button type="submit" rel="<?php echo $product_id; ?>" class="k-button k-button--primary k-add-to-cart">Buy Now &rarr;</button>
+              <button
+                type="submit"
+                class="k-button k-button--primary k-add-to-cart"
+              <?php
+              if (get_class($product) !== 'WC_Product_Variable') { ?>
+                data-purchase-id="<?php echo $product_id; ?>"
+              <?php
+              } else { // this will get populated by JS since it's based off the selected variation (strength) ?>
+                data-purchase-id=""
+              <?php
+              }
+              ?>
+              >
+                Buy Now &rarr;
+              </button>
             </div>
 
             <div class="k-productform--item k-productform--price">
