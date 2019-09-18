@@ -14,7 +14,7 @@ function k_ajax_add_product() {
 
   die();
 }
-add_action('wp_ajax_add_product', 'k_ajax_add_product');
+// add_action('wp_ajax_add_product', 'k_ajax_add_product');
 add_action('wp_ajax_nopriv_add_product', 'k_ajax_add_product');
 
 /**
@@ -26,7 +26,7 @@ function k_ajax_get_cart() {
   
   die();
 }
-add_action('wp_ajax_get_cart', 'k_ajax_get_cart');
+// add_action('wp_ajax_get_cart', 'k_ajax_get_cart');
 add_action('wp_ajax_nopriv_get_cart', 'k_ajax_get_cart');
 
 /**
@@ -47,7 +47,7 @@ function k_ajax_remove_cart_item() {
 
   die();
 }
-add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
+// add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
 add_action('wp_ajax_nopriv_remove_cart_item', 'k_ajax_remove_cart_item');
 
 /**
@@ -61,7 +61,7 @@ function k_ajax_remove_all_cart_items() {
 
   die();
 }
-add_action('wp_ajax_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
+// add_action('wp_ajax_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
 add_action('wp_ajax_nopriv_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
 // == end AJAX fn's == //
 
@@ -69,6 +69,8 @@ add_action('wp_ajax_nopriv_remove_all_cart_items', 'k_ajax_remove_all_cart_items
 
 // == begin macros -- reuseable components that can take args and spit out HTML == //
 include_once('partials/macros/product-card.php');
+include_once('partials/macros/product-video.php');
+include_once('partials/macros/article-card.php');
 // == end macros == //
 
 

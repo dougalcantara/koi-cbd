@@ -1,0 +1,31 @@
+.k-blogpromo {
+  .k-articlecard {
+    margin-bottom: 2em;
+  }
+}
+
+@media(min-width: $bp-sm) {
+  .k-blogpromo {
+    &--articles {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
+    }
+
+    .k-articlecard {
+      flex-basis: 48.5%;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-blogpromo {
+    &--articles {
+      flex-flow: row nowrap;
+    }
+
+    .k-articlecard {
+      flex-basis: 32.25%;
+    }
+  }
+}

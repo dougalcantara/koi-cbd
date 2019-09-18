@@ -1,0 +1,43 @@
+.k-articlecard {
+  * {
+    margin: 0;
+  }
+
+  .k-figure {
+    margin-bottom: 1em;
+    border-radius: .33em;
+    transition: box-shadow 1s $ease-out-quart;
+
+    &--liner {
+      padding-bottom: 65.2%;
+    }
+
+    img {
+      transition: transform 2s $ease-out-circ;
+    }
+
+    &:hover {
+      box-shadow: 0 0 15px 2px #ddd;
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &--meta {
+    margin-bottom: 1.5em;
+
+    span {
+      font-size: 80%;
+    }
+  }
+
+  &--title {
+    margin-bottom: 1.5em;
+  }
+
+  &--excerpt {
+    margin-bottom: 1.5em;
+  }
+}

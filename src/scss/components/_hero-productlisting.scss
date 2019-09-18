@@ -1,0 +1,45 @@
+.k-hero--productlisting {
+  background: $black;
+
+  .k-hero {
+    &--content {
+      padding: $padding-sm 0;
+      
+      * {
+        margin: 0;
+      }
+
+      .k-headline {
+        margin: .25em 0 1em 0;
+      }
+
+      .k-rte-content {
+        font-size: 125%;
+      }
+    }
+
+    &--preheading {
+      color: $highlight;
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-hero--productlisting {
+    .k-hero {
+      &--content {
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-hero--productlisting {
+    .k-hero {
+      &--content {
+        padding: $padding-lg 0 $padding-sm 0;
+      }
+    }
+  }
+}

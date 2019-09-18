@@ -1,9 +1,14 @@
+$padding-mini: 3em;
 $padding-xs: 5.8595em;
 $padding-sm: 7.8125em;
 $padding-md: 11.7187em;
 $padding-lg: 15.625em;
 
 .k-block {
+  &--sm {
+    padding: $padding-mini 0;
+  }
+
   &--md {
     padding: $padding-xs 0;
   }

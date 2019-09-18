@@ -9,8 +9,10 @@
 @import 'components/site-header';
 @import 'components/site-footer';
 @import 'components/hero';
+@import 'components/hero-productlisting';
 @import 'components/button';
-@import 'components/product-card';
+@import 'components/card-product';
+@import 'components/card-article';
 @import 'components/promo-slider';
 @import 'components/testimonial-slider';
 @import 'components/cta-banner';
@@ -23,5 +25,7 @@
 @import 'components/product-video';
 @import 'components/video-players';
 @import 'components/cart';
+@import 'components/productlisting';
+@import 'components/blog-promo';
 
 @import 'pages/home';

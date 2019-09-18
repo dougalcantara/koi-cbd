@@ -33,7 +33,7 @@
         <h3 class="k-headline k-headline--xs">CBD Tinctures</h3>
         <div class="k-rte-content">
           <p>Consume beneath your tongue, or add to your favorite recipes. Our all-natural CBD oils are available in 6 great-tasting flavors, 2 sizes, and 4 strengths. Contains 0% THC. Not for vaping.</p>
-          <a href="#0">Shop Now &rarr;</a>
+          <a href="<?php echo site_url().'/cbd-tinctures'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
     </div>

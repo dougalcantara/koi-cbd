@@ -40,7 +40,9 @@ $url = site_url();
     </div>
     <div class="k-inner k-inner--xl">
       <div class="k-header--logo">
-        <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="">
+        <a href="<?php echo site_url(); ?>">
+          <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="">
+        </a>
       </div>
       <div class="k-header--navtoggle" id="k-nav-trigger">
         <div class="k-header--navtoggle__line"></div>

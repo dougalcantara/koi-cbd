@@ -8,17 +8,17 @@ function k_product_video($args) {
     <div class="k-inner k-inner--sm">
 
       <div class="k-productvideo--title">
-        <span class="k-upcase k-productvideo--preheading"><?php echo $preheadline; ?></span>
-        <h2 class="k-headline k-headline--sm"><?php echo $headline; ?></h2>
+        <span class="k-upcase k-productvideo--preheading"><?php echo $args['preheadline']; ?></span>
+        <h2 class="k-headline k-headline--sm"><?php echo $args['headline']; ?></h2>
       </div>
 
       <div class="k-productvideo--main">
         <div class="k-productvideo--videoheading">
-          <h2><?php echo $video_headline; ?></h2>
+          <h2><?php echo $args['video_headline']; ?></h2>
         </div>
 
         <div class="k-productvideo--body k-rte-content">
-          <?php echo $body_copy; ?>
+          <?php echo $args['body_copy']; ?>
         </div>
 
         <div class="k-productvideo--video">
