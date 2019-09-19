@@ -15,14 +15,20 @@
  * @version 3.5.0
  */
 
+ /* Template Name: 2019 Account Page */
+
 defined( 'ABSPATH' ) || exit;
+
+get_header();
 
 /**
  * My Account navigation.
  *
  * @since 2.6.0
  */
-do_action( 'woocommerce_account_navigation' ); ?>
+do_action( 'woocommerce_account_navigation' );
+
+?>
 
 <div class="woocommerce-MyAccount-content">
 	<?php
@@ -34,3 +40,7 @@ do_action( 'woocommerce_account_navigation' ); ?>
 		do_action( 'woocommerce_account_content' );
 	?>
 </div>
+
+<?php
+get_footer();
+?>
