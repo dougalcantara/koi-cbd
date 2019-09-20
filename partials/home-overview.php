@@ -20,11 +20,11 @@
           <p>Welcome to the Awesome World of CBD.</p>
         </div>
         <div class="k-action">
-          <a href="#0" class="k-button k-button--primary">Shop All CBD Products &nbsp; &rarr;</a>
+          <a href="<?php echo site_url().'/cbd-products'; ?>" class="k-button k-button--primary">Shop All CBD Products &nbsp; &rarr;</a>
         </div>
       </div>
       <div class="k-overview--intro__card">
-        <figure class="k-figure k-figure--rounded">
+        <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="" />
           </div>
@@ -40,7 +40,7 @@
 
     <div class="k-overview--topicals k-overview--item">
       <div class="k-overview--topicals__card">
-        <figure class="k-figure k-figure--rounded">
+        <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="" />
           </div>
@@ -56,7 +56,7 @@
 
     <div class="k-overview--pets k-overview--item">
       <div class="k-overview--pets__card">
-        <figure class="k-figure k-figure--rounded">
+        <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
           </div>
@@ -71,7 +71,7 @@
 
     <div class="k-overview--edibles k-overview--item">
       <div class="k-overview--edibles__card">
-        <figure class="k-figure k-figure--rounded">
+        <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-edibles-mainimg.jpg' ?>" alt="" />
           </div>
@@ -89,7 +89,7 @@
 
     <div class="k-overview--vape k-overview--item">
       <div class="k-overview--vape__card">
-        <figure class="k-figure k-figure--rounded">
+        <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
             <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="" />
           </div>

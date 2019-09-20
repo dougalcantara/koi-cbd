@@ -1,10 +1,13 @@
 <?php
+  /* Template Name: 2019 Homepage */
+
   $root = get_template_directory_uri();
   $fields = get_fields();
-  $homepage_fields = get_fields(584240);
+  $homepage_fields = get_fields();
 
-  /* Template Name: 2019 Homepage */
   get_header();
+
+  do_action('k_before_first_section');
 
   $hero_fields = array(
     'headline' => $fields['hero_headline'],
@@ -26,7 +29,6 @@
   get_template_part('partials/testimonial-slider');
   get_template_part('partials/cta-banner');
   get_template_part('partials/video-gallery');
-  get_template_part('partials/cta-takeover');
 
   get_footer();
 ?>

@@ -1,7 +1,7 @@
 <?php
-  get_header();
-  
   /* Template Name: 2019 Cart Page */
+
+  get_header();
   
   $cart = WC()->cart;
   $cart_acf = get_fields();
@@ -72,6 +72,8 @@ do_action( 'woocommerce_before_cart' ); ?>
                 } else {
                   echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
                 }
+
+                // var_dump(get_class_methods($_product));
 
                 do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 

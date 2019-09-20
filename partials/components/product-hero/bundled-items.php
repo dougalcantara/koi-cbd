@@ -12,9 +12,12 @@ $max_items = get_post_meta($product->get_ID(), '_wcpb_max_qty_limit')[0];
 
   <?php
 
+  // var_dump($product->get_bundle_regular_price());
+  // var_dump(get_class_methods($product));
+
   $item_index = 0;
 
-  foreach($all_bundled_items as $bundled_product) { 
+  foreach($product->get_bundled_items() as $bundled_product) { 
     $this_product = $bundled_product->product;
     $id = $this_product->get_id();
     $name = $this_product->get_name();

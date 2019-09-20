@@ -1,4 +1,4 @@
-import { header, getsHeaderMargin } from '../global/selectors';
+import { header, $getsHeaderMargin } from '../global/selectors';
 import debounce from '../helpers/debounce';
 
 const headerHeight = () => header.clientHeight;
@@ -24,7 +24,7 @@ function doHeaderOffsets() {
     nav.removeAttribute('style');
   }
 
-  getsHeaderMargin.style.marginTop = `${header.clientHeight}px`;
+  $getsHeaderMargin.css({ 'margin-top': `${header.clientHeight}px` });
 }
 
 (function handleScroll() {

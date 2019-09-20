@@ -14,8 +14,29 @@ function k_ajax_add_product() {
 
   die();
 }
-// add_action('wp_ajax_add_product', 'k_ajax_add_product');
+add_action('wp_ajax_add_product', 'k_ajax_add_product');
 add_action('wp_ajax_nopriv_add_product', 'k_ajax_add_product');
+
+/**
+ * Add product to cart
+ * args - product_id
+ */
+function k_ajax_add_bundle_to_cart() {
+  $bundle_id = intval($_POST['bundle_id']);
+
+  WC_PB()->cart->add_bundle_to_cart($bundle_id, 1, array(
+    81 => array(
+      'product_id' => 205366,
+      'quantity' => 1,
+    ),
+  ));
+
+  k_ajax_get_cart();
+  
+  die();
+}
+add_action('wp_ajax_add_bundle', 'k_ajax_add_bundle_to_cart');
+add_action('wp_ajax_nopriv_add_bundle', 'k_ajax_add_bundle_to_cart');
 
 /**
  * Get cart contents
@@ -26,7 +47,7 @@ function k_ajax_get_cart() {
   
   die();
 }
-// add_action('wp_ajax_get_cart', 'k_ajax_get_cart');
+add_action('wp_ajax_get_cart', 'k_ajax_get_cart');
 add_action('wp_ajax_nopriv_get_cart', 'k_ajax_get_cart');
 
 /**
@@ -47,7 +68,7 @@ function k_ajax_remove_cart_item() {
 
   die();
 }
-// add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
+add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
 add_action('wp_ajax_nopriv_remove_cart_item', 'k_ajax_remove_cart_item');
 
 /**
@@ -61,17 +82,32 @@ function k_ajax_remove_all_cart_items() {
 
   die();
 }
-// add_action('wp_ajax_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
+add_action('wp_ajax_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
 add_action('wp_ajax_nopriv_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
 // == end AJAX fn's == //
 
 
 
 // == begin macros -- reuseable components that can take args and spit out HTML == //
+include_once('partials/macros/hero.php');
 include_once('partials/macros/product-card.php');
 include_once('partials/macros/product-video.php');
 include_once('partials/macros/article-card.php');
 // == end macros == //
+
+
+
+// == begin helpers -- you know, helpers. They help. == //
+function k_before_first_section() {
+  echo '<div id="k-headermargin"></div>';
+}
+add_action('k_before_first_section', 'k_before_first_section');
+
+function k_spacer() {
+  echo '<div class="k-block k-block--md k-no-padding--bottom"></div>';
+}
+add_action('k_spacer', 'k_spacer');
+// == end helpers == //
 
 
 // == begin plugin stuff == //

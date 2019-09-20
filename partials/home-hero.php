@@ -1,7 +1,7 @@
 <?php
   $root = get_template_directory_uri();
 ?>
-<section class="k-hero k-hero--default k-hero--center k-headermargin k-hero--on-dark">
+<section class="k-hero k-hero--default k-hero--center k-hero--on-dark">
   <div class="k-hero--bgimg" style="background-image: url(<?php echo $root.'/dist/img/koi-home-hero.jpg' ?>)"></div>
   <div class="k-inner k-inner--md">
     <div class="k-hero--text">

@@ -89,13 +89,18 @@ $addToCartButtons.click(function(e) {
   e.preventDefault();
 
   const $t = $(this);
-  // calling this a "purchase ID" because it could either be the id of a product, variant, or bundle
-  const purchaseId = $t.data('purchase-id');
+  const productId = $t.data('product-id');
+  const bundleId = $t.data('bundle-id');
 
-  const data = {
-    action: 'nopriv_add_product',
-    product_id: purchaseId,
-  };
+  const data = {};
+
+  if (bundleId) {
+    data.action = 'nopriv_add_bundle';
+    data.bundle_id = bundleId;
+  } else {
+    data.action = 'nopriv_add_product';
+    data.product_id = productId;
+  }
 
   $t.attr('disabled', true);
 

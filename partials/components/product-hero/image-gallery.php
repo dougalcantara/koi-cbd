@@ -1,7 +1,7 @@
 <div class="k-producthero--gallery">
 <?php
-if ($all_variants) {
-  foreach($all_variants as $variant) { ?>
+if ($product_wc_type == $wc_product_types['variable']) {
+  foreach($product->get_available_variations() as $variant) { ?>
     <div class="k-producthero--slide">
       <div class="k-figure">
         <div class="k-figure--liner">
@@ -13,8 +13,8 @@ if ($all_variants) {
   }
   ?>
 <?php
-} else if ($all_image_ids) {
-  foreach($all_image_ids as $image_id) { ?>
+} else if ($product_wc_type == $wc_product_types['simple']) {
+  foreach($product->get_gallery_image_ids() as $image_id) { ?>
     <div class="k-producthero--slide">
       <div class="k-figure">
         <div class="k-figure--liner">
@@ -28,7 +28,7 @@ if ($all_variants) {
   <div class="k-producthero--slide">
     <div class="k-figure">
       <div class="k-figure--liner">
-        <img src="<?php echo get_the_post_thumbnail_url($product->ID)?>" alt="" class="k-figure--img" />
+        <img src="<?php echo get_the_post_thumbnail_url($product_id)?>" alt="" class="k-figure--img" />
       </div>
     </div>
   </div>

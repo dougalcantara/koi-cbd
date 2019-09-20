@@ -18,7 +18,7 @@ $url = site_url();
     <div class="k-header--nav">
       <div class="k-header--nav__content">
         <ul>
-          <li><a class="k-upcase" href="<?php echo $url; ?>/shop">Shop</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/cbd-products">Shop</a></li>
           <li><a class="k-upcase" href="<?php echo $url; ?>/cbd-101">CBD 101</a></li>
           <li><a class="k-upcase" href="<?php echo $url; ?>/resources">Resources</a></li>
         </ul>

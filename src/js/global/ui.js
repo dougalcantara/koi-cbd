@@ -1,7 +1,16 @@
-import { $doc } from './selectors';
+import { $doc, $win } from './selectors';
+
+export const breakpoints = {
+  sm: 580,
+  md: 767,
+  lg: 992,
+  xl: 1199,
+};
+
+const $tiltTargets = $('.k-tilt');
 
 function initializeTilt() {
-  const $tiltTargets = $('.k-tilt');
+  if ($win.width() < breakpoints.md || !$tiltTargets.length) return;
 
   const tiltProps = {
     maxTilt: 5,

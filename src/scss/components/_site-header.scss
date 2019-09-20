@@ -5,7 +5,7 @@
   background: $true-white;
 
   &--traveling {
-    box-shadow: 0 0 1px #ccc;
+    box-shadow: 0 0 3px -2px $bg-dark;
   }
 
   &.is-open {

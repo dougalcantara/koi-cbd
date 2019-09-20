@@ -3,7 +3,7 @@
     <div class="k-inner k-inner--md">
 
       <div class="k-productfaq--title">
-        <h2 class="k-headline k-headline--sm"><?php echo $product_type; ?> FAQ</h2>
+        <h2 class="k-headline k-headline--sm"><?php echo $product_category; ?> FAQ</h2>
       </div>
 
       <div class="k-productfaq--accordion">

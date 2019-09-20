@@ -1,4 +1,6 @@
 <?php
+/* Template Name: 2019 Account Page */
+
 /**
  * My Account page
  *
@@ -14,9 +16,6 @@
  * @package WooCommerce/Templates
  * @version 3.5.0
  */
-
- /* Template Name: 2019 Account Page */
-
 defined( 'ABSPATH' ) || exit;
 
 get_header();

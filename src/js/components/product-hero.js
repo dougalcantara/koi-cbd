@@ -13,7 +13,7 @@ $variantToggles.click(function() {
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
 
-  $priceTarget.text(variantPrice);
+  $priceTarget.text(`$${variantPrice}`);
   $addToCartTrigger.attr('data-purchase-id', variantId);
 });
 
@@ -55,7 +55,7 @@ $doc.ready(function() {
       const variantPrice = $t.data('variant-price');
       const variantId = $t.data('variant-id');
     
-      $priceTarget.text(variantPrice);
+      $priceTarget.text(`$${variantPrice}`);
       $addToCartTrigger.attr('data-purchase-id', variantId);
     }
   });

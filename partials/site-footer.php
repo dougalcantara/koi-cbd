@@ -1,5 +1,7 @@
 <?php
   $root = get_template_directory_uri();
+
+  get_template_part('partials/cta-takeover');
 ?>
 
 <footer class="k-footer" role="contentinfo">

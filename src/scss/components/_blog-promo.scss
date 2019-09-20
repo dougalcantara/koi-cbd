@@ -1,6 +1,6 @@
 .k-blogpromo {
   .k-articlecard {
-    margin-bottom: 2em;
+    margin-bottom: 3em;
   }
 }
 
@@ -14,6 +14,10 @@
 
     .k-articlecard {
       flex-basis: 48.5%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -26,6 +30,7 @@
 
     .k-articlecard {
       flex-basis: 32.25%;
+      margin-bottom: 0;
     }
   }
 }

@@ -1,7 +1,4 @@
-<section
-  class="k-producthero k-headermargin"
-  data-yotpo-product-id="<?php echo $product_id ?>"
->
+<section class="k-producthero" data-yotpo-product-id="<?php echo $product_id ?>">
   <div class="k-inner k-inner--xl">
     <?php
     include(locate_template('partials/components/product-hero/image-gallery.php'));
@@ -9,7 +6,7 @@
     <div class="k-producthero--details">
       <div class="k-producthero--details__content">
         <div class="k-producthero--titlerow">
-          <span class="k-producthero--preheading"><?php echo $product_type; ?></span>
+          <span class="k-producthero--preheading"><?php echo $product_category; ?></span>
           
           <h1 class="k-headline k-headline--sm"><?php the_title(); ?></h1>
           
@@ -24,18 +21,18 @@
             </p>
             <?php get_template_part('partials/svg/gold-star'); ?>
           </div>
-          
+
         </div>
 
-        <form class="k-productform <?php echo $all_bundled_items ? 'k-productform--bundle' : '' ?>">
+        <form class="k-productform <?php echo $product_wc_type == $wc_product_types['bundle'] ? 'k-productform--bundle' : '' ?>">
           <div class="k-productform--liner">
           <?php
 
-          if ($all_variants) {
+          if ($product_wc_type == $wc_product_types['variable']) {
             include(locate_template('partials/components/product-hero/variant-select.php'));
           }
 
-          if ($all_bundled_items) {
+          if ($product_wc_type == $wc_product_types['bundle']) {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
             <div class="k-productform--item k-productform--quantity">
@@ -52,11 +49,11 @@
                 type="submit"
                 class="k-button k-button--primary k-add-to-cart"
               <?php
-              if (get_class($product) !== 'WC_Product_Variable') { ?>
-                data-purchase-id="<?php echo $product_id; ?>"
+              if ($product_wc_type == $wc_product_types['bundle']) { ?>
+                data-bundle-id="<?php echo $product_id; ?>"
               <?php
               } else { // this will get populated by JS since it's based off the selected variation (strength) ?>
-                data-purchase-id=""
+                data-product-id=""
               <?php
               }
               ?>
@@ -68,14 +65,14 @@
             <div class="k-productform--item k-productform--price">
               <p>
               <?php
-              if ($product->regular_price != $product->$price) { ?>
-                $<span class="k-productform--pricetarget"><?php echo $product->price; ?><sup>was <?php echo $product->regular_price; ?></sup></span>
-              <?php
-              } else { ?>
-                $<span class="k-productform--pricetarget"><?php echo $product->price; ?></span>
-              <?php
-              }
-              ?>
+                if ($product_wc_type == $wc_product_types['bundle']) { ?>
+                  <span class="k-productform--pricetarget">$<?php echo $product->get_bundle_price(); ?><sup>was $<?php echo $product->get_bundle_regular_price(); ?></sup></span>
+                <?php
+                } else { ?>
+                  <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>
+                <?php
+                }
+                ?>
               </p>
             </div>
 

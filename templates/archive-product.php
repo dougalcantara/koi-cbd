@@ -1,4 +1,6 @@
 <?php
+/* Template Name: 2019 Product Listing Page */
+
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -15,39 +17,25 @@
  * @version 3.4.0
  */
 
- /* Template Name: 2019 Product Listing Page */
+defined( 'ABSPATH' ) || exit;
 
-  defined( 'ABSPATH' ) || exit;
+$page_fields = get_fields();
+$product_category = $page_fields['product_type']->name;
 
-  $page_fields = get_fields();
-  $product_category = $page_fields['product_type']->name;
+get_header();
 
-  get_header();
+do_action('k_before_first_section');
+
+$hero_fields = array(
+  'preheading' => 'Koi CBD',
+  'headline' => $product_category,
+  'body' => '<p>The easy and delicious supplement for more balanced days. Experience Koi CBD Tinctures in 6 great-tasting flavors, 2 sizes, and 4 strengths.</p>',
+);
+
+echo k_hero($hero_fields);
+
+get_template_part('partials/components/randoms/breadcrumb');
 ?>
-
-<section class="k-hero k-hero--productlisting k-headermargin on-dark">
-  <div class="k-inner k-inner--md">
-
-    <div class="k-hero--content">
-
-      <div class="k-hero--preheading k-upcase">Koi CBD</div>
-
-      <h2 class="k-headline k-headline--md"><?php echo $product_category; ?></h2>
-
-      <div class="k-rte-content">
-        <p>The easy and delicious supplement for more balanced days. Experience Koi CBD Tinctures in 6 great-tasting flavors, 2 sizes, and 4 strengths.</p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<section class="k-breadcrumb k-block k-block--sm">
-  <div class="k-inner k-inner--md">
-    <?php woocommerce_breadcrumb(); ?>
-  </div>
-</section>
 
 <section class="k-productlisting k-block k-block--md k-no-padding--top">
   <div class="k-inner k-inner--md">
@@ -96,7 +84,6 @@
   $featured_articles = $page_fields['featured_articles'];
   include(locate_template('partials/blog-promo.php'));
   include(locate_template('partials/components/randoms/line.php'));
-  include(locate_template('partials/cta-takeover.php'));
 
   get_footer();
 ?>
