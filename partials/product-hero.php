@@ -24,15 +24,20 @@
 
         </div>
 
-        <form class="k-productform <?php echo $product_wc_type == $wc_product_types['bundle'] ? 'k-productform--bundle' : '' ?>">
+        <form
+          class="k-productform <?php echo $product_wc_type == 'bundle' ? 'k-productform--bundle' : '' ?>"
+          data-product-id="<?php echo $product_id; ?>"
+          data-min-items="<?php echo $min_items; ?>"
+          data-max-items="<?php echo $max_items; ?>"
+        >
           <div class="k-productform--liner">
           <?php
 
-          if ($product_wc_type == $wc_product_types['variable']) {
+          if ($product_wc_type == 'variable') {
             include(locate_template('partials/components/product-hero/variant-select.php'));
           }
 
-          if ($product_wc_type == $wc_product_types['bundle']) {
+          if ($product_wc_type == 'bundle') {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
             <div class="k-productform--item k-productform--quantity">
@@ -47,9 +52,15 @@
             <div class="k-productform--item k-productform--submit">
               <button
                 type="submit"
-                class="k-button k-button--primary k-add-to-cart"
+                class="
+                  k-button
+                  k-button--primary
+                  <?php 
+                  echo $product_wc_type == 'bundle' ? 'k-add-to-cart--bundle' : 'k-add-to-cart';
+                  ?>
+                "
               <?php
-              if ($product_wc_type == $wc_product_types['bundle']) { ?>
+              if ($product_wc_type == 'bundle') { ?>
                 data-bundle-id="<?php echo $product_id; ?>"
               <?php
               } else { // this will get populated by JS since it's based off the selected variation (strength) ?>
@@ -65,7 +76,7 @@
             <div class="k-productform--item k-productform--price">
               <p>
               <?php
-                if ($product_wc_type == $wc_product_types['bundle']) { ?>
+                if ($product_wc_type == 'bundle') { ?>
                   <span class="k-productform--pricetarget">$<?php echo $product->get_bundle_price(); ?><sup>was $<?php echo $product->get_bundle_regular_price(); ?></sup></span>
                 <?php
                 } else { ?>

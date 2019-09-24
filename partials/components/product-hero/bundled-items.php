@@ -1,13 +1,4 @@
-<?php
-$min_items = get_post_meta($product->get_ID(), '_wcpb_min_qty_limit')[0];
-$max_items = get_post_meta($product->get_ID(), '_wcpb_max_qty_limit')[0];
-?>
-
-<div
-  class="k-productform--item k-productform--bundleselect"
-  data-min-items="<?php echo $min_items; ?>"
-  data-max-items="<?php echo $max_items; ?>"
->
+<div class="k-productform--item k-productform--bundleselect">
   <p>Select <?php echo $max_items; ?>:</p>
 
   <?php
@@ -17,17 +8,25 @@ $max_items = get_post_meta($product->get_ID(), '_wcpb_max_qty_limit')[0];
 
   $item_index = 0;
 
-  foreach($product->get_bundled_items() as $bundled_product) { 
-    $this_product = $bundled_product->product;
-    $id = $this_product->get_id();
-    $name = $this_product->get_name();
-    $bundled_variants = $this_product->get_available_variations();
+  foreach($product->get_bundled_items() as $bundled_product_key => $bundled_product) { 
+    $parent_product = $bundled_product->product;
+    $parent_id = $parent_product->get_id();
+    $parent_name = $parent_product->get_name();
+    $bundled_variants = $parent_product->get_available_variations();
   ?>
     <div class="k-productform--bundleselect__item">
 
-      <input class="k-productform--select-bundled-item" type="checkbox" name="<?php echo 'product-id|'.$id; ?>" id="<?php echo 'product-id|'.$id; ?>" />
-      <label for="<?php echo 'product-id|'.$id; ?>">
-        <span><?php echo $name; ?></span>
+      <input
+        class="k-productform--select-bundled-item"
+        type="checkbox"
+        name="<?php echo 'product-id|'.$parent_id; ?>"
+        id="<?php echo 'product-id|'.$parent_id; ?>"
+        data-max-items="<?php echo $max_items; ?>"
+        data-parent-id="<?php echo $parent_id; ?>"
+        data-bundled-product-key="<?php echo $bundled_product_key; ?>"
+      />
+      <label for="<?php echo 'product-id|'.$parent_id; ?>">
+        <span><?php echo $parent_name; ?></span>
       </label>
 
       <div class="k-productform--bundleselect__item--drawer">
@@ -37,28 +36,27 @@ $max_items = get_post_meta($product->get_ID(), '_wcpb_max_qty_limit')[0];
         $variant_index = 0; // this is to keep the individual inputs in the inner loop unique
         
         foreach($bundled_variants as $variant) {
-          $price = $variant['display_price'];
-          $strength;
-
-          if ($variant['attributes']['attribute_strength']) {
-            $strength = $variant['attributes']['attribute_strength'];
-          } else {
-            $strength = $variant['attributes']['attribute_pa_strength'];
-          } ?>
+          $_variant = wc_get_product($variant['variation_id']);
+          $price = $_variant->get_price();
+          $variant_id = $_variant->get_id();
+          $attributes = $_variant->get_attributes();
+        ?>
           <div class="k-productform--bundleselect__variant">
             <input
               type="radio"
-              name="<?php echo 'variant-select|'.$id; ?>"
+              name="<?php echo 'variant-select|'.$parent_id; ?>"
               id="<?php echo 'bundled-item-variant-'.$item_index.'-'.$variant_index; ?>"
-              value="<?php echo $strength; ?>"
+              value="<?php echo $attributes['strength']; ?>"
+              data-variant-id="<?php echo $variant_id; ?>"
+              data-variant-strength="<?php echo $attributes['strength']; ?>"
             />
             <label
               for="<?php echo 'bundled-item-variant-'.$item_index.'-'.$variant_index; ?>"
               class="k-productform--varianttoggle"
-              data-product-price="<?php echo $variant['display_price']; ?>"
-              data-product-strength="<?php echo $strength; ?>"
+              data-variant-price="<?php echo $price; ?>"
+              data-variant-strength="<?php echo 'strength|'.$attributes['strength']; ?>"
             >
-              <span><?php echo $strength; ?></span>
+              <span><?php echo $attributes['strength']; ?></span>
             </label>
           </div>
 

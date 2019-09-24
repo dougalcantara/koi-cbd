@@ -1,6 +1,6 @@
 <div class="k-producthero--gallery">
 <?php
-if ($product_wc_type == $wc_product_types['variable']) {
+if ($product_wc_type == 'variable') {
   foreach($product->get_available_variations() as $variant) { ?>
     <div class="k-producthero--slide">
       <div class="k-figure">
@@ -13,7 +13,7 @@ if ($product_wc_type == $wc_product_types['variable']) {
   }
   ?>
 <?php
-} else if ($product_wc_type == $wc_product_types['simple']) {
+} else if ($product_wc_type == 'simple') {
   foreach($product->get_gallery_image_ids() as $image_id) { ?>
     <div class="k-producthero--slide">
       <div class="k-figure">

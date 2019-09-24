@@ -14,7 +14,7 @@ $variantToggles.click(function() {
   const variantId = $t.data('variant-id');
 
   $priceTarget.text(`$${variantPrice}`);
-  $addToCartTrigger.attr('data-purchase-id', variantId);
+  $addToCartTrigger.attr('data-product-id', variantId);
 });
 
 $bundledItemSelects.click(function() {
@@ -56,7 +56,7 @@ $doc.ready(function() {
       const variantId = $t.data('variant-id');
     
       $priceTarget.text(`$${variantPrice}`);
-      $addToCartTrigger.attr('data-purchase-id', variantId);
+      $addToCartTrigger.attr('data-product-id', variantId);
     }
   });
 });

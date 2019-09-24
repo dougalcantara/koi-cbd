@@ -11,75 +11,19 @@ if (!defined('ABSPATH')) {
 get_header();
 
 while (have_posts()) : the_post();
-  /**
-   * check against this to see what type of product you're working with here
-   * eg: if ($product_wc_type == $wc_product_types['variable']) { // ...do stuff }
-   */
-  $wc_product_types = array(
-    'variable' => 'variable',
-    'simple' => 'simple',
-    'bundle' => 'bundle',
-  );
-
   $product_id = $product->get_id();
   $product_acf = get_fields();
   $cat_name = get_the_terms($product_id, 'product_cat');
   $product_category = reset($cat_name)->name;
   $product_wc_type = $product->get_type();
 
+  // "Bundle" product types have min/max limitations
+  $min_items = $product_acf['min_items'];
+  $max_items = $product_acf['max_items'];
+
   do_action('k_before_first_section');
 
   include(locate_template('partials/product-hero.php'));
-  foreach($product->get_bundled_items() as $item_key => $item) {
-    $bundled_product = wc_get_product($item->get_data()['product_id']);
-    ?>
-    <!-- <div style="margin-bottom: 10em;">
-      <?php
-        var_dump(
-          $bundled_product->get_id(),
-          $bundled_product->get_available_variations()[0]['variation_id']
-        );
-      ?>
-    </div> -->
-  <?php
-  }
-
-  $args = array(
-    7 => array(
-      'product_id' => 205366,
-      'quantity' => 1,
-      'variation_id' => 205403,
-      'attributes' => array(
-        'attribute_pa_strength' => '250',
-      ),
-    ),
-    8 => array(
-      'product_id' => 205342,
-      'quantity' => 1,
-      'variation_id' => 205355,
-      'attributes' => array(
-        'attribute_pa_strength' => '250',
-      ),
-    ),
-    9 => array(
-      'product_id' => 205502,
-      'quantity' => 1,
-      'variation_id' => 205503,
-      'attributes' => array(
-        'attribute_pa_strength' => '250',
-      ),
-    ),
-    10 => array(
-      'product_id' => 505474,
-      'quantity' => 1,
-      'variation_id' => 505475,
-      'attributes' => array(
-        'attribute_pa_strength' => '250',
-      ),
-    ),
-  );
-
-  var_dump(WC_PB()->cart->add_bundle_to_cart($product_id, 1, $args));
   include(locate_template('partials/product-details.php'));
   include(locate_template('partials/product-latest-batch.php'));
   include(locate_template('partials/product-faq-accordion.php'));
