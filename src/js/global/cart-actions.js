@@ -11,10 +11,10 @@ const $removeAllTrigger = $('#k-cart-remove-all');
 
 function onDocReady() {
   const request = {
-    method: 'POST',
+    method: 'GET',
     url,
     data: {
-      action: 'nopriv_get_cart',
+      action: 'k_get_cart',
     },
     dataType: 'json',
     success: cart => updateCartStatus(Object.values(cart)),
@@ -39,7 +39,7 @@ async function removeItemFromCart(key) {
     method: 'POST',
     url,
     data: {
-      action: 'nopriv_remove_cart_item',
+      action: 'remove_cart_item',
       cart_item_key: key,
     },
     dataType: 'json',
@@ -56,7 +56,7 @@ async function emptyCart() {
     method: 'GET',
     url,
     data: {
-      action: 'nopriv_remove_all_cart_items',
+      action: 'remove_all_cart_items',
     },
     dataType: 'json',
     success: cart => updateCartStatus(Object.values(cart)),
@@ -124,7 +124,7 @@ function addBundleToCart(e) {
     type: 'POST',
     url,
     data: {
-      action: 'nopriv_add_bundle',
+      action: 'add_bundle',
       product_id: productId,
       selected_child_items: getUserBundleSelections(),
       max_items: maxItems,
@@ -147,7 +147,7 @@ $addToCartButtons.click(function(e) {
   const productId = $t.data('product-id');
 
   const data = {
-    action: 'nopriv_add_product',
+    action: 'add_product',
     product_id: productId,
   };
 

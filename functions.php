@@ -97,8 +97,8 @@ function k_ajax_get_cart() {
   
   die();
 }
-add_action('wp_ajax_get_cart', 'k_ajax_get_cart');
-add_action('wp_ajax_nopriv_get_cart', 'k_ajax_get_cart');
+add_action('wp_ajax_k_get_cart', 'k_ajax_get_cart');
+add_action('wp_ajax_nopriv_k_get_cart', 'k_ajax_get_cart');
 
 /**
  * Remove a single item from cart
