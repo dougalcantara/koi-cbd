@@ -1,0 +1,33 @@
+.k-bloglist {
+  .k-articlecard {
+    margin-bottom: 3em;
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-bloglist {
+    .k-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-flow: row wrap;
+    }
+
+    .k-articlecard {
+      flex-basis: 48.5%;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-bloglist {
+    .k-inner {
+      justify-content: flex-start;
+    }
+
+    .k-articlecard {
+      flex-basis: 31.5%;
+      margin-right: 1.33%;
+    }
+  }
+}

@@ -1,9 +1,21 @@
 <?php
 
-function k_article_card($args) {
+/**
+ * Article Card
+ * 
+ * args-
+ * 
+ * featured_image_url
+ * category
+ * publish_date
+ * title
+ * excerpt
+ * url
+ */
+function k_article_card($args, $i) {
   ob_start(); ?>
 
-  <div class="k-articlecard">
+  <div class="k-articlecard <?php echo 'k-articlecard--'.$i; ?>" data-modulo="<?php echo $i % 6; ?>">
     <div class="k-articlecard--liner">
 
       <a href="<?php echo $args['url']; ?>">

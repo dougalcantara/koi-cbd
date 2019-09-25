@@ -12,6 +12,10 @@ $padding-lg: 15.625em;
   &--md {
     padding: $padding-xs 0;
   }
+
+  &--lg {
+    padding: $padding-sm 0;
+  }
 }
 
 .k-inner {
@@ -54,6 +58,10 @@ $padding-lg: 15.625em;
     &--md {
       padding: $padding-sm 0;
     }
+
+    &--lg {
+      padding: $padding-md 0;
+    }
   }
 
   .k-inner {
@@ -73,6 +81,10 @@ $padding-lg: 15.625em;
   .k-block {
     &--md {
       padding: $padding-md 0;
+    }
+
+    &--lg {
+      padding: $padding-lg 0;
     }
   }
 
