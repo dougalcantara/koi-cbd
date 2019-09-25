@@ -12,10 +12,10 @@
  * excerpt
  * url
  */
-function k_article_card($args, $i) {
+function k_article_card($args) {
   ob_start(); ?>
 
-  <div class="k-articlecard <?php echo 'k-articlecard--'.$i; ?>" data-modulo="<?php echo $i % 6; ?>">
+  <div class="k-articlecard">
     <div class="k-articlecard--liner">
 
       <a href="<?php echo $args['url']; ?>">

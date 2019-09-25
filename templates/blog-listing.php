@@ -62,7 +62,7 @@ $all_posts = get_posts(array(
             'url' => get_the_permalink($id),
           );
 
-          echo k_article_card($article_card_props, $index);
+          echo k_article_card($article_card_props);
         ?>
       <?php
       } else {
