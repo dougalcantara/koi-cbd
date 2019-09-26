@@ -27,9 +27,7 @@ function onDocReady() {
 function numItemsInCart(items) {
   let numInCart = 0;
 
-  items.forEach(item => {
-    numInCart += item.quantity;
-  });
+  items.forEach(item => numInCart += item.quantity);
 
   return numInCart;
 }

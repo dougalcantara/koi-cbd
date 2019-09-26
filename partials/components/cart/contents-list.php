@@ -21,31 +21,6 @@
     foreach($items_in_cart as $cart_item_key => $cart_item) {
       $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
       $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
-
-      var_dump($_product);
-      // $_product = wc_get_product($cart_item['product_id']);
-      // $_variant = wc_get_product($cart_item['variation_id']);
-
-      // $product_id = $_product->get_id();
-      // $name = $_product->name;
-      // $quantity = $cart_item['quantity'];
-      // $item_subtotal = $cart_item['line_subtotal'];
-
-      // var_dump($cart_item_key);
-
-      // if ($_variant) {
-      //   $attributes = $_variant->get_variation_attributes();
-      // } else {
-      //   $attributes = NULL;
-      // }
-
-      // if ($attributes) {
-      //   $scent = $attributes['attribute_choose'];
-      //   $strength = $attributes['attribute_strength'];
-      // } else {
-      //   $scent = NULL;
-      //   $strength = NULL;
-      // }
     ?>
 
     <div class="k-cartcontents--item">

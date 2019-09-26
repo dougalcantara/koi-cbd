@@ -151,8 +151,8 @@
       outline: none;
     }
 
-    #k-reduce,
-    #k-increase {
+    .k-reduce,
+    .k-increase {
       position: absolute;
       top: 50%; left: .5em;
       transform: translateY(-50%);
@@ -166,7 +166,7 @@
       }
     }
 
-    #k-increase {
+    .k-increase {
       right: .5em;
       left: auto;
     }

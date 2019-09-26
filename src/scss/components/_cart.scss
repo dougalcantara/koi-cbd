@@ -1,6 +1,115 @@
 .k-cart {
-  .k-inner {
-    @include clearfix();
+  background: $bg-gray;
+  // & > .k-inner {
+    
+  // }
+
+  &--meta {
+    input {
+      border: 1px solid #ddd;
+      padding: 1em;
+    }
+
+    &__coupon {
+      margin-bottom: 1em;
+
+      label,
+      input {
+        display: block;
+        min-width: 100%;
+      }
+    }
+
+    &__actions {
+      .k-button {
+        width: 100%;
+        
+        &:first-child {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+
+  &--titlerow {
+    display: none;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &--item {
+    padding: 3em 0;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &__liner {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
+    }
+
+    &__thumbnail,
+    &__title {
+      flex-basis: 100%;
+    }
+
+    &__quantity,
+    &__price {
+      flex-basis: 48.5%;
+    }
+
+    &__price {
+      text-align: right;
+    }
+
+    &__thumbnail {
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+
+    &__title {
+      .k-headline {
+        font-size: 1.5em;
+        margin: 0;
+      }
+    }
+
+    &__title {
+      a {
+        color: $black;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    &__quantity {
+      label {
+        display: block;
+      }
+
+      .k-productform--quantity {
+        width: 100%;
+      }
+    }
+
+    &__price {
+      align-self: flex-end;
+      margin-bottom: .75em;
+
+      .k-bigtext {
+        margin: 0;
+        font-size: 1.5em;
+      }
+    }
   }
 
   &--sidebar {
@@ -39,82 +148,92 @@
   }
 }
 
-.k-cartcontents {
-
-  &--titlerow {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-
-    * {
-      margin: 0;
-    }
-
-    p {
-      font-size: 75%;
+@media(min-width: $bp-md) {
+  .k-cart {
+    &--item {
+      &__title,
+      &__thumbnail {
+        flex-basis: 48.5%;
+      }
     }
   }
-
-  &--item {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    padding: 1em 0;
-  }
-
-  &--image {
-    flex-basis: 20%;
-    margin-right: 5%;
-  }
-
-  &--name {
-    flex-basis: 30%;
-
-    * {
-      margin: 0;
-    }
-
-    .k-cart-remove-item {
-      margin-top: 2em;
-    }
-  }
-
-  &--quantity {
-    flex-basis: 20%;
-    margin: 0;
-  }
-
-  &--price {
-    flex-basis: 25%;
-  }
-
-  .k-figure {
-    &--liner {
-      padding-bottom: 100%;
-    }
-  }
-
 }
 
 @media(min-width: $bp-lg) {
   .k-cart {
-    &--sidebar,
-    .k-cartcontents {
+    & > .k-inner {
+      @include clearfix();
+    }
+
+    &--main,
+    &--sidebar {
       float: left;
     }
 
-    .k-cartcontents {
+    &--main {
       width: 65%;
-      margin-right: 5%;
     }
 
     &--sidebar {
       width: 30%;
-      margin: 0;
+      margin-left: 5%;
+      margin-top: 0;
+    }
+
+    &--titlerow {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+      padding-left: 10%;
+      border-bottom: 1px solid #ddd;
+
+      .k-cart--titleitem {
+        flex-basis: 22.5%;
+        text-align: right;
+        padding-bottom: 1em;
+
+        &:first-child {
+          flex-basis: 32.5%;
+          text-align: left;
+        }
+      }
+    }
+
+    &--item {
+      &__quantity,
+      &__price {
+        flex-basis: 22.5%;
+        align-self: center;
+      }
+
+      &__thumbnail {
+        flex-basis: 10%;
+      }
+
+      &__title {
+        flex-basis: 32.5%;
+      }
+
+      &__price {
+        margin-bottom: 0;
+      }
+    }
+
+    &--meta {
+      width: 50%;
+      max-width: 25em;
+    }
+  }
+}
+
+@media(min-width: $bp-xxl) {
+  .k-cart {
+    &--main {
+      width: 70%;
+    }
+
+    &--sidebar {
+      width: 25%;
     }
   }
 }

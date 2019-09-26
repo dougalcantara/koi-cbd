@@ -1,5 +1,8 @@
 <?php
+global $wp;
+
 $root = get_template_directory_uri();
+$current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 
 <html <?php language_attributes(); ?>>
@@ -19,6 +22,15 @@ $root = get_template_directory_uri();
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock:400,700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+
+  <!-- <?php 
+    if (strpos($current_url, 'cart')) { ?>
+      <link rel="stylesheet" href="<?php echo $root.'/dist/css/woocommerce.css' ?>" />
+      <link rel="stylesheet" href="<?php echo $root.'/dist/css/woocommerce-layout.css' ?>" />
+  <?php
+    }
+  ?> -->
+
   <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css' ?>" />
 </head>
 <body <?php body_class(); ?>>
