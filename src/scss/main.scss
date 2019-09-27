@@ -5,6 +5,7 @@
 @import 'global/grid-system';
 @import 'global/utils';
 @import 'global/elements';
+@import 'global/forms';
 
 @import 'components/site-header';
 @import 'components/site-footer';
@@ -31,3 +32,4 @@
 @import 'pages/home';
 @import 'pages/blog-listing';
 @import 'pages/blog-single';
+@import 'pages/checkout';
