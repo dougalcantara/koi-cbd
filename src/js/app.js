@@ -10,3 +10,4 @@ import './components/product-details-accordion';
 import './components/product-faq-accordion';
 import './components/product-reviews';
 import './components/product-video';
+import './components/blog-single';

@@ -1,3 +1,35 @@
+.k-blog-breadcrumb {
+  display: none; // just don't even show it on mobile
+  text-align: right;
+
+  & > .k-inner {
+    border-bottom: 1px solid #ddd;
+  }
+
+  &--content {
+    padding: 1.5em 15% 1.5em 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    font-size: 85%;
+  }
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
 .k-header--cart {
   position: relative;
 }
@@ -158,5 +190,11 @@
         stroke: $bg-dark;
       }
     }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-blog-breadcrumb {
+    display: block;
   }
 }

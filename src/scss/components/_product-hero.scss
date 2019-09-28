@@ -417,13 +417,13 @@
     &--details {
       width: 45%;
     }
-  }
 
-  .k-rte-content,
-  .k-productform {
-    width: 75%;
+    .k-rte-content,
+    .k-productform {
+      width: 75%;
+    }
   }
-
+  
   .k-productform {
     &--variantselect {
       flex-basis: 22.5%;

@@ -190,6 +190,12 @@ h2 {
 }
 
 .k-rte-content {
+  #{headings()} {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
   a {
     color: $black;
     text-decoration: underline;
@@ -210,6 +216,12 @@ h2 {
     &:hover {
       text-decoration: none;
     }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
   }
 
   p {

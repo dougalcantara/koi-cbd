@@ -1,0 +1,126 @@
+.k-blogcontent {
+}
+
+.k-sidebar {
+  display: none;
+
+  &--newsletter {
+    position: relative;
+
+    &__bgimg {
+      @include fill-parent();
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+  }
+}
+
+@media(min-width: $bp-md) {
+  .k-blogcontent {
+    & > .k-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+  }
+
+  .k-sidebar {
+    display: block;
+    flex-basis: 45%;
+
+    &--content {
+      position: sticky;
+      top: 0;
+    }
+    
+
+    .k-productcard {
+      margin: auto;
+      width: calc(100% - 4em);
+    }
+
+    &--newsletter {
+      &__content {
+        padding: $padding-sm 2em 2em;
+      }
+
+      span {
+        display: block;
+        margin-bottom: 1em;
+      }
+    }
+
+    .k-form {
+      position: relative;
+
+      label {
+        position: absolute;
+        top: .667em; left: 0;
+        color: $true-white;
+        font-family: $heading-font;
+        transition: transform .2s $ease-out-circ;
+        pointer-events: none;
+        font-size: 125%;
+      }
+
+      input {
+        font-size: 125%;
+        color: $true-white;
+        font-family: $heading-font;
+
+        &:focus {
+          outline: none; 
+
+          & + label {
+            transform: translateY(-1.5em);
+          }
+        }
+      }
+
+      button {
+        position: absolute;
+        top: .667em; right: 0;
+        font-size: 125%;
+        padding: 0; margin: 0;
+        background: none;
+        appearance: none;
+        border: none;
+        color: $true-white;
+        line-height: 2;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .k-article {
+    flex-basis: 50%;
+  }
+}
+
+@media(min-width: $bp-xl) {
+  .k-blogcontent {
+    .k-sidebar {
+      flex-basis: 35%;
+
+      &--newsletter {
+        &__content {
+          padding: $padding-md 4em 4em;
+        }
+      }
+
+      .k-productcard {
+        
+      }
+    }
+
+    .k-article {
+      flex-basis: 55%;
+      padding-right: 15%;
+    }
+  }
+}
