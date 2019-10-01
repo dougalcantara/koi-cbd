@@ -1,38 +1,38 @@
-import { header, $getsHeaderMargin } from '../global/selectors';
+import { $header, $getsHeaderMargin } from '../global/selectors';
 import debounce from '../helpers/debounce';
 
-const headerHeight = () => header.clientHeight;
-const nav = header.querySelector('.k-header--nav');
-const navTrigger = document.querySelector('#k-nav-trigger');
+const headerHeight = () => $header.outerHeight();
+const $nav = $header.find('.k-header--nav');
+const $navTrigger = $('#k-nav-trigger');
 
 let didScroll = false;
 
 function toggleNavDrawer() {
-  const isActive = header.classList.contains('is-open');
+  const isActive = $header.hasClass('is-open');
 
   if (isActive) {
-    header.classList.remove('is-open');
+    $header.removeClass('is-open');
   } else {
-    header.classList.add('is-open');
+    $header.addClass('is-open');
   }
 }
 
 function doHeaderOffsets() {
   if (window.innerWidth < 767) {
-    nav.style.top = `${headerHeight()}px`;
+    $nav.css({top: headerHeight()});
   } else {
-    nav.removeAttribute('style');
+    $nav.removeAttr('style');
   }
 
-  $getsHeaderMargin.css({ 'margin-top': `${header.clientHeight}px` });
+  $getsHeaderMargin.css({ 'margin-top': headerHeight() });
 }
 
 (function handleScroll() {
   if (didScroll) {
     if (window.pageYOffset) {
-      header.classList.add('k-header--traveling');
+      $header.addClass('k-header--traveling');
     } else {
-      header.classList.remove('k-header--traveling');
+      $header.removeClass('k-header--traveling');
     }
     didScroll = false;
   }
@@ -42,7 +42,7 @@ function doHeaderOffsets() {
 
 let interval;
 
-navTrigger.addEventListener('click', toggleNavDrawer);
+$navTrigger.click(toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));
 window.addEventListener('scroll', () => didScroll = true);
 document.addEventListener('DOMContentLoaded', doHeaderOffsets);

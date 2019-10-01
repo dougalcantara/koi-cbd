@@ -4,6 +4,35 @@
   }
 }
 
+.k-blognav {
+  position: relative;
+
+  &--filterby {
+    position: absolute;
+    top: 3em; right: 5%;
+    text-align: right;
+  }
+
+  select {
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    -ms-expand: none;
+    width: auto;
+    min-width: auto;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      color: $primary;
+    }
+  }
+}
+
 @media(min-width: $bp-md) {
   .k-bloglist {
     .k-inner {
@@ -15,6 +44,12 @@
 
     .k-articlecard {
       flex-basis: 48.5%;
+    }
+  }
+
+  .k-blognav {
+    &--filterby {
+      right: 12.5%;
     }
   }
 }

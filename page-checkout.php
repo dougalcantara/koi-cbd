@@ -20,7 +20,7 @@ do_action('k_before_first_section');
 			echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
 			return;
 		}
-		do_action('woocommerce_before_checkout_form', $checkout);
+		// do_action('woocommerce_before_checkout_form', $checkout);
 	?>
 		<form
 			name="checkout"

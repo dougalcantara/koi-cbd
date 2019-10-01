@@ -20,7 +20,7 @@ $url = site_url();
         <ul>
           <li><a class="k-upcase" href="<?php echo $url; ?>/cbd-products">Shop</a></li>
           <li><a class="k-upcase" href="<?php echo $url; ?>/cbd-101">CBD 101</a></li>
-          <li><a class="k-upcase" href="<?php echo $url; ?>/resources">Resources</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/blog">Resources</a></li>
         </ul>
         <ul>
           <li><a class="k-upcase" href="<?php echo $url; ?>/community">Community</a></li>

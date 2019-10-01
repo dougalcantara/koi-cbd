@@ -30,7 +30,10 @@ function insertReviewData(element, data) {
   const totalReviewsTarget = element.querySelector('.k-productcard--numreviews')
   const avgReviewTarget = element.querySelector('.k-productcard--reviewavg')
 
-  totalReviewsTarget.innerHTML = data.reviews.length
+  if (totalReviewsTarget) {
+    totalReviewsTarget.innerHTML = data.reviews.length
+  }
+
   avgReviewTarget.innerHTML = data.bottomline.average_score.toFixed(1)
 }
 

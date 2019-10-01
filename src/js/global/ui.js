@@ -8,6 +8,11 @@ export const breakpoints = {
 };
 
 const $tiltTargets = $('.k-tilt');
+const $blogFilterBy = $('.k-blognav--filterby select');
+
+function slugify(string) {
+  return string.replace(/ /g, '-').toLowerCase();
+}
 
 function initializeTilt() {
   if ($win.width() < breakpoints.md || !$tiltTargets.length) return;
@@ -21,4 +26,26 @@ function initializeTilt() {
   $tiltTargets.tilt(tiltProps);
 }
 
+$blogFilterBy.change(function() {
+  const $t = $(this);
+  const selectedCategory = $t.val();
+  const slugified = slugify(selectedCategory);
+
+  window.location.href = `${window.SITE_GLOBALS.root}/blog?category=${slugified}`;
+});
+
 $doc.ready(initializeTilt);
+
+$doc.ready(function() {
+  const selectedCategory = new URLSearchParams(window.location.search).get('category');
+  const $optionEls = $blogFilterBy.find('option');
+  const slugifiedOptions = [
+    ...$optionEls
+  ].map(({ value }) => slugify(value));
+
+  slugifiedOptions.forEach((option, idx) => {
+    if (option == selectedCategory) {
+      $($optionEls[idx]).attr('selected', true);
+    }
+  });
+});

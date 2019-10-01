@@ -5,7 +5,9 @@
   display: none;
 
   &--newsletter {
-    position: relative;
+    &__content {
+      position: relative;
+    }
 
     &__bgimg {
       @include fill-parent();
@@ -30,18 +32,15 @@
     display: block;
     flex-basis: 45%;
 
-    &--content {
-      position: sticky;
-      top: 0;
-    }
-    
-
     .k-productcard {
       margin: auto;
       width: calc(100% - 4em);
     }
 
     &--newsletter {
+      position: sticky;
+      top: 0;
+
       &__content {
         padding: $padding-sm 2em 2em;
       }

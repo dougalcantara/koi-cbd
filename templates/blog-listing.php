@@ -15,12 +15,57 @@ $hero_fields = array(
 
 echo k_hero($hero_fields);
 
-get_template_part('partials/components/randoms/breadcrumb');
+$all_categories = get_categories();
+$requested_category = urldecode($_GET['category']);
+$query_args = array(
+  'paged' => false,
+  'numberposts' => 1000,
+);
 
-$all_posts = get_posts(array(
-  'numberposts' => 100
-));
+$found_category;
+
+if ($requested_category) {
+  /**
+  * 
+  * This loop has multiple jobs, like any good loop
+  * 1) Map the req'd category up to the slug-ified name of the category in WP. If match is found, query posts w/ that category. Can't 
+  *    use the actual category->slug because they're not all formatted in a uniform way, eg: 'getting-started-with-cbd' vs 'cbdfactvsfiction'
+  *
+  * 2) Spit out the options for the 
+  * 
+  * */
+  foreach($all_categories as $key => $category) {
+    $c_name = strtolower(str_replace(' ', '-', $category->cat_name));
+
+    if ($c_name == $requested_category) {
+      $found_category = $c_name;
+    }
+  }
+
+  $query_args['category_name'] = $found_category;
+}
+
+$all_posts = get_posts($query_args);
 ?>
+
+<section class="k-blognav">
+<?php
+  get_template_part('partials/components/randoms/breadcrumb'); ?>
+  <div class="k-blognav--filterby">
+    <label for="select-blog-category">Filter By&nbsp;&rsaquo;&nbsp;</label>
+    <select name="select-blog-category" id="select-blog-category">
+      <option value="all">All</option>
+      <?php
+        foreach($all_categories as $key => $category) { ?>
+          <option value="<?php echo $category->cat_name; ?>">
+            <?php echo $category->cat_name; ?>
+          </option>
+      <?php
+        }
+      ?>
+    </select>
+  </div>
+</section>
 
 <section class="k-bloglist k-block k-block--md k-no-padding--top">
   <div class="k-inner k-inner--md">

@@ -67,8 +67,6 @@ do_action('k_before_first_section');
           );
 
           echo k_product_card($card_fields);
-
-
         ?>
 
         <div class="k-sidebar--newsletter on-dark">
