@@ -34,7 +34,11 @@ $url = site_url();
             </a>
           </li>
 
-          <li><a href="<?php echo $url; ?>/search"><i class="icon-magnifier"></i></a></li>
+          <li class="k-searchtrigger">
+            <!-- <a href="<?php echo $url; ?>/search"> -->
+              <i class="icon-magnifier"></i>
+            <!-- </a> -->
+          </li>
         </ul>
       </div>
     </div>

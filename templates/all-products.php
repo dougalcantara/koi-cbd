@@ -13,8 +13,6 @@ echo k_hero(array(
 
 get_template_part('partials/components/randoms/breadcrumb');
 
-do_action('k_spacer');
-
 get_template_part('partials/home-overview');
 
 get_footer();

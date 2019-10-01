@@ -49,7 +49,7 @@
         <h3 class="k-headline k-headline--xs">CBD Topicals</h3>
         <div class="k-rte-content">
           <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
-          <a href="#0">Shop Now &rarr;</a>
+          <a href="<?php echo site_url().'/cbd-topicals'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
         <h3 class="k-headline k-headline--xs">CBD For Pets</h3>
         <div class="k-rte-content">
           <p>Treat your furry friend to all-natural, non-GMO, non-psychoactive ingredients designed with one thing in mind&mdash;your pet's health.</p>
-          <a href="#0">Shop Now &rarr;</a>
+          <a href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
           <h3 class="k-headline k-headline--xs">CBD Edibles</h3>
           <div class="k-rte-content">
             <p>Delectable snacks that deliver a punch of fruit flavor while restoring balance, naturally. Available in 20-piece and 6-piece bags.</p>
-            <a href="#0">Shop Now &rarr;</a>
+            <a href="<?php echo site_url().'/cbd-edibles'; ?>">Shop Now &rarr;</a>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
           <h3 class="k-headline k-headline--xs">CBD Vape</h3>
           <div class="k-rte-content">
             <p>Enjoy an even distribution of CBD throughout your day. Vape them on their own or add to other e-liquids. Available in 7 awesome flavors.</p>
-            <a href="#0">Shop Now &rarr;</a>
+            <a href="<?php echo site_url().'/cbd-vape'; ?>">Shop Now &rarr;</a>
           </div>
         </div>
       </div>

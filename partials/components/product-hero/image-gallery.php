@@ -14,16 +14,16 @@ if ($product_wc_type == 'variable') {
   ?>
 <?php
 } else if ($product_wc_type == 'simple') {
-  foreach($product->get_gallery_image_ids() as $image_id) { ?>
+  // foreach($product->get_gallery_image_ids() as $image_id) { ?>
     <div class="k-producthero--slide">
       <div class="k-figure">
         <div class="k-figure--liner">
-          <img src="<?php echo wp_get_attachment_url($image_id) ?>" alt="" class="k-figure--img" />
+          <img src="<?php echo wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="" class="k-figure--img" />
         </div>
       </div>
     </div>
   <?php
-  }
+  // }
 } else { // in case there's a sole image for the product, and it's the Post's Featured Image ?>
   <div class="k-producthero--slide">
     <div class="k-figure">

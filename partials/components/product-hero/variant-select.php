@@ -1,13 +1,23 @@
-<p class="k-productform--item k-productform--heading">Strength</p>
+<p class="k-productform--item k-productform--heading">Select One:</p>
 <div class="k-productform--item k-productform--variants">
 
 <?php
+function formatAttrName($string) {
+  $arr = explode('-', $string);
+
+  foreach($arr as $idx => $str) {
+    $arr[$idx] = ucfirst($str);
+  }
+
+  return join(' ', $arr);
+}
+
 foreach($product->get_available_variations() as $i => $variant) {
   $_variant = wc_get_product($variant['variation_id']);
   $price = $_variant->get_price();
   $variant_id = $_variant->get_id();
   $attributes = $_variant->get_variation_attributes();
-  $this_attribute = reset($attributes);
+  $this_attribute = formatAttrName(reset($attributes));
 ?>
   <div class="k-productform--variantselect">
     <input

@@ -16,33 +16,27 @@ $hero_fields = array(
 echo k_hero($hero_fields);
 
 $all_categories = get_categories();
-$requested_category = urldecode($_GET['category']);
+$requested_category = $_GET['category'];
 $query_args = array(
   'paged' => false,
   'numberposts' => 1000,
 );
 
-$found_category;
-
-if ($requested_category) {
+if ($requested_category && $requested_category != 'all') {
   /**
-  * 
-  * This loop has multiple jobs, like any good loop
-  * 1) Map the req'd category up to the slug-ified name of the category in WP. If match is found, query posts w/ that category. Can't 
-  *    use the actual category->slug because they're not all formatted in a uniform way, eg: 'getting-started-with-cbd' vs 'cbdfactvsfiction'
+  * Map the req'd category up to the slug-ified name of the category in WP.
   *
-  * 2) Spit out the options for the 
-  * 
+  * If match is found, query posts w/ that category ID. Can't use the actual
+  * category->slug because they're not all formatted in a uniform way,
+  * eg: 'getting-started-with-cbd' vs 'cbdfactvsfiction'
   * */
   foreach($all_categories as $key => $category) {
     $c_name = strtolower(str_replace(' ', '-', $category->cat_name));
 
     if ($c_name == $requested_category) {
-      $found_category = $c_name;
+      $query_args['cat'] = $category->cat_ID;
     }
   }
-
-  $query_args['category_name'] = $found_category;
 }
 
 $all_posts = get_posts($query_args);

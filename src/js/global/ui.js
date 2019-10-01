@@ -26,17 +26,15 @@ function initializeTilt() {
   $tiltTargets.tilt(tiltProps);
 }
 
-$blogFilterBy.change(function() {
+function goToCategoryListing() {
   const $t = $(this);
   const selectedCategory = $t.val();
   const slugified = slugify(selectedCategory);
 
   window.location.href = `${window.SITE_GLOBALS.root}/blog?category=${slugified}`;
-});
+}
 
-$doc.ready(initializeTilt);
-
-$doc.ready(function() {
+function setInitialBlogCategory() {
   const selectedCategory = new URLSearchParams(window.location.search).get('category');
   const $optionEls = $blogFilterBy.find('option');
   const slugifiedOptions = [
@@ -48,4 +46,11 @@ $doc.ready(function() {
       $($optionEls[idx]).attr('selected', true);
     }
   });
+}
+
+$blogFilterBy.change(goToCategoryListing);
+
+$doc.ready(() => {
+  initializeTilt();
+  setInitialBlogCategory();
 });

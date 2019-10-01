@@ -1,6 +1,7 @@
 import './global/ui';
 import './global/data';
 import './global/cart-actions';
+import './global/search';
 import './components/site-header';
 import './components/promo-slider';
 import './components/testimonial-slider';
