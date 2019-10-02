@@ -39,6 +39,12 @@ do_action( 'woocommerce_before_cart' ); ?>
           foreach ($cart->get_cart() as $cart_item_key => $cart_item) {
             $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
             $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
+            $is_product_bundle = wc_pb_is_bundle_container_cart_item($cart_item); // check if this item contains sub-items
+            $is_bundled_item = wc_pb_is_bundled_cart_item($cart_item); // check if this is a sub-item of a bundle, in which case it should not be treated like an individual item
+
+            if ($is_bundled_item) {
+              continue; // don't render anything for this item; it does not belong on its own
+            }
 
             if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
               $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key); ?>
@@ -56,6 +62,24 @@ do_action( 'woocommerce_before_cart' ); ?>
                     <a href="<?php echo $product_permalink; ?>">
                       <h3 class="k-headline k-headline--mini"><?php echo wp_kses_post(apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key)); ?></h3>
                     </a>
+                    <?php
+                    if ($is_product_bundle) {
+                      $bundled_items = wc_pb_get_bundled_cart_items($cart_item); ?>
+
+                      <ul>
+                      <?php
+                      foreach($bundled_items as $idx => $bundled_item) {
+                        $bundled_product = wc_get_product($bundled_item['variation_id']); ?>
+                        <li class="k-cart--item__bundleditem">
+                          <a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
+                        </li>
+                      <?php
+                      }
+                      ?>
+                      </ul>
+                    <?php
+                    }
+                    ?>
                     <p class="k-upcase k-cart-remove-item" data-cart-item-key="<?php echo $cart_item_key; ?>">Remove</p>
                     <?php
                     // backorder notification
@@ -89,7 +113,12 @@ do_action( 'woocommerce_before_cart' ); ?>
                   </div>
 
                   <div class="k-cart--item__price">
-                    <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
+                    <?php
+                    if ($_product->get_type() != 'bundle') { ?>
+                      <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
+                    <?php
+                    } 
+                    ?>
                   </div>
 
                 </div>
