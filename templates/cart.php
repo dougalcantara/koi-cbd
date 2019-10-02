@@ -117,7 +117,11 @@ do_action( 'woocommerce_before_cart' ); ?>
                     if ($_product->get_type() != 'bundle') { ?>
                       <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
                     <?php
-                    } 
+                    } else {
+                      // var_dump(wc_get_product($_product->get_id()));
+                      ?>
+                    <?php
+                    }
                     ?>
                   </div>
 

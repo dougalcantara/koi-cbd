@@ -70,9 +70,9 @@ function k_ajax_add_bundle_to_cart() {
 
   /**
    * The array passed to add_bundle_to_cart() must be indexed by the
-   * product keys that you get from WC_Product_Bundle->get_bundled_items(). 
+   * item keys that you get from WC_Product_Bundle->get_bundled_items(). 
    * 
-   * Cannot be 0-indexed.
+   * This array is not necessarily 0-indexed as you may expect.
    */
   $reshaped_items = array();
   foreach($selected_child_items as $index => $item) {

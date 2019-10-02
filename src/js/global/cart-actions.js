@@ -85,11 +85,13 @@ function addBundleToCart(e) {
   const parent = t.closest('form');
   const productId = parent.data('product-id');
   const selectedChildItems = $([...parent.find('.k-productform--select-bundled-item')].filter(item => item.checked));
-  const minItems = parent.data('min-items');
-  const maxItems = parent.data('max-items');
+  const minItems = parseInt(parent.data('min-items'));
+  const maxItems = parseInt(parent.data('max-items'));
 
-  if (selectedChildItems.length > 4 || selectedChildItems.length < 4) {
-    return alert('Please select 4 items');
+  console.log(minItems, maxItems);
+
+  if (selectedChildItems.length > maxItems || selectedChildItems.length < minItems) {
+    return alert(`Please select ${minItems} items`);
   }
 
   const getUserBundleSelections = function() {

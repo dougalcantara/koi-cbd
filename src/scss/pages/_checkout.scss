@@ -1,4 +1,6 @@
 .page-template-page-checkout {
+  background: $bg-gray;
+
   #ship-to-different-address {
     input, span {
       display: inline-block;
@@ -9,11 +11,47 @@
     }
   }
 
+  .k-form--columns {
+    &__col {
+      background: $true-white;
+      padding: 1em;
+      box-shadow: 0 0 2px -1px #222;
+    }
+  }
+
   #billing {
     &_first_name_field,
     &_last_name_field {
       
     }
+  }
+
+  .k-checkout--shipping__header {
+    input, label {
+      min-width: auto;
+      display: inline-block;
+      margin: 0;
+      vertical-align: middle;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    input {
+      margin-right: 1em;
+    }
+
+    label {
+      user-select: none;
+      font-weight: 400;
+    }
+  }
+
+  .shipping_address {
+    height: 0;
+    overflow: hidden;
+    transition: height .4s $ease-out-quart;
   }
 }
 
@@ -23,6 +61,7 @@
       @include clearfix();
 
       &__col {
+        padding: 4em 3em;
         float: left;
         width: 45%;
 

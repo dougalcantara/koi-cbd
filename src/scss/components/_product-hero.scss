@@ -206,6 +206,20 @@
     position: relative;
     margin-bottom: 1em;
 
+    input,
+    label {
+      display: inline-block;
+      min-width: auto;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    input {
+      margin-right: 1em;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
