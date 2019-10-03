@@ -27,6 +27,9 @@ get_header();
  */
 do_action( 'woocommerce_account_navigation' );
 
+if (!is_user_logged_in()) {
+  wp_redirect(site_url() . '/account/login', 301);
+}
 ?>
 
 <div class="woocommerce-MyAccount-content">
