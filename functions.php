@@ -7,8 +7,9 @@
  */
 function k_ajax_add_product() {
   $product_id = intval($_POST['product_id']);
+  $quantity = intval($_POST['quantity']);
 
-  WC()->cart->add_to_cart($product_id, 1);
+  WC()->cart->add_to_cart($product_id, $quantity);
 
   wp_send_json(WC()->cart->get_cart());
 
@@ -134,6 +135,40 @@ function k_ajax_remove_all_cart_items() {
 }
 add_action('wp_ajax_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
 add_action('wp_ajax_nopriv_remove_all_cart_items', 'k_ajax_remove_all_cart_items');
+
+function k_decrement_cart_item() {
+  $cart_item_key = $_POST['cart_item_key'];
+  $cart_item_quantity = intval($_POST['cart_item_quantity']);
+
+  var_dump($cart_item_key, $cart_item_quantity);
+
+  $new_quantity = --$cart_item_quantity;
+
+  WC()->cart->set_quantity($cart_item_key, $new_quantity);
+
+  wp_redirect($_SERVER['HTTP_REFERRER']);
+
+  die();
+}
+add_action('wp_ajax_decrement_cart_item', 'k_decrement_cart_item');
+add_action('wp_ajax_nopriv_decrement_cart_item', 'k_decrement_cart_item');
+
+function k_increment_cart_item() {
+  $cart_item_key = $_POST['cart_item_key'];
+  $cart_item_quantity = intval($_POST['cart_item_quantity']);
+
+  var_dump($cart_item_key, $cart_item_quantity);
+
+  $new_quantity = ++$cart_item_quantity;
+
+  WC()->cart->set_quantity($cart_item_key, $new_quantity);
+
+  wp_redirect($_SERVER['HTTP_REFERRER']);
+
+  die();
+}
+add_action('wp_ajax_increment_cart_item', 'k_increment_cart_item');
+add_action('wp_ajax_nopriv_increment_cart_item', 'k_increment_cart_item');
 // == end AJAX fn's == //
 
 

@@ -96,7 +96,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                   } else { ?>
                     <!-- <label for="<?php echo 'cart['.$cart_item_key.'][qty]'; ?>">Quantity:</label> -->
                     <div class="k-productform--quantity">
-                      <button class="k-reduce">-</button>
+                      <button class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button>
                       <input
                         id="<?php echo 'cart['.$cart_item_key.'][qty]'; ?>"
                         type="number"
@@ -105,7 +105,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                         min="0"
                         max="10"
                         />
-                      <button class="k-increase">+</button>
+                      <button class="k-increase" data-cart-item-key="<?php echo $cart_item_key; ?>">+</button>
                     </div>
                   <?php
                   }

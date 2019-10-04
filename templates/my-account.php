@@ -20,28 +20,29 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-/**
- * My Account navigation.
- *
- * @since 2.6.0
- */
-do_action( 'woocommerce_account_navigation' );
+do_action('k_before_first_section');
 
-if (!is_user_logged_in()) {
+// 301 to acct login page if user not logged in
+if (!is_user_logged_in()) :
   wp_redirect(site_url() . '/account/login', 301);
-}
+endif;
 ?>
 
-<div class="woocommerce-MyAccount-content">
-	<?php
-		/**
-		 * My Account content.
-		 *
-		 * @since 2.6.0
-		 */
-		do_action( 'woocommerce_account_content' );
-	?>
-</div>
+<section class="k-dashboard k-block k-block--md woocommerce-MyAccount-content">
+	<div class="k-inner k-inner--xl">
+
+		<div class="k-dashboard--sidebar">
+			<?php	do_action('woocommerce_account_navigation'); ?>
+		</div>
+
+		<div class="k-dashboard--main">
+			<div class="k-dashboard--main__liner">
+				<?php do_action('woocommerce_account_content'); ?>
+			</div>
+		</div>
+
+	</div>
+</section>
 
 <?php
 get_footer();

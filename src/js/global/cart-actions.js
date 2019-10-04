@@ -8,6 +8,8 @@ const $addBundleToCartButton = $('.k-add-to-cart--bundle');
 const $cartNum = $('#k-cartnum');
 const $removeFromCartTrigger = $('.k-cart-remove-item');
 const $removeAllTrigger = $('#k-cart-remove-all');
+const $decrementCartItemTriggers = $('.k-reduce');
+const $incrementCartItemTriggers = $('.k-increase');
 
 function onDocReady() {
   const request = {
@@ -137,18 +139,63 @@ function addBundleToCart(e) {
   });
 }
 
+function decrementCartItem(e) {
+  e.preventDefault();
+
+  const $t = $(this);
+  const cart_item_quantity = $t.next().val();
+  const cart_item_key = $t.data('cart-item-key');
+
+  $.ajax({
+    type: 'POST',
+    url,
+    data: {
+      action: 'decrement_cart_item',
+      cart_item_quantity,
+      cart_item_key,
+    },
+    dataType: 'json',
+    complete: () => window.location.reload(),
+  });
+}
+
+function incrementCartItem(e) {
+  e.preventDefault();
+
+  const $t = $(this);
+  const cart_item_quantity = $t.prev().val();
+  const cart_item_key = $t.data('cart-item-key');
+
+  $.ajax({
+    type: 'POST',
+    url,
+    data: {
+      action: 'increment_cart_item',
+      cart_item_quantity,
+      cart_item_key,
+    },
+    dataType: 'json',
+    complete: () => window.location.reload(),
+  });
+}
+
 // == event listeners == //
 $doc.ready(onDocReady);
+
+$decrementCartItemTriggers.click(decrementCartItem);
+$incrementCartItemTriggers.click(incrementCartItem);
 
 $addToCartButtons.click(function(e) {
   e.preventDefault();
 
   const $t = $(this);
   const productId = $t.data('product-id');
+  const quantity = parseInt($('#k-num-to-add').val());
 
   const data = {
     action: 'add_product',
     product_id: productId,
+    quantity,
   };
 
   $t.attr('disabled', true);

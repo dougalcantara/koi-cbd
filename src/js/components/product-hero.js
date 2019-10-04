@@ -5,8 +5,37 @@ const $variantToggles = $('.k-productform--variants .k-productform--varianttoggl
 const $priceTarget = $('.k-productform--pricetarget');
 const $bundledItemSelects = $('.k-productform--select-bundled-item');
 const $addToCartTrigger = $('.k-productform .k-add-to-cart');
+const $increment = $('#k-increase');
+const $decrement = $('#k-reduce');
+const $quantity = $('#k-num-to-add');
 
 let flkty;
+
+$increment.click(function(e) {
+  e.preventDefault();
+
+  let oldQ = parseInt($quantity.val());
+  const newQ = ++oldQ;
+
+  if (newQ > 10) {
+    return alert('Max 10 items.');
+  } else {
+    $quantity.val(newQ);
+  }
+});
+
+$decrement.click(function(e) {
+  e.preventDefault();
+
+  let oldQ = parseInt($quantity.val());
+  const newQ = --oldQ;
+
+  if (newQ < 1) {
+    return alert('Min 1 item.');
+  } else {
+    $quantity.val(newQ);
+  }
+});
 
 $variantToggles.click(function() {
   const $t = $(this);

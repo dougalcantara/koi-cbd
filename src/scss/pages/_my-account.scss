@@ -1,0 +1,146 @@
+.k-login {
+  background: $bg-gray;
+
+  h2 span {
+    font-family: $body-font;
+    font-size: 50%;
+    vertical-align: top;
+    margin-left: 1em;
+  }
+
+  .k-columns {
+    &--col {
+      background: $true-white;
+      padding: 1em;
+
+      &:first-child {
+        margin-bottom: 2em;
+      }
+    }
+  }
+
+  form {
+    .form-row {
+      position: relative;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      & + label {
+        position: absolute;
+        top: 1em; left: 0;
+        font-weight: 400;
+        color: $accent-text;
+        transition: transform .2s $ease-out-circ;
+      }
+
+      &:focus {
+        outline: none;
+
+        & + label {
+          transform: translateY(-100%);
+        }
+      }
+    }
+
+    input[type="checkbox"] {
+      display: inline-block;
+      vertical-align: middle;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      & + label {
+        display: inline-block;
+        min-width: auto;
+        font-weight: 400;
+        vertical-align: middle;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.k-dashboard {
+  background: $bg-gray;
+
+  &--main__liner,
+  &--sidebar__liner {
+    padding: 2em;
+    background: $true-white;
+    border-radius: .33em;
+  }
+
+  &--sidebar {
+    margin-bottom: 2em;
+
+    &__liner {
+      position: relative;
+
+      ul {
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0; padding: 0;
+    }
+
+    li {
+      margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: $black;
+      font-family: $heading-font;
+    }
+  }
+}
+
+@media(min-width: $bp-lg) {
+  .k-login {
+    .k-columns {
+      display: flex;
+      justify-content: space-between;
+
+      &--col {
+        padding: 4em 3em;
+        flex-basis: 45%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+
+        .k-button {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+
+  .k-dashboard {
+    & > .k-inner {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--sidebar {
+      flex-basis: 25%;
+    }
+
+    &--main {
+      flex-basis: 70%;
+    }
+  }
+}

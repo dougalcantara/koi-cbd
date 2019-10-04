@@ -41,9 +41,9 @@
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
             <div class="k-productform--item k-productform--quantity">
-              <button id="k-reduce">-</button>
-              <input id="k-num-to-add" type="number" value="1" />
-              <button id="k-increase">+</button>
+              <button id="k-reduce" type="button">-</button>
+              <input id="k-num-to-add" type="number" value="1" max="10" min="1" step="1" />
+              <button id="k-increase" type="button">+</button>
             </div>
           <?php
           }
@@ -60,6 +60,11 @@
                   ?>
                 "
               <?php
+              if ($product_wc_type == 'simple') { ?>
+                data-product-id="<?php echo $product_id; ?>"
+              <?php
+              }
+
               if ($product_wc_type == 'bundle') { ?>
                 data-bundle-id="<?php echo $product_id; ?>"
               <?php
