@@ -78,20 +78,15 @@ AjaxCart.addBundle = async function(id, bundledItems, min, max) {
 };
 
 AjaxCart.decrementCartItem = async function(key, prevQuantity) {
-  // try {
-    await _makeRequest({
-      method: 'POST',
-      data: {
-        action: 'decrement_cart_item',
-        cart_item_quantity: prevQuantity,
-        cart_item_key: key,
-      },
-    }).catch(err => console.log(err));
-  // } catch (error) {
-  //   throw error;
-  // }
+  await _makeRequest({
+    method: 'POST',
+    data: {
+      action: 'decrement_cart_item',
+      cart_item_quantity: prevQuantity,
+      cart_item_key: key,
+    },
+  }).catch(err => console.log(err));
   
-
   return this.getCartItems();
 };
 
