@@ -1,5 +1,5 @@
 import axios from 'axios'
-import yotpoProducts from '../../../yotpoProducts'
+import products from '../../../yotpoProducts'
 
 const BASE_URL = `https://api.yotpo.com`
 const APP_ID = `MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG`
@@ -38,7 +38,7 @@ function insertReviewData(element, data) {
 }
 
 function createProductMap() {
-  window.yotpoProductMap = yotpoProducts.products.map(({name, external_product_id}) => ({
+  window.yotpoProductMap = products.map(({name, external_product_id}) => ({
     name,
     external_product_id,
   }))

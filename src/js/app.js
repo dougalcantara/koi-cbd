@@ -3,6 +3,7 @@ import './global/data';
 import './global/cart-actions';
 import './global/search';
 import './global/forms';
+import './global/ajax-cart';
 
 import './components/site-header';
 import './components/promo-slider';

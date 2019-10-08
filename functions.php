@@ -140,8 +140,6 @@ function k_decrement_cart_item() {
   $cart_item_key = $_POST['cart_item_key'];
   $cart_item_quantity = intval($_POST['cart_item_quantity']);
 
-  var_dump($cart_item_key, $cart_item_quantity);
-
   $new_quantity = --$cart_item_quantity;
 
   WC()->cart->set_quantity($cart_item_key, $new_quantity);

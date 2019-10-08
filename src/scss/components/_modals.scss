@@ -9,7 +9,8 @@
     position: relative;
   }
 
-  &--search {
+  &--search,
+  &--cart {
     position: fixed;
     top: 50%; left: 50%;
     width: 100%;
@@ -23,63 +24,6 @@
       opacity: 1;
       z-index: 100;
       pointer-events: all;
-    }
-
-    form {
-      position: relative;
-    }
-
-    label,
-    button {
-      font-family: $heading-font;
-      font-size: 200%;
-    }
-
-    input,
-    button {
-      color: $primary;
-    }
-
-    input {
-      padding: .5em 0;
-      font-family: $heading-font;
-      font-size: 200%;
-
-      &:focus {
-        outline: none;
-
-        & + label {
-          transform: translateY(-100%);
-        }
-      }
-    }
-
-    label,
-    button {
-      position: absolute;
-    }
-
-    label {
-      color: $true-white;
-      top: 0;
-      line-height: 2;
-      transition: transform .2s $ease-out-circ;
-    }
-
-    button {
-      top: 50%; right: 0;
-      appearance: none;
-      background: none;
-      border: none;
-      transform: translateY(-50%);
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 
@@ -104,5 +48,91 @@
         transform: scale(1.25);
       }
     }
+  }
+}
+
+.k-modal--search {
+  form {
+    position: relative;
+  }
+
+  label,
+  button {
+    font-family: $heading-font;
+    font-size: 200%;
+  }
+
+  input,
+  button {
+    color: $primary;
+  }
+
+  input {
+    padding: .5em 0;
+    font-family: $heading-font;
+    font-size: 200%;
+
+    &:focus {
+      outline: none;
+
+      & + label {
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  label,
+  button {
+    position: absolute;
+  }
+
+  label {
+    color: $true-white;
+    top: 0;
+    line-height: 2;
+    transition: transform .2s $ease-out-circ;
+  }
+
+  button {
+    top: 50%; right: 0;
+    appearance: none;
+    background: none;
+    border: none;
+    transform: translateY(-50%);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.k-modal--cart {
+  .k-modal {
+    &--content {
+      background: $true-white;
+      padding: 2em;
+      border-radius: .5em;
+      overflow: hidden;
+    }
+
+    &--placeholder {
+      transition: opacity .4s $ease-out-quart,
+                  transform .4s $ease-out-circ;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.k-ajaxcart {
+  max-height: 50vh;
+  overflow-y: scroll;
+
+  &--content {
+    height: 400px;
   }
 }

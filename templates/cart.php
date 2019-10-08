@@ -131,6 +131,9 @@ do_action( 'woocommerce_before_cart' ); ?>
             }
           }
         ?>
+          <div class="k-cart--actions">
+            <span id="k-cart-remove-all">Empty Cart</span>
+          </div>
           <div class="k-cart--item k-cart--meta">
           <?php if (wc_coupons_enabled()) { ?>
 

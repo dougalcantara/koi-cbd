@@ -1,78 +1,26 @@
-import { $doc } from './selectors';
+import AjaxCart from './ajax-cart';
+import { $doc, $backdrop } from './selectors';
 
 const url = `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`;
 
-const $addToCartButtons = $('.k-add-to-cart');
-const $addItemToBundleButtons = $('.k-productform--select-bundled-item');
-const $addBundleToCartButton = $('.k-add-to-cart--bundle');
+const $addToCart = $('.k-add-to-cart');
+const $addItemToBundle = $('.k-productform--select-bundled-item');
+const $addBundleToCart = $('.k-add-to-cart--bundle');
 const $cartNum = $('#k-cartnum');
-const $removeFromCartTrigger = $('.k-cart-remove-item');
-const $removeAllTrigger = $('#k-cart-remove-all');
-const $decrementCartItemTriggers = $('.k-reduce');
-const $incrementCartItemTriggers = $('.k-increase');
-
-function onDocReady() {
-  const request = {
-    method: 'GET',
-    url,
-    data: {
-      action: 'k_get_cart',
-    },
-    dataType: 'json',
-    success: cart => updateCartStatus(Object.values(cart)),
-    error: err => console.log(err),
-  };
-
-  $.ajax(request);
-}
-
-function numItemsInCart(items) {
-  let numInCart = 0;
-
-  items.forEach(item => numInCart += item.quantity);
-
-  return numInCart;
-}
-
-async function removeItemFromCart(key) {
-  const request = {
-    method: 'POST',
-    url,
-    data: {
-      action: 'remove_cart_item',
-      cart_item_key: key,
-    },
-    dataType: 'json',
-    success: cart => updateCartStatus(Object.values(cart)),
-    error: err => console.log(err),
-    complete: res => console.log(res),
-  };
-
-  return $.ajax(request);
-}
-
-async function emptyCart() {
-  const request = {
-    method: 'GET',
-    url,
-    data: {
-      action: 'remove_all_cart_items',
-    },
-    dataType: 'json',
-    success: cart => updateCartStatus(Object.values(cart)),
-    error: err => console.log(err),
-  };
-
-  return $.ajax(request);
-}
+const $removeItemFromCart = $('.k-cart-remove-item');
+const $removeAll = $('#k-cart-remove-all');
+const $decrementCartItem = $('.k-reduce');
+const $incrementCartItem = $('.k-increase');
+const $cartModal = $('.k-modal--cart');
+const cartModalOpen = () => $cartModal.hasClass('k-modal--open');
 
 function updateCartStatus(cartItems) {
-  console.log('cart updated:', cartItems);
+  let numInCart = 0;
 
-  const n = numItemsInCart(cartItems);
-  
-  if (n) {
-    $cartNum.text(n);
+  cartItems.forEach(item => numInCart += item.quantity);
+
+  if (numInCart) {
+    $cartNum.text(numInCart);
     $cartNum.addClass('k-has-value');
   } else {
     $cartNum.text(0);
@@ -80,7 +28,7 @@ function updateCartStatus(cartItems) {
   }
 }
 
-function addBundleToCart(e) {
+async function addBundleToCart(e) {
   e.preventDefault();
 
   const t = $(this);
@@ -90,7 +38,7 @@ function addBundleToCart(e) {
   const minItems = parseInt(parent.data('min-items'));
   const maxItems = parseInt(parent.data('max-items'));
 
-  console.log(minItems, maxItems);
+  t.attr('disabled', true);
 
   if (selectedChildItems.length > maxItems || selectedChildItems.length < minItems) {
     return alert(`Please select ${minItems} items`);
@@ -120,50 +68,57 @@ function addBundleToCart(e) {
     return selections;
   };
 
-  t.attr('disabled', true);
+  const transaction = await AjaxCart.addBundle(productId, getUserBundleSelections(), minItems, maxItems);
 
-  $.ajax({
-    type: 'POST',
-    url,
-    data: {
-      action: 'add_bundle',
-      product_id: productId,
-      selected_child_items: getUserBundleSelections(),
-      max_items: maxItems,
-      min_items: minItems,
-    },
-    dataType: 'json',
-    success: cart => updateCartStatus(Object.values(cart)),
-    error: err => console.log(err),
-    complete: () => t.attr('disabled', false),
-  });
+  t.attr('disabled', false);
+
+  updateCartStatus(transaction);
 }
 
-function decrementCartItem(e) {
+async function addSingleItemToCart(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const cart_item_quantity = $t.next().val();
-  const cart_item_key = $t.data('cart-item-key');
+  const productId = $t.data('product-id');
+  const quantity = parseInt($('#k-num-to-add').val());
 
-  $.ajax({
-    type: 'POST',
-    url,
-    data: {
-      action: 'decrement_cart_item',
-      cart_item_quantity,
-      cart_item_key,
-    },
-    dataType: 'json',
-    complete: () => window.location.reload(),
-  });
+  $t.attr('disabled', true);
+
+  const transaction = await AjaxCart.addItem(productId, quantity);
+
+  $t.attr('disabled', false);
+
+  updateCartStatus(transaction);
+}
+
+function addItemToBundle() {
+  const t = $(this);
+  const maxItems = t.data('max-items');
+  const numSelected = [...$addItemToBundle].filter(item => item.checked).length;
+
+  if (numSelected > maxItems) {
+    t.prop('checked', false);
+    return alert(`Please select ${maxItems} items.`);
+  }
+}
+
+async function decrementCartItem(e) {
+  e.preventDefault();
+
+  const $t = $(this);
+  const cartItemQuantity = parseInt($t.next().val());
+  const cartItemKey = $t.data('cart-item-key');
+
+  await AjaxCart.decrementCartItem(cartItemKey, cartItemQuantity);
+
+  window.location.reload();
 }
 
 function incrementCartItem(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const cart_item_quantity = $t.prev().val();
+  const cart_item_quantity = parseInt($t.prev().val());
   const cart_item_key = $t.data('cart-item-key');
 
   $.ajax({
@@ -180,60 +135,28 @@ function incrementCartItem(e) {
 }
 
 // == event listeners == //
-$doc.ready(onDocReady);
+$doc.ready(async function() {
+  const itemsInCart = await AjaxCart.getCartItems();
 
-$decrementCartItemTriggers.click(decrementCartItem);
-$incrementCartItemTriggers.click(incrementCartItem);
-
-$addToCartButtons.click(function(e) {
-  e.preventDefault();
-
-  const $t = $(this);
-  const productId = $t.data('product-id');
-  const quantity = parseInt($('#k-num-to-add').val());
-
-  const data = {
-    action: 'add_product',
-    product_id: productId,
-    quantity,
-  };
-
-  $t.attr('disabled', true);
-
-  $.ajax({
-    type: 'POST',
-    url,
-    data,
-    dataType: 'json',
-    success: cart => updateCartStatus(Object.values(cart)),
-    error: function(err) {
-      console.log('error', err);
-    },
-    complete: () => {
-      $t.attr('disabled', false);
-    },
-  });
+  updateCartStatus(itemsInCart);
 });
 
-$removeFromCartTrigger.click(async function() {
-  await removeItemFromCart($(this).data('cart-item-key'));
+$decrementCartItem.click(decrementCartItem);
+$incrementCartItem.click(incrementCartItem);
+
+$removeItemFromCart.click(async function() {
+  const key = $(this).data('cart-item-key');
+
+  await AjaxCart.removeItem(key);
+
   window.location.reload();
 });
 
-$removeAllTrigger.click(async function() {
-  await emptyCart();
+$removeAll.click(async function() {
+  await AjaxCart.empty();
   window.location.reload();
 });
 
-$addBundleToCartButton.click(addBundleToCart);
-
-$addItemToBundleButtons.click(function() {
-  const t = $(this);
-  const maxItems = t.data('max-items');
-  const numSelected = [...$addItemToBundleButtons].filter(item => item.checked).length;
-
-  if (numSelected > maxItems) {
-    t.prop('checked', false);
-    return alert(`Please select ${maxItems} items.`);
-  }
-});
+$addBundleToCart.click(addBundleToCart);
+$addToCart.click(addSingleItemToCart);
+$addItemToBundle.click(addItemToBundle);
