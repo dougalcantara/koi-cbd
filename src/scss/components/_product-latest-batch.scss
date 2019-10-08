@@ -24,7 +24,7 @@
       text-align: center;
       border-top: 1px solid #ccc;
       border-right: 1px solid #ccc;
-      padding: .5em 0;
+      padding: 0.5em 0;
 
       span {
         font-size: 75%;
@@ -46,7 +46,6 @@
   }
 
   &--results {
-
     &__liner {
       background: $bg-gray-light;
       padding: 1em;
@@ -71,7 +70,7 @@
           font-weight: 300;
 
           span {
-            font-size: .5em;
+            font-size: 0.5em;
             vertical-align: text-top;
           }
         }
@@ -83,8 +82,8 @@
         border-bottom: 0;
         position: relative;
         background: red;
-        transition: background .4s $ease-out-circ;
-        border-radius: .33em;
+        transition: background 0.4s $ease-out-circ;
+        border-radius: 0.33em;
 
         a {
           @include fill-parent();
@@ -93,7 +92,8 @@
         span {
           color: $true-white;
           position: absolute;
-          top: 50%; left: 50%;
+          top: 50%;
+          left: 50%;
           width: 100%;
           text-align: center;
           transform: translate(-50%, -50%);
@@ -118,7 +118,7 @@
   }
 }
 
-@media(min-width: $bp-sm) {
+@media (min-width: $bp-sm) {
   .k-latestbatch {
     &--tabs {
       &__tab {
@@ -132,7 +132,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-latestbatch {
     &--intro {
       display: flex;
@@ -154,7 +154,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-latestbatch {
     &--tabs {
       max-width: 50%;
@@ -190,7 +190,7 @@
           flex-basis: 25%;
 
           p:first-child {
-            margin-bottom: .5em;
+            margin-bottom: 0.5em;
           }
         }
 
@@ -203,7 +203,7 @@
   }
 }
 
-@media(min-width: $bp-xxl) {
+@media (min-width: $bp-xxl) {
   .k-latestbatch {
     &--intro {
       justify-content: flex-start;
@@ -237,9 +237,9 @@
 
           p {
             font-size: 250%;
-  
+
             span {
-              font-size: .5em;
+              font-size: 0.5em;
             }
           }
         }

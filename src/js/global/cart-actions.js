@@ -17,7 +17,14 @@ const cartModalOpen = () => $cartModal.hasClass('k-modal--open');
 function updateCartStatus(cartItems) {
   let numInCart = 0;
 
-  cartItems.forEach(item => numInCart += item.quantity);
+  cartItems.forEach(item => {
+    // don't count items in a bundle as individual items in the final count
+    if (item.bundled_by) {
+      return;
+    }
+
+    numInCart += item.quantity;
+  });
 
   if (numInCart) {
     $cartNum.text(numInCart);
@@ -34,13 +41,20 @@ async function addBundleToCart(e) {
   const t = $(this);
   const parent = t.closest('form');
   const productId = parent.data('product-id');
-  const selectedChildItems = $([...parent.find('.k-productform--select-bundled-item')].filter(item => item.checked));
+  const selectedChildItems = $(
+    [...parent.find('.k-productform--select-bundled-item')].filter(
+      item => item.checked
+    )
+  );
   const minItems = parseInt(parent.data('min-items'));
   const maxItems = parseInt(parent.data('max-items'));
 
   t.attr('disabled', true);
 
-  if (selectedChildItems.length > maxItems || selectedChildItems.length < minItems) {
+  if (
+    selectedChildItems.length > maxItems ||
+    selectedChildItems.length < minItems
+  ) {
     return alert(`Please select ${minItems} items`);
   }
 
@@ -53,7 +67,7 @@ async function addBundleToCart(e) {
       const bundledProductKey = t.data('bundled-product-key');
       const variations = t.siblings().find('input[type="radio"]');
       const selectedVariation = $([...variations].filter(item => item.checked));
-      
+
       selections.push({
         product_id: parentId,
         bundled_product_key: bundledProductKey,
@@ -68,7 +82,12 @@ async function addBundleToCart(e) {
     return selections;
   };
 
-  const transaction = await AjaxCart.addBundle(productId, getUserBundleSelections(), minItems, maxItems);
+  const transaction = await AjaxCart.addBundle(
+    productId,
+    getUserBundleSelections(),
+    minItems,
+    maxItems
+  );
 
   t.attr('disabled', false);
 
@@ -114,24 +133,16 @@ async function decrementCartItem(e) {
   window.location.reload();
 }
 
-function incrementCartItem(e) {
+async function incrementCartItem(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const cart_item_quantity = parseInt($t.prev().val());
-  const cart_item_key = $t.data('cart-item-key');
+  const cartItemQuantity = parseInt($t.prev().val());
+  const cartItemKey = $t.data('cart-item-key');
 
-  $.ajax({
-    type: 'POST',
-    url,
-    data: {
-      action: 'increment_cart_item',
-      cart_item_quantity,
-      cart_item_key,
-    },
-    dataType: 'json',
-    complete: () => window.location.reload(),
-  });
+  await AjaxCart.incrementCartItem(cartItemKey, cartItemQuantity);
+
+  window.location.reload();
 }
 
 // == event listeners == //

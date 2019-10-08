@@ -4,7 +4,7 @@
   }
 }
 
-@media(min-width: $bp-sm) {
+@media (min-width: $bp-sm) {
   .k-blogpromo {
     &--articles {
       display: flex;
@@ -22,7 +22,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-blogpromo {
     &--articles {
       flex-flow: row nowrap;

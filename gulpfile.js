@@ -40,14 +40,17 @@ function html(done) {
 }
 
 function scss(done) {
-  gulp.src(PATHS.css.input)
+  gulp
+    .src(PATHS.css.input)
     .pipe(plumber())
     .pipe(smaps.init())
     .pipe(sass({ outputStyle: 'expanded' }))
     .on('error', sass.logError)
-    .pipe(prefix({
-      cascade: false,
-    }))
+    .pipe(
+      prefix({
+        cascade: false,
+      })
+    )
     .pipe(smaps.write())
     .pipe(gulp.dest(PATHS.css.output))
     .pipe(browserSync.stream());
@@ -70,11 +73,11 @@ function js(done) {
 
   done();
 }
- 
+
 function watcher(done) {
   gulp.watch(PATHS.css.input, gulp.series(scss));
   gulp.watch(PATHS.html.input, reload);
   done();
 }
 
-exports.default = gulp.series([ html, scss, js, watcher, server ]);
+exports.default = gulp.series([html, scss, js, watcher, server]);

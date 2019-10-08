@@ -1,7 +1,7 @@
 .k-productdetails {
   &--image {
     .k-figure {
-      border-radius: .667em;
+      border-radius: 0.667em;
 
       &--liner {
         padding-bottom: 128.57%;
@@ -17,7 +17,7 @@
     li {
       position: relative;
       padding-left: 1em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
 
       p {
         margin: 0;
@@ -30,10 +30,13 @@
       }
 
       &:before {
-        display: block; content: '';
+        display: block;
+        content: '';
         position: absolute;
-        top: 1.1em; left: 0;
-        width: .125em; height: .125em;
+        top: 1.1em;
+        left: 0;
+        width: 0.125em;
+        height: 0.125em;
         border-radius: 50%;
         background: $black;
         transform: translateY(-50%);
@@ -67,10 +70,11 @@
       span {
         color: $primary;
         position: absolute;
-        right: -1em; top: 42.5%;
+        right: -1em;
+        top: 42.5%;
         font-size: 150%;
         transform: translateY(-50%) rotate(0);
-        transition: transform .5s $ease-out-back;
+        transition: transform 0.5s $ease-out-back;
       }
 
       &:hover {
@@ -81,7 +85,7 @@
     &__drawer {
       height: 0;
       overflow: hidden;
-      transition: height .2s $ease-out-circ;
+      transition: height 0.2s $ease-out-circ;
 
       ul {
         padding-bottom: 1em;
@@ -90,7 +94,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-productdetails {
     &--headline {
       text-align: center;
@@ -115,7 +119,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-productdetails {
     &--accordion {
       flex-basis: 35%;

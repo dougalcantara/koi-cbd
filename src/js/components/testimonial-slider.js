@@ -1,4 +1,6 @@
-const carousel = document.querySelector('.k-testimonialslider .k-testimonialslider--carousel');
+const carousel = document.querySelector(
+  '.k-testimonialslider .k-testimonialslider--carousel'
+);
 
 let flkty;
 

@@ -4,13 +4,13 @@
   .k-hero {
     &--content {
       padding: $padding-sm 0;
-      
+
       * {
         margin: 0;
       }
 
       .k-headline {
-        margin: .25em 0 1em 0;
+        margin: 0.25em 0 1em 0;
       }
 
       .k-rte-content {
@@ -24,7 +24,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-hero--productlisting {
     .k-hero {
       &--content {
@@ -34,7 +34,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-hero--productlisting {
     .k-hero {
       &--content {

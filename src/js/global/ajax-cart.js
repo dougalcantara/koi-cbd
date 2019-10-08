@@ -1,5 +1,4 @@
 const AjaxCart = {
-  isInitialized: false,
   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
   items: [],
 };
@@ -16,7 +15,7 @@ async function _makeRequest({ method, data, onComplete }) {
       }
     },
   });
-};
+}
 
 AjaxCart.getCartItems = async function() {
   await _makeRequest({
@@ -78,15 +77,36 @@ AjaxCart.addBundle = async function(id, bundledItems, min, max) {
 };
 
 AjaxCart.decrementCartItem = async function(key, prevQuantity) {
-  await _makeRequest({
-    method: 'POST',
-    data: {
-      action: 'decrement_cart_item',
-      cart_item_quantity: prevQuantity,
-      cart_item_key: key,
-    },
-  }).catch(err => console.log(err));
-  
+  try {
+    await _makeRequest({
+      method: 'POST',
+      data: {
+        action: 'decrement_cart_item',
+        cart_item_quantity: prevQuantity,
+        cart_item_key: key,
+      },
+    });
+  } catch (error) {
+    return console.log(error);
+  }
+
+  return this.getCartItems();
+};
+
+AjaxCart.incrementCartItem = async function(key, prevQuantity) {
+  try {
+    await _makeRequest({
+      method: 'POST',
+      data: {
+        action: 'increment_cart_item',
+        cart_item_quantity: prevQuantity,
+        cart_item_key: key,
+      },
+    });
+  } catch (error) {
+    return console.log(error);
+  }
+
   return this.getCartItems();
 };
 

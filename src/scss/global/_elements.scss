@@ -1,17 +1,19 @@
 #k-backdrop {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: $black;
   z-index: -100;
   opacity: 0;
-  transition: opacity .4s $ease-out-quart;
+  transition: opacity 0.4s $ease-out-quart;
   pointer-events: none;
   user-select: none;
 
   &.active {
     z-index: 100;
-    opacity: .9;
+    opacity: 0.9;
   }
 }
 
@@ -53,14 +55,14 @@
 
 #k-cartnum {
   position: absolute;
-  top: -1.15em; left: 50%;
+  top: -1.15em;
+  left: 50%;
   line-height: 0;
   font-size: 75%;
   color: $true-white;
   opacity: 0;
   transform: translate(-50%, 100%);
-  transition: opacity 1s $ease-out-circ,
-              transform 1s $ease-out-circ;
+  transition: opacity 1s $ease-out-circ, transform 1s $ease-out-circ;
 
   &.k-has-value {
     opacity: 1;
@@ -68,10 +70,13 @@
   }
 
   &:after {
-    display: block; content: '';
+    display: block;
+    content: '';
     position: absolute;
-    top: 0%; left: 50%;
-    width: 1.5em; height: 1.5em;
+    top: 0%;
+    left: 50%;
+    width: 1.5em;
+    height: 1.5em;
     background: $primary;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -80,21 +85,24 @@
 }
 
 .k-figure {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   position: relative;
   overflow: hidden;
 
   &--rounded {
-    border-radius: .667em;
+    border-radius: 0.667em;
   }
 
   &--fpo {
     background: $primary;
 
     &:after {
-      display: block; content: 'F P O';
+      display: block;
+      content: 'F P O';
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       width: 100%;
       text-align: center;
       transform: translate(-50%, -50%);
@@ -112,9 +120,11 @@
 .koi-bg {
   position: absolute;
   z-index: -1;
-  height: 100%; width: auto;
+  height: 100%;
+  width: auto;
   max-width: 100%;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 
   path {
@@ -136,12 +146,15 @@
 
   &:after {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    display: block; content: '';
-    width: 0; height: 0; 
-    border-top: .67em solid transparent;
-    border-bottom: .67em solid transparent;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 0.67em solid transparent;
+    border-bottom: 0.67em solid transparent;
     border-left: 1em solid $black;
     pointer-events: none;
     user-select: none;
@@ -151,14 +164,16 @@
 .k-play-button {
   fill: $true-white;
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  transition: transform .6s $ease-out-circ;
-  width: 30%; max-width: 7.8125em;
+  transition: transform 0.6s $ease-out-circ;
+  width: 30%;
+  max-width: 7.8125em;
 
   &:hover {
     cursor: pointer;
-    transform: translate(-50%, -50%) rotate(360deg) scale(.8, .8);
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.8, 0.8);
   }
 }
 
@@ -193,7 +208,7 @@
     polyline,
     line {
       stroke: $accent-text;
-      transition: stroke .4s $ease-out-circ;
+      transition: stroke 0.4s $ease-out-circ;
     }
   }
 
@@ -210,7 +225,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-blog-breadcrumb {
     display: block;
   }

@@ -100,9 +100,7 @@
   src: url('../../dist/fonts/gt-america-medium-webfont.woff2') format('woff2');
 }
 
-
-
-$heading-font: 'Recoleta Regular', serif; 
+$heading-font: 'Recoleta Regular', serif;
 $body-font: 'GT America', sans-serif;
 
 *,
@@ -132,7 +130,6 @@ body {
 }
 
 h1 {
-
 }
 
 h2 {
@@ -265,11 +262,13 @@ h2 {
   }
 }
 
-a {
+a,
+.k-fakelink {
   text-decoration: none;
-  transition: color .4s $ease-out-quart;
+  transition: color 0.4s $ease-out-quart;
 
   &:hover {
+    cursor: pointer;
     color: $primary !important;
   }
 }
@@ -282,7 +281,7 @@ a {
   background: $bg-gray;
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-headline {
     &--md {
       font-size: 2.8em;
@@ -294,7 +293,7 @@ a {
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-headline {
     &--md {
       font-size: 3em;
@@ -306,7 +305,7 @@ a {
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-headline {
     &--md {
       font-size: 3.5em;
@@ -318,7 +317,7 @@ a {
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-headline {
     &--sm {
       font-size: 2.5em;
@@ -334,7 +333,7 @@ a {
   }
 }
 
-@media(min-width: $bp-xxl) {
+@media (min-width: $bp-xxl) {
   .k-headline {
     &--xs {
       font-size: 1.85em;
@@ -354,17 +353,17 @@ a {
   }
 }
 
-@media(min-width: $bp-max) {
+@media (min-width: $bp-max) {
   body {
-    font-size: .89vw;
-    transition: font-size .2s $ease-out-circ;
+    font-size: 0.89vw;
+    transition: font-size 0.2s $ease-out-circ;
   }
 
   .k-headline {
     &--xs {
       font-size: 1.9em;
     }
-    
+
     &--sm {
       font-size: 3.2em;
     }

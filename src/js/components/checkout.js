@@ -6,7 +6,6 @@ const $drawer = $parent.find('.k-checkout--shipping');
 const $heightTarget = $drawer.find('.k-checkout--shipping__heighttarget');
 
 function toggleDrawer(e) {
-  
   if ($drawer.hasClass('open')) {
     $drawer.height(0);
     $drawer.removeClass('open');

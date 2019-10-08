@@ -32,13 +32,14 @@
   }
 }
 
-@media(min-width: $bp-sm) {
+@media (min-width: $bp-sm) {
   .k-promoslider {
     &--titlerow {
       flex-flow: row nowrap;
       text-align: center;
 
-      span, a {
+      span,
+      a {
         font-size: 80%;
       }
 
@@ -63,7 +64,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-promoslider {
     .k-productcard {
       width: 50%;
@@ -71,7 +72,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-promoslider {
     &--titlerow {
       margin-bottom: 4em;
@@ -83,18 +84,18 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-promoslider {
     &--titlerow {
       margin-bottom: $padding-sm;
       align-items: flex-end;
 
-      span, a {
+      span,
+      a {
         font-size: 100%;
       }
 
       &__item {
-
         &:nth-child(1),
         &:nth-child(2) {
           flex-basis: 10%;

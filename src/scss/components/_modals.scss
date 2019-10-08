@@ -12,13 +12,14 @@
   &--search,
   &--cart {
     position: fixed;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
     opacity: 0;
     z-index: -100;
     pointer-events: none;
-    transition: opacity .4s $ease-out-quart;
+    transition: opacity 0.4s $ease-out-quart;
 
     &.k-modal--open {
       opacity: 1;
@@ -29,7 +30,8 @@
 
   &--close {
     position: absolute;
-    top: -$padding-sm; right: 0;
+    top: -$padding-sm;
+    right: 0;
     color: $true-white;
     width: 100%;
 
@@ -39,8 +41,9 @@
 
     .k-headline {
       position: absolute;
-      top: 0; right: 0;
-      transition: transform .4s $ease-out-circ;
+      top: 0;
+      right: 0;
+      transition: transform 0.4s $ease-out-circ;
     }
 
     &:hover {
@@ -68,7 +71,7 @@
   }
 
   input {
-    padding: .5em 0;
+    padding: 0.5em 0;
     font-family: $heading-font;
     font-size: 200%;
 
@@ -90,11 +93,12 @@
     color: $true-white;
     top: 0;
     line-height: 2;
-    transition: transform .2s $ease-out-circ;
+    transition: transform 0.2s $ease-out-circ;
   }
 
   button {
-    top: 50%; right: 0;
+    top: 50%;
+    right: 0;
     appearance: none;
     background: none;
     border: none;
@@ -115,13 +119,12 @@
     &--content {
       background: $true-white;
       padding: 2em;
-      border-radius: .5em;
+      border-radius: 0.5em;
       overflow: hidden;
     }
 
     &--placeholder {
-      transition: opacity .4s $ease-out-quart,
-                  transform .4s $ease-out-circ;
+      transition: opacity 0.4s $ease-out-quart, transform 0.4s $ease-out-circ;
       opacity: 1;
       transform: translateY(0);
     }

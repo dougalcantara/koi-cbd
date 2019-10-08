@@ -19,7 +19,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-blogcontent {
     & > .k-inner {
       display: flex;
@@ -56,10 +56,11 @@
 
       label {
         position: absolute;
-        top: .667em; left: 0;
+        top: 0.667em;
+        left: 0;
         color: $true-white;
         font-family: $heading-font;
-        transition: transform .2s $ease-out-circ;
+        transition: transform 0.2s $ease-out-circ;
         pointer-events: none;
         font-size: 125%;
       }
@@ -70,7 +71,7 @@
         font-family: $heading-font;
 
         &:focus {
-          outline: none; 
+          outline: none;
 
           & + label {
             transform: translateY(-1.5em);
@@ -80,9 +81,11 @@
 
       button {
         position: absolute;
-        top: .667em; right: 0;
+        top: 0.667em;
+        right: 0;
         font-size: 125%;
-        padding: 0; margin: 0;
+        padding: 0;
+        margin: 0;
         background: none;
         appearance: none;
         border: none;
@@ -101,7 +104,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-blogcontent {
     .k-sidebar {
       flex-basis: 35%;
@@ -113,7 +116,6 @@
       }
 
       .k-productcard {
-        
       }
     }
 

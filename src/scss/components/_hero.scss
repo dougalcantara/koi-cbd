@@ -8,8 +8,9 @@
 
     .k-hero--text {
       padding-bottom: 4em;
-  
-      h1, h2 {
+
+      h1,
+      h2 {
         margin: 0;
       }
     }
@@ -45,7 +46,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-hero {
     &--action {
       display: flex;
@@ -54,18 +55,18 @@
 
       .k-button {
         flex-basis: 50%;
-        margin-right: .5em;
-        
+        margin-right: 0.5em;
+
         &:last-child {
           margin: 0;
-          margin-left: .5em;
+          margin-left: 0.5em;
         }
       }
     }
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-hero {
     &--center {
       text-align: center;
@@ -87,7 +88,7 @@
 
     &--bigtext {
       margin-top: 2em;
-  
+
       h1,
       .k-headline--fake {
         font-size: 155%;
@@ -96,7 +97,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-hero {
     &--default {
       .k-inner {
@@ -106,7 +107,7 @@
   }
 }
 
-@media(min-width: $bp-xxl) {
+@media (min-width: $bp-xxl) {
   .k-hero {
     &--default {
       .k-inner {

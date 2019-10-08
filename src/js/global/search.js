@@ -19,7 +19,9 @@ $searchTrigger.click(function() {
 $searchModalForm.submit(function(e) {
   e.preventDefault();
 
-  const searchVal = $(this).find('input[type="text"]').val();
+  const searchVal = $(this)
+    .find('input[type="text"]')
+    .val();
 
   window.location.href = `${window.SITE_GLOBALS.root}?s=${searchVal}`;
 });

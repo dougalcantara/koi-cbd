@@ -11,12 +11,10 @@ defined( 'ABSPATH' ) || exit;
 
 do_action('k_before_first_section');
 
-do_action( 'woocommerce_before_cart' ); ?>
+do_action('woocommerce_before_cart');
+?>
 
 <section class="k-cart k-block k-block--md">
-  <!-- <div class="k-inner k-inner--xl">
-    <h1 class="k-headline k-headline--md">Your Cart</h1>
-  </div> -->
   <div class="k-inner k-inner--xl">
 
     <div class="k-cart--main">
@@ -80,7 +78,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                     <?php
                     }
                     ?>
-                    <p class="k-upcase k-cart-remove-item" data-cart-item-key="<?php echo $cart_item_key; ?>">Remove</p>
+                    <p class="k-upcase k-cart-remove-item k-fakelink k-accent-text" data-cart-item-key="<?php echo $cart_item_key; ?>">Remove</p>
                     <?php
                     // backorder notification
                     if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
@@ -94,13 +92,12 @@ do_action( 'woocommerce_before_cart' ); ?>
                   if ($_product->is_sold_individually()) {
                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                   } else { ?>
-                    <!-- <label for="<?php echo 'cart['.$cart_item_key.'][qty]'; ?>">Quantity:</label> -->
                     <div class="k-productform--quantity">
                       <button class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button>
                       <input
-                        id="<?php echo 'cart['.$cart_item_key.'][qty]'; ?>"
+                        id="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         type="number"
-                        name="<?php echo 'cart['.$cart_item_key.'][qty]'; ?>"
+                        name="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         value="<?php echo $cart_item['quantity'] ?>"
                         min="0"
                         max="10"
@@ -117,10 +114,6 @@ do_action( 'woocommerce_before_cart' ); ?>
                     if ($_product->get_type() != 'bundle') { ?>
                       <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
                     <?php
-                    } else {
-                      // var_dump(wc_get_product($_product->get_id()));
-                      ?>
-                    <?php
                     }
                     ?>
                   </div>
@@ -131,9 +124,11 @@ do_action( 'woocommerce_before_cart' ); ?>
             }
           }
         ?>
+
           <div class="k-cart--actions">
-            <span id="k-cart-remove-all">Empty Cart</span>
+            <span id="k-cart-remove-all" class="k-upcase k-fakelink"><span>X &nbsp;</span> Empty Cart</span>
           </div>
+
           <div class="k-cart--item k-cart--meta">
           <?php if (wc_coupons_enabled()) { ?>
 

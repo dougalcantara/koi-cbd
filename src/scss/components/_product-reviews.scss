@@ -54,7 +54,7 @@
       }
 
       .k-arrow {
-        margin-right: .5em;
+        margin-right: 0.5em;
       }
 
       &:first-child {
@@ -64,7 +64,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-productreviews {
     .k-inner {
       display: flex;

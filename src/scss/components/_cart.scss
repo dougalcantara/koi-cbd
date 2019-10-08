@@ -1,8 +1,5 @@
 .k-cart {
   background: $bg-gray;
-  // & > .k-inner {
-    
-  // }
 
   &--meta {
     input {
@@ -23,7 +20,7 @@
     &__actions {
       .k-button {
         width: 100%;
-        
+
         &:first-child {
           margin-bottom: 1em;
         }
@@ -103,7 +100,7 @@
 
     &__price {
       align-self: flex-end;
-      margin-bottom: .75em;
+      margin-bottom: 0.75em;
 
       .k-bigtext {
         margin: 0;
@@ -134,7 +131,7 @@
       width: 100%;
 
       &--primary {
-        margin-bottom: .5em;
+        margin-bottom: 0.5em;
       }
     }
 
@@ -146,9 +143,21 @@
       }
     }
   }
+
+  &--actions {
+    margin-top: 2em;
+    padding-left: 10%;
+
+    span {
+      span {
+        color: red;
+        font-weight: 700;
+      }
+    }
+  }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-cart {
     &--item {
       &__title,
@@ -159,7 +168,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-cart {
     & > .k-inner {
       @include clearfix();
@@ -226,7 +235,7 @@
   }
 }
 
-@media(min-width: $bp-xxl) {
+@media (min-width: $bp-xxl) {
   .k-cart {
     &--main {
       width: 70%;

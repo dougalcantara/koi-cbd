@@ -19,7 +19,7 @@ function toggleNavDrawer() {
 
 function doHeaderOffsets() {
   if (window.innerWidth < 767) {
-    $nav.css({top: headerHeight()});
+    $nav.css({ top: headerHeight() });
   } else {
     $nav.removeAttr('style');
   }
@@ -44,5 +44,5 @@ let interval;
 
 $navTrigger.click(toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));
-window.addEventListener('scroll', () => didScroll = true);
+window.addEventListener('scroll', () => (didScroll = true));
 document.addEventListener('DOMContentLoaded', doHeaderOffsets);

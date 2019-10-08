@@ -53,7 +53,7 @@ $padding-lg: 15.625em;
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-block {
     &--md {
       padding: $padding-sm 0;
@@ -77,7 +77,7 @@ $padding-lg: 15.625em;
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-block {
     &--md {
       padding: $padding-md 0;

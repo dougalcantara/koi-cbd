@@ -75,7 +75,8 @@
 
     ul {
       list-style-type: none;
-      padding: 0; margin: 0;
+      padding: 0;
+      margin: 0;
     }
   }
 
@@ -95,7 +96,7 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-footer {
     &--links {
       text-align: left;
@@ -108,7 +109,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-footer {
     &--top .k-inner {
       flex-flow: row nowrap;
@@ -139,7 +140,7 @@
       flex-basis: 50%;
       display: flex;
       justify-content: space-between;
-      
+
       &__item {
         flex-basis: 31%;
       }

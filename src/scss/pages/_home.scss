@@ -32,7 +32,8 @@
       }
 
       .k-cornerimg {
-        bottom: -2.5em; right: -10%;
+        bottom: -2.5em;
+        right: -10%;
         width: 40%;
       }
     }
@@ -50,7 +51,8 @@
     }
 
     .k-cornerimg {
-      bottom: -2.5em; right: -10%;
+      bottom: -2.5em;
+      right: -10%;
       width: 50%;
     }
   }
@@ -74,7 +76,8 @@
     }
 
     .k-cornerimg {
-      bottom: -2.5em; right: -25%;
+      bottom: -2.5em;
+      right: -25%;
       width: 50%;
     }
   }
@@ -104,13 +107,14 @@
     }
 
     .k-cornerimg {
-      bottom: -2.5em; right: -10%;
+      bottom: -2.5em;
+      right: -10%;
       width: 40%;
     }
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-overview {
     &--item {
       margin-bottom: 0;
@@ -167,7 +171,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-overview {
     &--intro {
       &__text {
@@ -202,7 +206,7 @@
   }
 }
 
-@media(min-width: $bp-max) {
+@media (min-width: $bp-max) {
   .k-overview {
     &--intro {
       &__text {

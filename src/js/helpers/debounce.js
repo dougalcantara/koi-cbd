@@ -5,4 +5,4 @@ export default (cb, interval, duration = 250) => {
     clearInterval(interval);
     cb();
   }, 250);
-}
+};

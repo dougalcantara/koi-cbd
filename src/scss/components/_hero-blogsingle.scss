@@ -6,7 +6,7 @@
     display: block;
     content: '';
     background: $black;
-    opacity: .25;
+    opacity: 0.25;
   }
 
   & > .k-inner {
@@ -31,7 +31,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-hero--blogsingle {
     .k-hero {
       &--main {
@@ -63,7 +63,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-hero--blogsingle {
     .k-hero {
       &--main {

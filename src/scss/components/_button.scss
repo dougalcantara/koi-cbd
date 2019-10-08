@@ -3,12 +3,11 @@
   display: block;
   color: $true-white;
   padding: 1.25em 1.15em;
-  border-radius: .4em;
+  border-radius: 0.4em;
   text-align: center;
   border: 1px solid;
-  transition: background 1s $ease-out-circ,
-              color 1s $ease-out-circ,
-              border-color 1s $ease-out-circ;
+  transition: background 1s $ease-out-circ, color 1s $ease-out-circ,
+    border-color 1s $ease-out-circ;
 
   &:hover {
     cursor: pointer;
@@ -53,7 +52,7 @@
   }
 }
 
-@media(min-width: $bp-sm) {
+@media (min-width: $bp-sm) {
   .k-button {
     padding: 1.25em 2em;
     display: inline-block;

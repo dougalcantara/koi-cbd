@@ -35,11 +35,11 @@ function goToCategoryListing() {
 }
 
 function setInitialBlogCategory() {
-  const selectedCategory = new URLSearchParams(window.location.search).get('category');
+  const selectedCategory = new URLSearchParams(window.location.search).get(
+    'category'
+  );
   const $optionEls = $blogFilterBy.find('option');
-  const slugifiedOptions = [
-    ...$optionEls
-  ].map(({ value }) => slugify(value));
+  const slugifiedOptions = [...$optionEls].map(({ value }) => slugify(value));
 
   slugifiedOptions.forEach((option, idx) => {
     if (option == selectedCategory) {

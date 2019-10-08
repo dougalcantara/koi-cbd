@@ -1,4 +1,6 @@
-const triggers = document.querySelectorAll('.k-productdetails--accordion__trigger');
+const triggers = document.querySelectorAll(
+  '.k-productdetails--accordion__trigger'
+);
 
 function handleDrawerState(clickedElement) {
   if (!triggers || !clickedElement) return;
@@ -17,7 +19,11 @@ function handleDrawerState(clickedElement) {
   }
 }
 
-triggers.forEach(trigger => trigger.addEventListener('click', () => handleDrawerState(trigger)));
+triggers.forEach(trigger =>
+  trigger.addEventListener('click', () => handleDrawerState(trigger))
+);
 
 // set the first one to be open by default
-document.addEventListener('DOMContentLoaded', () => handleDrawerState(triggers[0]));
+document.addEventListener('DOMContentLoaded', () =>
+  handleDrawerState(triggers[0])
+);

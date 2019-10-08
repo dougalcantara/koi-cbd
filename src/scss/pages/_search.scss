@@ -1,9 +1,8 @@
 .k-searchresults {
-
   &--item {
     text-align: center;
     border-bottom: 1px solid #ddd;
-    
+
     &__liner {
       padding: 2em 0 4em 0;
     }
@@ -18,17 +17,17 @@
 
     ul {
       list-style-type: none;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
     }
 
     li {
       display: inline-block;
     }
-
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-searchresults {
     &--item {
       text-align: left;

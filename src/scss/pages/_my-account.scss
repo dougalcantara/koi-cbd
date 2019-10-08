@@ -24,15 +24,16 @@
       position: relative;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
+    input[type='text'],
+    input[type='email'],
+    input[type='password'] {
       & + label {
         position: absolute;
-        top: 1em; left: 0;
+        top: 1em;
+        left: 0;
         font-weight: 400;
         color: $accent-text;
-        transition: transform .2s $ease-out-circ;
+        transition: transform 0.2s $ease-out-circ;
       }
 
       &:focus {
@@ -44,7 +45,7 @@
       }
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       display: inline-block;
       vertical-align: middle;
 
@@ -73,7 +74,7 @@
   &--sidebar__liner {
     padding: 2em;
     background: $true-white;
-    border-radius: .33em;
+    border-radius: 0.33em;
   }
 
   &--sidebar {
@@ -90,7 +91,8 @@
 
     ul {
       list-style-type: none;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
     }
 
     li {
@@ -108,7 +110,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-login {
     .k-columns {
       display: flex;

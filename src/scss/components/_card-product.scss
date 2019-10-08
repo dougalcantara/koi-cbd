@@ -5,7 +5,7 @@
 
     &--liner {
       padding-bottom: 100%;
-    } 
+    }
   }
 
   &--title {
@@ -27,7 +27,7 @@
 
     .k-button {
       display: block;
-      
+
       &:hover {
         color: $true-white !important;
       }
@@ -43,10 +43,12 @@
 
     ul {
       position: absolute;
-      top: 0; left: 50%;
+      top: 0;
+      left: 50%;
       transform: translateX(-50%);
       list-style-type: none;
-      padding: 0; margin: 0;
+      padding: 0;
+      margin: 0;
     }
 
     li {

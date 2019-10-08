@@ -2,7 +2,8 @@
   background: $bg-gray;
 
   #ship-to-different-address {
-    input, span {
+    input,
+    span {
       display: inline-block;
     }
 
@@ -29,12 +30,12 @@
   #billing {
     &_first_name_field,
     &_last_name_field {
-      
     }
   }
 
   .k-checkout--shipping__header {
-    input, label {
+    input,
+    label {
       min-width: auto;
       display: inline-block;
       margin: 0;
@@ -58,7 +59,7 @@
   .shipping_address {
     height: 0;
     overflow: hidden;
-    transition: height .4s $ease-out-quart;
+    transition: height 0.4s $ease-out-quart;
   }
 }
 
@@ -81,7 +82,7 @@
   }
 }
 
-@media(min-width: $bp-lg) {
+@media (min-width: $bp-lg) {
   .k-checkout {
     .k-form--columns {
       @include clearfix();

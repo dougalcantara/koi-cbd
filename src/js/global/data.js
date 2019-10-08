@@ -1,52 +1,56 @@
-import axios from 'axios'
-import products from '../../../yotpoProducts'
+import axios from 'axios';
+import products from '../../../yotpoProducts';
 
-const BASE_URL = `https://api.yotpo.com`
-const APP_ID = `MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG`
+const BASE_URL = `https://api.yotpo.com`;
+const APP_ID = `MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG`;
 
-const hasProductId = [...document.querySelectorAll('[data-yotpo-product-id]')]
+const hasProductId = [...document.querySelectorAll('[data-yotpo-product-id]')];
 
 async function getSingleReview(id) {
-  return axios.get(`${BASE_URL}/v1/widget/${APP_ID}/products/${id}/reviews.json`)
+  return axios.get(
+    `${BASE_URL}/v1/widget/${APP_ID}/products/${id}/reviews.json`
+  );
 }
 
 function fetchRequiredProductReviews() {
-  window.yotpoProductReviews = window.yotpoProductReviews || []
+  window.yotpoProductReviews = window.yotpoProductReviews || [];
 
   hasProductId.forEach(async element => {
-    const id = element.dataset.yotpoProductId
-    
-    const { data } = await getSingleReview(id)
+    const id = element.dataset.yotpoProductId;
 
-    const { response } = data
+    const { data } = await getSingleReview(id);
 
-    window.yotpoProductReviews.push(response)
+    const { response } = data;
 
-    insertReviewData(element, response)
+    window.yotpoProductReviews.push(response);
+
+    insertReviewData(element, response);
   });
 }
 
 function insertReviewData(element, data) {
-  const totalReviewsTarget = element.querySelector('.k-productcard--numreviews')
-  const avgReviewTarget = element.querySelector('.k-productcard--reviewavg')
+  const totalReviewsTarget = element.querySelector(
+    '.k-productcard--numreviews'
+  );
+  const avgReviewTarget = element.querySelector('.k-productcard--reviewavg');
 
   if (totalReviewsTarget) {
-    totalReviewsTarget.innerHTML = data.reviews.length
+    totalReviewsTarget.innerHTML = data.reviews.length;
   }
 
-  avgReviewTarget.innerHTML = data.bottomline.average_score.toFixed(1)
+  avgReviewTarget.innerHTML = data.bottomline.average_score.toFixed(1);
 }
 
 function createProductMap() {
-  window.yotpoProductMap = products.map(({name, external_product_id}) => ({
+  window.yotpoProductMap = products.map(({ name, external_product_id }) => ({
     name,
     external_product_id,
-  }))
+  }));
 }
 
 function globalDataQueue() {
-  createProductMap()
-  fetchRequiredProductReviews()
+  createProductMap();
+  fetchRequiredProductReviews();
 }
 
-document.addEventListener('DOMContentLoaded', globalDataQueue)
+document.addEventListener('DOMContentLoaded', globalDataQueue);

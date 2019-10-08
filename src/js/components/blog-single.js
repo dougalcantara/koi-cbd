@@ -13,7 +13,7 @@ function setTravelDist() {
   if ($win.width() < breakpoints.md) return;
 
   $sidebar.height($content.outerHeight());
-  $sidebarSticky.css({ top: `calc(${offset}px + 2em)`});
+  $sidebarSticky.css({ top: `calc(${offset}px + 2em)` });
 }
 
 $doc.ready(setTravelDist);
