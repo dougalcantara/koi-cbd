@@ -1,7 +1,5 @@
 import AjaxCart from './ajax-cart';
-import { $doc, $backdrop } from './selectors';
-
-const url = `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`;
+import { $doc, $backdrop, $cartModal } from './selectors';
 
 const $addToCart = $('.k-add-to-cart');
 const $addItemToBundle = $('.k-productform--select-bundled-item');
@@ -11,9 +9,10 @@ const $removeItemFromCart = $('.k-cart-remove-item');
 const $removeAll = $('#k-cart-remove-all');
 const $decrementCartItem = $('.k-reduce');
 const $incrementCartItem = $('.k-increase');
-const $cartModal = $('.k-modal--cart');
+const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const cartModalOpen = () => $cartModal.hasClass('k-modal--open');
 
+// this is broken, need some way to show that a user has something in their cart
 function updateCartStatus(cartItems) {
   let numInCart = 0;
 
@@ -33,6 +32,47 @@ function updateCartStatus(cartItems) {
     $cartNum.text(0);
     $cartNum.removeClass('k-has-value');
   }
+}
+
+async function addSingleItemToCart(e) {
+  e.preventDefault();
+
+  const $t = $(this);
+  const productId = $t.data('product-id');
+  const quantity = parseInt($('#k-num-to-add').val());
+
+  $t.attr('disabled', true);
+  $backdrop.addClass('active');
+  $cartModal.addClass('k-modal--open');
+
+  const { cart_items: cartItems } = await AjaxCart.addItem(productId, quantity);
+
+  (async function handleCartModal() {
+    const {
+      expanded_products: expandedProducts,
+    } = await AjaxCart.getCartItems();
+
+    console.log(expandedProducts);
+
+    const cartItemsArr = Object.values(cartItems);
+
+    expandedProducts.forEach((product, idx) => {
+      $cartItemsTarget.append(/*html*/ `
+        <div className="k-ajaxcart--item">
+          <div className="k-ajaxcart--item__liner">
+            <img src="${product.thumbnail_url}" alt="" style="width: 50px;"/>
+            <h3>${product.name}&nbsp;<span>x ${cartItemsArr[idx].quantity}</span></h3>
+          </div>
+        </div>
+      `);
+    });
+
+    $cartModal.addClass('k-modal--loaded');
+  })();
+
+  $t.attr('disabled', false);
+
+  updateCartStatus(Object.values(cartItems));
 }
 
 async function addBundleToCart(e) {
@@ -94,22 +134,6 @@ async function addBundleToCart(e) {
   updateCartStatus(transaction);
 }
 
-async function addSingleItemToCart(e) {
-  e.preventDefault();
-
-  const $t = $(this);
-  const productId = $t.data('product-id');
-  const quantity = parseInt($('#k-num-to-add').val());
-
-  $t.attr('disabled', true);
-
-  const transaction = await AjaxCart.addItem(productId, quantity);
-
-  $t.attr('disabled', false);
-
-  updateCartStatus(transaction);
-}
-
 function addItemToBundle() {
   const t = $(this);
   const maxItems = t.data('max-items');
@@ -149,7 +173,7 @@ async function incrementCartItem(e) {
 $doc.ready(async function() {
   const itemsInCart = await AjaxCart.getCartItems();
 
-  updateCartStatus(itemsInCart);
+  updateCartStatus(Object.values(itemsInCart.cart_items));
 });
 
 $decrementCartItem.click(decrementCartItem);

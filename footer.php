@@ -31,13 +31,18 @@ $root = get_template_directory_uri();
       <div class="k-modal--content">
 
         <div class="k-modal--placeholder">
-          <h2 class="k-headline k-headline--sm">Adding to cart...</h2>
+          <p class="k-upcase">Adding to cart...</p>
         </div>
 
         <div class="k-modal--cartcontent k-ajaxcart">
           <div class="k-ajaxcart--content">
-            <h2 class="k-headline k-headline--sm">Your cart</h2>
+
+            <p class="k-upcase">Your cart:</p>
             
+            <div id="k-ajaxcart-cartitems">
+              <!-- Cart items get populated in here -->
+            </div>
+
           </div>
         </div>
 

@@ -21,7 +21,7 @@ AjaxCart.getCartItems = async function() {
   await _makeRequest({
     method: 'GET',
     data: { action: 'k_get_cart' },
-    onComplete: cartItems => (AjaxCart.items = Object.values(cartItems)),
+    onComplete: cartItems => (AjaxCart.items = cartItems),
   });
 
   return this.items;

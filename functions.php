@@ -94,7 +94,27 @@ add_action('wp_ajax_nopriv_add_bundle', 'k_ajax_add_bundle_to_cart');
  * no args
  */
 function k_ajax_get_cart() {
-  wp_send_json(WC()->cart->get_cart());
+  $cart_items = WC()->cart->get_cart();
+  $response = array();
+  $expanded = array();
+
+  foreach($cart_items as $cart_item) {
+    $product = wc_get_product($cart_item['product_id']);
+
+    // if (wc_pb_is_bundled_cart_item($cart_item)) {
+    //   continue;
+    // }
+    
+    $_product = $product->get_data();
+    $_product['thumbnail_url'] = wp_get_attachment_image_url($product->get_image_id(), 'small');
+
+    array_push($expanded, $_product);
+  }
+
+  $response['cart_items'] = $cart_items;
+  $response['expanded_products'] = $expanded;
+
+  wp_send_json($response);
   
   die();
 }
