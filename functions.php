@@ -100,18 +100,23 @@ function k_ajax_get_cart() {
 
   foreach($cart_items as $cart_item) {
     $product = wc_get_product($cart_item['product_id']);
-
-    // if (wc_pb_is_bundled_cart_item($cart_item)) {
-    //   continue;
-    // }
+    $product_data = $product->get_data();
     
-    $_product = $product->get_data();
-    $_product['thumbnail_url'] = wp_get_attachment_image_url($product->get_image_id(), 'small');
+    $_product = array(
+      'name' => $product_data['name'],
+      'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id(), 'small'),
+      'quantity' => $cart_item['quantity'],
+      'price' => $product->get_price(),
+      'is_bundle' => wc_pb_is_bundle_container_cart_item($cart_item),
+      'is_bundled_item' => wc_pb_is_bundled_cart_item($cart_item),
+    );
 
     array_push($expanded, $_product);
   }
 
+  // some AJAX fn's need the actual cart items, which have a different shape/schema than the actual products they represent
   $response['cart_items'] = $cart_items;
+  // and other fn's need more granular product data
   $response['expanded_products'] = $expanded;
 
   wp_send_json($response);

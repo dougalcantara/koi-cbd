@@ -1,5 +1,5 @@
 import AjaxCart from './ajax-cart';
-import { $doc, $backdrop, $cartModal } from './selectors';
+import { $win, $doc, $body, $backdrop, $cartModal } from './selectors';
 
 const $addToCart = $('.k-add-to-cart');
 const $addItemToBundle = $('.k-productform--select-bundled-item');
@@ -10,9 +10,9 @@ const $removeAll = $('#k-cart-remove-all');
 const $decrementCartItem = $('.k-reduce');
 const $incrementCartItem = $('.k-increase');
 const $cartItemsTarget = $('#k-ajaxcart-cartitems');
+const $ajaxCartClose = $('.k-ajaxcart--close');
 const cartModalOpen = () => $cartModal.hasClass('k-modal--open');
 
-// this is broken, need some way to show that a user has something in their cart
 function updateCartStatus(cartItems) {
   let numInCart = 0;
 
@@ -34,6 +34,34 @@ function updateCartStatus(cartItems) {
   }
 }
 
+async function handleCartModal(cartItems) {
+  const { expanded_products: expandedProducts } = await AjaxCart.getCartItems();
+
+  const cartItemsArr = Object.values(cartItems);
+
+  expandedProducts.forEach(product => {
+    const isBundledItem = product.is_bundled_item;
+
+    if (isBundledItem) return;
+
+    const quantity = product.is_bundle ? '1' : product.quantity;
+    const totalPrice = (product.price * quantity).toFixed(2);
+
+    $cartItemsTarget.append(/*html*/ `
+      <div class="k-ajaxcart--item">
+        <div class="k-ajaxcart--item__liner">
+          <img src="${product.thumbnail_url}" alt="" />
+          <h3>${product.name}</h3>
+          <p>Quantity: ${quantity}</p>
+          <p class="k-bigtext">$${totalPrice}</p>
+        </div>
+      </div>
+    `);
+  });
+
+  $cartModal.addClass('k-modal--loaded');
+}
+
 async function addSingleItemToCart(e) {
   e.preventDefault();
 
@@ -44,31 +72,14 @@ async function addSingleItemToCart(e) {
   $t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartModal.addClass('k-modal--open');
+  $body.css({
+    position: 'fixed',
+    top: $win.scrollTop(),
+  });
 
   const { cart_items: cartItems } = await AjaxCart.addItem(productId, quantity);
 
-  (async function handleCartModal() {
-    const {
-      expanded_products: expandedProducts,
-    } = await AjaxCart.getCartItems();
-
-    console.log(expandedProducts);
-
-    const cartItemsArr = Object.values(cartItems);
-
-    expandedProducts.forEach((product, idx) => {
-      $cartItemsTarget.append(/*html*/ `
-        <div className="k-ajaxcart--item">
-          <div className="k-ajaxcart--item__liner">
-            <img src="${product.thumbnail_url}" alt="" style="width: 50px;"/>
-            <h3>${product.name}&nbsp;<span>x ${cartItemsArr[idx].quantity}</span></h3>
-          </div>
-        </div>
-      `);
-    });
-
-    $cartModal.addClass('k-modal--loaded');
-  })();
+  await handleCartModal(cartItems);
 
   $t.attr('disabled', false);
 
@@ -90,6 +101,12 @@ async function addBundleToCart(e) {
   const maxItems = parseInt(parent.data('max-items'));
 
   t.attr('disabled', true);
+  $backdrop.addClass('active');
+  $cartModal.addClass('k-modal--open');
+  $body.css({
+    position: 'fixed',
+    top: $win.scrollTop(),
+  });
 
   if (
     selectedChildItems.length > maxItems ||
@@ -122,16 +139,18 @@ async function addBundleToCart(e) {
     return selections;
   };
 
-  const transaction = await AjaxCart.addBundle(
+  const { cart_items: cartItems } = await AjaxCart.addBundle(
     productId,
     getUserBundleSelections(),
     minItems,
     maxItems
   );
 
+  await handleCartModal(cartItems);
+
   t.attr('disabled', false);
 
-  updateCartStatus(transaction);
+  updateCartStatus(Object.values(cartItems));
 }
 
 function addItemToBundle() {
@@ -195,3 +214,8 @@ $removeAll.click(async function() {
 $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
 $addItemToBundle.click(addItemToBundle);
+$ajaxCartClose.click(function() {
+  $backdrop.removeClass('active');
+  $cartModal.removeClass('k-modal--open k-modal--loaded');
+  $body.removeAttr('style');
+});
