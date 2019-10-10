@@ -206,6 +206,10 @@
     * {
       margin: 0;
     }
+
+    & > p {
+      margin-bottom: 1em;
+    }
   }
 
   &--item {
@@ -253,6 +257,10 @@
       text-align: right;
     }
   }
+}
+
+#k-ajaxcart-cartitems {
+  border-top: 1px solid #ddd;
 }
 
 @media (min-width: $bp-sm) {

@@ -41,16 +41,20 @@
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
             <div class="k-productform--item k-productform--quantity">
-              <button id="k-reduce" class="k-reduce k-no-reload" type="button">-</button>
+              <button id="k-reduce" class="" type="button">-</button>
               <input id="k-num-to-add" type="number" value="1" max="10" min="1" step="1" />
-              <button id="k-increase" class="k-increase k-no-reload" type="button">+</button>
+              <button id="k-increase" class="" type="button">+</button>
             </div>
           <?php
           }
           ?>
 
             <div class="k-productform--item k-productform--submit">
+              <?php
+                $out_of_stock = $product->get_stock_status() == 'outofstock'
+              ?>
               <button
+                
                 type="submit"
                 class="
                   k-button
@@ -59,22 +63,27 @@
                   echo $product_wc_type == 'bundle' ? 'k-add-to-cart--bundle' : 'k-add-to-cart';
                   ?>
                 "
-              <?php
-              if ($product_wc_type == 'simple') { ?>
-                data-product-id="<?php echo $product_id; ?>"
-              <?php
-              }
-
-              if ($product_wc_type == 'bundle') { ?>
-                data-bundle-id="<?php echo $product_id; ?>"
-              <?php
-              } else { // this will get populated by JS since it's based off the selected variation (strength) ?>
-                data-product-id=""
-              <?php
-              }
-              ?>
+                <?php
+                if ($out_of_stock) : ?> disabled
+                <?php
+                endif;
+                if ($product_wc_type == 'simple') : ?> data-product-id="<?php echo $product_id; ?>"
+                <?php
+                endif;
+                if ($product_wc_type == 'bundle') : ?> data-bundle-id="<?php echo $product_id; ?>"
+                <?php
+                else : ?> data-product-id=""
+                <?php
+                endif;
+                ?>
               >
-                Buy Now &rarr;
+                <?php
+                if ($out_of_stock) : ?> Out Of Stock
+                <?php
+                else : ?> Add To Cart
+                <?php
+                endif;
+                ?>
               </button>
             </div>
 

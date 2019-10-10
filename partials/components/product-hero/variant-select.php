@@ -26,15 +26,26 @@ foreach($product->get_available_variations() as $i => $variant) {
       k-productform--variantselect
       <?php
         echo $out_of_stock ? 'k-out-of-stock' : NULL;
-        echo $has_quantity_attributes ? ' has-badge' : NULL;
+        echo $has_quantity_attributes ? ' has-quantity' : NULL;
       ?>
     "
   >
   <?php
   if ($has_quantity_attributes) : ?>
-    <div class="k-productform--variantselect__badge k-badge">
+    <div class="k-productform--variantselect__badge k-badge k-badge--quantity">
       <div class="k-badge--liner">
         <span><?php echo $attributes['attribute_quantity']; ?></span>
+      </div>
+    </div>
+  <?php
+  endif;
+  ?>
+
+  <?php
+  if ($out_of_stock) : ?>
+    <div class="k-productform--variantselect__badge k-badge k-badge--outofstock">
+      <div class="k-badge--liner">
+        <span>Out Of Stock</span>
       </div>
     </div>
   <?php
@@ -45,7 +56,6 @@ foreach($product->get_available_variations() as $i => $variant) {
       name="variant-select"
       id="<?php echo $this_attribute.$i; ?>"
       value="<?php echo $this_attribute; ?>"
-      <?php if ($i == 0) { ?> checked <?php } ?>
     />
     <label
       for="<?php echo $this_attribute.$i; ?>"

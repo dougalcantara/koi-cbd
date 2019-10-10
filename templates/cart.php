@@ -92,7 +92,7 @@ do_action('woocommerce_before_cart');
                   if ($_product->is_sold_individually()) {
                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                   } else { ?>
-                    <div class="k-productform--quantity">
+                    <div class="k-cart--quantity">
                       <button class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button>
                       <input
                         id="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"

@@ -33,6 +33,15 @@
 }
 
 .k-productform {
+  button[disabled] {
+    background: transparent;
+    color: $black;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
   &--liner {
     display: flex;
     flex-flow: row wrap;
@@ -126,12 +135,17 @@
     display: block;
     margin-bottom: 0.5em;
 
-    &.has-badge {
+    &.k-out-of-stock,
+    &.has-quantity {
       margin-top: 1.5em;
 
       .k-productform--varianttoggle {
         padding-top: 1em;
       }
+    }
+
+    &.k-out-of-stock {
+      pointer-events: none;
     }
 
     &:hover {
@@ -140,25 +154,45 @@
 
     .k-badge {
       position: absolute;
-      top: -1em;
-      right: -0.5em;
       z-index: 2;
       color: $true-white;
 
       &--liner {
         position: relative;
-        width: 2em;
-        height: 2em;
-        background: $primary;
-        border-radius: 50%;
         padding: 0.25em 1em;
       }
 
-      span {
-        position: absolute;
-        top: 50%;
+      &--quantity {
+        top: -1em;
+        right: -0.5em;
+
+        .k-badge--liner {
+          width: 2em;
+          height: 2em;
+          background: $primary;
+          border-radius: 50%;
+        }
+
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &--outofstock {
+        top: -0.85em;
+        z-index: 1;
         left: 50%;
-        transform: translate(-50%, -50%);
+        width: 100%;
+        transform: translateX(-50%);
+
+        .k-badge--liner {
+          background: $highlight;
+          font-size: 75%;
+          border-radius: 0.25em;
+        }
       }
     }
   }
@@ -187,8 +221,8 @@
       outline: none;
     }
 
-    .k-reduce,
-    .k-increase {
+    #k-reduce,
+    #k-increase {
       position: absolute;
       top: 50%;
       left: 0.5em;
@@ -203,7 +237,7 @@
       }
     }
 
-    .k-increase {
+    #k-increase {
       right: 0.5em;
       left: auto;
     }
@@ -373,8 +407,7 @@
         padding: 1em 0;
 
         .k-productform--bundleselect__variant {
-          flex-basis: 23.5%;
-          margin-bottom: 0;
+          flex-basis: 48.5%;
         }
       }
     }
@@ -386,11 +419,12 @@
     &--variants {
       display: flex;
       justify-content: space-between;
-      flex-flow: row nowrap;
+      flex-flow: row wrap;
+      align-items: stretch;
     }
 
     &--variantselect {
-      flex-basis: 23.5%;
+      flex-basis: 48.5%;
     }
 
     &--quantity,
@@ -481,7 +515,7 @@
 
   .k-productform {
     &--variantselect {
-      flex-basis: 22.5%;
+      // flex-basis: 22.5%;
     }
   }
 }

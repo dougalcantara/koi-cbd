@@ -1,8 +1,8 @@
 import { $doc } from '../global/selectors';
 
 const $productHeroCarousel = $('.k-producthero--gallery');
-const $variantToggles = $(
-  '.k-productform--variants .k-productform--varianttoggle'
+const $variantSelects = $(
+  '.k-productform--variants .k-productform--variantselect'
 );
 const $productForm = $('.k-productform');
 const $priceTarget = $('.k-productform--pricetarget');
@@ -14,7 +14,7 @@ const $quantity = $('#k-num-to-add');
 
 let flkty;
 
-$increment.click(function(e) {
+$increment.click(function increment(e) {
   e.preventDefault();
 
   let oldQ = parseInt($quantity.val());
@@ -40,8 +40,8 @@ $decrement.click(function(e) {
   }
 });
 
-$variantToggles.click(function() {
-  const $t = $(this);
+$variantSelects.click(function() {
+  const $t = $(this).find('.k-productform--varianttoggle');
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
 
@@ -84,7 +84,7 @@ $doc.ready(function() {
     imagesLoaded: true,
   });
 
-  $variantToggles.each(function() {
+  $variantSelects.each(function() {
     const $t = $(this);
 
     if (

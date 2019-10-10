@@ -30,26 +30,28 @@
         $allowed_variations = $bundled_item->get_data()['allowed_variations'];
         
         foreach($allowed_variations as $idx => $variant) {
-          $wc_variant = wc_get_product($variant);
-          $price = $wc_variant->get_price();
-          $variant_id = $wc_variant->get_id();
-          $attributes = $wc_variant->get_attributes();
+          $_variant = wc_get_product($variant);
+          $price = $_variant->get_price();
+          $variant_id = $_variant->get_id();
+          $attributes = $_variant->get_attributes();
+          $this_attribute = reset($attributes);
         ?>
           <div class="k-productform--bundleselect__variant">
             <input
               type="radio"
               id="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
-              value="<?php echo $attributes['strength']; ?>"
+              name="<?php echo $bundled_item_key; ?>"
+              value="<?php echo $this_attribute; ?>"
               data-variant-id="<?php echo $variant_id; ?>"
-              data-variant-strength="<?php echo $attributes['strength']; ?>"
+              data-variant-strength="<?php echo $this_attribute; ?>"
             />
             <label
               for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
               class="k-productform--varianttoggle"
               data-variant-price="<?php echo $price; ?>"
-              data-variant-strength="<?php echo 'strength|'.$attributes['strength']; ?>"
+              data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
             >
-              <span><?php echo $attributes['strength']; ?></span>
+              <span><?php echo $this_attribute; ?></span>
             </label>
           </div>
           <?php

@@ -28,6 +28,46 @@
     }
   }
 
+  &--quantity {
+    position: relative;
+    margin-top: 0.5em;
+
+    input[type='number'] {
+      appearance: none;
+      width: 100%;
+      text-align: center;
+      font-weight: 500;
+      font-weight: 500;
+      padding: 1.25em 3em;
+      border: 1px solid $bg-dark;
+      border-radius: 0.25em;
+      box-shadow: none;
+      background: $true-white;
+      outline: none;
+    }
+
+    .k-reduce,
+    .k-increase {
+      position: absolute;
+      top: 50%;
+      left: 0.5em;
+      transform: translateY(-50%);
+      appearance: none;
+      background: none;
+      border: none;
+      font-weight: 500;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .k-increase {
+      right: 0.5em;
+      left: auto;
+    }
+  }
+
   &--titlerow {
     display: none;
 
