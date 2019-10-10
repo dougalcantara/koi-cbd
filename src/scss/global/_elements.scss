@@ -56,8 +56,10 @@
 
 #k-cartnum {
   position: absolute;
-  top: -1.15em;
-  left: 50%;
+  // top: -1.15em;
+  // left: 50%;
+  top: 33%;
+  right: 2em;
   line-height: 0;
   font-size: 75%;
   color: $true-white;
@@ -223,6 +225,14 @@
         stroke: $bg-dark;
       }
     }
+  }
+}
+
+@media (min-width: $bp-md) {
+  #k-cartnum {
+    top: -1.15em;
+    left: 50%;
+    right: auto;
   }
 }
 

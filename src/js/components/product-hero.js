@@ -4,6 +4,7 @@ const $productHeroCarousel = $('.k-producthero--gallery');
 const $variantToggles = $(
   '.k-productform--variants .k-productform--varianttoggle'
 );
+const $productForm = $('.k-productform');
 const $priceTarget = $('.k-productform--pricetarget');
 const $bundledItemSelects = $('.k-productform--select-bundled-item');
 const $addToCartTrigger = $('.k-productform .k-add-to-cart');
