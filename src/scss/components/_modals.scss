@@ -117,6 +117,7 @@
     background: none;
     border: none;
     transform: translateY(-50%);
+    padding-right: 0;
 
     &:hover {
       cursor: pointer;
@@ -125,6 +126,12 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .k-modal--close {
+    top: -3em;
+    right: 0;
+    color: $true-white;
   }
 }
 

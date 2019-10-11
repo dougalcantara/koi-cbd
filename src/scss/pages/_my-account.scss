@@ -1,5 +1,14 @@
 .k-login {
   background: $bg-gray;
+  position: relative;
+
+  &--bgimg {
+    @include fill-parent();
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
 
   h2 span {
     font-family: $body-font;
@@ -9,6 +18,9 @@
   }
 
   .k-columns {
+    position: relative;
+    z-index: 2;
+
     &--col {
       background: $true-white;
       padding: 1em;

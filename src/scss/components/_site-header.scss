@@ -153,6 +153,7 @@
       transform: translateY(-50%);
       text-align: left;
       background: transparent;
+      pointer-events: none;
 
       &__content {
         padding: 0;
@@ -172,6 +173,7 @@
         display: inline-block;
         margin-bottom: 0;
         margin-right: 0.75em;
+        pointer-events: all;
       }
 
       a {

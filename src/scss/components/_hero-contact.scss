@@ -1,0 +1,66 @@
+.k-hero--contact {
+  .k-hero {
+    &--main {
+      padding: $padding-sm 0;
+
+      * {
+        margin: 0;
+      }
+    }
+
+    &--title {
+      .k-headline {
+        margin: 1em 0;
+      }
+    }
+  }
+
+  .k-preheading {
+    color: $highlight;
+  }
+}
+
+@media (min-width: $bp-lg) {
+  .k-hero--contact {
+    .k-hero {
+      &--main {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        flex-flow: row nowrap;
+        padding: $padding-md 0 $padding-xs;
+      }
+
+      &--title {
+        flex-basis: 50%;
+        margin-right: 3%;
+      }
+
+      &--title {
+        .k-headline {
+          margin: 0.5em 0 0 0;
+          line-height: 0.9;
+        }
+      }
+
+      &--body {
+        font-size: 115%;
+        flex-basis: 35%;
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .k-hero--contact {
+    .k-hero {
+      &--main {
+        padding: $padding-lg 0 $padding-xs;
+      }
+
+      &--body {
+        max-width: 22em;
+      }
+    }
+  }
+}

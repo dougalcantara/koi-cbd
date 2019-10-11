@@ -76,10 +76,12 @@ do_action('k_before_first_section');
 
             <span>Sign Up for the Koi CBD Newsletter</span>
 
-            <form class="k-form">
+            <form class="k-form" data-hs-form-id="eae9de54-3f3d-46f7-a523-5e504254f49f">
               <input type="email" name="email" id="koi-blog-newsletter-signup" />
               <label for="koi-blog-newsletter-signup">Email Address</label>
               <button type="submit">&rarr;</button>
+
+              <div class="k-form--message"><p>Got it, thanks!</p></div>
             </form>
 
           </div>

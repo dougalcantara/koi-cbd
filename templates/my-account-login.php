@@ -15,6 +15,7 @@ if (is_user_logged_in()) {
 ?>
 
 <section class="woocommerce-MyAccount-content k-block k-block--md k-login">
+	<div class="k-login--bgimg" style="background-image: url(<?php echo $root . '/dist/img/generic-beach.jpg' ?>)"></div>
 	<div class="k-inner k-inner--md">
 	<?php
 		do_action('woocommerce_before_customer_login_form'); ?>

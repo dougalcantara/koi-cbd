@@ -1,0 +1,38 @@
+.k-hero--aboutus {
+  background: none;
+}
+
+.k-twoup-text {
+  background: $bg-gray;
+
+  .k-headline {
+    margin-top: 0;
+  }
+
+  .k-bigtext {
+    font-size: 140%;
+  }
+
+  .k-twoup-imagerow {
+    img {
+      max-width: 100px;
+      width: 30%;
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: $bp-md) {
+  .k-twoup-text {
+    & > .k-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+
+    &--title,
+    &--body {
+      flex-basis: 48.5%;
+    }
+  }
+}

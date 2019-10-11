@@ -3,6 +3,12 @@ form {
     font-size: 2em;
   }
 
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
   label,
   input,
   textarea,

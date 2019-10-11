@@ -4,6 +4,7 @@ import './global/cart-actions';
 import './global/search';
 import './global/forms';
 import './global/ajax-cart';
+import './global/form-submissions';
 
 import './components/site-header';
 import './components/promo-slider';
@@ -16,3 +17,4 @@ import './components/product-reviews';
 import './components/product-video';
 import './components/blog-single';
 import './components/checkout';
+import './components/contact';
