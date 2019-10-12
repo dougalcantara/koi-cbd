@@ -27,7 +27,7 @@ do_action('k_before_first_section');
   </div>
 </section>
 
-<section class="k-twoup-text k-block k-block--md">
+<section class="k-twoup-text k-block k-block--md k-half-padding--bottom">
   <div class="k-inner k-inner--md">
 
     <div class="k-twoup-text--title">
@@ -48,6 +48,79 @@ do_action('k_before_first_section');
 
   </div>
 </section>
+
+<section class="k-presspromo k-block k-block--md">
+  <div class="k-inner k-inner--md">
+  
+    <div class="k-presspromo--image">
+      <figure class="k-figure k-figure--rounded">
+        <div class="k-figure--liner">
+          <img src="<?php echo $root . '/dist/img/koi-man-running.jpg' ?>" alt="" class="k-figure--img">
+        </div>
+      </figure>
+    </div>
+
+    <div class="k-presspromo--main">
+
+      <div class="k-presspromo--title">
+        <h2 class="k-headline k-headline--sm">What's New With Koi</h2>
+      </div>
+
+      <div class="k-presspromo--cards">
+        <div class="k-presspromo--card">
+          <div class="k-presspromo--card__liner">
+            <span class="k-preheading">01</span>
+            <h3 class="k-headline k-headline--body">Press Releases & Announcements Headline Goes Here</h3>
+            <div class="k-presspromo--card__body k-rte-content">
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi quaerat quam dolores ab repellat.</p>
+            </div>
+            <div class="k-presspromo--card__action">
+              <a href="#0">&rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="k-presspromo--card">
+          <div class="k-presspromo--card__liner">
+            <span class="k-preheading">02</span>
+            <h3 class="k-headline k-headline--body">Press Releases & Announcements Headline Goes Here</h3>
+            <div class="k-presspromo--card__body k-rte-content">
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi quaerat quam dolores ab repellat.</p>
+            </div>
+            <div class="k-presspromo--card__action">
+              <a href="#0">&rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="k-presspromo--action">
+        <a href="#0" class="k-button k-button--dark">View All &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<?php
+get_template_part('partials/video-fullwidth');
+?>
+
+<section class="k-twoup-text k-block k-block--md k-half-padding--bottom">
+  <div class="k-inner k-inner--md">
+
+    <div class="k-twoup-text--title">
+      <h2 class="k-headline k-headline--sm">What Goes Into Creating The Highest Quality CBD?</h2>
+    </div>
+
+    <div class="k-twoup-text--body k-rte-content">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptates modi itaque repudiandae, suscipit soluta et facilis numquam quisquam quis tempore sint esse a aliquid! Lorem ipsum dolor sit amet.</p>
+      <p>Doloribus ipsum reiciendis libero adipisci veritatis, autem voluptatum est incidunt asperiores facere vel sit omnis quisquam quo? Optio, voluptatum fuga praesentium, non dolore eos assumenda soluta perferendis impedit, cupiditate laboriosam ab sit id. Laborum sunt, aliquam magni quod suscipit nam temporibus unde.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, commodi expedita voluptatem debitis dicta magni modi ut odio deserunt quaerat eum nesciunt impedit perferendis sint! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, accusantium.</p>
+    </div>
+
+  </div>
+</section>
+
 
 <?php
 get_footer();

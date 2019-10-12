@@ -22,6 +22,47 @@
   }
 }
 
+.k-presspromo {
+  background: $bg-gray;
+
+  &--image {
+    display: none;
+
+    .k-figure--liner {
+      padding-bottom: 67.17%;
+    }
+  }
+
+  &--title {
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  &--card {
+    margin-bottom: 2em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .k-preheading {
+      color: $highlight;
+      font-weight: 500;
+    }
+
+    &__body {
+      margin-bottom: 1em;
+    }
+
+    &__action {
+      a {
+        color: $accent-text;
+      }
+    }
+  }
+}
+
 @media (min-width: $bp-md) {
   .k-twoup-text {
     & > .k-inner {
@@ -33,6 +74,37 @@
     &--title,
     &--body {
       flex-basis: 48.5%;
+    }
+  }
+
+  .k-presspromo {
+    position: relative;
+
+    &--image {
+      display: block;
+      position: absolute;
+      width: 40%;
+      top: 0;
+      left: 0;
+    }
+
+    &--main {
+      width: 55%;
+      margin-left: 45%;
+    }
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .k-presspromo {
+    &--cards {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+
+    &--card {
+      flex-basis: 45%;
     }
   }
 }
