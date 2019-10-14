@@ -80,8 +80,6 @@ async function addSingleItemToCart(e) {
     expanded_products: expandedProducts,
   } = await AjaxCart.addItem(productId, quantity);
 
-  console.log(expandedProducts);
-
   handleCartModal(expandedProducts);
 
   $t.attr('disabled', false);

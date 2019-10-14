@@ -1,6 +1,6 @@
 const AjaxCart = {
   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
-  items: [],
+  cart: [],
 };
 
 async function _makeRequest({ method, data, onComplete }) {
@@ -21,14 +21,14 @@ AjaxCart.getCartItems = async function(cb) {
   await _makeRequest({
     method: 'GET',
     data: { action: 'k_get_cart' },
-    onComplete: cartItems => {
-      AjaxCart.items = cartItems;
+    onComplete: cart => {
+      AjaxCart.cart = cart;
 
-      if (cb) cb(this.items);
+      if (cb) cb(cart.expanded_products);
     },
   });
 
-  return this.items;
+  return this.cart;
 };
 
 AjaxCart.empty = async function() {
@@ -52,7 +52,7 @@ AjaxCart.removeItem = async function(key) {
   return this.getCartItems();
 };
 
-AjaxCart.addItem = async function(id, quantity) {
+AjaxCart.addItem = async function(id, quantity, cb) {
   await _makeRequest({
     method: 'POST',
     data: {
@@ -60,6 +60,7 @@ AjaxCart.addItem = async function(id, quantity) {
       product_id: id,
       quantity,
     },
+    onComplete: cb,
   });
 
   return this.getCartItems();
