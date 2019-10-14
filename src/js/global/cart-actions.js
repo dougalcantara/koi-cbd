@@ -35,11 +35,9 @@ function updateCartStatus(cartItems) {
 }
 
 async function handleCartModal(cartItems) {
-  const { expanded_products: expandedProducts } = await AjaxCart.getCartItems();
+  $cartItemsTarget.empty(); // handles duplicate items being added while still on the same page
 
-  const cartItemsArr = Object.values(cartItems);
-
-  expandedProducts.forEach(product => {
+  cartItems.forEach(product => {
     const isBundledItem = product.is_bundled_item;
 
     if (isBundledItem) return;
@@ -77,9 +75,14 @@ async function addSingleItemToCart(e) {
     top: $win.scrollTop(),
   });
 
-  const { cart_items: cartItems } = await AjaxCart.addItem(productId, quantity);
+  const {
+    cart_items: cartItems,
+    expanded_products: expandedProducts,
+  } = await AjaxCart.addItem(productId, quantity);
 
-  await handleCartModal(cartItems);
+  console.log(expandedProducts);
+
+  handleCartModal(expandedProducts);
 
   $t.attr('disabled', false);
 

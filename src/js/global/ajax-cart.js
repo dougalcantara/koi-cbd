@@ -17,11 +17,15 @@ async function _makeRequest({ method, data, onComplete }) {
   });
 }
 
-AjaxCart.getCartItems = async function() {
+AjaxCart.getCartItems = async function(cb) {
   await _makeRequest({
     method: 'GET',
     data: { action: 'k_get_cart' },
-    onComplete: cartItems => (AjaxCart.items = cartItems),
+    onComplete: cartItems => {
+      AjaxCart.items = cartItems;
+
+      if (cb) cb(this.items);
+    },
   });
 
   return this.items;
