@@ -34,7 +34,7 @@ function updateCartStatus(cartItems) {
   }
 }
 
-async function handleCartModal(cartItems) {
+function handleCartModal(cartItems) {
   $cartItemsTarget.empty(); // handles duplicate items being added while still on the same page
 
   cartItems.forEach(product => {
@@ -140,14 +140,17 @@ async function addBundleToCart(e) {
     return selections;
   };
 
-  const { cart_items: cartItems } = await AjaxCart.addBundle(
+  const {
+    cart_items: cartItems,
+    expanded_products: expandedProducts,
+  } = await AjaxCart.addBundle(
     productId,
     getUserBundleSelections(),
     minItems,
     maxItems
   );
 
-  await handleCartModal(cartItems);
+  handleCartModal(expandedProducts);
 
   t.attr('disabled', false);
 
