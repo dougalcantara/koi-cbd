@@ -26,7 +26,7 @@ $root = get_template_directory_uri();
     </div>
   </div>
 
-  <div class="k-modal k-modal--cart">
+  <!-- <div class="k-modal k-modal--cart">
     <div class="k-inner k-inner--sm">
       <div class="k-modal--scrollhint"><span>&larr;&nbsp;&nbsp;&nbsp;&rarr;</span></div>
       <div class="k-modal--content">
@@ -41,7 +41,6 @@ $root = get_template_directory_uri();
             <p class="k-upcase">Your cart:</p>
             
             <div id="k-ajaxcart-cartitems">
-              <!-- Cart items get populated in here -->
             </div>
 
           </div>
@@ -60,7 +59,11 @@ $root = get_template_directory_uri();
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <?php
+    get_template_part('partials/cart-sidebar');
+  ?>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>

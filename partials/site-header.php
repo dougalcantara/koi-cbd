@@ -59,7 +59,7 @@ $url = site_url();
           <li><a class="k-upcase" href="<?php echo $url; ?>/account">Account</a></li>
 
           <li class="k-header--cart">
-            <a href="<?php echo $url; ?>/cart">
+            <a id="k-carttoggle" href="#0">
               <i class="icon-bag"></i>
               <span id="k-cartnum" class="">0</span>
             </a>

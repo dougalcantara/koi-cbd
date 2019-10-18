@@ -5,4 +5,4 @@ export const $doc = $(document);
 export const $win = $(window);
 export const $getsHeaderMargin = $('#k-headermargin');
 export const $backdrop = $('#k-backdrop');
-export const $cartModal = $('.k-modal--cart');
+export const $cartSidebar = $('.k-cart-sidebar');
