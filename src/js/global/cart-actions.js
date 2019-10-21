@@ -1,5 +1,12 @@
 import AjaxCart from './ajax-cart';
-import { $win, $doc, $body, $backdrop, $cartSidebar } from './selectors';
+import {
+  $win,
+  $doc,
+  $body,
+  $header,
+  $backdrop,
+  $cartSidebar,
+} from './selectors';
 
 const $addToCart = $('.k-add-to-cart');
 const $addItemToBundle = $('.k-productform--select-bundled-item');
@@ -232,6 +239,10 @@ $cartSidebarClose.click(function() {
 });
 $cartSidebarToggle.click(function(e) {
   e.preventDefault();
+
+  if ($header.hasClass('is-open')) {
+    $header.removeClass('is-open');
+  }
 
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');

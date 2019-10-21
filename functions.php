@@ -100,6 +100,13 @@ function k_ajax_get_cart() {
 
   foreach($cart_items as $cart_item) {
     $product = wc_get_product($cart_item['product_id']);
+
+    if ($product->get_type() == 'variable') {
+      $product = wc_get_product($cart_item['variation_id']);
+    } else {
+      $product = wc_get_product($cart_item['product_id']);
+    }
+
     $product_data = $product->get_data();
     
     $_product = array(
