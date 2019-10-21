@@ -21,7 +21,7 @@ function k_article_card($args) {
       <a href="<?php echo $args['url']; ?>">
         <figure class="k-figure k-figure--rounded k-tilt">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $args['featured_image_url']; ?>" alt="">
+            <img class="k-figure--img" data-src="<?php echo $args['featured_image_url']; ?>" alt="">
           </div>
         </figure>
       </a>

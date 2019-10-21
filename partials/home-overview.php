@@ -26,9 +26,9 @@
       <div class="k-overview--intro__card">
         <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="" />
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="" />
           </div>
-          <img src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+          <img data-src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <h3 class="k-headline k-headline--xs">CBD Tinctures</h3>
         <div class="k-rte-content">
@@ -42,9 +42,9 @@
       <div class="k-overview--topicals__card">
         <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="" />
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="" />
           </div>
-          <img src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+          <img data-src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <h3 class="k-headline k-headline--xs">CBD Topicals</h3>
         <div class="k-rte-content">
@@ -58,7 +58,7 @@
       <div class="k-overview--pets__card">
         <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
           </div>
         </figure>
         <h3 class="k-headline k-headline--xs">CBD For Pets</h3>
@@ -73,9 +73,9 @@
       <div class="k-overview--edibles__card">
         <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-edibles-mainimg.jpg' ?>" alt="" />
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-edibles-mainimg.jpg' ?>" alt="" />
           </div>
-          <img src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+          <img data-src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <div class="k-overview--edibles__text">
           <h3 class="k-headline k-headline--xs">CBD Edibles</h3>
@@ -91,9 +91,9 @@
       <div class="k-overview--vape__card">
         <figure class="k-figure k-figure--rounded ">
           <div class="k-figure--liner">
-            <img class="k-figure--img" src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="" />
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="" />
           </div>
-          <img src="<?php echo $root.'/dist/img/koi-vape-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+          <img data-src="<?php echo $root.'/dist/img/koi-vape-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
         </figure>
         <div class="k-overview--vape__text">
           <h3 class="k-headline k-headline--xs">CBD Vape</h3>

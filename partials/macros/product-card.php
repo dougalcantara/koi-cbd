@@ -8,7 +8,7 @@ function k_product_card($args) {
 
       <figure class="k-figure">
         <div class="k-figure--liner">
-          <img class="k-figure--img" src="<?php echo $args['product_image_url']; ?>" alt="">
+          <img class="k-figure--img" data-src="<?php echo $args['product_image_url']; ?>" alt="">
         </div>
       </figure>
 
