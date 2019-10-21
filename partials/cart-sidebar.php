@@ -1,5 +1,6 @@
 <aside class="k-cart-sidebar">
   <div class="k-cart-sidebar__liner">
+    <p class="k-upcase k-cart-sidebar__title">Your Cart</p>
   
     <div class="k-cart-sidebar__content">
       <div id="k-ajaxcart-cartitems"></div>

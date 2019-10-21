@@ -51,7 +51,9 @@ function handleCartSidebar(cartItems) {
       <div class="k-cart-sidebar__item">
         <div class="k-cart-sidebar__item__liner">
           <img src="${product.thumbnail_url}" alt="" />
-          <h3>${product.name}</h3>
+          <h3>
+            <a href="${product.permalink}">${product.name}</a>
+          </h3>
           <p>Quantity: ${quantity}</p>
           <p class="k-bigtext">$${totalPrice}</p>
         </div>
@@ -86,7 +88,7 @@ async function addSingleItemToCart(e) {
 
   $t.attr('disabled', false);
 
-  updateCartStatus(Object.values(cartItems));
+  updateCartStatus(Object.values(cartItems), expandedProducts);
 }
 
 async function addBundleToCart(e) {
@@ -156,7 +158,7 @@ async function addBundleToCart(e) {
 
   t.attr('disabled', false);
 
-  updateCartStatus(Object.values(cartItems));
+  updateCartStatus(Object.values(cartItems), expandedProducts);
 }
 
 function addItemToBundle() {

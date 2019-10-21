@@ -104,6 +104,7 @@ function k_ajax_get_cart() {
     
     $_product = array(
       'name' => $product_data['name'],
+      'permalink' => $product->get_permalink(),
       'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id(), 'small'),
       'quantity' => $cart_item['quantity'],
       'price' => $product->get_price(),
