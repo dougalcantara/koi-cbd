@@ -1,24 +1,24 @@
-import AjaxCart from './ajax-cart';
+import AjaxCart from "./ajax-cart";
 import {
   $win,
   $doc,
   $body,
   $header,
   $backdrop,
-  $cartSidebar,
-} from './selectors';
+  $cartSidebar
+} from "./selectors";
 
-const $addToCart = $('.k-add-to-cart');
-const $addItemToBundle = $('.k-productform--select-bundled-item');
-const $addBundleToCart = $('.k-add-to-cart--bundle');
-const $cartNum = $('#k-cartnum');
-const $removeItemFromCart = $('.k-cart-remove-item');
-const $removeAll = $('#k-cart-remove-all');
-const $decrementCartItem = $('.k-reduce');
-const $incrementCartItem = $('.k-increase');
-const $cartItemsTarget = $('#k-ajaxcart-cartitems');
-const $cartSidebarToggle = $('#k-carttoggle');
-const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
+const $addToCart = $(".k-add-to-cart");
+const $addItemToBundle = $(".k-productform--select-bundled-item");
+const $addBundleToCart = $(".k-add-to-cart--bundle");
+const $cartNum = $("#k-cartnum");
+const $removeItemFromCart = $(".k-cart-remove-item");
+const $removeAll = $("#k-cart-remove-all");
+const $decrementCartItem = $(".k-reduce");
+const $incrementCartItem = $(".k-increase");
+const $cartItemsTarget = $("#k-ajaxcart-cartitems");
+const $cartSidebarToggle = $("#k-carttoggle");
+const $cartSidebarClose = $cartSidebar.find(".k-cart-sidebar__close");
 
 function updateCartStatus(cartItems, expandedProducts) {
   let numInCart = 0;
@@ -34,10 +34,10 @@ function updateCartStatus(cartItems, expandedProducts) {
 
   if (numInCart) {
     $cartNum.text(numInCart);
-    $cartNum.addClass('k-has-value');
+    $cartNum.addClass("k-has-value");
   } else {
     $cartNum.text(0);
-    $cartNum.removeClass('k-has-value');
+    $cartNum.removeClass("k-has-value");
   }
 
   handleCartSidebar(expandedProducts);
@@ -51,7 +51,7 @@ function handleCartSidebar(cartItems) {
 
     if (isBundledItem) return;
 
-    const quantity = product.is_bundle ? '1' : product.quantity;
+    const quantity = product.is_bundle ? "1" : product.quantity;
     const totalPrice = (product.price * quantity).toFixed(2);
 
     $cartItemsTarget.append(/*html*/ `
@@ -68,32 +68,32 @@ function handleCartSidebar(cartItems) {
     `);
   });
 
-  $cartSidebar.addClass('k-cart-sidebar--loaded');
+  $cartSidebar.addClass("k-cart-sidebar--loaded");
 }
 
 async function addSingleItemToCart(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const productId = $t.data('product-id');
-  const quantity = parseInt($('#k-num-to-add').val());
+  const productId = $t.data("product-id");
+  const quantity = parseInt($("#k-num-to-add").val());
 
-  $t.attr('disabled', true);
-  $backdrop.addClass('active');
-  $cartSidebar.addClass('k-cart-sidebar--open');
+  $t.attr("disabled", true);
+  $backdrop.addClass("active");
+  $cartSidebar.addClass("k-cart-sidebar--open");
   $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
+    position: "fixed",
+    top: $win.scrollTop()
   });
 
   const {
     cart_items: cartItems,
-    expanded_products: expandedProducts,
+    expanded_products: expandedProducts
   } = await AjaxCart.addItem(productId, quantity);
 
   handleCartSidebar(expandedProducts);
 
-  $t.attr('disabled', false);
+  $t.attr("disabled", false);
 
   updateCartStatus(Object.values(cartItems), expandedProducts);
 }
@@ -102,27 +102,31 @@ async function addBundleToCart(e) {
   e.preventDefault();
 
   const t = $(this);
-  const parent = t.closest('form');
-  const productId = parent.data('product-id');
-  const selectedChildItems = $(
-    [...parent.find('.k-productform--select-bundled-item')].filter(
-      item => item.checked
-    )
-  );
-  const minItems = parseInt(parent.data('min-items'));
-  const maxItems = parseInt(parent.data('max-items'));
+  const parent = t.closest("form");
+  const productId = parent.data("product-id");
+  const selectedChildItems = () => {
+    let selected = [];
 
-  t.attr('disabled', true);
-  $backdrop.addClass('active');
-  $cartSidebar.addClass('k-cart-sidebar--open');
+    $addItemToBundle.each((_, el) =>
+      el.checked ? selected.push($(el)) : null
+    );
+
+    return selected;
+  };
+  const minItems = parseInt(parent.data("min-items"));
+  const maxItems = parseInt(parent.data("max-items"));
+
+  t.attr("disabled", true);
+  $backdrop.addClass("active");
+  $cartSidebar.addClass("k-cart-sidebar--open");
   $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
+    position: "fixed",
+    top: $win.scrollTop()
   });
 
   if (
-    selectedChildItems.length > maxItems ||
-    selectedChildItems.length < minItems
+    selectedChildItems().length > maxItems ||
+    selectedChildItems().length < minItems
   ) {
     return alert(`Please select ${minItems} items`);
   }
@@ -130,21 +134,25 @@ async function addBundleToCart(e) {
   const getUserBundleSelections = function() {
     const selections = [];
 
-    selectedChildItems.each(function() {
-      const t = $(this);
-      const parentId = t.data('parent-id');
-      const bundledProductKey = t.data('bundled-product-key');
+    selectedChildItems().forEach(function(el) {
+      const t = $(el);
+      const parentId = t.data("parent-id");
+      const bundledProductKey = t.data("bundled-product-key");
       const variations = t.siblings().find('input[type="radio"]');
-      const selectedVariation = $([...variations].filter(item => item.checked));
+      const selectedVariation = () => {
+        let selected;
+        variations.each((_, el) => (el.checked ? (selected = el) : null));
+        return $(selected);
+      };
 
       selections.push({
         product_id: parentId,
         bundled_product_key: bundledProductKey,
         quantity: 1,
-        variation_id: selectedVariation.data('variant-id'),
+        variation_id: selectedVariation().data("variant-id"),
         attributes: {
-          strength: selectedVariation.data('variant-strength'),
-        },
+          strength: selectedVariation().data("variant-strength")
+        }
       });
     });
 
@@ -153,7 +161,7 @@ async function addBundleToCart(e) {
 
   const {
     cart_items: cartItems,
-    expanded_products: expandedProducts,
+    expanded_products: expandedProducts
   } = await AjaxCart.addBundle(
     productId,
     getUserBundleSelections(),
@@ -163,18 +171,24 @@ async function addBundleToCart(e) {
 
   handleCartSidebar(expandedProducts);
 
-  t.attr('disabled', false);
+  t.attr("disabled", false);
 
   updateCartStatus(Object.values(cartItems), expandedProducts);
 }
 
 function addItemToBundle() {
-  const t = $(this);
-  const maxItems = t.data('max-items');
-  const numSelected = [...$addItemToBundle].filter(item => item.checked).length;
+  let count = 0;
 
-  if (numSelected > maxItems) {
-    t.prop('checked', false);
+  const t = $(this);
+  const maxItems = t.data("max-items");
+  const numSelected = () => {
+    $addItemToBundle.each((_, el) => (el.checked ? count++ : null));
+    return count;
+  };
+
+  if (numSelected() > maxItems) {
+    count--; // because at this point it's been incremented 1 beyond the max
+    t.prop("checked", false);
     return alert(`Please select ${maxItems} items.`);
   }
 }
@@ -184,7 +198,7 @@ async function decrementCartItem(e) {
 
   const $t = $(this);
   const cartItemQuantity = parseInt($t.next().val());
-  const cartItemKey = $t.data('cart-item-key');
+  const cartItemKey = $t.data("cart-item-key");
 
   await AjaxCart.decrementCartItem(cartItemKey, cartItemQuantity);
 
@@ -196,7 +210,7 @@ async function incrementCartItem(e) {
 
   const $t = $(this);
   const cartItemQuantity = parseInt($t.prev().val());
-  const cartItemKey = $t.data('cart-item-key');
+  const cartItemKey = $t.data("cart-item-key");
 
   await AjaxCart.incrementCartItem(cartItemKey, cartItemQuantity);
 
@@ -207,7 +221,7 @@ async function incrementCartItem(e) {
 $doc.ready(async function() {
   const {
     cart_items: cartItems,
-    expanded_products: expandedProducts,
+    expanded_products: expandedProducts
   } = await AjaxCart.getCartItems();
 
   updateCartStatus(Object.values(cartItems), expandedProducts);
@@ -217,7 +231,7 @@ $decrementCartItem.click(decrementCartItem);
 $incrementCartItem.click(incrementCartItem);
 
 $removeItemFromCart.click(async function() {
-  const key = $(this).data('cart-item-key');
+  const key = $(this).data("cart-item-key");
 
   await AjaxCart.removeItem(key);
 
@@ -233,21 +247,21 @@ $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
 $addItemToBundle.click(addItemToBundle);
 $cartSidebarClose.click(function() {
-  $backdrop.removeClass('active');
-  $cartSidebar.removeClass('k-cart-sidebar--open k-cart-sidebar--loaded');
-  $body.removeAttr('style');
+  $backdrop.removeClass("active");
+  $cartSidebar.removeClass("k-cart-sidebar--open k-cart-sidebar--loaded");
+  $body.removeAttr("style");
 });
 $cartSidebarToggle.click(function(e) {
   e.preventDefault();
 
-  if ($header.hasClass('is-open')) {
-    $header.removeClass('is-open');
+  if ($header.hasClass("is-open")) {
+    $header.removeClass("is-open");
   }
 
-  $backdrop.addClass('active');
-  $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+  $backdrop.addClass("active");
+  $cartSidebar.addClass("k-cart-sidebar--open k-cart-sidebar--loaded");
   $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
+    position: "fixed",
+    top: $win.scrollTop()
   });
 });
