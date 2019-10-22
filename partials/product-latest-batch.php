@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="k-latestbatch--main">
+    <!-- <div class="k-latestbatch--main">
     <?php
     if ($all_variants) { ?>
       <nav class="k-latestbatch--tabs">
@@ -65,7 +65,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </section>

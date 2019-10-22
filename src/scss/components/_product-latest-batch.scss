@@ -1,8 +1,4 @@
 .k-latestbatch {
-  &--intro {
-    margin-bottom: 2em;
-  }
-
   &--title {
     .k-headline {
       margin: 0;
@@ -138,7 +134,6 @@
       display: flex;
       justify-content: space-between;
       flex-flow: row nowrap;
-      margin-bottom: 4em;
     }
 
     &--title,
@@ -207,7 +202,6 @@
   .k-latestbatch {
     &--intro {
       justify-content: flex-start;
-      margin-bottom: 6em;
     }
 
     &--title {
