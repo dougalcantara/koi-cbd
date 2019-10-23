@@ -5,7 +5,7 @@
 ?>
 
 <footer class="k-footer" role="contentinfo">
-  <div class="k-footer--bgimg" style="background-image: url(<?php echo $root.'/dist/img/koi-footer-bg.jpg'; ?>)"></div>
+  <div class="k-footer--bgimg" data-src="<?php echo $root.'/dist/img/koi-footer-bg.jpg'; ?>"></div>
   <div class="k-footer--top k-block k-block--md">
 
     <div class="k-inner k-inner--md">

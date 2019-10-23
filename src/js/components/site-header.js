@@ -25,7 +25,7 @@ function doHeaderOffsets() {
     $nav.removeAttr('style');
   }
 
-  $getsHeaderMargin.css({ 'margin-top': headerHeight() });
+  // $getsHeaderMargin.css({ 'margin-top': headerHeight() });
 }
 
 (function handleScroll() {

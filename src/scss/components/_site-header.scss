@@ -1,6 +1,6 @@
 .k-header {
-  position: fixed;
-  top: 0;
+  position: sticky;
+  top: -2.75em;
   width: 100%;
   z-index: 101;
   background: $true-white;

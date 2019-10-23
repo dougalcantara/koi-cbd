@@ -1,33 +1,32 @@
 .k-login {
-  background: $bg-gray;
   position: relative;
 
-  &--bgimg {
+  &__bgimg {
     @include fill-parent();
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 1;
+    display: none;
   }
 
-  h2 span {
-    font-family: $body-font;
-    font-size: 50%;
-    vertical-align: top;
-    margin-left: 1em;
-  }
-
-  .k-columns {
+  &__forms {
+    overflow: hidden;
     position: relative;
-    z-index: 2;
+  }
 
-    &--col {
-      background: $true-white;
-      padding: 1em;
+  &__form {
+    transition: opacity 0.4s $ease-out-circ, transform 0.4s $ease-out-circ,
+      height 0.4s $ease-out-circ;
+    transform: translateY(-100%);
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 
-      &:first-child {
-        margin-bottom: 2em;
-      }
+    &.is-visible {
+      opacity: 1;
+      height: auto;
+      transform: translateY(0);
     }
   }
 
@@ -39,6 +38,8 @@
     input[type='text'],
     input[type='email'],
     input[type='password'] {
+      border-radius: 0;
+
       & + label {
         position: absolute;
         top: 1em;

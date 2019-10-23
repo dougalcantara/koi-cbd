@@ -1,6 +1,27 @@
 .k-hero {
   position: relative;
 
+  #{headings()},
+  p {
+    color: $black;
+  }
+
+  &--loaded {
+    #{headings()},
+    p {
+      color: $true-white;
+    }
+  }
+
+  &--bgimg {
+    opacity: 0;
+    transition: opacity 1s $ease-out-circ;
+
+    &.lazyload--complete {
+      opacity: 1;
+    }
+  }
+
   &--default {
     .k-inner {
       padding: $padding-xs 0;

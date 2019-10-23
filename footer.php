@@ -7,7 +7,7 @@ $root = get_template_directory_uri();
   get_template_part('partials/site-footer');
   ?>
 
-  <div id="k-backdrop"></div>
+  <div id="k-backdrop" class="active"></div>
 
   <div class="k-modal k-modal--search">
     <div class="k-inner k-inner--sm">
@@ -34,5 +34,11 @@ $root = get_template_directory_uri();
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src="<?php echo $root.'/dist/js/magnetic.bundle.js'; ?>"></script>
+  <script type="text/javascript">
+    (function() {
+      var backdrop = document.querySelector('#k-backdrop');
+      backdrop.classList.remove('active');
+    })();
+  </script>
 </body>
 </html>

@@ -3,9 +3,7 @@
 ?>
 
 <section class="k-overview k-block k-block--lg">
-  <div class="k-overview--bgimg">
-    <?php get_template_part('partials/svg/koi-bg'); ?>
-  </div>
+  <div class="k-overview--bgimg" data-src="<?php echo $root . '/dist/misc/koi-bg.html #koi-bg' ?>"></div>
   <div class="k-inner k-inner--md">
 
     <div class="k-overview--intro k-overview--item">

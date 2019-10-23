@@ -24,16 +24,16 @@ $url = site_url();
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
                 <li><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
-                <li><a href="#0">CBD Wellness Shots</a></li>
+                <li><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
                 <li><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
-                <li><a href="<?php echo $url . '/cbd-vape-devices' ?>">CBD Vape Devices & Cartridges</a></li>
+                <li><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
                 <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
                 <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
                 <li><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
               </div>
             </ul>
           </li>
-          <li><a class="k-upcase" href="#0">CBD 101</a></li>
+          <li><a class="k-upcase" href="<?php echo $url . '/blog/?category=getting-started-with-cbd'; ?>">CBD 101</a></li>
           <li class="k-has-dropdown">
             <a class="k-upcase" href="#0">Resources</a>
             <ul class="k-dropdown">

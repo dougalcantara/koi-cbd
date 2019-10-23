@@ -15,20 +15,20 @@ if (is_user_logged_in()) {
 ?>
 
 <section class="woocommerce-MyAccount-content k-block k-block--md k-login">
-	<div class="k-login--bgimg" style="background-image: url(<?php echo $root . '/dist/img/generic-beach.jpg' ?>)"></div>
+	<div class="k-login__bgimg" style="background-image: url(<?php echo $root . '/dist/img/generic-beach.jpg' ?>)"></div>
 	<div class="k-inner k-inner--md">
 	<?php
 		do_action('woocommerce_before_customer_login_form'); ?>
 
 		<?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
 
-		<div class="k-columns u-columns col2-set" id="customer_login">
+		<div class="k-login__forms" id="customer_login">
 
-			<div class="k-columns--col u-column1 col-1">
-				<div class="k-columns--col__liner">
+			<div class="k-login__form k-login__form--default is-visible">
+				<div class="k-login__form__liner">
 			<?php endif; ?>
 
-					<h2><?php esc_html_e('Already Have An Account?', 'woocommerce'); ?></h2>
+					<h2><?php esc_html_e('Customer Login', 'woocommerce'); ?></h2>
 
 					<form class="woocommerce-form woocommerce-form-login login" method="post">
 
@@ -53,6 +53,7 @@ if (is_user_logged_in()) {
 						<div class="form-row">
 						<button type="submit" class="k-button k-button--primary woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
 						</div>
+						<p><a href="#0" class="k-toggle-register">New Customer? Click to Register</a></p>
 						<p class="woocommerce-LostPassword lost_password">
 							<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 						</p>
@@ -65,8 +66,8 @@ if (is_user_logged_in()) {
 				</div>
 			</div>
 
-			<div class="k-columns--col u-column2 col-2">
-				<div class="k-columns--col__liner">
+			<div class="k-login__form k-login__form--register">
+				<div class="k-login__form__liner">
 					<h2><?php esc_html_e('Register A New Account', 'woocommerce'); ?></h2>
 
 					<form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
@@ -103,6 +104,7 @@ if (is_user_logged_in()) {
 						<?php do_action( 'woocommerce_register_form' ); ?>
 
 						<p class="woocommerce-FormRow form-row">
+							<p><a href="#0" class="k-toggle-register">Already have an account?</a></p>
 							<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
 							<button type="submit" class="k-button k-button--primary woocommerce-Button button" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
 						</p>

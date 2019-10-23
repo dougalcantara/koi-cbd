@@ -4,7 +4,7 @@
 
 <section class="k-ctabanner">
   <div class="k-inner k-inner--xl">
-    <div class="k-ctabanner--bgimg" style="background-image: url(<?php echo $root.'/dist/img/koi-cta-bg.jpg'; ?>)"></div>
+    <div class="k-ctabanner--bgimg" data-src="<?php echo $root.'/dist/img/koi-cta-bg.jpg'; ?>"></div>
     
     <div class="k-inner k-inner--md">
       <div class="k-ctabanner--content k-block k-block--md">

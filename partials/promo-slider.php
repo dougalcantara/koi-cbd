@@ -15,7 +15,7 @@
     <?php
       foreach($slider_fields['products'] as $product_ref) {
         $product = get_post($product_ref['product']->ID);
-        $product_image = wp_get_attachment_image_src(get_post_thumbnail_id($product_ref['product']->ID), 'large');
+        $product_image = wp_get_attachment_image_src(get_post_thumbnail_id($product_ref['product']->ID), array(300, 300));
 
         $card_fields = array(
           'product_image_url' => $product_image[0],
