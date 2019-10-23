@@ -1,5 +1,5 @@
 <div class="koi-svg koi-leaf">
-  <div class="koi-svg--wrapper" style="padding-bottom: 155.35%;">
+  <div class="koi-svg--wrapper" style="padding-bottom: 131.73%;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.74 147.2">
       <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_1-2" data-name="Layer 1">

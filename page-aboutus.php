@@ -121,7 +121,8 @@ get_template_part('partials/video-fullwidth');
   </div>
 </section>
 
-
 <?php
+get_template_part('partials/koi-process');
+
 get_footer();
 ?>
