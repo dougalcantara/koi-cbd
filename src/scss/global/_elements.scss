@@ -18,6 +18,17 @@
   }
 }
 
+img[data-src] {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1s $ease-out-circ, transform 1s $ease-out-circ;
+
+  &.lazyload--complete {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .k-blog-breadcrumb {
   display: none; // just don't even show it on mobile
   text-align: right;

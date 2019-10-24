@@ -20,6 +20,8 @@ $slideSelectors.click(function() {
 });
 
 $doc.ready(function() {
+  if (!$carousel.length) return;
+
   flkty = new Flickity($carousel[0], {
     cellSelector: '.k-process__carousel__slide',
     pageDots: false,

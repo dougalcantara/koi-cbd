@@ -1,6 +1,6 @@
 .k-header {
   position: sticky;
-  top: -2.75em;
+  top: -2.75em; // actual value gets set by JS based on the height of the promo bar above
   width: 100%;
   z-index: 101;
   background: $true-white;
@@ -96,6 +96,7 @@
 
   &--logo {
     width: 3.5em;
+    transition: transform 0.4s $ease-out-circ;
 
     img {
       display: block;
@@ -158,6 +159,12 @@
 
 @media (min-width: $bp-md) {
   .k-header {
+    &--traveling {
+      .k-header--logo {
+        transform: scale(0.7);
+      }
+    }
+
     .k-has-dropdown {
       & > a span {
         display: none;

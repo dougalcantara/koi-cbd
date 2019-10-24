@@ -20,20 +20,24 @@ function checkInView(entries) {
   });
 }
 
-function lazyload(imageElement) {
-  const src = imageElement.getAttribute('data-src');
+function lazyload(element) {
+  const src = element.getAttribute('data-src');
+  const isAlreadyLoaded =
+    element.classList.contains('lazyload--progress') ||
+    element.classList.contains('lazyload--complete');
 
   /**
    * the data-src gets removed once lazyload is complete, so we can check
    * against this attribute to keep from doubling-up
    */
 
-  if (!src) return;
+  if (isAlreadyLoaded) return;
 
-  if (
-    imageElement.tagName === 'DIV' &&
-    imageElement.classList.contains('k-overview--bgimg')
-  ) {
+  const isBigNastySVG =
+    element.tagName === 'DIV' &&
+    element.classList.contains('k-overview--bgimg');
+
+  if (isBigNastySVG) {
     /**
      * There's a particularly nasty SVG on the homepage that is being used as a BG texture.
      * It's so nasty, that it makes the initial document request > 1MB *on it's own*.
@@ -41,34 +45,34 @@ function lazyload(imageElement) {
      * While loading it this way won't necessarily make the download any smaller, we won't
      * get penalized for total # of DOM Nodes, which was the case before this hack.
      */
-    const $el = $(imageElement);
+    const $el = $(element);
     $el.load(src);
+    $el.addClass('lazyload--progress lazyload--complete');
   } else {
     const img = new Image();
 
-    imageElement.classList.add('lazyload--progress');
+    element.classList.add('lazyload--progress');
 
     img.src = src;
     img.onload = () => {
-      if (imageElement.tagName === 'DIV') {
-        imageElement.setAttribute('style', `background-image: url(${src})`);
+      const isBgImg = element.tagName === 'DIV';
+      if (isBgImg) {
+        element.setAttribute('style', `background-image: url(${src})`);
       } else {
-        imageElement.setAttribute('src', src);
+        element.setAttribute('src', src);
       }
 
       // Lazy load hero images and alert the parent onComplete
-      const parent = imageElement.parentElement;
+      const parent = element.parentElement;
       if (parent.classList.contains('k-hero')) {
         parent.classList.add('k-hero--loaded');
       }
 
-      imageElement.classList.add('lazyload--complete');
+      element.classList.add('lazyload--complete');
 
       if (typeof onComplete === 'function') onComplete();
     };
   }
-
-  imageElement.removeAttribute('data-src');
 }
 
 $doc.ready(startWatcher(checkInView));

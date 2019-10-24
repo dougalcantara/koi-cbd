@@ -125,22 +125,16 @@
 
 @media (min-width: $bp-lg) {
   .k-login {
-    .k-columns {
-      display: flex;
-      justify-content: space-between;
+    &__bgimg {
+      display: block;
+    }
 
-      &--col {
-        padding: 4em 3em;
-        flex-basis: 45%;
-
-        &:first-child {
-          margin-bottom: 0;
-        }
-
-        .k-button {
-          min-width: 100%;
-        }
-      }
+    &__forms {
+      position: relative;
+      width: 50%;
+      z-index: 2;
+      background: $true-white;
+      padding: 3em 2em;
     }
   }
 
@@ -156,6 +150,14 @@
 
     &--main {
       flex-basis: 70%;
+    }
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .k-login {
+    &__forms {
+      width: 33%;
     }
   }
 }

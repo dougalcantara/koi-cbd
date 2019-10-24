@@ -2,6 +2,8 @@ import { $header, $getsHeaderMargin, $backdrop } from '../global/selectors';
 import debounce from '../helpers/debounce';
 
 const headerHeight = () => $header.outerHeight();
+const headerOffset = () => $header.find('.k-header--top').outerHeight();
+// const $headerMain = $header.find('.k-header--main');
 const $nav = $header.find('.k-header--nav');
 const $navTrigger = $('#k-nav-trigger');
 const $dropdownTriggers = $('.k-has-dropdown a');
@@ -25,12 +27,14 @@ function doHeaderOffsets() {
     $nav.removeAttr('style');
   }
 
+  $header.css({ top: -headerOffset() });
+
   // $getsHeaderMargin.css({ 'margin-top': headerHeight() });
 }
 
 (function handleScroll() {
   if (didScroll) {
-    if (window.pageYOffset) {
+    if (window.pageYOffset > headerOffset()) {
       $header.addClass('k-header--traveling');
     } else {
       $header.removeClass('k-header--traveling');

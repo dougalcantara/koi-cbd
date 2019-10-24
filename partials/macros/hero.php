@@ -4,6 +4,7 @@ function k_hero($args) {
   ob_start(); ?>
 
   <section class="k-hero k-hero--productlisting on-dark">
+    <div class="k-hero--bgimg" data-src="https://via.placeholder.com/1800x750"></div>
     <div class="k-inner k-inner--md">
 
       <div class="k-hero--content">

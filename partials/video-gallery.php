@@ -14,7 +14,7 @@
     <div class="k-videogallery--item k-videogallery--video has-play-button">
       <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
-          <img src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
+          <img data-src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
         </div>
       </figure>
       <?php
