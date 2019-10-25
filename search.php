@@ -24,9 +24,9 @@ do_action('k_before_first_section');
   <div class="k-inner k-inner--md">
   <?php
     global $wp_query;
-    $results = $wp_query->found_posts;
+    $posts = $wp_query->posts;
     
-    foreach($wp_query->posts as $key => $_post) {
+    foreach($posts as $key => $_post) {
       $is_product = get_post_type($_post) == 'product';
     
       if ($is_product) {

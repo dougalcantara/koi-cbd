@@ -18,7 +18,7 @@ function k_product_card($args) {
       </div>
 
       <div class="k-productcard--action">
-        <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Buy Now</a>
+        <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Shop Now</a>
       </div>
 
       <div class="k-productcard--reviews">
