@@ -123,6 +123,9 @@ get_template_part('partials/video-fullwidth');
 
 <?php
 get_template_part('partials/koi-process');
+get_template_part('partials/testimonial-slider');
+get_template_part('partials/resources-callout');
+include(locate_template('partials/promo-slider.php'));
 
 get_footer();
 ?>

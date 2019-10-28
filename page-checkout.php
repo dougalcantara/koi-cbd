@@ -53,11 +53,10 @@ do_action('k_before_first_section');
 
 		<?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
 
-		<h3 class="k-headline k-headline--sm" id="order_review_heading"><?php esc_html_e('Your order', 'woocommerce'); ?></h3>
-
 		<?php do_action('woocommerce_checkout_before_order_review'); ?>
 
 		<div id="order_review" class="woocommerce-checkout-review-order">
+			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 			<?php do_action('woocommerce_checkout_order_review'); ?>
 		</div>
 

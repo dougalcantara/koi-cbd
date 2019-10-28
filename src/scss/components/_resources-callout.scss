@@ -1,0 +1,63 @@
+.k-resourcescallout {
+  position: relative;
+
+  &:before,
+  &__bgimg {
+    @include fill-parent();
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    opacity: 0.5;
+    background: $black;
+    z-index: -1;
+  }
+
+  &__bgimg {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+
+  &__item {
+    margin-bottom: 3em;
+  }
+
+  &__description {
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    color: $highlight;
+  }
+
+  p {
+    color: $true-white;
+  }
+
+  a {
+    color: $primary;
+
+    &:hover {
+      color: $highlight !important;
+    }
+  }
+}
+
+@media (min-width: $bp-md) {
+  .k-resourcescallout {
+    &__content {
+      margin-left: 50%;
+    }
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .k-resourcescallout {
+    &__content {
+      margin-left: 70%;
+    }
+  }
+}

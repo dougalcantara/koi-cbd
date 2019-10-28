@@ -48,6 +48,18 @@
     &__item {
       display: inline-block;
 
+      .k-arrow {
+        &:hover {
+          cursor: default;
+
+          circle,
+          polyline,
+          line {
+            stroke: #cccccc;
+          }
+        }
+      }
+
       * {
         display: inline-block;
         vertical-align: middle;
