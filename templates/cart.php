@@ -6,17 +6,27 @@
   $cart = WC()->cart;
   $cart_acf = get_fields();
   $items_in_cart = $cart->get_cart();
+  $url = site_url();
 
 defined( 'ABSPATH' ) || exit;
 
 do_action('k_before_first_section');
 
 do_action('woocommerce_before_cart');
+
+if (sizeof($items_in_cart) == 0) { ?>
+  <section class="k-cart k-cart__noitems k-block k-block--md k-no-padding--bottom">
+    <div class="k-inner k-inner--md" style="text-align: center;">
+      <h2>Your cart is empty!</h2>
+      <a class="k-button k-button--primary" href="<?php echo $url; ?>">Start shopping &rarr;</a>
+    </div>
+  </section>
+<?php
+}
 ?>
 
 <section class="k-cart k-block k-block--md">
   <div class="k-inner k-inner--xl">
-
     <div class="k-cart--main">
 
       <div class="k-cart--titlerow">
