@@ -4,10 +4,9 @@ defined( 'ABSPATH' ) || exit;
 
 $root = get_template_directory_uri();
 $aboutus_acf = get_fields();
+$site_content = get_fields('option');
 
 get_header();
-
-do_action('k_before_first_section');
 ?>
 
 <section class="k-hero k-hero--productlisting k-hero--aboutus">
@@ -16,10 +15,10 @@ do_action('k_before_first_section');
 
     <div class="k-hero--content">
 
-      <h2 class="k-headline k-headline--md">We Believe In Helping People Live Better</h2>
+      <h2 class="k-headline k-headline--md"><?php echo $site_content['about_us_hero_headline']; ?></h2>
 
       <div class="k-rte-content">
-        <p>Nature gives us CBD. We simply harvest this gift to help people of all ages, interests, and needs experience its restorative properties.</p>
+        <p><?php echo $site_content['about_us_hero_body']; ?></p>
       </div>
 
     </div>
@@ -31,8 +30,8 @@ do_action('k_before_first_section');
   <div class="k-inner k-inner--md">
 
     <div class="k-twoup-text--title">
-      <h2 class="k-headline k-headline--md">Setting The CBD Quality Standard Since 2015</h2>
-      <p class="k-bigtext">Proud to Be Members Driving CBD Forward</p>
+      <h2 class="k-headline k-headline--md"><?php echo $site_content['trust_section_heading']; ?></h2>
+      <p class="k-bigtext"><?php echo $site_content['trust_section_subheading']; ?></p>
       <div class="k-twoup-imagerow">
       <img src="<?php echo $root . '/dist/img/us-hemp-roundtable-badge@2x.png'; ?>" alt="">
       <img src="<?php echo $root . '/dist/img/hia-member-badge@2x.png'; ?>" alt="">
@@ -41,9 +40,7 @@ do_action('k_before_first_section');
     </div>
 
     <div class="k-twoup-text--body k-rte-content">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptates modi itaque repudiandae, suscipit soluta et facilis numquam quisquam quis tempore sint esse a aliquid! Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ipsum reiciendis libero adipisci veritatis, autem voluptatum est incidunt asperiores facere vel sit omnis quisquam quo? Optio, voluptatum fuga praesentium, non dolore eos assumenda soluta perferendis impedit, cupiditate laboriosam ab sit id. Laborum sunt, aliquam magni quod suscipit nam temporibus unde.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, commodi expedita voluptatem debitis dicta magni modi ut odio deserunt quaerat eum nesciunt impedit perferendis sint! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, accusantium.</p>
+      <?php echo $site_content['trust_section_body']; ?>
     </div>
 
   </div>
@@ -63,7 +60,7 @@ do_action('k_before_first_section');
     <div class="k-presspromo--main">
 
       <div class="k-presspromo--title">
-        <h2 class="k-headline k-headline--sm">What's New With Koi</h2>
+        <h2 class="k-headline k-headline--sm"><?php echo $site_content['press_section_heading']; ?></h2>
       </div>
 
       <div class="k-presspromo--cards">
@@ -94,7 +91,7 @@ do_action('k_before_first_section');
       </div>
 
       <div class="k-presspromo--action">
-        <a href="#0" class="k-button k-button--dark">View All &rarr;</a>
+        <a href="<?php echo site_url() . '/blog?category=hot-off-the-press'; ?>" class="k-button k-button--dark">View All &rarr;</a>
       </div>
     </div>
 
@@ -109,13 +106,11 @@ get_template_part('partials/video-fullwidth');
   <div class="k-inner k-inner--md">
 
     <div class="k-twoup-text--title">
-      <h2 class="k-headline k-headline--sm">What Goes Into Creating The Highest Quality CBD?</h2>
+      <h2 class="k-headline k-headline--sm"><?php echo $site_content['our_process_section_heading']; ?></h2>
     </div>
 
     <div class="k-twoup-text--body k-rte-content">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptates modi itaque repudiandae, suscipit soluta et facilis numquam quisquam quis tempore sint esse a aliquid! Lorem ipsum dolor sit amet.</p>
-      <p>Doloribus ipsum reiciendis libero adipisci veritatis, autem voluptatum est incidunt asperiores facere vel sit omnis quisquam quo? Optio, voluptatum fuga praesentium, non dolore eos assumenda soluta perferendis impedit, cupiditate laboriosam ab sit id. Laborum sunt, aliquam magni quod suscipit nam temporibus unde.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, commodi expedita voluptatem debitis dicta magni modi ut odio deserunt quaerat eum nesciunt impedit perferendis sint! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, accusantium.</p>
+      <?php echo $site_content['our_process_section_body']; ?>
     </div>
 
   </div>
@@ -125,6 +120,12 @@ get_template_part('partials/video-fullwidth');
 get_template_part('partials/koi-process');
 get_template_part('partials/testimonial-slider');
 get_template_part('partials/resources-callout');
+
+$slider_fields = array(
+  'headline' => $site_content['about_us_featured_products_heading'],
+  'products' => $site_content['about_us_featured_products'],
+  'half_padding_top' => true,
+);
 include(locate_template('partials/promo-slider.php'));
 
 get_footer();

@@ -1,6 +1,22 @@
 <?php
 if (function_exists('acf_add_options_page')) {
-  acf_add_options_page('Site Content');
+	$parent = acf_add_options_page(array(
+		'page_title' 	=> 'Site Content',
+		'menu_title' 	=> 'Site Content',
+		'redirect' 		=> false
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Homepage',
+		'menu_title' 	=> 'Homepage',
+		'parent_slug' 	=> $parent['menu_slug'],
+  ));
+  
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'About Us',
+		'menu_title' 	=> 'About Us',
+		'parent_slug' 	=> $parent['menu_slug'],
+	));
 }
 
 // == begin AJAX fn's == //

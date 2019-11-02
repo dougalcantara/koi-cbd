@@ -45,7 +45,7 @@ $url = site_url();
           </li>
         </ul>
         <ul>
-          <li><a class="k-upcase" href="<?php echo $url; ?>/community">Community</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/#0">Community</a></li>
           <li class="k-has-dropdown">
             <a class="k-upcase" href="#0">About Us</a>
             <ul class="k-dropdown">

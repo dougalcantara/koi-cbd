@@ -12,13 +12,20 @@
           <span class="k-upcase">Koi CBD Products</span>
         </div>
         <div class="k-heading">
-          <h2 class="k-headline k-headline--md">Tinctures, Topicals, Edibles, Pets, Vapes & More.</h2>
+          <h2 class="k-headline k-headline--md">
+            <?php echo $overview_fields['headline']; ?>
+          </h2>
         </div>
         <div class="k-textbody">
-          <p>Welcome to the Awesome World of CBD.</p>
+          <p><?php echo $overview_fields['supporting_copy']; ?></p>
         </div>
         <div class="k-action">
-          <a href="<?php echo site_url().'/cbd-products'; ?>" class="k-button k-button--primary">Shop All CBD Products &nbsp; &rarr;</a>
+          <a
+            href="<?php echo $overview_fields['main_link']['url']; ?>"
+            class="k-button k-button--primary"
+          >
+            <?php echo $overview_fields['main_link']['title']; ?> &nbsp; &rarr;
+          </a>
         </div>
       </div>
       <div class="k-overview--intro__card">
@@ -30,7 +37,7 @@
         </figure>
         <h3 class="k-headline k-headline--xs">CBD Tinctures</h3>
         <div class="k-rte-content">
-          <p>Consume beneath your tongue, or add to your favorite recipes. Our all-natural CBD oils are available in 6 great-tasting flavors, 2 sizes, and 4 strengths. Contains 0% THC. Not for vaping.</p>
+          <p><?php echo $overview_fields['tinctures_copy']; ?></p>
           <a href="<?php echo site_url().'/cbd-tinctures'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
@@ -46,7 +53,7 @@
         </figure>
         <h3 class="k-headline k-headline--xs">CBD Topicals</h3>
         <div class="k-rte-content">
-          <p>Relax and rejuvenate with all-purpose CBD topicals. Perfect for calming inflammation, and promoting beautiful, naturally healthy skin.</p>
+          <p><?php echo $overview_fields['topicals_copy']; ?></p>
           <a href="<?php echo site_url().'/cbd-topicals'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
@@ -61,7 +68,7 @@
         </figure>
         <h3 class="k-headline k-headline--xs">CBD For Pets</h3>
         <div class="k-rte-content">
-          <p>Treat your furry friend to all-natural, non-GMO, non-psychoactive ingredients designed with one thing in mind&mdash;your pet's health.</p>
+          <p><?php echo $overview_fields['pets_copy']; ?></p>
           <a href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop Now &rarr;</a>
         </div>
       </div>
@@ -78,7 +85,7 @@
         <div class="k-overview--edibles__text">
           <h3 class="k-headline k-headline--xs">CBD Edibles</h3>
           <div class="k-rte-content">
-            <p>Delectable snacks that deliver a punch of fruit flavor while restoring balance, naturally. Available in 20-piece and 6-piece bags.</p>
+            <p><?php echo $overview_fields['edibles_copy']; ?></p>
             <a href="<?php echo site_url().'/cbd-edibles'; ?>">Shop Now &rarr;</a>
           </div>
         </div>
@@ -96,7 +103,7 @@
         <div class="k-overview--vape__text">
           <h3 class="k-headline k-headline--xs">CBD Vape</h3>
           <div class="k-rte-content">
-            <p>Enjoy an even distribution of CBD throughout your day. Vape them on their own or add to other e-liquids. Available in 7 awesome flavors.</p>
+            <p><?php echo $overview_fields['vape_copy']; ?></p>
             <a href="<?php echo site_url().'/cbd-vape'; ?>">Shop Now &rarr;</a>
           </div>
         </div>

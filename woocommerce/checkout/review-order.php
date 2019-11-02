@@ -50,17 +50,100 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 				}
 			}
+			
+			// Coupons
+			foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
+				<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+					<div class="product-name">
+						<?php echo wc_cart_totals_coupon_label( $coupon ); ?>
+					</div>
+					<div class="product-total">
+						<p class="k-bigtext">
+							<?php echo wc_cart_totals_coupon_html( $coupon ); ?>
+						</p>
+					</div>
+				</div>
+			<?php endforeach; 
+			
+			// Shipping
+			if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+			<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+				<div class="product-name">
+					Shipping
+				</div>
+				<div class="product-total">
+					<p class="k-bigtext">
+						<?php wc_cart_totals_shipping_html(); ?>
+					</p>
+				</div>
+			</div>
+			<?php endif; 
+			
+			// Fees
+			foreach ( WC()->cart->get_fees() as $fee ) : ?>
+				<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+					<div class="product-name">
+						<?php echo esc_html( $fee->name ); ?>
+					</div>
+					<div class="product-total">
+						<p class="k-bigtext">
+							<?php wc_cart_totals_fee_html( $fee ); ?>
+						</p>
+					</div>
+				</div>
+			<?php endforeach;
 
+			// Taxes
+			if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
+				<?php if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
+					<?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : ?>
+						<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+							<div class="product-name">
+								<?php echo esc_html( $tax->label ); ?>
+							</div>
+							<div class="product-total">
+								<p class="k-bigtext">
+									<?php echo wp_kses_post( $tax->formatted_amount ); ?>
+								</p>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php else : ?>
+					<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+						<div class="product-name">
+							<?php echo esc_html( WC()->countries->tax_or_vat() ); ?>
+						</div>
+						<div class="product-total">
+							<p class="k-bigtext">
+								<?php wc_cart_totals_taxes_total_html(); ?>
+							</p>
+						</div>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+
+			<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+				<div class="product-name">
+					<?php _e( 'Total', 'woocommerce' ); ?>
+				</div>
+				<div class="product-total">
+					<p class="k-bigtext">
+						<?php wc_cart_totals_order_total_html(); ?>
+					</p>
+				</div>
+			</div>
+
+			<?php
 			do_action( 'woocommerce_review_order_after_cart_contents' );
 			?>
 	</div>
 
 	<div class="k-review-order--meta">
-	
+		
 	</div>
 
 </div>
-<table class="shop_table woocommerce-checkout-review-order-table" style="display: none;">
+<!-- <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
@@ -150,4 +233,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
 	</tfoot>
-</table>
+</table> -->
