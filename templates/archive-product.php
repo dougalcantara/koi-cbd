@@ -29,7 +29,7 @@ do_action('k_before_first_section');
 $hero_fields = array(
   'preheading' => 'Koi CBD',
   'headline' => $product_category,
-  'body' => '<p>The easy and delicious supplement for more balanced days. Experience Koi CBD Tinctures in 6 great-tasting flavors, 2 sizes, and 4 strengths.</p>',
+  'body' => $page_fields['hero_supporting_copy'],
 );
 
 echo k_hero($hero_fields);

@@ -1,5 +1,6 @@
 <?php
 /* Template Name: 2019 All Products Page */
+$url = site_url();
 
 get_header();
 
@@ -13,7 +14,40 @@ echo k_hero(array(
 
 get_template_part('partials/components/randoms/breadcrumb');
 
-get_template_part('partials/home-overview');
+$taxonomy = 'product_cat';
+$orderby = 'name';  
+$show_count = 0;
+$pad_counts = 0;
+$hierarchical = 0;
+$title = '';  
+$empty = 0;
 
+$args = array(
+  'taxonomy' => $taxonomy,
+  'orderby' => $orderby,
+  'show_count' => $show_count,
+  'pad_counts' => $pad_counts,
+  'hierarchical' => $hierarchical,
+  'title_li' => $title,
+  'hide_empty' => $empty
+);
+
+$all_categories = get_categories($args);
+?>
+
+<section class="k-block k-block--md k-all-products k-no-padding--top">
+  <div class="k-inner k-inner--md">
+  <?php
+  foreach($all_categories as $product_cat) :
+    echo k_product_card(array(
+      'product_title' => $product_cat->name,
+      'product_short_description' => $product_cat->description,
+    ));
+  endforeach;
+  ?>
+  </div>
+</section>
+
+<?php
 get_footer();
 ?>

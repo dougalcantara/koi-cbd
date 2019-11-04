@@ -8,7 +8,7 @@ do_action('k_before_first_section');
 ?>
 
 <section class="k-hero--blogsingle on-dark">
-  <div class="k-hero--bgimg" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);"></div>
+  <div class="k-hero--bgimg" data-src="<?php echo get_the_post_thumbnail_url(); ?>"></div>
 
   <div class="k-inner k-inner--xl">
 
