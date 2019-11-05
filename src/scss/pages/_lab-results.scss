@@ -37,15 +37,7 @@
   }
 
   .k-latestbatch--results {
-    &__liner {
-      background-color: $true-white;
-      transition: background-color 0.4s $ease-out-circ;
-      border-bottom: 1px solid #dedede;
-
-      &:hover {
-        background-color: $bg-gray-light;
-      }
-    }
+    margin-bottom: 2em;
   }
 }
 
@@ -77,11 +69,6 @@
   .k-labresults {
     &__searchform {
       .k-form {
-        button[type='submit'] {
-          margin-top: 0.5em;
-          width: 100%;
-        }
-
         &__content {
           position: relative;
         }
@@ -100,6 +87,32 @@
           top: 0;
           right: 0;
           margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .k-labresults {
+    &__searchform {
+      .k-form {
+        button[type='submit'] {
+          right: 3.75em;
+        }
+      }
+    }
+
+    .k-latestbatch--results {
+      margin-bottom: 0;
+
+      &__liner {
+        background-color: $true-white;
+        transition: background-color 0.4s $ease-out-circ;
+        border-bottom: 1px solid #dedede;
+
+        &:hover {
+          background-color: $bg-gray-light;
         }
       }
     }

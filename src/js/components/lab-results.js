@@ -48,10 +48,10 @@ const fuseOpts = {
   distance: 100,
   maxPatternLength: 32,
   minMatchCharLength: 1,
-  keys: ['type', 'flavor', 'batchid'],
+  keys: ['type', 'flavor', 'batchid', 'variation'],
 };
 
-$resultsForm.submit(function(e) {
+function displayResults(e) {
   e.preventDefault();
 
   const $t = $(this);
@@ -99,4 +99,6 @@ $resultsForm.submit(function(e) {
       </div>
     `)
   );
-});
+}
+
+$resultsForm.submit(displayResults);
