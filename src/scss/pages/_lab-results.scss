@@ -1,0 +1,107 @@
+.k-hero--labresults {
+  .k-preheading {
+    display: block;
+    color: $highlight;
+    margin-bottom: 0.5em;
+  }
+
+  .k-hero {
+    &__main {
+      padding: $padding-sm 0;
+    }
+  }
+}
+
+.k-labresults {
+  &__searchform {
+    .k-preheading {
+      color: $highlight;
+    }
+
+    .k-form {
+      button[type='submit'] {
+        margin-top: 0.5em;
+        width: 100%;
+      }
+
+      input[type='text'] {
+        font-size: 200%;
+        font-family: $heading-font;
+        padding: 0.5em 0 0;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .k-latestbatch--results {
+    &__liner {
+      background-color: $true-white;
+      transition: background-color 0.4s $ease-out-circ;
+      border-bottom: 1px solid #dedede;
+
+      &:hover {
+        background-color: $bg-gray-light;
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-md) {
+  .k-hero--labresults {
+    .k-hero {
+      &__main {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding: $padding-lg 0 $padding-sm;
+      }
+
+      &__heading {
+        flex-basis: 40%;
+        margin-right: 10%;
+
+        .k-headline {
+          margin: 0;
+        }
+      }
+
+      &__body {
+        flex-basis: 30%;
+      }
+    }
+  }
+
+  .k-labresults {
+    &__searchform {
+      .k-form {
+        button[type='submit'] {
+          margin-top: 0.5em;
+          width: 100%;
+        }
+
+        &__content {
+          position: relative;
+        }
+
+        input[type='text'] {
+          max-width: 75%;
+          min-width: 75%;
+          font-size: 400%;
+          padding: 0.25em 0;
+          border: none;
+        }
+
+        button[type='submit'] {
+          width: auto;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

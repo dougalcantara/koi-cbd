@@ -13,24 +13,21 @@
       </div>
     </div>
 
-    <!-- <div class="k-latestbatch--main">
-    <?php
-    if ($all_variants) { ?>
+    <div class="k-latestbatch--main">
+      <?php if ($product_wc_type == 'variable') : ?>
       <nav class="k-latestbatch--tabs">
       <?php
-      $i = 0;
-      foreach($all_variants as $variant) { ?>
-        <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>">
-          <span><?php echo $variant['attributes']['attribute_strength']; ?></span>
-        </div>
-      <?php
-        $i++;
-      }
+      foreach($product->get_available_variations() as $i => $variant) :
+        $_variant = wc_get_product($variant['variation_id']);
+        $attributes = $_variant->get_variation_attributes();
+        $this_attribute = formatAttrName(reset($attributes));
       ?>
+        <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>">
+          <span><?php echo $this_attribute . ($attributes['attribute_quantity'] ? ' (' . $attributes['attribute_quantity'] . ')' : null); ?></span>
+        </div>
+      <?php endforeach; ?>
       </nav>
-    <?php
-    }
-    ?>
+      <?php endif; ?>
       <div class="k-latestbatch--results">
         <div class="k-latestbatch--results__liner">
 
@@ -65,7 +62,7 @@
 
         </div>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </section>

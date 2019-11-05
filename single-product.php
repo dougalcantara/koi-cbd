@@ -10,6 +10,16 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
+function formatAttrName($string) {
+  $arr = explode('-', $string);
+
+  foreach($arr as $idx => $str) {
+    $arr[$idx] = ucfirst($str);
+  }
+
+  return join(' ', $arr);
+}
+
 while (have_posts()) : the_post();
   $product_id = $product->get_id();
   $product_acf = get_fields();
