@@ -38,7 +38,7 @@ $url = site_url();
             <a class="k-upcase" href="#0">Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="#0">Lab Results</a></li>
+                <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
                 <li><a href="<?php echo $url . '/blog'; ?>">Blog</a></li>
               </div>
             </ul>

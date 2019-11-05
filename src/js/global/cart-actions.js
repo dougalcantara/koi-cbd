@@ -81,10 +81,6 @@ async function addSingleItemToCart(e) {
   $t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
-  $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
-  });
 
   const {
     cart_items: cartItems,
@@ -119,10 +115,6 @@ async function addBundleToCart(e) {
   t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
-  $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
-  });
 
   if (
     selectedChildItems().length > maxItems ||
@@ -260,8 +252,4 @@ $cartSidebarToggle.click(function(e) {
 
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
-  $body.css({
-    position: 'fixed',
-    top: $win.scrollTop(),
-  });
 });
