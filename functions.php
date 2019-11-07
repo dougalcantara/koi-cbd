@@ -1,23 +1,38 @@
 <?php
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
-		'page_title' 	=> 'Site Content',
-		'menu_title' 	=> 'Site Content',
-		'redirect' 		=> false
+		'page_title' => 'Site Content',
+		'menu_title' => 'Site Content',
+		'redirect' => false
 	));
 	
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Homepage',
-		'menu_title' 	=> 'Homepage',
-		'parent_slug' 	=> $parent['menu_slug'],
+		'page_title' => 'Homepage',
+		'menu_title' => 'Homepage',
+		'parent_slug' => $parent['menu_slug'],
   ));
   
   acf_add_options_sub_page(array(
-		'page_title' 	=> 'About Us',
-		'menu_title' 	=> 'About Us',
-		'parent_slug' 	=> $parent['menu_slug'],
+		'page_title' => 'About Us',
+		'menu_title' => 'About Us',
+		'parent_slug' => $parent['menu_slug'],
 	));
 }
+
+/**
+ * We need a custom implementation of the "Submit order --> order details page" user flow.
+ * 
+ * Tapping into this Woo hook lets us redirect to a custom "thank you" template once the 
+ * purchase method has been charged. This should not affect any email & automation workflows.
+ */
+function go_to_thank_you($order_id) {
+  WC()->cart->empty_cart(); // otherwise this doesn't happen
+
+  wp_redirect(site_url() . '/order-received', 301);
+
+  die();
+}
+add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
 
 // == begin AJAX fn's == //
 /**

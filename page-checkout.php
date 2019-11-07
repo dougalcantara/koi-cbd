@@ -67,8 +67,6 @@ do_action('k_before_first_section');
 		</form>
 	</div>
 </section>
-
-
 <?php
 get_footer();
 ?>

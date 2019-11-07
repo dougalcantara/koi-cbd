@@ -1,0 +1,47 @@
+.k-orderreceived {
+  &__head,
+  &__item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    & > div {
+      flex-basis: 50%;
+
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+
+    p,
+    h3 {
+      margin: 0;
+    }
+
+    a {
+      color: $primary;
+
+      &:hover {
+        color: $primary-dark !important;
+      }
+    }
+  }
+
+  &__head {
+    background: #dedede;
+    padding: 0.667em 1em;
+  }
+
+  &__item {
+    padding: 0.667em 1em;
+    border-bottom: 1px solid #dedede;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .k-bigtext {
+      font-size: 125%;
+    }
+  }
+}
