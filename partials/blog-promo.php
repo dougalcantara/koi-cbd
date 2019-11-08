@@ -2,15 +2,16 @@
   <div class="k-inner k-inner--md">
     <div class="k-promoslider--titlerow">
       <span class="k-upcase k-promoslider--titlerow__item">Keep Exploring</span>
-      <h2 class="k-headline k-headline--sm k-promoslider--titlerow__item">Read about <?php echo $product_category; ?></h2>
-      <a href="#0" class="k-upcase k-promoslider--titlerow__item">View All</a>
+      <h2 class="k-headline k-headline--sm k-promoslider--titlerow__item">Read More</h2>
+      <a href="<?php echo site_url() . '/blog'; ?>" class="k-upcase k-promoslider--titlerow__item">View All</a>
     </div>
 
     <div class="k-blogpromo--articles">
     <?php
 
     foreach($featured_articles as $article) {
-      $_article = $article['article'];
+      // accidental inconsitent naming on this in ACF, unfortunately too late to change site-wide
+      $_article = $article['article'] ? $article['article'] : $article['post'];
       $id = $_article->ID;
 
       $article_card_props = array(

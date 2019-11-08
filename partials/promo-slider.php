@@ -2,7 +2,14 @@
   $root = get_template_directory_uri();
 ?>
 
-<section class="k-promoslider k-block k-block--md <?php echo $slider_fields['half_padding_top'] ? 'k-half-padding--top' : '' ?>">
+<section
+  class="
+    k-promoslider
+    k-block
+    k-block--md
+    <?php echo $slider_fields['half_padding_top'] ? 'k-half-padding--top' : '' ?>
+    <?php echo $slider_fields['half_padding_bottom'] ? 'k-half-padding--bottom' : '' ?>
+  ">
   <div class="k-inner k-inner--md">
     <div class="k-promoslider--titlerow">
       <span class="k-upcase k-promoslider--titlerow__item">Featured</span>

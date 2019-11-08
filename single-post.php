@@ -102,14 +102,15 @@ do_action('k_before_first_section');
 
 $slider_fields = array(
   'headline' => 'Shop Related Koi Products',
-  'products' => $fields['product_slider_default_products'],
+  'products' => $fields['recommended_products'],
   'half_padding_top' => true,
+  'half_padding_bottom' => true,
 );
 include(locate_template('partials/promo-slider.php'));
 
 include(locate_template('partials/components/randoms/line.php'));
 
-$featured_articles = $fields['featured_articles'];
+$featured_articles = $fields['related_posts'];
 include(locate_template('partials/blog-promo.php'));
 
 get_footer();
