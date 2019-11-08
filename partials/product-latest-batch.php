@@ -23,6 +23,11 @@
         $this_attribute = formatAttrName(reset($attributes));
       ?>
         <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>">
+          <?php if ($has_flavor_attribute) : ?>
+          <span>
+            <?php echo $attributes['attribute_flavor']; ?>
+          </span>
+          <?php endif; ?>
           <span><?php echo $this_attribute . ($attributes['attribute_quantity'] ? ' (' . $attributes['attribute_quantity'] . ')' : null); ?></span>
         </div>
       <?php endforeach; ?>

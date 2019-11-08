@@ -9,6 +9,7 @@ foreach($product->get_available_variations() as $i => $variant) {
   $this_attribute = formatAttrName(reset($attributes));
   $out_of_stock = $_variant->get_stock_status() == 'outofstock';
   $has_quantity_attributes = $attributes['attribute_quantity'] != NULL;
+  $has_flavor_attribute = $attributes['attribute_flavor'] != NULL;
 ?>
   <div 
     class="
@@ -53,6 +54,7 @@ foreach($product->get_available_variations() as $i => $variant) {
       data-variant-price="<?php echo $variant['display_price']; ?>"
     >
       <span>
+        <?php if ($has_flavor_attribute) : echo $attributes['attribute_flavor']; endif; ?>
         <?php echo $this_attribute; ?>
       </span>
     </label>
