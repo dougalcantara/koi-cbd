@@ -11,7 +11,7 @@
           <h1 class="k-headline k-headline--sm"><?php the_title(); ?></h1>
           
           <div class="k-rte-content">
-            <p><?php echo strip_tags(get_the_excerpt()); ?></p>
+            <p><?php echo $product->post->post_excerpt; ?></p>
           </div>
           
           <div class="k-producthero--reviews">

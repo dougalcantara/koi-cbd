@@ -1,3 +1,5 @@
+<?php $root = get_template_directory_uri(); ?>
+
 <section class="k-productdetails k-block k-block--md k-no-padding--bottom">
   <div class="k-inner k-inner--sm">
     <div class="k-productdetails--headline">
@@ -9,9 +11,14 @@
     <div class="k-productdetails--main">
 
       <div class="k-productdetails--image">
-        <figure class="k-figure k-figure--rounded k-figure--fpo">
+        <figure class="k-figure k-figure--rounded">
           <div class="k-figure--liner">
-            <!-- <img src="" alt="" class="k-figure--img"> -->
+            <?php
+              $lifestyle_img = get_fields()['lifestyle_image'];
+              $ls_img_url = $lifestyle_img ? $lifestyle_img['url'] : $root . '/dist/img/koi-leaves-placeholder.jpg';
+              
+            ?>
+            <img src="<?php echo $ls_img_url ?>" alt="" class="k-figure--img">
           </div>
         </figure>
       </div>

@@ -1,4 +1,8 @@
 .k-promoslider {
+  & > .k-inner {
+    position: relative;
+  }
+
   &--titlerow {
     display: flex;
     flex-flow: row wrap;
@@ -22,6 +26,22 @@
 
       &:nth-child(2) {
         order: 2;
+      }
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+
+    svg {
+      fill: $primary;
+      stroke: $primary;
+
+      &:last-child {
+        float: right;
       }
     }
   }
@@ -68,6 +88,11 @@
   .k-promoslider {
     .k-productcard {
       width: 50%;
+    }
+
+    &__controls {
+      left: -5%;
+      width: 110%;
     }
   }
 }
