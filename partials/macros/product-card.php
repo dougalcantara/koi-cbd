@@ -3,7 +3,9 @@
 function k_product_card($args) {
   ob_start(); ?>
 
-  <div class="k-productcard" <?php echo $args['product_id'] ? 'data-yotpo-product-id="$args[\'product_id\'];"' : null; ?>">
+  <div 
+    class="k-productcard"
+    <?php echo $args['product_id'] ? 'data-yotpo-product-id="' . $args['product_id'] . '"' : null; ?>>
     <div class="k-productcard--liner">
 
       <figure class="k-figure">

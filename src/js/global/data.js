@@ -35,10 +35,15 @@ function insertReviewData(element, data) {
   const avgReviewTarget = element.querySelector('.k-productcard--reviewavg');
 
   if (totalReviewsTarget) {
-    totalReviewsTarget.innerHTML = data.reviews.length;
-  }
+    const numReviews = data.reviews.length;
 
-  avgReviewTarget.innerHTML = data.bottomline.average_score.toFixed(1);
+    if (numReviews > 0) {
+      totalReviewsTarget.innerHTML = numReviews;
+      avgReviewTarget.innerHTML = data.bottomline.average_score.toFixed(1);
+    } else {
+      totalReviewsTarget.innerHTML = 'Be the first to review!';
+    }
+  }
 }
 
 function createProductMap() {
