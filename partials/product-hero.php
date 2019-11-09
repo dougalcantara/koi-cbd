@@ -14,12 +14,10 @@
             <p><?php echo $product->post->post_excerpt; ?></p>
           </div>
           
-          <div class="k-producthero--reviews">
+          <div class="k-producthero--reviews k-reviewembed">
             <p>
-              <a href="#product-reviews">Reviews (<span class="k-productcard--numreviews">0</span>) </a>
-              <span class="k-productcard--reviewavg ">5.0</span>
+              <a href="#0" class="k-accent-text k-createreview">Be the first to review!</a>
             </p>
-            <?php get_template_part('partials/svg/gold-star'); ?>
           </div>
 
         </div>

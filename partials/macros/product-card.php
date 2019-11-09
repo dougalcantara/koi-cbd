@@ -23,12 +23,10 @@ function k_product_card($args) {
         <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Shop Now</a>
       </div>
 
-      <div class="k-productcard--reviews">
-        <p class="k-accent-text">Reviews (<span class="k-productcard--numreviews">0</span>)</p>
-        <ul>
-          <li class="k-productcard--reviewavg k-accent-text">5</li>
-          <li><?php get_template_part('partials/svg/gold-star'); ?></li>
-        </ul>
+      <div class="k-productcard--reviews k-reviewembed">
+        <p>
+          <a href="#0" class="k-accent-text k-createreview">Be the first to review!</a>
+        </p>
       </div>
 
     </div>
