@@ -22,7 +22,7 @@
       ?>
     </div>
     <div class="k-videogallery--item k-videogallery--actions">
-      <div class="k-videogallery--actions__item active">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-leaf');
@@ -31,9 +31,9 @@
         <div class="k-videogallery--actions__title">
           <p>U.S. Organic Hemp Farms</p>
         </div>
-      </div>
+      </a>
 
-      <div class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=1' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-bottle');
@@ -42,9 +42,9 @@
         <div class="k-videogallery--actions__title">
           <p>Maintaining Taste & Terpenes</p>
         </div>
-      </div>
+      </a>
 
-      <div class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=2' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-beaker');
@@ -53,9 +53,9 @@
         <div class="k-videogallery--actions__title">
           <p>Accredited 3rd Party Testing</p>
         </div>
-      </div>
+      </a>
 
-      <div class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=3' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-eyedrop');
@@ -64,9 +64,9 @@
         <div class="k-videogallery--actions__title">
           <p>Single Vessel Bottling</p>
         </div>
-      </div>
+      </a>
 
-      <div class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=4' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-plant');
@@ -75,9 +75,9 @@
         <div class="k-videogallery--actions__title">
           <p>Whole Plant Extraction</p>
         </div>
-      </div>
+      </a>
 
-      <div class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=5' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-microscope');
@@ -86,7 +86,29 @@
         <div class="k-videogallery--actions__title">
           <p>Traceability & Quality Control</p>
         </div>
-      </div>
+      </a>
+
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=6' ?>" class="k-videogallery--actions__item">
+        <div class="k-videogallery--actions__icon">
+          <?php
+          get_template_part('partials/svg/koi-plant');
+          ?>
+        </div>
+        <div class="k-videogallery--actions__title">
+          <p>Whole Plant Extraction</p>
+        </div>
+      </a>
+
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=7' ?>" class="k-videogallery--actions__item">
+        <div class="k-videogallery--actions__icon">
+          <?php
+          get_template_part('partials/svg/koi-microscope');
+          ?>
+        </div>
+        <div class="k-videogallery--actions__title">
+          <p>Traceability & Quality Control</p>
+        </div>
+      </a>
     </div>
     <div class="k-videogallery--item k-videogallery--description k-rte-content">
       <p class="k-headline k-headline--xs">It all starts at our organic hemp farms in Kentucky, Colorado & Oklahoma, each carefully selected to meet highest standards of agricultural quality and consistency.</p>

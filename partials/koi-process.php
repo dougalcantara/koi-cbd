@@ -2,11 +2,11 @@
 $root = get_template_directory_uri();
 ?>
 
-<section class="k-process k-block k-block--md">
+<section id="koi-process" class="k-process k-block k-block--md">
   <div class="k-inner k-inner--md">
 
     <div class="k-process__iconrow">
-      <div class="k-process__iconrow__item active">
+      <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
           get_template_part('partials/svg/koi-leaf');

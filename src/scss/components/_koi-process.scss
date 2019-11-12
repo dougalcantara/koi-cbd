@@ -75,14 +75,14 @@
         .k-process__carousel {
           &__text,
           &__image {
-            transform: translateY(0);
+            // transform: translateY(0);
           }
         }
       }
     }
 
     &__text {
-      transform: translateY(101%);
+      // transform: translateY(101%);
       transition: transform 0.8s $ease-out-circ;
       margin-bottom: 1em;
 
@@ -94,7 +94,7 @@
     }
 
     &__image {
-      transform: translateY(-101%);
+      // transform: translateY(101%);
       transition: transform 0.8s $ease-out-circ;
     }
 

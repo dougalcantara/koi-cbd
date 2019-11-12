@@ -60,7 +60,7 @@
   );
   include(locate_template('partials/cta-banner.php'));
   
-  get_template_part('partials/video-gallery');
+  get_template_part('partials/process-preview');
 
   get_footer();
 ?>

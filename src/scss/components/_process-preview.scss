@@ -1,3 +1,8 @@
+/*
+* Note: this module was originally for displaying videos, but is no longer the case.
+* It's a little tricky to rename the classes at this point, so the filename has updated,
+* but not any of the CSS classes.
+*/
 .k-videogallery {
   & > .k-inner {
     display: flex;
@@ -42,18 +47,19 @@
       border-top: 1px solid $bg-gray;
       display: flex;
       flex-direction: column;
-      // justify-content: flex-start;
-      // align-items: center;
+      color: $black;
+      line-height: 1.4;
 
       * {
         pointer-events: none;
       }
 
       &:hover {
-        cursor: pointer;
+        color: $primary;
 
         .k-videogallery--actions__icon {
           &:before {
+            background: $highlight;
             transform: translate(-50%, -50%) scale(1.25);
           }
         }
@@ -83,15 +89,17 @@
       }
 
       &:before {
-        display: block; content: '';
+        display: block;
+        content: '';
         position: absolute;
-        top: 50%; left: 50%;
-        width: 2.5em; height: 2.5em;
+        top: 50%;
+        left: 50%;
+        width: 2.5em;
+        height: 2.5em;
         transform: translate(-50%, -50%);
         border-radius: 50%;
         background: $bg-gray;
-        transition: transform 1s $ease-out-circ,
-                    background 1s $ease-out-circ;
+        transition: transform 1s $ease-out-circ, background 1s $ease-out-circ;
       }
 
       path {
@@ -113,7 +121,7 @@
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-videogallery {
     & > .k-inner {
       justify-content: space-between;
@@ -148,7 +156,7 @@
             }
           }
         }
-        
+
         &:hover {
           .k-videogallery--actions__icon {
             &:before {
@@ -160,7 +168,8 @@
 
       &__icon {
         position: absolute;
-        top: 50%; left: 0;
+        top: 50%;
+        left: 0;
         transform: translateY(-50%);
 
         .koi-svg {
@@ -188,17 +197,20 @@
       position: relative;
 
       &:before {
-        display: block; content: '';
+        display: block;
+        content: '';
         position: absolute;
-        top: -3em; left: 0;
-        width: 50%; height: 1px;
+        top: -3em;
+        left: 0;
+        width: 50%;
+        height: 1px;
         background: $highlight;
       }
     }
   }
 }
 
-@media(min-width: $bp-xxl) {
+@media (min-width: $bp-xxl) {
   .k-videogallery {
     &--title,
     &--video {
