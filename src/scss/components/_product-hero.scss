@@ -12,6 +12,9 @@
     width: 100%;
 
     .k-figure {
+      width: 80%;
+      margin: auto;
+
       &--liner {
         padding-bottom: 100%;
       }
@@ -36,6 +39,31 @@
   &--details {
     &__content {
       padding: 2em 1em;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    pointer-events: none;
+    width: 95%;
+    top: 50%;
+    left: 2.5%;
+    transform: translateY(-50%);
+    z-index: 9;
+
+    svg {
+      pointer-events: all;
+      stroke: $accent-text;
+      fill: transparent;
+
+      &:nth-child(2) {
+        float: right;
+      }
+
+      &:hover {
+        stroke: $primary;
+        cursor: pointer;
+      }
     }
   }
 }

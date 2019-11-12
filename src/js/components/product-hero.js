@@ -11,6 +11,8 @@ const $addToCartTrigger = $('.k-productform .k-add-to-cart');
 const $increment = $('#k-increase');
 const $decrement = $('#k-reduce');
 const $quantity = $('#k-num-to-add');
+const $prev = $productHeroCarousel.find('.k-producthero__prev');
+const $next = $productHeroCarousel.find('.k-producthero__next');
 
 let flkty;
 
@@ -82,7 +84,11 @@ $doc.ready(function() {
     contain: true,
     dragThreshold: 10,
     imagesLoaded: true,
+    prevNextButtons: false,
   });
+
+  $prev.click(() => flkty.previous());
+  $next.click(() => flkty.next());
 
   $variantSelects.each(function() {
     const $t = $(this);

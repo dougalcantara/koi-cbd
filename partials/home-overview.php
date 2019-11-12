@@ -2,7 +2,7 @@
   $root = get_template_directory_uri();
 ?>
 
-<section class="k-overview k-block k-block--lg">
+<section class="k-overview k-block k-block--lg k-no-padding--bottom k-no-padding--top">
   <div class="k-overview--bgimg" data-src="<?php echo $root . '/dist/misc/koi-bg.html #koi-bg' ?>"></div>
   <div class="k-inner k-inner--md">
 
