@@ -35,20 +35,30 @@
     top: 50%;
     left: 0;
     width: 100%;
+    z-index: 5;
+    pointer-events: none;
 
     svg {
-      fill: $primary;
+      pointer-events: all;
+      fill: transparent;
       stroke: $primary;
 
       &:last-child {
         float: right;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
 
   .k-productcard {
     width: 100%;
-    margin-right: 1.5em;
+
+    &--liner {
+      padding-right: 1.5em;
+    }
   }
 }
 
@@ -134,6 +144,11 @@
 
     .k-productcard {
       width: 25%;
+    }
+
+    &__controls {
+      width: 115%;
+      left: -7.5%;
     }
   }
 }
