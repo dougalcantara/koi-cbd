@@ -4,7 +4,7 @@ function k_hero($args) {
   ob_start(); ?>
 
   <section class="k-hero k-hero--productlisting on-dark">
-    <div class="k-hero--bgimg" data-src="https://via.placeholder.com/1800x750"></div>
+    <div class="k-hero--bgimg" data-src="<?php echo $args['background_image'] ? $args['background_image'] : 'https://via.placeholder.com/1800x750'; ?>"></div>
     <div class="k-inner k-inner--md">
 
       <div class="k-hero--content">
@@ -14,7 +14,7 @@ function k_hero($args) {
         <h2 class="k-headline k-headline--md"><?php echo $args['headline'] ?></h2>
 
         <div class="k-rte-content">
-          <?php echo $args['body']; ?>
+          <p><?php echo $args['body']; ?></p>
         </div>
 
       </div>

@@ -36,7 +36,12 @@ while (have_posts()) : the_post();
   include(locate_template('partials/product-hero.php'));
   include(locate_template('partials/product-details.php'));
   include(locate_template('partials/product-latest-batch.php'));
-  include(locate_template('partials/product-faq-accordion.php'));
+
+
+  if ($product_acf['frequently_asked_questions']) {
+    include(locate_template('partials/product-faq-accordion.php'));
+  }
+  
   include(locate_template('partials/product-reviews.php'));
 
   $product_video_fields = array(

@@ -25,7 +25,7 @@
     
 
       <div class="k-productdetails--accordion">
-
+      <?php if ($product_acf['product_details']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">
             <p class="k-upcase">Product Details <span class="k-weight--lg">+</span></p>
@@ -43,7 +43,8 @@
             </ul>
           </div>
         </div>
-
+        <?php endif; ?>
+        <?php if ($product_acf['ingredients']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">
             <p class="k-upcase">Ingredients <span class="k-weight--lg">+</span></p>
@@ -61,7 +62,8 @@
             </ul>
           </div>
         </div>
-
+        <?php endif; ?>
+        <?php if ($product_acf['suggested_uses']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">
             <p class="k-upcase">Suggested Use <span class="k-weight--lg">+</span></p>
@@ -79,7 +81,8 @@
             </ul>
           </div>
         </div>
-        
+        <?php endif; ?>
+        <?php if ($product_acf['storage_directions']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">
             <p class="k-upcase">Storage <span class="k-weight--lg">+</span></p>
@@ -97,6 +100,8 @@
             </ul>
           </div>
         </div>
+        <?php endif; ?>
+        <?php if ($product_acf['warnings']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">
             <p class="k-upcase">Warning <span class="k-weight--lg">+</span></p>
@@ -114,6 +119,7 @@
             </ul>
           </div>
         </div>
+        <?php endif; ?>
       </div>
     </div>
 

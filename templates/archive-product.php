@@ -30,6 +30,7 @@ $hero_fields = array(
   'preheading' => 'Koi CBD',
   'headline' => $product_category,
   'body' => $page_fields['hero_supporting_copy'],
+  'background_image' => $page_fields['hero_background_image']['url'],
 );
 
 echo k_hero($hero_fields);

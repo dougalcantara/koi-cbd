@@ -1,4 +1,4 @@
-<section class="k-productreviews k-block k-block--md" id="product-reviews">
+<section class="k-productreviews k-block k-block--md <?php echo $product_acf['frequently_asked_questions'] ? NULL : 'k-no-padding--top' ?>" id="product-reviews">
   <div class="k-inner k-inner--md">
 
     <div class="k-productreviews--title">
