@@ -1,3 +1,9 @@
+.is-ie11 {
+  #k-backdrop {
+    display: none;
+  }
+}
+
 #k-backdrop {
   position: fixed;
   top: 0;

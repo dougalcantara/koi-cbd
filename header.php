@@ -46,5 +46,15 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css' ?>" />
 </head>
 <body <?php body_class(); ?>>
+  <script>
+    (function() {
+      var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
+      if (isIE11) {
+        console.log('document.body', document.body);
+        document.body.classList.add('is-ie11');
+      }
+    })();
+  </script>
   <?php get_template_part('partials/site-header'); ?>
   <main role="main" id="k-main">
