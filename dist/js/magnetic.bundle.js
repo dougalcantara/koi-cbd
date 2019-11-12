@@ -4031,7 +4031,7 @@ eval("\n\n//# sourceURL=webpack:///./src/js/components/product-video.js?");
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var $promoSlider = $('.k-promoslider');\nvar $carousel = $promoSlider.find('.k-promoslider--carousel');\nvar $prev = $promoSlider.find('.k-promoslider__prev');\nvar $next = $promoSlider.find('.k-promoslider__next');\nvar flkty;\nvar flktyOpts = {\n  groupCells: 1,\n  cellSelector: '.k-productcard',\n  cellAlign: 'left',\n  pageDots: false,\n  prevNextButtons: false,\n  contain: true,\n  dragThreshold: 10,\n  imagesLoaded: true\n};\ndocument.addEventListener('DOMContentLoaded', function () {\n  if (!$carousel) return;\n  flkty = new Flickity($carousel[0], flktyOpts);\n  $prev.click(function () {\n    return flkty.previous();\n  });\n  $next.click(function () {\n    return flkty.next();\n  });\n});\n\n//# sourceURL=webpack:///./src/js/components/promo-slider.js?");
+eval("var $promoSlider = $('.k-promoslider');\nvar $carousel = $promoSlider.find('.k-promoslider--carousel');\nvar $prev = $promoSlider.find('.k-promoslider__prev');\nvar $next = $promoSlider.find('.k-promoslider__next');\nvar flkty;\nvar flktyOpts = {\n  groupCells: 1,\n  cellSelector: '.k-productcard',\n  cellAlign: 'left',\n  pageDots: false,\n  prevNextButtons: false,\n  contain: true,\n  dragThreshold: 10,\n  imagesLoaded: true\n};\ndocument.addEventListener('DOMContentLoaded', function () {\n  if (!$carousel.length) return;\n  flkty = new Flickity($carousel[0], flktyOpts);\n  $prev.click(function () {\n    return flkty.previous();\n  });\n  $next.click(function () {\n    return flkty.next();\n  });\n});\n\n//# sourceURL=webpack:///./src/js/components/promo-slider.js?");
 
 /***/ }),
 

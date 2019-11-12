@@ -17,7 +17,7 @@ const flktyOpts = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!$carousel) return;
+  if (!$carousel.length) return;
   flkty = new Flickity($carousel[0], flktyOpts);
 
   $prev.click(() => flkty.previous());

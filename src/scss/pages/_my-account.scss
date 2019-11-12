@@ -10,9 +10,18 @@
     display: none;
   }
 
+  &__midimg {
+    display: none;
+  }
+
   &__forms {
     overflow: hidden;
     position: relative;
+
+    .k-liner {
+      width: 80%;
+      margin: auto;
+    }
   }
 
   &__form {
@@ -125,16 +134,72 @@
 
 @media (min-width: $bp-lg) {
   .k-login {
+    height: calc(100vh - 9.75em);
+    padding: 0 !important;
+
     &__bgimg {
       display: block;
     }
 
+    &__midimg {
+      display: block;
+      position: absolute;
+      bottom: 2em;
+      left: 48.6%; //  so that the image lines up "just right"
+      transform: translateX(-50%);
+      width: 20%;
+      z-index: 3;
+
+      .k-figure--liner {
+        padding-bottom: 100%;
+      }
+    }
+
     &__forms {
-      position: relative;
+      // top: -9.75em;
+      position: absolute;
       width: 50%;
-      z-index: 2;
+      height: 100%;
       background: $true-white;
-      padding: 3em 2em;
+      z-index: 2;
+
+      .k-liner {
+        position: relative;
+        height: 100%;
+        width: 66.67%;
+        max-width: 27.5em;
+      }
+    }
+
+    &__rememberme {
+      margin-top: 2em !important;
+    }
+
+    &__form {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+
+      &.is-visible {
+        transform: translateY(-50%);
+      }
+
+      button[type='submit'] {
+        margin: 2em 0 1em 0;
+        width: 100%;
+      }
+
+      p {
+        margin: 0 0 0.5em 0;
+      }
+
+      a {
+        color: $accent-text;
+
+        &:hover {
+          color: $primary;
+        }
+      }
     }
   }
 
@@ -150,14 +215,6 @@
 
     &--main {
       flex-basis: 70%;
-    }
-  }
-}
-
-@media (min-width: $bp-xl) {
-  .k-login {
-    &__forms {
-      width: 33%;
     }
   }
 }

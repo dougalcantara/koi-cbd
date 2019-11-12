@@ -16,14 +16,20 @@ if (is_user_logged_in()) {
 
 <section class="woocommerce-MyAccount-content k-block k-block--md k-login">
 	<div class="k-login__bgimg" style="background-image: url(<?php echo $root . '/dist/img/generic-beach.jpg' ?>)"></div>
-	<div class="k-inner k-inner--md">
+	<div class="k-login__midimg">
+		<figure class="k-figure">
+			<div class="k-figure--liner">
+				<img data-src="<?php echo $root . '/dist/img/Combo-Strawberry-2000.png'; ?>" alt="" class="k-figure--img">
+			</div>
+		</figure>
+	</div>
 	<?php
-		do_action('woocommerce_before_customer_login_form'); ?>
+	do_action('woocommerce_before_customer_login_form'); ?>
 
-		<?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
+	<?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
 
-		<div class="k-login__forms" id="customer_login">
-
+	<div class="k-login__forms" id="customer_login">
+		<div class="k-liner">
 			<div class="k-login__form k-login__form--default is-visible">
 				<div class="k-login__form__liner">
 			<?php endif; ?>
@@ -45,15 +51,15 @@ if (is_user_logged_in()) {
 
 						<?php do_action('woocommerce_login_form'); ?>
 
-						<p class="form-row">
+						<p class="form-row k-login__rememberme">
 							<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" />
 							<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme" for="rememberme"><?php esc_html_e('Remember me', 'woocommerce'); ?></label>
 							<?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
 						</p>
 						<div class="form-row">
-						<button type="submit" class="k-button k-button--primary woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
+							<button type="submit" class="k-button k-button--primary woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in &rarr;', 'woocommerce'); ?></button>
 						</div>
-						<p><a href="#0" class="k-toggle-register">New Customer? Click to Register</a></p>
+						<p><a href="#0" class="k-toggle-register">Create an Account</a></p>
 						<p class="woocommerce-LostPassword lost_password">
 							<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 						</p>

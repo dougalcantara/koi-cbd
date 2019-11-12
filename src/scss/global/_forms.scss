@@ -46,6 +46,47 @@ form {
     margin-top: 1em;
     appearance: none;
   }
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+
+    &:hover {
+      cursor: pointer !important;
+    }
+
+    &:checked {
+      & + label:before {
+        background: $primary;
+      }
+    }
+
+    & + label {
+      display: inline-block;
+      min-width: auto;
+      position: relative;
+      font-weight: 400;
+      margin-left: 2em;
+
+      &:before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 49%; // some weirdness
+        left: -2em;
+        width: 1em;
+        height: 1em;
+        border: 1px solid #ddd;
+        background: $true-white;
+        transition: background 0.4s $ease-out-circ;
+        transform: translateY(-50%);
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .k-input {
