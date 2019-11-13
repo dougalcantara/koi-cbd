@@ -3,7 +3,7 @@
     padding: 4em 0;
 
     h1 {
-      margin: 0;
+      margin-top: 0;
     }
   }
 
@@ -105,6 +105,11 @@
 
     .product-total {
       text-align: right;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
     }
   }
 
@@ -148,46 +153,6 @@
   input[type='text'],
   input[type='tel'] {
     padding-left: 1em;
-  }
-
-  input[type='checkbox'] {
-    position: absolute;
-    opacity: 0;
-
-    &:hover {
-      cursor: pointer !important;
-    }
-
-    &:checked {
-      & + label:before {
-        background: $primary;
-      }
-    }
-
-    & + label {
-      display: inline-block;
-      min-width: auto;
-      position: relative;
-      font-weight: 400;
-      margin-left: 2em;
-
-      &:before {
-        display: block;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -2em;
-        width: 1em;
-        height: 1em;
-        border: 1px solid #ddd;
-        background: $true-white;
-        transition: background 0.4s $ease-out-circ;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
   }
 
   .checkbox {
@@ -240,6 +205,10 @@
   margin-top: 2em;
   background: $true-white;
   padding: 1em;
+}
+
+.woocommerce-terms-and-conditions-checkbox-text:hover {
+  cursor: pointer;
 }
 
 @media (min-width: $bp-md) {

@@ -58,6 +58,14 @@ form {
     }
   }
 
+  abbr[title] {
+    text-decoration: none;
+  }
+
+  span.required {
+    color: red;
+  }
+
   input[type='checkbox'],
   input[type='radio'] {
     position: absolute;

@@ -22,10 +22,6 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 }
 
 ?>
-<div class="woocommerce-form-login-toggle">
-	Returning customer? <a href="<?php echo site_url() . '/account/login'; ?>">Click here to log in.</a>
-	<!-- <?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', __( 'Returning customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . __( 'Click here to login', 'woocommerce' ) . '</a>', 'notice' ); ?> -->
-</div>
 <?php
 
 woocommerce_login_form(

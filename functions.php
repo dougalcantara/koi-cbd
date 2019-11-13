@@ -42,8 +42,15 @@ add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
 function k_ajax_add_product() {
   $product_id = intval($_POST['product_id']);
   $quantity = intval($_POST['quantity']);
+  // $chosen_method     = explode(':', reset(WC()->session->get( 'chosen_shipping_methods' )) );
+  // $shipping_zone     = WC_Shipping_Zones::get_zone_by( 'instance_id', $chosen_method[1] );
+  // $current_zone_name = strtolower($shipping_zone->get_zone_name());
 
   WC()->cart->add_to_cart($product_id, $quantity);
+
+  // if ($current_zone_name === "united states") {
+  //   WC()->cart->set_shipping_total(0.00);
+  // }
 
   wp_send_json(WC()->cart->get_cart());
 

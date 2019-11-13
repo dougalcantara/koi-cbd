@@ -12,8 +12,6 @@ defined( 'ABSPATH' ) || exit;
 
 do_action('k_before_first_section');
 
-do_action('woocommerce_before_cart');
-
 if (sizeof($items_in_cart) == 0) { ?>
   <section class="k-cart k-cart__noitems k-block k-block--md k-no-padding--bottom">
     <div class="k-inner k-inner--md" style="text-align: center;">
@@ -25,8 +23,17 @@ if (sizeof($items_in_cart) == 0) { ?>
 }
 ?>
 
+<section class="k-cart__notices k-bg-dark">
+  <div class="k-inner k-inner--xl">
+    <?php do_action('woocommerce_before_cart'); ?>
+  </div>
+</section>
+
 <section class="k-cart k-block k-block--md">
   <div class="k-inner k-inner--xl">
+    <div class="k-cart__headline">
+      <h1>Your Cart</h1>
+    </div>
     <div class="k-cart--main">
 
       <div class="k-cart--titlerow">
@@ -167,12 +174,46 @@ if (sizeof($items_in_cart) == 0) { ?>
 
     <div class="k-cart--sidebar">
       <div class="k-cart--sidebar__liner">
-        <p class="k-upcase">Subtotal</p>
-        <p class="k-bigtext"><?php echo $cart->get_cart_subtotal(); ?></p>
-        <a href="<?php echo site_url().'/checkout'; ?>" class="k-button k-button--primary">Checkout</a>
-        <a href="<?php echo site_url(); ?>" class="k-button k-button--dark">Keep Shopping</a>
-        <p class="k-upcase">Secure Checkout Guaranteed</p>
-        <p>View Koi CBD <a href="#0">Shipping & Return Policies</a> before purchasing.</p>
+        <?php
+          
+          $discount_amount = NULL;
+
+          foreach ($cart->get_coupons() as $code => $coupon) : ?>
+          <div class="k-coupon">
+            <div class="k-coupon__title">
+              <?php echo wc_cart_totals_coupon_label($coupon); ?>
+            </div>
+            <div class="k-coupon__discount">
+              <p><?php echo wc_cart_totals_coupon_html($coupon); ?></p>
+            </div>
+          </div>
+        <?php
+          // we can safely do this post-loop because only one coupon can be used at a time.
+          // That makes the loop useless, but I'm just going to leave it since that may change eventually.
+          $discount_amount = $coupon->get_amount();
+
+          endforeach;
+        ?>
+        <div class="k-cart__subtotal">
+          <p class="k-upcase">Subtotal</p>
+          <?php
+            $discount_amount
+              ? $_subtotal = number_format($cart->get_subtotal() - ($cart->get_subtotal() * ($discount_amount / 100)), 2) 
+              : $_subtotal = $cart->get_subtotal();
+          ?>
+          <p class="k-bigtext"><?php echo $_subtotal; ?></p>
+        </div>
+
+        <div class="k-cart__continue">
+          <a href="<?php echo site_url().'/checkout'; ?>" class="k-button k-button--primary">Checkout</a>
+          <a href="<?php echo site_url(); ?>" class="k-button k-button--dark">Keep Shopping</a>
+        </div>
+        
+        <div class="k-cart__meta">
+          <p class="k-upcase">Secure Checkout Guaranteed</p>
+          <p>View Koi CBD <a href="#0">Shipping & Return Policies</a> before purchasing.</p>
+        </div>
+
       </div>
     </div>
 
