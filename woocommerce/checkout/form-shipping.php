@@ -24,13 +24,6 @@ defined( 'ABSPATH' ) || exit;
 		if ( true === WC()->cart->needs_shipping_address() ) :
 	?>
 
-		<div class="k-checkout--shipping__header">
-			<input id="ship-to-different-address" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" type="checkbox" name="ship_to_different_address" value="1" /> 
-			<label for="ship-to-different-address" class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-				<?php esc_html_e( 'Ship to a different address?', 'woocommerce' ); ?>
-			</label>
-		</div>
-
 		<div class="shipping_address k-checkout--shipping">
 
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>

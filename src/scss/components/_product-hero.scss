@@ -171,6 +171,10 @@
     display: block;
     margin-bottom: 0.5em;
 
+    label {
+      margin-left: 0 !important;
+    }
+
     &.k-out-of-stock,
     &.has-quantity {
       margin-top: 1.5em;

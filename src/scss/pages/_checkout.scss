@@ -1,3 +1,23 @@
+.k-checkout {
+  &__headline {
+    padding: 4em 0;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &__forms {
+    border-top: 0.25em solid $primary;
+    box-shadow: 0 0 5px #dedede;
+
+    & > .k-liner {
+      padding: 1em;
+      background: $true-white;
+    }
+  }
+}
+
 .page-template-page-checkout {
   background: $bg-gray;
 
@@ -215,29 +235,74 @@
 }
 
 .woocommerce-checkout-review-order {
-  box-shadow: 0 0 2px -1px #222;
+  border-top: 0.25em solid $primary;
+  box-shadow: 0 0 5px #dedede;
   margin-top: 2em;
   background: $true-white;
   padding: 1em;
 }
 
-@media (min-width: $bp-lg) {
+@media (min-width: $bp-md) {
   .k-checkout {
-    .k-form--columns {
+    &__forms {
+      & > .k-liner {
+        padding: 4em 3em;
+      }
+    }
+
+    &__billing,
+    &__shipping {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      flex-flow: row nowrap;
+    }
 
-      &__col {
-        padding: 4em 3em;
-        flex-basis: 47.5%;
-        margin-bottom: 0;
+    &__billing {
+      padding-bottom: 4em;
+      border-bottom: 1px solid #dedede;
+    }
+
+    &__shipping {
+      margin-top: 4em;
+      padding-top: 4em;
+    }
+
+    &__title {
+      flex-basis: 40%;
+
+      .k-liner {
+        position: sticky;
+        top: 10em;
+      }
+
+      h3 {
+        margin: 0;
+        line-height: 1.2;
+      }
+    }
+
+    &__fields {
+      flex-basis: 50%;
+
+      .form-row {
+        &:first-child {
+          margin-top: 0;
+        }
 
         &:last-child {
-          // margin-left: 10%;
+          margin-bottom: 0;
         }
       }
     }
+  }
+}
+
+.k-toggle-shipping {
+  margin-top: 1em;
+}
+
+@media (min-width: $bp-lg) {
+  .k-checkout {
   }
 
   .woocommerce-checkout-review-order {
