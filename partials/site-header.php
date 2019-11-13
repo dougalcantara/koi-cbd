@@ -22,20 +22,20 @@ $url = site_url();
             <a class="k-upcase" href="#0"><span>&#9660;</span> Shop</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
-                <li><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
-                <li><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
-                <li><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
-                <li><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
-                <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-                <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
-                <li><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
               </div>
             </ul>
           </li>
           <li><a class="k-upcase" href="<?php echo $url . '/blog/?category=getting-started-with-cbd'; ?>">CBD 101</a></li>
           <li class="k-has-dropdown">
-            <a class="k-upcase" href="#0">Resources</a>
+            <a class="k-upcase" href="#0"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
@@ -47,7 +47,7 @@ $url = site_url();
         <ul>
           <li><a class="k-upcase" href="<?php echo $url; ?>/#0">Community</a></li>
           <li class="k-has-dropdown">
-            <a class="k-upcase" href="#0">About Us</a>
+            <a class="k-upcase" href="#0"><span>&#9660;</span> About Us</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/about-us' ?>">Koi Story</a></li>

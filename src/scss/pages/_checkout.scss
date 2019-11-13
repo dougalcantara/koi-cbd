@@ -28,6 +28,8 @@
   }
 
   .k-checkout--shipping__header {
+    margin-left: 2em;
+
     input,
     label {
       min-width: auto;
@@ -96,6 +98,18 @@
   }
 }
 
+.woocommerce-form-login-toggle {
+  margin-bottom: 1em;
+
+  a {
+    color: $primary;
+
+    &:hover {
+      color: $primary-dark !important;
+    }
+  }
+}
+
 .wc_payment_methods.payment_methods {
   @include unstyle-list();
 }
@@ -143,8 +157,8 @@
         position: absolute;
         top: 0;
         left: -2em;
-        width: 1.5em;
-        height: 1.5em;
+        width: 1em;
+        height: 1em;
         border: 1px solid #ddd;
         background: $true-white;
         transition: background 0.4s $ease-out-circ;
@@ -175,8 +189,8 @@
         position: absolute;
         top: 0;
         left: -2em;
-        width: 1.5em;
-        height: 1.5em;
+        width: 1em;
+        height: 1em;
         border: 1px solid #ddd;
         background: $true-white;
         transition: background 0.4s $ease-out-circ;

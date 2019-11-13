@@ -6,3 +6,4 @@ export const $win = $(window);
 export const $getsHeaderMargin = $('#k-headermargin');
 export const $backdrop = $('#k-backdrop');
 export const $cartSidebar = $('.k-cart-sidebar');
+export const $searchModal = $('.k-modal--search');

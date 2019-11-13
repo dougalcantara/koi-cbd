@@ -44,10 +44,22 @@ form {
 
   select {
     margin-top: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #dedede;
+    -webkit-border-radius: 0;
+    border-radius: 0 !important;
+
+    &::-ms-expand {
+      display: none;
+    }
   }
 
-  input[type='checkbox'] {
+  input[type='checkbox'],
+  input[type='radio'] {
     position: absolute;
     opacity: 0;
 

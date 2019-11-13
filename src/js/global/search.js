@@ -1,7 +1,6 @@
-import { $backdrop } from './selectors';
+import { $backdrop, $searchModal } from './selectors';
 
 const $searchTrigger = $('.k-searchtrigger');
-const $searchModal = $('.k-modal.k-modal--search');
 const $searchModalForm = $searchModal.find('form');
 
 $searchTrigger.click(function() {

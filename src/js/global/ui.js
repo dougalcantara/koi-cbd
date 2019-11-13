@@ -1,4 +1,11 @@
-import { $doc, $win } from './selectors';
+import {
+  $doc,
+  $win,
+  $header,
+  $cartSidebar,
+  $searchModal,
+  $backdrop,
+} from './selectors';
 
 export const breakpoints = {
   sm: 580,
@@ -53,4 +60,19 @@ $blogFilterBy.change(goToCategoryListing);
 $doc.ready(() => {
   initializeTilt();
   setInitialBlogCategory();
+});
+
+$backdrop.click(function() {
+  if ($backdrop.hasClass('active')) {
+    const headerDropdowns = $header.find('.k-dropdown');
+
+    headerDropdowns.removeClass('k-dropdown--open');
+    headerDropdowns.removeAttr('style');
+
+    $cartSidebar.removeClass('k-cart-sidebar--open');
+
+    $searchModal.removeClass('k-modal--open');
+  }
+
+  $backdrop.removeClass('active');
 });

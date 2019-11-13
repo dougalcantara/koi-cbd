@@ -26,12 +26,18 @@
     height: 0;
     overflow: hidden;
     transition: height 0.2s $ease-out-circ;
+    padding-left: 1em;
+
+    &--liner {
+      padding: 1em 0;
+    }
 
     li {
       font-size: 80%;
       margin-right: 0;
       white-space: nowrap;
       display: block;
+      margin-bottom: 1em;
     }
   }
 
@@ -40,6 +46,8 @@
   }
 
   &.is-open {
+    position: absolute;
+
     .k-header {
       &--nav {
         transform: translateY(0);
@@ -185,7 +193,6 @@
 
       a {
         color: $true-white;
-        text-transform: uppercase;
       }
     }
 
