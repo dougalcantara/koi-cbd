@@ -98,29 +98,26 @@ $root = get_template_directory_uri();
 
     <div class="k-process__carousel">
       <?php
-      for ($i = 0; $i < 8; $i++) { ?>
+      foreach ($site_content['video_gallery'] as $slide) : ?>
       <div class="k-process__carousel__slide">
 
         <div class="k-process__carousel__text">
-          <h2>Vetting Organic CBD Farms. It Starts with the best of the best.</h2>
+          <h2><?php echo $slide['heading']; ?></h2>
           <div class="k-rte-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa temporibus incidunt asperiores saepe atque ex est, officia quo quasi amet soluta provident necessitatibus et officiis odit, eius accusantium at magni ducimus labore excepturi? Accusantium est, adipisci recusandae facilis nobis nisi!</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel officia suscipit perspiciatis cum nobis facilis sed exercitationem cumque assumenda dolor alias necessitatibus quas id, ipsa at quis hic aperiam earum mollitia repellat est autem! Iste?</p>
+            <?php echo $slide['body']; ?>
           </div>
         </div>
 
         <div class="k-process__carousel__image">
           <figure class="k-figure">
             <div class="k-figure--liner">
-              <img data-src="<?php echo $root . '/dist/img/budding-plant.jpg'; ?>" alt="" class="k-figure--img">
+              <img data-src="<?php echo $slide['placeholder_image']['url']; ?>" alt="" class="k-figure--img">
             </div>
           </figure>
         </div>
 
       </div>
-      <?php
-      }
-      ?>
+      <?php endforeach; ?>
     </div>
 
     <div class="k-process__controls">
