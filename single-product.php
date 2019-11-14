@@ -48,18 +48,21 @@ while (have_posts()) : the_post();
   
   include(locate_template('partials/product-reviews.php'));
 
-  $product_video_fields = array(
-    'preheadline' => $product_category,
-    'headline' => 'Create Balance Daily with Easy & Natural Koi CBD Tinctures',
-    'video_headline' => 'Experience the benefits of Koi CBD in its simplest form.',
-    'body_copy' => '
-      <p>Designed as sublingual tinctures, Koi Naturals CBD tinctures are most effective when held under the tongue for a few moments before swallowing.</p>
-      <p>All of our CBD oil is available in two sizes, four strengths, and six delicious flavors. Once you try some for yourself, you\'ll know why Koi Naturals is our most frequently recommended supplement line.</p>
-      <a href="#0" class="k-button k-button--dark">Learn More &rarr;</a>
-    '
-  );
+  /**
+   * This will be included post-launch
+   */
+  // $product_video_fields = array(
+  //   'preheadline' => $product_category,
+  //   'headline' => 'Create Balance Daily with Easy & Natural Koi CBD Tinctures',
+  //   'video_headline' => 'Experience the benefits of Koi CBD in its simplest form.',
+  //   'body_copy' => '
+  //     <p>Designed as sublingual tinctures, Koi Naturals CBD tinctures are most effective when held under the tongue for a few moments before swallowing.</p>
+  //     <p>All of our CBD oil is available in two sizes, four strengths, and six delicious flavors. Once you try some for yourself, you\'ll know why Koi Naturals is our most frequently recommended supplement line.</p>
+  //     <a href="#0" class="k-button k-button--dark">Learn More &rarr;</a>
+  //   '
+  // );
 
-  echo k_product_video($product_video_fields);
+  // echo k_product_video($product_video_fields);
 
   $slider_fields = array(
     'headline' => 'Shop Customer Favorites',

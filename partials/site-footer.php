@@ -1,5 +1,6 @@
 <?php
   $root = get_template_directory_uri();
+  $url = site_url();
 
   get_template_part('partials/cta-takeover');
 ?>
@@ -17,38 +18,41 @@
           </div>
         </div>
         <div class="k-footer--social k-rte-content">
-          <a href="#0">Facebook</a>
-          <a href="#0">Instagram</a>
+          <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">Instagram</a>
         </div>
       </div>
       <div class="k-footer--item k-footer--links k-rte-content">
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Shop CBD</h4>
           <ul>
-            <li><a href="#0">CBD Oil</a></li>
-            <li><a href="#0">CBD Vape</a></li>
-            <li><a href="#0">CBD Topical</a></li>
-            <li><a href="#0">CBD Edibles</a></li>
-            <li><a href="#0">CBD for Pets</a></li>
-            <li><a href="#0">Where to Buy</a></li>
+            <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
+            <li><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
+            <li><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
+            <li><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
+            <li><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
+            <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
+            <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
+            <li><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
+            <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
           </ul>
         </div>
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Company</h4>
           <ul>
-            <li><a href="#0">About Us</a></li>
-            <li><a href="#0">Lab Results</a></li>
-            <li><a href="#0">Wholesale</a></li>
+            <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
+            <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
+            <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
             <li><a href="#0">Ambassadors</a></li>
             <li><a href="#0">Veterans</a></li>
-            <li><a href="#0">Help Desk</a></li>
+            <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
         </div>
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Legal</h4>
           <ul>
-            <li><a href="#0">Terms & Conditions</a></li>
-            <li><a href="#0">Privacy Policy</a></li>
+            <li><a href="https://koicbd.com/terms-and-conditions/">Terms & Conditions</a></li>
+            <li><a href="https://koicbd.com/privacy-policy/">Privacy Policy</a></li>
             <li><a href="#0">Cookie Policy</a></li>
             <li><a href="#0">Shipping Policy</a></li>
             <li><a href="#0">International</a></li>

@@ -34,7 +34,7 @@ $url = site_url();
               </div>
             </ul>
           </li>
-          <li><a class="k-upcase" href="<?php echo $url . '/blog/?category=getting-started-with-cbd'; ?>">CBD 101</a></li>
+          <li><a class="k-upcase" href="<?php echo $url . '/cbd-101'; ?>">CBD 101</a></li>
           <li class="k-has-dropdown">
             <a class="k-upcase" href="#0"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
@@ -52,7 +52,7 @@ $url = site_url();
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/about-us' ?>">Koi Story</a></li>
-                <li><a href="<?php echo $url; ?>">Press</a></li>
+                <li><a href="<?php echo $url . '/blog/?category=hot-off-the-press'; ?>">Press</a></li>
                 <li><a href="<?php echo $url . '/contact'; ?>">FAQ / Contact</a></li>
               </div>
             </ul>
