@@ -46,6 +46,14 @@
       margin-bottom: 0;
     }
 
+    .k-headline a {
+      color: $black;
+
+      &:hover {
+        color: $primary !important;
+      }
+    }
+
     .k-preheading {
       color: $highlight;
       font-weight: 500;

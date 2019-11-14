@@ -4,13 +4,20 @@
     margin: auto;
 
     &--liner {
-      padding-bottom: 100%;
+      padding-bottom: 65.2%;
+    }
+  }
+
+  &--wideimg {
+    .k-figure {
+      width: 100%;
+      border-radius: 0.33em;
     }
   }
 
   &--title {
     text-align: center;
-    // margin-top: 2em;
+    margin-top: 1em;
 
     h3 {
       margin: 0;

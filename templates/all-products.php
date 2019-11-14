@@ -1,15 +1,17 @@
 <?php
 /* Template Name: 2019 All Products Page */
 $url = site_url();
+$fields = get_fields();
 
 get_header();
 
 do_action('k_before_first_section');
 
 echo k_hero(array(
-  'preheading' => 'Koi CBD',
-  'headline' => get_the_title(),
-  'body' => '<p>Welcome to the Awesome World of CBD.',
+  'preheading' => $fields['hero_preheading'],
+  'headline' => $fields['hero_heading'],
+  'body' => $fields['hero_body'],
+  'background_image' => $fields['hero_background_image']['url'],
 ));
 
 get_template_part('partials/components/randoms/breadcrumb');
@@ -39,15 +41,29 @@ $all_categories = get_categories($args);
   <div class="k-inner k-inner--md">
   <?php
   foreach($all_categories as $product_cat) :
-    echo k_product_card(array(
-      'product_title' => $product_cat->name,
-      'product_short_description' => $product_cat->description,
-    ));
-  endforeach;
-  ?>
+    $cat_fields = get_fields('term_' . $product_cat->cat_ID); ?>
+    <div class="k-productcard k-productcard--wideimg">
+    <div class="k-productcard--liner">
+
+      <figure class="k-figure">
+        <div class="k-figure--liner">
+          <img class="k-figure--img" data-src="<?php echo $cat_fields['category_featured_image']['url']; ?>" alt="">
+        </div>
+      </figure>
+
+      <div class="k-productcard--title">
+        <h3 class="k-headline k-headline--fake k-weight--lg"><?php echo $product_cat->name; ?></h3>
+        <p class="k-accent-text"><?php echo $product_cat->description; ?></p>
+      </div>
+
+      <div class="k-productcard--action">
+        <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Shop Now</a>
+      </div>
+
+    </div>
+  </div>
+  <?php endforeach; ?>
   </div>
 </section>
 
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>

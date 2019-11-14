@@ -30,6 +30,7 @@ $url = site_url();
                 <li class="k-upcase"><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
                 <li class="k-upcase"><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
                 <li class="k-upcase"><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
+                <li class="k-upcase"><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
               </div>
             </ul>
           </li>

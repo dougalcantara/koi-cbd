@@ -58,7 +58,11 @@ $doc.ready(function() {
     dragThreshold: 10,
     on: {
       change: () => {
-        $currentSlide.text(`0${flkty.selectedIndex + 1}/0${$slides.length}`);
+        const idx = flkty.selectedIndex;
+
+        $currentSlide.text(`0${idx + 1}/0${$slides.length}`);
+        $slideSelectors.removeClass('active');
+        $($slideSelectors[idx]).addClass('active');
       },
     },
   });

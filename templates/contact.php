@@ -10,7 +10,7 @@
   do_action('k_before_first_section');
 ?>
 <section class="k-hero k-hero--contact on-dark">
-  <div class="k-hero--bgimg" style="background-image: url(<?php echo $root.'/dist/img/koi-home-hero.jpg' ?>)"></div>
+  <div class="k-hero--bgimg" data-src="<?php echo $contact_acf['hero_background_image']['url']; ?>"></div>
   <div class="k-inner k-inner--md">
   
     <div class="k-hero--main">

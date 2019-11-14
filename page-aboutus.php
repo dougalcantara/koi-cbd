@@ -63,30 +63,27 @@ get_header();
       </div>
 
       <div class="k-presspromo--cards">
+        <?php foreach($site_content['press_section_featured_posts'] as $idx => $featured_post) :
+          $_p = reset($featured_post);
+          $_id = $_p->ID; 
+        ?>
         <div class="k-presspromo--card">
           <div class="k-presspromo--card__liner">
-            <span class="k-preheading">01</span>
-            <h3 class="k-headline k-headline--body">Press Releases & Announcements Headline Goes Here</h3>
+            <span class="k-preheading">0<?php echo $idx + 1; ?></span>
+            <h3 class="k-headline k-headline--body">
+              <a href="<?php echo get_the_permalink($_id); ?>">
+                <?php echo get_the_title($_id); ?>
+              </a>
+            </h3>
             <div class="k-presspromo--card__body k-rte-content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi quaerat quam dolores ab repellat.</p>
+              <p><?php echo substr(get_the_excerpt($_id), 0, 120).'...'; ?></p>
             </div>
             <div class="k-presspromo--card__action">
-              <a href="#0">&rarr;</a>
+              <a href="<?php echo get_the_permalink($_id); ?>">&rarr;</a>
             </div>
           </div>
         </div>
-        <div class="k-presspromo--card">
-          <div class="k-presspromo--card__liner">
-            <span class="k-preheading">02</span>
-            <h3 class="k-headline k-headline--body">Press Releases & Announcements Headline Goes Here</h3>
-            <div class="k-presspromo--card__body k-rte-content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi quaerat quam dolores ab repellat.</p>
-            </div>
-            <div class="k-presspromo--card__action">
-              <a href="#0">&rarr;</a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
 
       <div class="k-presspromo--action">
