@@ -38,7 +38,7 @@ echo k_hero($hero_fields);
 get_template_part('partials/components/randoms/breadcrumb');
 ?>
 
-<section class="k-productlisting k-block k-block--md k-no-padding--top">
+<section class="k-productlisting k-block k-block--md k-no-padding--top k-no-padding--bottom">
   <div class="k-inner k-inner--md">
 
   <?php
@@ -69,18 +69,18 @@ get_template_part('partials/components/randoms/breadcrumb');
 </section>
 
 <?php
-  $product_video_fields = array(
-    'preheadline' => 'Feel calm, feel relief, feel balanced',
-    'headline' => 'With all-natural Koi CBD Tinctures, happy, healthy days are a few drops away.',
-    'video_headline' => 'Experience the rejuvenating of Koi CBD Tinctures',
-    'body_copy' => '
-      <p>Repudiandae fuga non nemo facere nihil, libero nesciunt quae, beatae officia distinctio aliquam hic? Optio repudiandae iusto eveniet, sed, deserunt, maxime voluptatibus earum recusandae repellat natus magnam vitae culpa. Amet officiis doloremque error.</p>
-      <p>Quod aliquam beatae sed repellendus nihil sint aliquid voluptates. Repudiandae fuga non nemo facere nihil, libero nesciunt quae, beatae officia distinctio aliquam hic? Optio repudiandae iusto eveniet.</p>
-      <a href="#0" class="k-button k-button--dark">Learn More &rarr;</a>
-    '
-  );
+  // $product_video_fields = array(
+  //   'preheadline' => 'Feel calm, feel relief, feel balanced',
+  //   'headline' => 'With all-natural Koi CBD Tinctures, happy, healthy days are a few drops away.',
+  //   'video_headline' => 'Experience the rejuvenating of Koi CBD Tinctures',
+  //   'body_copy' => '
+  //     <p>Repudiandae fuga non nemo facere nihil, libero nesciunt quae, beatae officia distinctio aliquam hic? Optio repudiandae iusto eveniet, sed, deserunt, maxime voluptatibus earum recusandae repellat natus magnam vitae culpa. Amet officiis doloremque error.</p>
+  //     <p>Quod aliquam beatae sed repellendus nihil sint aliquid voluptates. Repudiandae fuga non nemo facere nihil, libero nesciunt quae, beatae officia distinctio aliquam hic? Optio repudiandae iusto eveniet.</p>
+  //     <a href="#0" class="k-button k-button--dark">Learn More &rarr;</a>
+  //   '
+  // );
 
-  echo k_product_video($product_video_fields);
+  // echo k_product_video($product_video_fields);
 
   $featured_articles = $page_fields['featured_articles'];
   include(locate_template('partials/blog-promo.php'));

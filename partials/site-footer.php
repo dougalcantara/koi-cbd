@@ -43,19 +43,19 @@
             <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
             <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
             <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
-            <li><a href="#0">Ambassadors</a></li>
-            <li><a href="#0">Veterans</a></li>
+            <!-- <li><a href="#0">Ambassadors</a></li> -->
+            <li><a href="<?php echo $url . '/veteran-signup'; ?>">Veterans</a></li>
             <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
         </div>
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Legal</h4>
           <ul>
-            <li><a href="https://koicbd.com/terms-and-conditions/">Terms & Conditions</a></li>
-            <li><a href="https://koicbd.com/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="#0">Cookie Policy</a></li>
-            <li><a href="#0">Shipping Policy</a></li>
-            <li><a href="#0">International</a></li>
+            <li><a href="<?php echo $url . '/terms-and-conditions'; ?>">Terms & Conditions</a></li>
+            <li><a href="<?php echo $url . '/privacy-policy'; ?>">Privacy Policy</a></li>
+            <!-- <li><a href="<?php echo $url . '/cookie-policy'; ?>">Cookie Policy</a></li> -->
+            <li><a href="<?php echo $url . '/shipping-policy'; ?>">Shipping Policy</a></li>
+            <!-- <li><a href="#0">International</a></li> -->
           </ul>
         </div>
         </ul>
