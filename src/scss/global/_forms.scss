@@ -109,13 +109,26 @@ form {
   }
 }
 
+.k-form__radiobutton {
+  position: relative;
+}
+
+.k-form__group {
+  position: relative;
+}
+
+.k-form__fileupload {
+  position: relative;
+}
+
 .k-input {
   & + label {
     user-select: none;
     pointer-events: none;
   }
 
-  &.has-value {
+  &.has-value,
+  &:focus {
     & + label {
       transform: translateY(-100%);
     }

@@ -59,10 +59,12 @@ if (is_user_logged_in()) {
 						<div class="form-row">
 							<button type="submit" class="k-button k-button--primary woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in &rarr;', 'woocommerce'); ?></button>
 						</div>
+						
 						<p><a href="#0" class="k-toggle-register">Create an Account</a></p>
 						<p class="woocommerce-LostPassword lost_password">
 							<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 						</p>
+						<p><a href="<?php echo site_url() . '/veteran-signup'; ?>">Veteran? Apply for Veteran Discount &rarr;</a></p>
 
 						<?php do_action('woocommerce_login_form_end'); ?>
 

@@ -12,7 +12,7 @@
     box-shadow: 0 0 5px #dedede;
 
     & > .k-liner {
-      padding: 1em;
+      padding: 1em 2em;
       background: $true-white;
     }
   }
@@ -120,6 +120,16 @@
   .k-bigtext {
     margin: 0;
     font-size: 125%;
+  }
+
+  .woocommerce-remove-coupon {
+    color: $primary;
+    font-size: 75%;
+    vertical-align: super;
+
+    &:hover {
+      color: red !important;
+    }
   }
 }
 

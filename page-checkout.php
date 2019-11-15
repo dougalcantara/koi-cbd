@@ -8,6 +8,21 @@ if (!defined('ABSPATH')) {
 get_header();
 
 $checkout = WC()->checkout();
+$cart = WC()->cart;
+/**
+ * Veterans get a 25% discount automatically applied in the form of a special coupon.
+ * 
+ * Only users with the "veteran" role are eligible for the coupon, so we chack for that
+ * as well.
+ */
+$user_is_veteran = in_array('veteran', get_userdata(get_current_user_id())->roles);
+$veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
+
+if ($user_is_veteran && !$veteran_coupon_already_applied) {
+  $cart->apply_coupon('veteran coupon');
+}
+
+// $cart->remove_coupons();
 
 do_action('k_before_first_section');
 ?>

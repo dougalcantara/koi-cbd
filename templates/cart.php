@@ -1,14 +1,26 @@
 <?php
   /* Template Name: 2019 Cart Page */
-
-  get_header();
-  
-  $cart = WC()->cart;
-  $cart_acf = get_fields();
-  $items_in_cart = $cart->get_cart();
-  $url = site_url();
-
 defined( 'ABSPATH' ) || exit;
+
+get_header();
+  
+$cart = WC()->cart;
+$cart_acf = get_fields();
+$items_in_cart = $cart->get_cart();
+$url = site_url();
+
+/**
+ * Veterans get a 25% discount automatically applied in the form of a special coupon.
+ * 
+ * Only users with the "veteran" role are eligible for the coupon, so we chack for that
+ * as well.
+ */
+$user_is_veteran = in_array('veteran', get_userdata(get_current_user_id())->roles);
+$veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
+
+if ($user_is_veteran && !$veteran_coupon_already_applied) {
+  $cart->apply_coupon('veteran coupon');
+}
 
 do_action('k_before_first_section');
 
@@ -29,7 +41,7 @@ if (sizeof($items_in_cart) == 0) { ?>
   </div>
 </section>
 
-<section class="k-cart k-block k-block--md">
+<section class="k-cart k-block k-block--md k-no-padding--top">
   <div class="k-inner k-inner--xl">
     <div class="k-cart__headline">
       <h1>Your Cart</h1>

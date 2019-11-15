@@ -71,6 +71,11 @@
     bottom: 6em;
     overflow: scroll;
     padding: 2em 0;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
   }
 
   &__item {
