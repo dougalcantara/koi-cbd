@@ -21,8 +21,9 @@
         $_variant = wc_get_product($variant['variation_id']);
         $attributes = $_variant->get_variation_attributes();
         $this_attribute = formatAttrName(reset($attributes));
+        $sku = $_variant->get_sku();
       ?>
-        <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>">
+        <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>" data-product-sku="<?php echo $sku; ?>">
           <?php if ($has_flavor_attribute) : ?>
           <span>
             <?php echo $attributes['attribute_flavor']; ?>

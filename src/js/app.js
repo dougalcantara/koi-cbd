@@ -21,3 +21,4 @@ import './components/contact';
 import './components/cart-sidebar';
 import './components/koi-process';
 import './components/lab-results';
+import './components/product-latest-batch';
