@@ -35,7 +35,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock:400,700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
-
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
   <!-- <?php 
     if (strpos($current_url, 'cart')) { ?>
       <link rel="stylesheet" href="<?php echo $root.'/dist/css/woocommerce.css' ?>" />

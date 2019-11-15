@@ -17,6 +17,7 @@
           <img data-src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
         </div>
       </figure>
+      <div class="k-player" data-plyr-provider="youtube" data-plyr-embed-id="UmDNOk4_3g8"></div>
       <?php
       get_template_part('partials/svg/koi-play-button');
       ?>

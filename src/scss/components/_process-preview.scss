@@ -4,6 +4,31 @@
 * but not any of the CSS classes.
 */
 .k-videogallery {
+  .plyr {
+    @include fill-parent();
+    z-index: 1;
+  }
+
+  .k-play-button {
+    z-index: 3;
+  }
+
+  &.video-playing {
+    .k-videogallery--video {
+      .k-figure {
+        opacity: 0;
+      }
+
+      &:after {
+        opacity: 0 !important;
+      }
+    }
+
+    .k-play-button {
+      opacity: 0;
+    }
+  }
+
   & > .k-inner {
     display: flex;
     flex-flow: row wrap;
@@ -27,6 +52,8 @@
     position: relative;
 
     .k-figure {
+      z-index: 2;
+
       &--liner {
         padding-bottom: 62.5%;
       }

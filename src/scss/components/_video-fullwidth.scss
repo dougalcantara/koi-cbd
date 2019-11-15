@@ -1,9 +1,73 @@
 .k-fullwidthvid {
   position: relative;
 
+  &.video-playing {
+    .k-fullwidthvid {
+      &--liner {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    .k-play-button {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:after {
+      opacity: 0 !important;
+    }
+  }
+
+  .k-inner {
+    position: relative;
+    border-radius: 0.75em;
+    overflow: hidden;
+  }
+
+  .k-play-button {
+    z-index: 3;
+  }
+
+  &--bgimg {
+    @include fill-parent();
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.4s $ease-out-circ;
+
+    &.lazyload--complete {
+      opacity: 1;
+    }
+  }
+
   &--liner {
+    position: relative;
     padding-bottom: 56.25%;
     background: $black;
-    border-radius: 0.75em;
+
+    z-index: 2;
   }
+
+  .plyr {
+    @include fill-parent();
+    z-index: 1;
+  }
+}
+
+.plyr__control {
+  background: $primary;
+
+  &:hover {
+    background: $primary-dark !important;
+  }
+
+  &.plyr__tab-focus {
+    background: $primary-dark !important;
+  }
+}
+
+.plyr--full-ui input[type='range'] {
+  color: $primary;
 }

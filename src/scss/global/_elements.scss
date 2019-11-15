@@ -178,6 +178,7 @@ img[data-src] {
     border-left: 1em solid $black;
     pointer-events: none;
     user-select: none;
+    z-index: 3;
   }
 }
 
