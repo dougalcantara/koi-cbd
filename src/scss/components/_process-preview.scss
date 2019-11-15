@@ -50,6 +50,8 @@
   &--video {
     order: 2;
     position: relative;
+    border-radius: 0.667em;
+    overflow: hidden;
 
     .k-figure {
       z-index: 2;
