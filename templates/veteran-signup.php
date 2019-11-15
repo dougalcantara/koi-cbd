@@ -24,7 +24,7 @@ echo k_hero(array(
 <section class="k-veterans k-block k-block--md k-no-padding--top">
   <div class="k-inner k-inner--sm">
   
-    <form class="k-veterans__forms">
+    <form class="k-veterans__forms" id="k-veteran-signup">
 
       <div class="k-veterans__form k-form">
         <div class="k-liner">
@@ -53,11 +53,11 @@ echo k_hero(array(
             </div>
             <div class="k-form__group">
               <input type="password" class="k-input" id="k-veterans-password" />
-              <label for="k-veterans-password">Email Address</label>
+              <label for="k-veterans-password">Password</label>
             </div>
             <div class="k-form__group">
               <input type="password" class="k-input" id="k-veterans-password--confirm" />
-              <label for="k-veterans-password--confirm">Username</label>
+              <label for="k-veterans-password--confirm">Confirm Password</label>
             </div>
           </div>
         </div>
@@ -76,12 +76,12 @@ echo k_hero(array(
               <div class="k-form__sectiontitle">
                 <p>Have You Tried Koi CBD's Products Before?</p>
               </div>
-              <div class="k-form__radiobutton">
-                <input type="radio" name="has-tried-koi" value="yes" id="k-veterans-hastried--yes">
+              <div class="k-form__radiobutton k-has-tried">
+                <input type="radio" name="has-tried-koi" value="Yes" id="k-veterans-hastried--yes">
                 <label for="k-veterans-hastried--yes">Yes</label>
               </div>
               <div class="k-form__radiobutton">
-                <input type="radio" name="has-tried-koi" value="no" id="k-veterans-hastried--no">
+                <input type="radio" name="has-tried-koi" value="No" id="k-veterans-hastried--no">
                 <label for="k-veterans-hastried--no">No</label>
               </div>
             </div>

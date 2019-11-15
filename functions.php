@@ -36,6 +36,37 @@ add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
 
 // == begin AJAX fn's == //
 /**
+ * Create new veteran user
+ * 
+ * Required for veteran program signup.
+ * 
+ * 
+ */
+function k_ajax_create_veteran_user() {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  wp_insert_user(array(
+    'user_login' => $email,
+    'user_email' => $email,
+    'user_pass' => $password,
+    'role' => 'veteran',
+  ));
+
+  wp_send_json(get_user_by('email', $email));
+
+  die();
+}
+add_action('wp_ajax_create_veteran_user', 'k_ajax_create_veteran_user');
+add_action('wp_ajax_nopriv_create_veteran_user', 'k_ajax_create_veteran_user');
+
+/**
+ * 
+ */
+function k_ajax_submit_veteran_paperwork() {
+}
+
+/**
  * Add product to cart
  * args - product_id
  */
