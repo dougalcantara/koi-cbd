@@ -120,8 +120,7 @@ $veteranSignup.submit(function(e) {
   //   processData: false,
   //   contentType: 'multipart/form-data',
   //   url:
-  //     'https://cors-anywhere.herokuapp.com/http://api.hubapi.com/filemanager/api/v2/files?hapikey=9f7da0c8-2d44-40e9-86da-125a458151ce',
-  //   data: {
+  //
   //     files: fd.get('file'),
   //   },
   //   complete: res => console.log(res),
