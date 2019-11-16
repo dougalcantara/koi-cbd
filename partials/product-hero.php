@@ -116,6 +116,7 @@
                 ?>
                   <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
                   <span class="k-productform--pricetarget">$<?php echo $bundle_price; ?></span>
+                  <sup>20% off!</sup>
                 <?php
                 } else { ?>
                   <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>

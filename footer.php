@@ -28,13 +28,21 @@ $root = get_template_directory_uri();
 
   <?php
     get_template_part('partials/cart-sidebar');
+    global $wp;
   ?>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
-  <script type="text/javascript" src="https://js.authorize.net/v1/Accept.js"></script>
+
+  <?php if ($wp->request == 'checkout') : ?>
+    <script type="text/javascript" src="https://koicbd.com/wp-content/plugins/woocommerce/assets/js/jquery-payment/jquery.payment.min.js?ver=3.0.0"></script>
+    <script type="text/javascript" src="https://koicbd.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/js/frontend/sv-wc-payment-gateway-payment-form.min.js?ver=5.4.1"></script>
+    <script type="text/javascript" src="https://koicbd.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/assets/js/frontend/wc-authorize-net-cim.min.js?ver=3.0.6"></script>
+    <script type="text/javascript" src="https://js.authorize.net/v1/Accept.js"></script>
+  <?php endif; ?>
+  
   <script type="text/javascript" src="<?php echo $root.'/dist/js/magnetic.bundle.js'; ?>"></script>
   <script type="text/javascript">
     (function() {
@@ -42,5 +50,11 @@ $root = get_template_directory_uri();
       backdrop.classList.remove('active');
     })();
   </script>
+
+  <?php if ($wp->request == 'checkout') : ?>
+  <script type="text/javascript">
+  jQuery(function(o){tvc_lc="USD",jQuery("div").on("click",".apply_coupons_credits",function(){if(coupon_code=jQuery(this).find("div.code").text(),""!=coupon_code&&null!=coupon_code){jQuery(this).css("opacity","0.5");var o="https://koicbd.com/?sc-page=checkout&coupon-code="+coupon_code;jQuery(location).attr("href",o)}});var e=function(){jQuery("div#coupons_list").find("div.coupon-container").length>0?jQuery("div#coupons_list").slideDown(800):jQuery("div#coupons_list").hide()};jQuery("#all_coupon_container").height()>400?(jQuery("#all_coupon_container").css("height","400px"),jQuery("#all_coupon_container").css("overflow-y","scroll")):(jQuery("#all_coupon_container").css("height",""),jQuery("#all_coupon_container").css("overflow-y","")),jQuery(".checkout_coupon").next("#coupons_list").hide(),jQuery("a.showcoupon").on("click",function(){e()}),jQuery(document).on("ready",function(){jQuery("div#invalid_coupons_list div#all_coupon_container .coupon-container").removeClass("apply_coupons_credits")}),jQuery(document.body).on("updated_checkout",function(o,c){c.fragments.wc_sc_available_coupons&&jQuery("div#coupons_list").replaceWith(c.fragments.wc_sc_available_coupons),e()}),jQuery(document.body).on("updated_cart_totals update_checkout",function(){jQuery("div#coupons_list").css("opacity","0.5"),jQuery.ajax({url:"https://koicbd.com/wp-admin/admin-ajax.php",type:"post",dataType:"html",data:{action:"sc_get_available_coupons",security:"d4cc3fa80e"},success:function(o){null!=o&&""!=o&&jQuery("div#coupons_list").replaceWith(o),e(),jQuery("div#coupons_list").css("opacity","1")}})}),jQuery("body").on("applied_coupon removed_coupon update_checkout",function(){jQuery.ajax({url:"https://koicbd.com/wp-admin/admin-ajax.php",type:"POST",dataType:"html",data:{action:"get_wc_coupon_message",security:"847daaf786"},success:function(o){jQuery(".wc_coupon_message_wrap").html(""),null!=o&&""!=o&&jQuery(".wc_coupon_message_wrap").html(o)}})}),window.wc_authorize_net_cim_credit_card_payment_form_handler=new WC_Authorize_Net_Payment_Form_Handler({plugin_id:"authorize_net_cim",id:"authorize_net_cim_credit_card",id_dasherized:"authorize-net-cim-credit-card",type:"credit-card",csc_required:!0,csc_required_for_tokens:!1,logging_enabled:!1,lightbox_enabled:!1,login_id:"8Q98gCqJ",client_key:"2KwRL5ATs76sRasQkv625958x6K8fS6R84Rb8UJAVs9WZ2s76tqUmQQegphvywcZ",general_error:"An error occurred, please try again or try an alternate form of payment.",ajax_url:"https://koicbd.com/wp-admin/admin-ajax.php",ajax_log_nonce:"7168f93909",enabled_card_types:["visa","mastercard","amex"]})});
+  </script>
+  <?php endif; ?>
 </body>
 </html>

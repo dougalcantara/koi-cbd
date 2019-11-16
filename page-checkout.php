@@ -22,6 +22,13 @@ if ($user_is_veteran && !$veteran_coupon_already_applied) {
   $cart->apply_coupon('veteran coupon');
 }
 
+/**
+ * If a non-veteran tries to use the veteran coupon
+ */
+if (!$user_is_veteran && $veteran_coupon_already_applied) {
+	$cart->remove_coupon('veteran coupon');
+}
+
 // $cart->remove_coupons();
 
 do_action('k_before_first_section');

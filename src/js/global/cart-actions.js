@@ -20,6 +20,19 @@ const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const $cartSidebarToggle = $('#k-carttoggle');
 const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
 
+/**
+ * Need this because bundles have a dynamic price, based on the items
+ * that the customer selects as part of the bundle.
+ *
+ * It gets passed to AjaxCart.addBundle so that it can be read elsehere,
+ * like the cart sidebar.
+ */
+const price = parseFloat(
+  $('.k-productform--pricetarget')
+    .text()
+    .replace('$', '')
+);
+
 function updateCartStatus(cartItems, expandedProducts) {
   let numInCart = 0;
 
@@ -52,7 +65,7 @@ function handleCartSidebar(cartItems) {
     if (isBundledItem) return;
 
     const quantity = product.is_bundle ? '1' : product.quantity;
-    const totalPrice = (product.price * quantity).toFixed(2);
+    const totalPrice = `$${(product.price * quantity).toFixed(2)}`;
 
     $cartItemsTarget.append(/*html*/ `
       <div class="k-cart-sidebar__item">
@@ -62,7 +75,7 @@ function handleCartSidebar(cartItems) {
             <a href="${product.permalink}">${product.name}</a>
           </h3>
           <p>Quantity: ${quantity}</p>
-          <p class="k-bigtext">$${totalPrice}</p>
+          <p class="k-bigtext">${product.is_bundle ? '' : totalPrice}</p>
         </div>
       </div>
     `);
@@ -158,7 +171,8 @@ async function addBundleToCart(e) {
     productId,
     getUserBundleSelections(),
     minItems,
-    maxItems
+    maxItems,
+    price
   );
 
   handleCartSidebar(expandedProducts);

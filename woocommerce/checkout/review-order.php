@@ -33,6 +33,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				$_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
 
+				// Don't list out bundled items, include them as sub-items under their parent product instead.
+				if (wc_pb_is_bundled_cart_item($cart_item)) {
+					continue;
+				}
+
 				if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key)) {
 					?>
 					<div class="k-review-order--item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
@@ -40,6 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php echo apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;'; ?>
 							<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf('&times; %s', $cart_item['quantity']) . '</strong>', $cart_item, $cart_item_key); ?>
 							<?php echo wc_get_formatted_cart_item_data($cart_item); ?>
+							<?php var_dump(wc_pb_is_bundle_container_cart_item($cart_item)); ?>
 						</div>
 						<div class="product-total">
 							<p class="k-bigtext">

@@ -66,7 +66,7 @@ AjaxCart.addItem = async function(id, quantity, cb) {
   return this.getCartItems();
 };
 
-AjaxCart.addBundle = async function(id, bundledItems, min, max) {
+AjaxCart.addBundle = async function(id, bundledItems, min, max, bundlePrice) {
   await _makeRequest({
     method: 'POST',
     data: {
@@ -75,6 +75,7 @@ AjaxCart.addBundle = async function(id, bundledItems, min, max) {
       selected_child_items: bundledItems,
       min_items: min,
       max_items: max,
+      bundle_price: bundlePrice,
     },
   });
 

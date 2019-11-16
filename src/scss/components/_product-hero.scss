@@ -4,6 +4,13 @@
     border-radius: 0.5em;
   }
 
+  &--bundle {
+    .k-productform--price {
+      text-align: left;
+      padding-left: 2em;
+    }
+  }
+
   &--gallery {
     padding-top: 2em;
   }
@@ -292,21 +299,22 @@
       font-size: 2em;
     }
 
-    #k-bundle-price-prefix {
-      display: block;
-      text-align: right;
+    #k-bundle-price-prefix,
+    sup {
       font-size: 50%;
       color: $primary;
+    }
+
+    #k-bundle-price-prefix {
       margin-bottom: -1em;
+      display: block;
     }
 
     sup {
-      position: absolute;
-      top: 0;
-      right: 0;
-      text-decoration: line-through;
-      font-size: 50%;
-      color: $primary;
+      padding-left: 1em;
+      vertical-align: text-top;
+      margin-top: 1.33em;
+      display: inline-block;
     }
   }
 

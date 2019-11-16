@@ -163,6 +163,34 @@
         font-size: 1.5em;
       }
     }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    &__bundleditem {
+      border-bottom: 1px solid #dedede;
+      padding: 0.5em 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &__price {
+        color: $primary;
+        display: block;
+
+        sup {
+          color: $black;
+          padding-left: 1em;
+        }
+      }
+    }
   }
 
   &--sidebar {
@@ -255,6 +283,14 @@
 
       &:first-child {
         text-align: center;
+      }
+    }
+
+    a {
+      color: $primary;
+
+      &:hover {
+        color: $primary-dark !important;
       }
     }
   }

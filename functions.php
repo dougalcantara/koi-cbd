@@ -305,4 +305,170 @@ function add_wc_support() {
 add_action('after_setup_theme', 'add_wc_support');
 // == end plugin stuff == //
 
-?>
+
+/**
+ * BEGIN STUFF FROM ORIGINAL THEME'S FUNCTIONS.PHP
+ * 
+ * I don't know what's going on in here but some of it's necessary for sure
+ */
+
+
+//
+// Recommended way to include parent theme styles.
+//  (Please see http://codex.wordpress.org/Child_Themes#How_to_Create_a_Child_Theme)
+//  
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+function theme_enqueue_styles() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array('parent-style')
+    );
+}
+//
+// Your code goes below
+//
+
+add_filter( 'woocommerce_apply_base_tax_for_local_pickup', '__return_false' );
+
+
+
+add_filter( 'et_project_posttype_rewrite_args', 'wpc_projects_slug', 10, 2 );
+function wpc_projects_slug( $slug ) {
+$slug = array( 'slug' => 'lab-result' );
+return $slug;
+}
+
+
+add_filter('um_account_page_default_tabs_hook', 'my_custom_tab_in_um', 100 );
+function my_custom_tab_in_um( $tabs ) {
+	$tabs[800]['veterans']['icon'] = 'um-icon-android-star';
+	$tabs[800]['veterans']['title'] = "Apply For Military Discount";
+	$tabs[800]['veterans']['custom'] = true;
+	return $tabs;
+}
+	
+/* make our new tab hookable */
+
+add_action('um_account_tab__veterans', 'um_account_tab__veterans');
+function um_account_tab__veterans( $info ) {
+	global $ultimatemember;
+	extract( $info );
+
+	$output = $ultimatemember->account->get_tab_output('veterans');
+	if ( $output ) { echo $output; }
+}
+
+/* Finally we add some content in the tab */
+
+add_filter('um_account_content_hook_veterans', 'um_account_content_hook_veterans');
+function um_account_content_hook_veterans( $output ){
+	ob_start();
+	?>
+		
+	<div style="text-align: center;" class="um-field">
+	<p id="veteran-heading" >To Thank All 
+The Men & Women Who've Served Our Country, Koi Offers All Members of The 
+United States Military Access To Our Veteran Discount Program</p>
+
+	<a id="veteran-button" href="https://koicbd.com/veteran-application/">Apply Now</a>
+
+	</div>		
+		
+	<?php
+		
+	$output .= ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+
+// Custom Return To Shop URL
+
+function wc_empty_cart_redirect_url() {
+	return '/';
+}
+add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );
+
+
+// Custom No Shipping Error
+
+
+add_filter( 'woocommerce_cart_no_shipping_available_html', 'change_msg_no_available_shipping_methods', 10, 1  );
+add_filter( 'woocommerce_no_shipping_available_html', 'change_msg_no_available_shipping_methods', 10, 1 );
+function change_msg_no_available_shipping_methods( $default_msg ) {
+    $custom_msg = "Sorry, but Koi CBD does not ship internationally. If you are located outside of the U.S. try ordering through <a href='http://www.koicbd.co.uk/'>www.koicbd.co.uk</a> or <a href='http://www.cbdcanadakoi.com/'>www.cbdcanadakoi.com</a> if you are in Canada.";
+    if( empty( $custom_msg ) ) {
+      return $default_msg;
+    }
+    
+    return $custom_msg;
+}
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rsd_link');
+
+
+// Create and display the custom field in product general setting tab
+add_action( 'woocommerce_product_options_general_product_data', 'add_custom_field_general_product_fields' );
+function add_custom_field_general_product_fields(){
+    global $post;
+
+    echo '<div class="product_custom_field">';
+
+    // Custom Product Checkbox Field
+    woocommerce_wp_checkbox( array(
+        'id'        => '_disabled_for_coupons',
+        'label'     => __('Disabled for coupons', 'woocommerce'),
+        'description' => __('Disable this products from coupon discounts', 'woocommerce'),
+        'desc_tip'  => 'true',
+    ) );
+
+    echo '</div>';;
+}
+
+// Save the custom field and update all excluded product Ids in option WP settings
+add_action( 'woocommerce_process_product_meta', 'save_custom_field_general_product_fields', 10, 1 );
+function save_custom_field_general_product_fields( $post_id ){
+
+    $current_disabled = isset( $_POST['_disabled_for_coupons'] ) ? 'yes' : 'no';
+
+    $disabled_products = get_option( '_products_disabled_for_coupons' );
+    if( empty($disabled_products) ) {
+        if( $current_disabled == 'yes' )
+            $disabled_products = array( $post_id );
+    } else {
+        if( $current_disabled == 'yes' ) {
+            $disabled_products[] = $post_id;
+            $disabled_products = array_unique( $disabled_products );
+        } else {
+            if ( ( $key = array_search( $post_id, $disabled_products ) ) !== false )
+                unset( $disabled_products[$key] );
+        }
+    }
+
+    update_post_meta( $post_id, '_disabled_for_coupons', $current_disabled );
+    update_option( '_products_disabled_for_coupons', $disabled_products );
+}
+
+// Make coupons invalid at product level
+add_filter('woocommerce_coupon_is_valid_for_product', 'set_coupon_validity_for_excluded_products', 12, 4);
+function set_coupon_validity_for_excluded_products($valid, $product, $coupon, $values ){
+    if( ! count(get_option( '_products_disabled_for_coupons' )) > 0 ) return $valid;
+
+    $disabled_products = get_option( '_products_disabled_for_coupons' );
+    if( in_array( $product->get_id(), $disabled_products ) )
+        $valid = false;
+
+    return $valid;
+}
+
+// Set the product discount amount to zero
+add_filter( 'woocommerce_coupon_get_discount_amount', 'zero_discount_for_excluded_products', 12, 5 );
+function zero_discount_for_excluded_products($discount, $discounting_amount, $cart_item, $single, $coupon ){
+    if( ! count(get_option( '_products_disabled_for_coupons' )) > 0 ) return $discount;
+
+    $disabled_products = get_option( '_products_disabled_for_coupons' );
+    if( in_array( $cart_item['product_id'], $disabled_products ) )
+        $discount = 0;
+
+    return $discount;
+}

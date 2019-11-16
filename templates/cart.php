@@ -22,6 +22,13 @@ if ($user_is_veteran && !$veteran_coupon_already_applied) {
   $cart->apply_coupon('veteran coupon');
 }
 
+/**
+ * If a non-veteran tries to use the veteran coupon
+ */
+if (!$user_is_veteran && $veteran_coupon_already_applied) {
+	$cart->remove_coupon('veteran coupon');
+}
+
 do_action('k_before_first_section');
 
 if (sizeof($items_in_cart) == 0) { ?>
@@ -91,14 +98,20 @@ if (sizeof($items_in_cart) == 0) { ?>
                     </a>
                     <?php
                     if ($is_product_bundle) {
-                      $bundled_items = wc_pb_get_bundled_cart_items($cart_item); ?>
+                      $bundled_cart_items = wc_pb_get_bundled_cart_items($cart_item);
+                      $discount_amount = reset(wc_get_product($product_id)->get_bundled_items())->get_discount() / 100;
+                    ?>
 
                       <ul>
                       <?php
-                      foreach($bundled_items as $idx => $bundled_item) {
-                        $bundled_product = wc_get_product($bundled_item['variation_id']); ?>
+                      foreach($bundled_cart_items as $key => $bundled_cart_item) {
+                        $bundled_product = wc_get_product($bundled_cart_item['variation_id']);
+                        $price = floatval($bundled_product->get_price());
+                        $price_with_discount = number_format($price - ($discount_amount * $price), 2);
+                      ?>
                         <li class="k-cart--item__bundleditem">
                           <a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
+                          <span class="k-cart--item__bundleditem__price"><?php echo $price_with_discount . '<sup>' . ($discount_amount * 100) . '% off!</sup>'; ?></span>
                         </li>
                       <?php
                       }
