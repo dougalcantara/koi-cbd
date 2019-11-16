@@ -93,6 +93,15 @@
               <p>
               <?php
                 if ($product_wc_type == 'bundle') {
+                  /**
+                   * Calculate the minimum bundle price by:
+                   * 1) Finding out how many items make up this bundle (typically 4 or 5 of the listed items may be selected)
+                   * 2) Get the discounted price of each item
+                   * 3) Multiply that by the number of items that the bundle can contain
+                   * 4) Render that price to the page
+                   * 
+                   * JS will take over and update the price as the user selects individual items.
+                   */
                   $max_items = intval($product_acf['max_items']);
                   $bundled_items = $product->get_bundled_items();
                   $bundle_price = 0;
@@ -105,7 +114,7 @@
                     $idx++;
                   endforeach;
                 ?>
-                  <span class="k-accent-text">from</span>
+                  <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
                   <span class="k-productform--pricetarget">$<?php echo $bundle_price; ?></span>
                 <?php
                 } else { ?>

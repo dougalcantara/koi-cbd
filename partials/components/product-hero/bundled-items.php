@@ -36,6 +36,7 @@
           $variant_id = $_variant->get_id();
           $attributes = $_variant->get_attributes();
           $this_attribute = reset($attributes);
+          $price_with_discount = number_format($price - ($discount_amount * $price), 2);
         ?>
           <div class="k-productform--bundleselect__variant">
             <input
@@ -44,12 +45,13 @@
               name="<?php echo $bundled_item_key; ?>"
               value="<?php echo $this_attribute; ?>"
               data-variant-id="<?php echo $variant_id; ?>"
+              data-variant-price="<?php echo $price_with_discount; ?>"
               data-variant-strength="<?php echo $this_attribute; ?>"
             />
             <label
               for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
               class="k-productform--varianttoggle"
-              data-variant-price="<?php echo number_format($price - ($discount_amount * $price), 2); ?>"
+              data-variant-price="<?php echo $price_with_discount; ?>"
               data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
             >
               <span><?php echo $this_attribute; ?></span>

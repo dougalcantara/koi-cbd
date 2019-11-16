@@ -292,6 +292,14 @@
       font-size: 2em;
     }
 
+    #k-bundle-price-prefix {
+      display: block;
+      text-align: right;
+      font-size: 50%;
+      color: $primary;
+      margin-bottom: -1em;
+    }
+
     sup {
       position: absolute;
       top: 0;

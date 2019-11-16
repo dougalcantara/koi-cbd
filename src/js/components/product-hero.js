@@ -7,7 +7,9 @@ const $variantSelects = $(
 );
 const $productForm = $('.k-productform');
 const $priceTarget = $('.k-productform--pricetarget');
+const $pricePrefix = $('#k-bundle-price-prefix');
 const $bundledItemSelects = $('.k-productform--select-bundled-item');
+const $bundledVariants = $('.k-productform--varianttoggle');
 const $addToCartTrigger = $('.k-productform .k-add-to-cart');
 const $increment = $('#k-increase');
 const $decrement = $('#k-reduce');
@@ -15,11 +17,7 @@ const $quantity = $('#k-num-to-add');
 const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
 
-const isBundle = $productHero.hasClass('k-producthero--bundle');
 const minItems = $productHero.data('min-items');
-
-let discountAmount = 0;
-
 let flkty;
 
 $increment.click(function increment(e) {
@@ -57,6 +55,9 @@ $variantSelects.click(function() {
   $addToCartTrigger.attr('data-product-id', variantId);
 });
 
+/**
+ * Handle drawer state when selecting an item from a Product Bundle
+ */
 $bundledItemSelects.click(function() {
   const $t = $(this);
 
@@ -66,18 +67,85 @@ $bundledItemSelects.click(function() {
     .first()
     .outerHeight();
 
-  const numOfCheckedItems = $('.k-productform--select-bundled-item:checked')
-    .length;
-
-  if (numOfCheckedItems > 5) {
-    target.checked = false;
-    return alert('May only select 5 items.');
-  }
-
   if ($t.is(':checked')) {
     $targetDrawer.height(targetHeight);
   } else {
+    /**
+     * When the user un-selects a bundled item, we need to remove the selected variant
+     * of that previously selected bundled item. That way we can correctly calculate the
+     * price visually.
+     *
+     * EG: User initially selects a "Lemon-Lime" tincture as part of this bundle, and
+     *     selects a variant for the tincture; "250mg".
+     *
+     *     The user later removes the "Lemon-Lime" tincture from their selections.
+     *
+     *     In this case, we need to remove the active class from the variant ("250mg") from
+     *     the bundled item ("Lemon-Lime" tincture) so that the final price calc works as
+     *     expected.
+     *
+     *     The final price calc looks at bundled item variants that have the class
+     *     ".bundled-variant-selected"
+     */
+
+    // Find selected variant for this bundled item
+    const _variantSelects = $t
+      .siblings()
+      .find('.k-productform--varianttoggle.bundled-variant-selected');
+
+    // remove 'checked' attr from sibling <input />
+    _variantSelects.prev().prop('checked', false);
+
+    // remove active class from selected variants
+    _variantSelects.removeClass('bundled-variant-selected');
     $targetDrawer.height(0);
+  }
+});
+
+/**
+ * This calculates the final price (visually, doesn't affect price for actual payment)
+ * to be shown in the Product Hero after a user has selected the minimum number of items
+ * in a Product Bundle.
+ */
+$bundledVariants.click(function() {
+  const $t = $(this);
+  let $selectedBundledVariants;
+
+  $t.addClass('bundled-variant-selected');
+
+  /**
+   * Find other variant selects that may have been previously
+   * selected and remove the active class from them.
+   */
+  $t.parent()
+    .siblings()
+    .find('.bundled-variant-selected')
+    .removeClass('bundled-variant-selected');
+
+  /**
+   * Keep track of selected variants
+   */
+  $selectedBundledVariants = $productForm.find(
+    '.k-productform--varianttoggle.bundled-variant-selected'
+  );
+
+  /**
+   * Once the num of selected variants matches the num of min
+   * items for this bundle, sum the price of all selected variants
+   * and update the price element with that sum.
+   *
+   * Also update price prefix to be a little more clear once all items
+   * are selected.
+   */
+  if ($selectedBundledVariants.length === minItems) {
+    let priceWithSelectedItems = 0;
+
+    $selectedBundledVariants.each(function() {
+      priceWithSelectedItems += $(this).data('variant-price');
+    });
+
+    $pricePrefix.text('with selected items:');
+    $priceTarget.text(`$${priceWithSelectedItems.toFixed(2)}`);
   }
 });
 
@@ -112,17 +180,4 @@ $doc.ready(function() {
       $addToCartTrigger.attr('data-product-id', variantId);
     }
   });
-
-  if (isBundle) {
-    const individualItemPrice = $productHero
-      .find('label[data-variant-price]')
-      .first()
-      .data('variant-price');
-    discountAmount = $productHero
-      .find('.k-productform--bundleselect__item')
-      .first()
-      .data('discount-amount');
-
-    $priceTarget.text(`$${individualItemPrice * minItems}`);
-  }
 });
