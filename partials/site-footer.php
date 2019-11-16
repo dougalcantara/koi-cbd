@@ -28,7 +28,6 @@
           <ul>
             <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
             <li><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
-            <li><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
             <li><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
             <li><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
             <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>

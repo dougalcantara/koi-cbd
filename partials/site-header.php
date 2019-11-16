@@ -22,15 +22,14 @@ $url = site_url();
             <a class="k-upcase" href="#0"><span>&#9660;</span> Shop</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-wellness-shots' ?>">CBD Wellness Shots</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
-                <li class="k-upcase"><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
+                <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
+                <li><a href="<?php echo $url . '/cbd-edibles' ?>">CBD Edibles</a></li>
+                <li><a href="<?php echo $url . '/cbd-vape' ?>">CBD Vape Juice</a></li>
+                <li><a href="<?php echo $url . '/cbd-vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
+                <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
+                <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
+                <li><a href="<?php echo $url . '/cbd-merchandise'; ?>">Merchandise</a></li>
+                <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
               </div>
             </ul>
           </li>
