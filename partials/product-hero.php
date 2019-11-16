@@ -1,4 +1,8 @@
-<section class="k-producthero" data-yotpo-product-id="<?php echo $product_id ?>">
+<section
+  class="k-producthero <?php echo $product_wc_type == 'bundle' ? 'k-producthero--bundle' : NULL; ?>"
+  data-yotpo-product-id="<?php echo $product_id ?>"
+  data-min-items="<?php echo $min_items; ?>"
+>
   <div class="k-inner k-inner--xl">
     <?php
     include(locate_template('partials/components/product-hero/image-gallery.php'));
@@ -88,8 +92,21 @@
             <div class="k-productform--item k-productform--price">
               <p>
               <?php
-                if ($product_wc_type == 'bundle') { ?>
-                  <span class="k-productform--pricetarget">$<?php echo $product->get_bundle_price(); ?><sup>was $<?php echo $product->get_bundle_regular_price(); ?></sup></span>
+                if ($product_wc_type == 'bundle') {
+                  $max_items = intval($product_acf['max_items']);
+                  $bundled_items = $product->get_bundled_items();
+                  $bundle_price = 0;
+
+                  $idx = 0;
+                  foreach($bundled_items as $item) :
+                    if ($idx < $max_items) {
+                      $bundle_price += $item->get_price();
+                    }
+                    $idx++;
+                  endforeach;
+                ?>
+                  <span class="k-accent-text">from</span>
+                  <span class="k-productform--pricetarget">$<?php echo $bundle_price; ?></span>
                 <?php
                 } else { ?>
                   <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>

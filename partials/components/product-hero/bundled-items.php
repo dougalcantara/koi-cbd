@@ -8,9 +8,10 @@
     $parent_id = $product->get_id();
     $parent_name = $product->get_name();
     $wc_bundled_product = wc_get_product($bundled_item->get_data()['product_id']);
+    $discount_amount = $bundled_item->get_data()['discount'] / 100;
     $bundled_item_name = $wc_bundled_product->get_name();
   ?>
-    <div class="k-productform--bundleselect__item">
+    <div class="k-productform--bundleselect__item" data-discount-amount="<?php echo $discount_amount; ?>">
 
       <input
         class="k-productform--select-bundled-item"
@@ -48,7 +49,7 @@
             <label
               for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
               class="k-productform--varianttoggle"
-              data-variant-price="<?php echo $price; ?>"
+              data-variant-price="<?php echo number_format($price - ($discount_amount * $price), 2); ?>"
               data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
             >
               <span><?php echo $this_attribute; ?></span>

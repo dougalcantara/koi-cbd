@@ -1,5 +1,6 @@
 import { $doc } from '../global/selectors';
 
+const $productHero = $('.k-producthero');
 const $productHeroCarousel = $('.k-producthero--gallery');
 const $variantSelects = $(
   '.k-productform--variants .k-productform--variantselect'
@@ -13,6 +14,11 @@ const $decrement = $('#k-reduce');
 const $quantity = $('#k-num-to-add');
 const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
+
+const isBundle = $productHero.hasClass('k-producthero--bundle');
+const minItems = $productHero.data('min-items');
+
+let discountAmount = 0;
 
 let flkty;
 
@@ -106,4 +112,17 @@ $doc.ready(function() {
       $addToCartTrigger.attr('data-product-id', variantId);
     }
   });
+
+  if (isBundle) {
+    const individualItemPrice = $productHero
+      .find('label[data-variant-price]')
+      .first()
+      .data('variant-price');
+    discountAmount = $productHero
+      .find('.k-productform--bundleselect__item')
+      .first()
+      .data('discount-amount');
+
+    $priceTarget.text(`$${individualItemPrice * minItems}`);
+  }
 });

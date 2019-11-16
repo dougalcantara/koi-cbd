@@ -34,6 +34,7 @@ $root = get_template_directory_uri();
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+  <script type="text/javascript" src="https://js.authorize.net/v1/Accept.js"></script>
   <script type="text/javascript" src="<?php echo $root.'/dist/js/magnetic.bundle.js'; ?>"></script>
   <script type="text/javascript">
     (function() {
