@@ -45,7 +45,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php echo apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;'; ?>
 							<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf('&times; %s', $cart_item['quantity']) . '</strong>', $cart_item, $cart_item_key); ?>
 							<?php echo wc_get_formatted_cart_item_data($cart_item); ?>
-							<?php var_dump(wc_pb_is_bundle_container_cart_item($cart_item)); ?>
+
+							<?php
+							if (wc_pb_is_bundle_container_cart_item($cart_item)) :
+								$bundled_cart_items = wc_pb_get_bundled_cart_items($cart_item);
+								$discount_amount = reset(wc_get_product($_product->get_id())->get_bundled_items())->get_discount() / 100; ?>
+								<h4 style="margin-bottom: 0;">Bundled items:</h4>
+								<ul>
+									<?php
+									foreach($bundled_cart_items as $bundled_cart_item) :
+										$bundled_product = wc_get_product($bundled_cart_item['variation_id']);
+										$price = floatval($bundled_product->get_price());
+										$price_with_discount = number_format($price - ($discount_amount * $price), 2); ?>
+										
+										<li>
+											<a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
+											<p><span>Bundled price: </span><?php echo $price_with_discount . '<sup>' . ($discount_amount * 100) . '% off!</sup>'; ?></p>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
 						</div>
 						<div class="product-total">
 							<p class="k-bigtext">

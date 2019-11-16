@@ -111,6 +111,42 @@
         padding: 0;
       }
     }
+
+    ul {
+      list-style-type: none;
+      padding-left: 1em;
+    }
+
+    li {
+      padding: 1em;
+
+      &:nth-child(odd) {
+        background: $bg-gray;
+      }
+
+      a {
+        color: $black;
+        display: block;
+
+        &:hover {
+          color: $primary-dark !important;
+        }
+      }
+
+      p {
+        color: $primary;
+        margin: 0;
+
+        span {
+          color: $black;
+        }
+      }
+
+      sup {
+        color: $black;
+        padding-left: 1em;
+      }
+    }
   }
 
   .product-quantity {
