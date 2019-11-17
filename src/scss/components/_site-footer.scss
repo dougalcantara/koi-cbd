@@ -20,23 +20,17 @@
     z-index: -1;
   }
 
-  .koi-logo-full {
-    position: relative;
-    margin-bottom: 1em;
-    max-width: 8.75em;
-
-    .k-svg-wrapper {
-      padding-bottom: 110.42%;
-    }
-
-    svg {
-      @include fill-parent();
-      overflow: hidden;
-    }
-  }
-
   &--logo {
     flex-basis: 50%;
+
+    .k-figure {
+      margin-bottom: 1em;
+      max-width: 8.75em;
+
+      &--liner {
+        padding-bottom: 110.42%;
+      }
+    }
   }
 
   &--social {
