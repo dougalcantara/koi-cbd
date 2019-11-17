@@ -45,11 +45,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php echo apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;'; ?>
 							<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf('&times; %s', $cart_item['quantity']) . '</strong>', $cart_item, $cart_item_key); ?>
 							<?php echo wc_get_formatted_cart_item_data($cart_item); ?>
-
-							<?php
-							if (wc_pb_is_bundle_container_cart_item($cart_item)) :
-								$bundled_cart_items = wc_pb_get_bundled_cart_items($cart_item);
-								$discount_amount = reset(wc_get_product($_product->get_id())->get_bundled_items())->get_discount() / 100; ?>
+						</div>
+						<div class="product-total">
+							<p class="k-bigtext">
+								<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
+							</p>
+						</div>
+						<?php if (wc_pb_is_bundle_container_cart_item($cart_item)) :
+							$bundled_cart_items = wc_pb_get_bundled_cart_items($cart_item);
+							$discount_amount = reset(wc_get_product($_product->get_id())->get_bundled_items())->get_discount() / 100; ?>
+							<div class="product-bundleditems">
 								<h4 style="margin-bottom: 0;">Bundled items:</h4>
 								<ul>
 									<?php
@@ -64,13 +69,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 										</li>
 									<?php endforeach; ?>
 								</ul>
-							<?php endif; ?>
-						</div>
-						<div class="product-total">
-							<p class="k-bigtext">
-								<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
-							</p>
-						</div>
+							</div>
+						<?php endif; ?>
 					</div>
 					<?php
 				}

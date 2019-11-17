@@ -46,11 +46,15 @@
   }
 
   &.is-open {
-    position: absolute;
+    position: fixed;
 
     .k-header {
       &--nav {
         transform: translateY(0);
+
+        &__content {
+          border-bottom: 0.125em solid $primary;
+        }
       }
 
       &--navtoggle {
@@ -181,7 +185,13 @@
 
     a {
       color: $black;
-      font-size: 125%;
+      // font-size: 125%;
+    }
+
+    .k-dropdown--liner {
+      a {
+        font-size: 1rem;
+      }
     }
   }
 

@@ -31,7 +31,7 @@ function k_article_card($args) {
       </div>
 
       <div class="k-articlecard--title">
-        <h3 class="k-headline k-headline--xs"><?php echo $args['title']; ?></h3>
+        <h3 class="k-headline k-headline--xs"><a href="<?php echo $args['url']; ?>"><?php echo $args['title']; ?></a></h3>
       </div>
 
       <div class="k-articlecard--excerpt k-rte-content">

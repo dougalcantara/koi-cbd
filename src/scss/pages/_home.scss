@@ -9,6 +9,14 @@
       width: 90%;
       overflow: visible;
     }
+
+    .k-headline a {
+      color: $black;
+
+      &:hover {
+        color: $primary !important;
+      }
+    }
   }
 
   &--intro {

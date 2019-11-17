@@ -226,7 +226,7 @@ if (sizeof($items_in_cart) == 0) { ?>
               ? $_subtotal = number_format($cart->get_subtotal() - ($cart->get_subtotal() * ($discount_amount / 100)), 2) 
               : $_subtotal = $cart->get_subtotal();
           ?>
-          <p class="k-bigtext"><?php echo $_subtotal; ?></p>
+          <p class="k-bigtext">$<?php echo $_subtotal; ?></p>
         </div>
 
         <div class="k-cart__continue">
@@ -236,7 +236,7 @@ if (sizeof($items_in_cart) == 0) { ?>
         
         <div class="k-cart__meta">
           <p class="k-upcase">Secure Checkout Guaranteed</p>
-          <p>View Koi CBD <a href="<?php echo $url . '/shipping-policy'; ?>">Shipping & Return Policies</a> before purchasing.</p>
+          <p>View Koi CBD <a target="_blank" rel="noopener, noreferrer" href="<?php echo $url . '/shipping-policy'; ?>">Shipping & Return Policies</a> before purchasing.</p>
         </div>
 
       </div>
