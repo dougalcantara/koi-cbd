@@ -125,16 +125,16 @@ async function addBundleToCart(e) {
   const minItems = parseInt(parent.data('min-items'));
   const maxItems = parseInt(parent.data('max-items'));
 
-  t.attr('disabled', true);
-  $backdrop.addClass('active');
-  $cartSidebar.addClass('k-cart-sidebar--open');
-
   if (
     selectedChildItems().length > maxItems ||
     selectedChildItems().length < minItems
   ) {
     return alert(`Please select ${minItems} items`);
   }
+
+  t.attr('disabled', true);
+  $backdrop.addClass('active');
+  $cartSidebar.addClass('k-cart-sidebar--open');
 
   const getUserBundleSelections = function() {
     const selections = [];
