@@ -8,7 +8,7 @@ let flkty;
 const flktyOpts = {
   groupCells: 1,
   cellSelector: '.k-productcard',
-  cellAlign: 'left',
+  // cellAlign: 'bottom',
   pageDots: false,
   prevNextButtons: false,
   contain: true,
