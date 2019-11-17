@@ -3,6 +3,7 @@ import {
   $getsHeaderMargin,
   $backdrop,
   $searchModal,
+  $win,
 } from '../global/selectors';
 import debounce from '../helpers/debounce';
 

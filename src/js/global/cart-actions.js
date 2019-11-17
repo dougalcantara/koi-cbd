@@ -223,6 +223,13 @@ async function incrementCartItem(e) {
   window.location.reload();
 }
 
+export function closeSidebar() {
+  $backdrop.removeClass('active');
+  $cartSidebar.removeClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+  $body.removeAttr('style');
+  $body.removeClass('cart-sidebar-open');
+}
+
 // == event listeners == //
 $doc.ready(async function() {
   const {
@@ -252,11 +259,7 @@ $removeAll.click(async function() {
 $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
 $addItemToBundle.click(addItemToBundle);
-$cartSidebarClose.click(function() {
-  $backdrop.removeClass('active');
-  $cartSidebar.removeClass('k-cart-sidebar--open k-cart-sidebar--loaded');
-  $body.removeAttr('style');
-});
+$cartSidebarClose.click(closeSidebar);
 $cartSidebarToggle.click(function(e) {
   e.preventDefault();
 
@@ -265,5 +268,13 @@ $cartSidebarToggle.click(function(e) {
   }
 
   $backdrop.addClass('active');
-  $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+
+  const isOpen = $cartSidebar.hasClass('.k-cart-sidebar--loaded');
+
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    $body.addClass('cart-sidebar-open');
+    $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+  }
 });

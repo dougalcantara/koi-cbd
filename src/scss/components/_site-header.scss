@@ -122,6 +122,7 @@
 
     &__content {
       padding: 2em 5% 2em 5%;
+      border-bottom: 0.125em solid $primary;
     }
 
     ul {
@@ -136,7 +137,13 @@
 
     a {
       color: $black;
-      font-size: 125%;
+      // font-size: 125%;
+    }
+
+    .k-dropdown--liner {
+      a {
+        font-size: 1rem;
+      }
     }
   }
 

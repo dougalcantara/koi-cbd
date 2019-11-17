@@ -8,6 +8,7 @@ import {
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
+import { closeSidebar } from './cart-actions';
 
 export const breakpoints = {
   sm: 580,
@@ -76,6 +77,7 @@ $backdrop.click(function() {
     $searchModal.removeClass('k-modal--open');
 
     closeAllDropdowns();
+    closeSidebar();
   }
 
   $backdrop.removeClass('active');
