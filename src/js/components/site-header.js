@@ -49,21 +49,32 @@ let interval;
 
 $dropdownTriggers.click(function() {
   const $t = $(this);
-  const $dropdown = $t.next();
-  const $content = $dropdown.find('.k-dropdown--liner');
+  const $clickedDropdown = $t.next();
+  const $content = $clickedDropdown.find('.k-dropdown--liner');
+  const isOpen = $clickedDropdown.hasClass('k-dropdown--open');
 
-  const isOpen = $dropdown.hasClass('k-dropdown--open');
+  closeAllDropdowns();
+
+  $clickedDropdown.addClass('k-dropdown--open');
 
   if (isOpen) {
-    $dropdown.height(0);
-    $dropdown.removeClass('k-dropdown--open');
+    $clickedDropdown.height(0);
+    $clickedDropdown.removeClass('k-dropdown--open');
     $backdrop.removeClass('active');
   } else {
-    $dropdown.height($content.outerHeight());
-    $dropdown.addClass('k-dropdown--open');
+    $clickedDropdown.height($content.outerHeight());
+    $clickedDropdown.addClass('k-dropdown--open');
     $backdrop.addClass('active');
   }
 });
+
+export function closeAllDropdowns() {
+  $dropdownTriggers.each(function() {
+    const $t = $(this);
+    $t.next().height(0);
+    $t.next().removeClass('k-dropdown--open');
+  });
+}
 
 $navTrigger.click(toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));

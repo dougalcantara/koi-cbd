@@ -29,6 +29,14 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      a {
+        color: $black;
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
     }
 
     p {

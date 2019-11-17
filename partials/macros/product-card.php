@@ -8,14 +8,16 @@ function k_product_card($args) {
     <?php echo $args['product_id'] ? 'data-yotpo-product-id="' . $args['product_id'] . '"' : null; ?>>
     <div class="k-productcard--liner">
 
-      <figure class="k-figure">
-        <div class="k-figure--liner">
-          <img class="k-figure--img" data-src="<?php echo $args['product_image_url']; ?>" alt="">
-        </div>
-      </figure>
+      <a href="<?php echo $args['product_link']; ?>">
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img class="k-figure--img" data-src="<?php echo $args['product_image_url']; ?>" alt="">
+          </div>
+        </figure>
+      </a>
 
       <div class="k-productcard--title">
-        <h3 class="k-headline k-headline--fake k-weight--lg"><?php echo $args['product_title']; ?></h3>
+        <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo $args['product_link']; ?>"><?php echo $args['product_title']; ?></a></h3>
         <p class="k-accent-text"><?php echo $args['product_short_description']; ?></p>
       </div>
 
