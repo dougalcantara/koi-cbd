@@ -4,22 +4,24 @@
   }
 }
 
-@media(min-width: $bp-md) {
+@media (min-width: $bp-md) {
   .k-productlisting {
     .k-inner {
       display: flex;
       justify-content: flex-start;
       flex-flow: row wrap;
+      align-items: flex-end;
     }
 
     .k-productcard {
       flex-basis: 48.5%;
-      margin-right: .75%;
+      margin-right: 0.75%;
+      margin-bottom: 6em;
     }
   }
 }
 
-@media(min-width: $bp-xl) {
+@media (min-width: $bp-xl) {
   .k-productlisting {
     .k-productcard {
       flex-basis: 32%;
@@ -27,4 +29,3 @@
     }
   }
 }
-

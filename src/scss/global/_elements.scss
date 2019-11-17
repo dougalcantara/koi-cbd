@@ -4,6 +4,14 @@
   }
 }
 
+body {
+  &.cart-sidebar-open {
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
 #k-backdrop {
   position: fixed;
   top: 0;
