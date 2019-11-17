@@ -4,13 +4,33 @@ $url = site_url();
 ?>
 
 <header class="k-header">
+  <div class="k-header__newsletter-signup">
+    <div class="k-inner k-inner--xl">
+      <form action="POST">
+        <fieldset class="k-form--group">
+          <label for="k-newsletter-first" class="k-header__newsletter-label">First Name</label>
+          <input class="k-input" type="text" name="first name" id="k-newsletter-first">
+        </fieldset>
+        <fieldset class="k-form--group">
+          <label for="k-newsletter-last" class="k-header__newsletter-label">Last Name</label>
+          <input class="k-input" type="text" name="last name" id="k-newsletter-last">
+        </fieldset>        
+        <fieldset class="k-form--group">
+          <label for="k-newsletter-email" class="k-header__newsletter-label">Email</label>
+          <input class="k-input" type="text" name="email" id="k-newsletter-email">
+        </fieldset>
+        <button class="k-header__newsletter-submit k-button k-button--primary">Sign Up</button>
+      </form>
+
+    </div>
+  </div>
   <div class="k-header--top k-promobanner">
     <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
         <span class="k-upcase">Free shipping & returns for all US orders</span>
       </div>
       <div class="k-promobanner--item">
-        <span class="k-upcase">Sign up for our newsletter for 10% off</span>
+        <span class="k-upcase k-header__newsletter-trigger">Sign up for our newsletter for 10% off</span>
       </div>
     </div>
   </div>
