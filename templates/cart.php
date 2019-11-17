@@ -119,9 +119,16 @@ if (sizeof($items_in_cart) == 0) { ?>
                       </ul>
                     <?php
                     }
-                    ?>
-                    <p class="k-upcase k-cart-remove-item k-fakelink k-accent-text" data-cart-item-key="<?php echo $cart_item_key; ?>">Remove</p>
-                    <?php
+
+                    // WC Remove Item link
+                    echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
+                      '<a href="%s" class="remove k-upcase k-accent-text" aria-label="%s" data-product_id="%s" data-product_sku="%s">Remove</a>',
+                      esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+                      __( 'Remove this item', 'woocommerce' ),
+                      esc_attr( $product_id ),
+                      esc_attr( $_product->get_sku() )
+                    ), $cart_item_key );
+
                     // backorder notification
                     if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
                       echo wp_kses_post(apply_filters('woocommerce_cart_item_backorder_notification', '<p class="k-cart--backordernotice backorder_notification">'.esc_html__('Available on backorder', 'woocommerce').'</p>', $product_id));

@@ -116,6 +116,10 @@
       flex-basis: 48.5%;
     }
 
+    &__quantity {
+      align-self: flex-start;
+    }
+
     &__price {
       text-align: right;
     }
@@ -334,6 +338,8 @@
       width: 30%;
       margin-left: 5%;
       margin-top: 0;
+      position: sticky;
+      top: 10em;
     }
 
     &--titlerow {
@@ -354,11 +360,15 @@
       }
     }
 
+    &--quantity {
+      margin-top: 0;
+    }
+
     &--item {
       &__quantity,
       &__price {
         flex-basis: 22.5%;
-        align-self: center;
+        align-self: flex-start;
       }
 
       &__thumbnail {
