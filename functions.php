@@ -184,7 +184,7 @@ function k_ajax_get_cart() {
     $_product = array(
       'name' => $product_data['name'],
       'permalink' => $product->get_permalink(),
-      'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id(), 'small'),
+      'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id()),
       'quantity' => $cart_item['quantity'],
       'price' => $product->get_price(),
       'is_bundle' => wc_pb_is_bundle_container_cart_item($cart_item),
