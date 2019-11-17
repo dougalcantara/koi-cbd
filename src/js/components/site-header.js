@@ -1,4 +1,9 @@
-import { $header, $getsHeaderMargin, $backdrop } from '../global/selectors';
+import {
+  $header,
+  $getsHeaderMargin,
+  $backdrop,
+  $searchModal,
+} from '../global/selectors';
 import debounce from '../helpers/debounce';
 
 const headerHeight = () => $header.outerHeight();
@@ -60,7 +65,10 @@ $dropdownTriggers.click(function() {
   if (isOpen) {
     $clickedDropdown.height(0);
     $clickedDropdown.removeClass('k-dropdown--open');
-    $backdrop.removeClass('active');
+
+    if (!$searchModal.hasClass('k-modal--open')) {
+      $backdrop.removeClass('active');
+    }
   } else {
     $clickedDropdown.height($content.outerHeight());
     $clickedDropdown.addClass('k-dropdown--open');
