@@ -1,16 +1,15 @@
-.k-all-products {
-}
-
 @media (min-width: $bp-md) {
   .k-all-products {
     .k-inner {
       display: flex;
       flex-flow: row wrap;
+      align-items: flex-end;
     }
 
     .k-productcard {
       flex-basis: 48.5%;
       margin-right: 0.75%;
+      margin-bottom: 2em;
     }
   }
 }
