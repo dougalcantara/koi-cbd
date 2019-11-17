@@ -56,7 +56,12 @@ do_action('k_before_first_section');
     <aside class="k-sidebar">
       <div class="k-sidebar--content">
         <?php
-          $featured_product = wc_get_product($fields['sidebar_product_callout']->ID);
+          if ($fields['sidebar_product_callout']) {
+            $featured_product = wc_get_product($fields['sidebar_product_callout']->ID);
+          } else {
+            $featured_product = wc_get_product(205491);
+          }
+          
           $featured_product_image = wp_get_attachment_url($featured_product->get_image_id());
 
           $card_fields = array(
