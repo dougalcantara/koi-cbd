@@ -74,17 +74,38 @@ $all_posts = get_posts($query_args);
 
         <section class="k-cta--subscribe on-dark"> <!-- Insert big ass "inner-breaking" CTA section here -->
           <div class="k-inner k-inner--xl k-block k-block--md">
-
             <div class="k-cta--content">
               <div class="k-inner k-inner--md">
                 <p class="k-cta--preheading k-upcase">Sign Up For Our Emails</p>
-
+                
+                <div class="k-cta__subscribe-content">
                 <h2 class="k-headline k-headline--sm">
                   Get Into the #KoiCBDLife with Special News & Promos
                 </h2>
-
-                <a href="#0" class="k-button k-button--secondary">Let's Get Started &nbsp; &rarr;</a>
               </div>
+                  <a href="#0" class="k-cta__form-trigger k-button k-button--secondary">Let's Get Started &nbsp; &rarr;</a>
+              </div>
+            </div>
+            <div class="k-cta__form-container">
+              <div class="k-inner k-inner--md">
+                <form class="k-cta__form" action="POST">
+                  <fieldset class="k-form--group">
+                    <label for="first name">First Name</label>
+                    <input class="k-cta-first" type="text" name="first name" required>
+                  </fieldset>
+                  <fieldset class="k-form--group">
+                    <label for="last name">Last Name</label>
+                    <input class="k-cta-last" type="text" name="last name" required>
+                  </fieldset>
+                  <fieldset class="k-form--group">
+                    <label for="email">Email</label>
+                    <input class="k-cta-email" type="text" name="email" required>
+                  </fieldset>                                
+                  <button class="k-button k-button--primary">
+                    Sign Up
+                  </button>
+                </form>
+              </div>            
             </div>
 
           </div>

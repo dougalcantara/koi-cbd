@@ -3,6 +3,7 @@ import { $win } from '../global/selectors';
 const $trigger = $('.k-header__newsletter-trigger');
 const $signup = $('.k-header__newsletter-signup');
 const $submit = $('.k-header__newsletter-submit');
+const $form = $('.k-header__newsletter-signup form');
 const openClass = 'k-header__newsletter-signup--open';
 
 function debounce(func, wait, immediate) {
@@ -32,8 +33,15 @@ $trigger.click(() => {
 
 $win.scroll(debounce(checkSignup, 10));
 
-$submit.click(e => {
-  submitForm(e);
+$form.submit(e => {
+  const headerFields = {
+    firstName: document.querySelector('#k-newsletter-first'),
+    lastName: document.querySelector('#k-newsletter-last'),
+    email: document.querySelector('#k-newsletter-email'),
+    button: $submit[0],
+  };
+
+  submitForm(e, headerFields, true);
 });
 
 function checkSignup() {
@@ -45,35 +53,33 @@ function checkSignup() {
   }
 }
 
-function submitForm(e) {
+export function submitForm(e, fieldSelectors, fromHeader = false) {
   e.preventDefault();
+  if (typeof fieldSelectors != 'object') {
+    console.warn('fieldSelectors was not an object.');
+    console.error(Error(error));
+    return;
+  }
 
   let formSubmit = false;
-  $submit[0].innerHTML = 'Submitting...';
-  $submit.addClass('k-header__newsletter-submit--submitting');
+  fieldSelectors.button.innerHTML = 'Submitting...';
 
   const formEndpoint =
     'https://api.hsforms.com/submissions/v3/integration/submit/6283239/eae9de54-3f3d-46f7-a523-5e504254f49f';
-
-  const fields = {
-    firstName: document.querySelector('#k-newsletter-first'),
-    lastName: document.querySelector('#k-newsletter-last'),
-    email: document.querySelector('#k-newsletter-email'),
-  };
 
   const payload = {
     fields: [
       {
         name: 'email',
-        value: fields.email.value,
+        value: fieldSelectors.email.value,
       },
       {
         name: 'firstname',
-        value: fields.firstName.value,
+        value: fieldSelectors.firstName.value,
       },
       {
         name: 'lastname',
-        value: fields.lastName.value,
+        value: fieldSelectors.lastName.value,
       },
     ],
     submittedAt: Date.now(),
@@ -91,13 +97,16 @@ function submitForm(e) {
 
   const wait = setInterval(() => {
     if (formSubmit === true) {
-      $submit.removeClass('k-header__newsletter-submit--submitting');
-      $submit.css({ background: 'transparent' });
-      $submit[0].innerHTML = 'Complete!';
+      const { button } = fieldSelectors;
 
-      setTimeout(() => {
-        $signup.slideUp();
-      }, 3000);
+      button.style.background = 'transparent';
+      button.innerHTML = 'Complete!';
+
+      if (fromHeader) {
+        setTimeout(() => {
+          $signup.slideUp();
+        }, 3000);
+      }
 
       clearInterval(wait);
     }
