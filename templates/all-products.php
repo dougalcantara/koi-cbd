@@ -55,7 +55,7 @@ $all_categories = get_categories($args);
 
       <div class="k-productcard--title">
         <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo $args['product_link']; ?>"><?php echo $product_cat->name; ?></a></h3>
-        <p class="k-accent-text"><?php echo $product_cat->description; ?></p>
+        <p class="k-accent-text k-rte-content"><?php echo $product_cat->description; ?></p>
       </div>
 
       <div class="k-productcard--action">

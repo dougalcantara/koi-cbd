@@ -18,7 +18,7 @@ function k_product_card($args) {
 
       <div class="k-productcard--title">
         <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo $args['product_link']; ?>"><?php echo $args['product_title']; ?></a></h3>
-        <p class="k-accent-text"><?php echo $args['product_short_description']; ?></p>
+        <p class="k-accent-text k-rte-content"><?php echo $args['product_short_description']; ?></p>
       </div>
 
       <div class="k-productcard--action">

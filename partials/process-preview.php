@@ -70,44 +70,22 @@
       <a href="<?php echo site_url() . '/about-us?scrollToSelected=4' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
-          get_template_part('partials/svg/koi-plant');
+          get_template_part('partials/svg/koi-leaf');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>Whole Plant Extraction</p>
+          <p>Final Quality Hold</p>
         </div>
       </a>
 
       <a href="<?php echo site_url() . '/about-us?scrollToSelected=5' ?>" class="k-videogallery--actions__item">
         <div class="k-videogallery--actions__icon">
           <?php
-          get_template_part('partials/svg/koi-microscope');
+          get_template_part('partials/svg/koi-bottle');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>Traceability & Quality Control</p>
-        </div>
-      </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=6' ?>" class="k-videogallery--actions__item">
-        <div class="k-videogallery--actions__icon">
-          <?php
-          get_template_part('partials/svg/koi-plant');
-          ?>
-        </div>
-        <div class="k-videogallery--actions__title">
-          <p>Whole Plant Extraction</p>
-        </div>
-      </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=7' ?>" class="k-videogallery--actions__item">
-        <div class="k-videogallery--actions__icon">
-          <?php
-          get_template_part('partials/svg/koi-microscope');
-          ?>
-        </div>
-        <div class="k-videogallery--actions__title">
-          <p>Traceability & Quality Control</p>
+          <p>Tracking With Batch Numbers</p>
         </div>
       </a>
     </div>

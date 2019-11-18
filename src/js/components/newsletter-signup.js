@@ -24,7 +24,7 @@ function debounce(func, wait, immediate) {
 
 $trigger.click(() => {
   $signup.slideToggle({
-    duration: 300,
+    duration: 225,
     complete: () => {
       $signup.toggleClass(openClass);
     },
