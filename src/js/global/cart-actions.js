@@ -88,7 +88,7 @@ async function addSingleItemToCart(e) {
   e.preventDefault();
 
   const $t = $(this);
-  const productId = $t.data('product-id');
+  const productId = parseInt($t[0].dataset.productId);
   const quantity = parseInt($('#k-num-to-add').val());
 
   $t.attr('disabled', true);
