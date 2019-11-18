@@ -184,7 +184,7 @@ function k_ajax_get_cart() {
     $_product = array(
       'name' => $product_data['name'],
       'permalink' => $product->get_permalink(),
-      'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id(), 'small'),
+      'thumbnail_url' => wp_get_attachment_image_url($product->get_image_id()),
       'quantity' => $cart_item['quantity'],
       'price' => $product->get_price(),
       'is_bundle' => wc_pb_is_bundle_container_cart_item($cart_item),
@@ -209,23 +209,25 @@ add_action('wp_ajax_nopriv_k_get_cart', 'k_ajax_get_cart');
 /**
  * Remove a single item from cart
  * args - product_id
+ * 
+ * Update - replaceed this with standard WC remove item from cart fn
  */
-function k_ajax_remove_cart_item() {
-  $this_item_key = intval($_POST['cart_item_key']);
-  $cart_items = WC()->cart->get_cart();
+// function k_ajax_remove_cart_item() {
+//   $this_item_key = intval($_POST['cart_item_key']);
+//   $cart_items = WC()->cart->get_cart();
 
-  foreach ($cart_items as $cart_item_key => $cart_item) {
-    if ($cart_item_key == $this_item_key) {
-      WC()->cart->remove_cart_item($cart_item_key);
-    }
-  }
+//   foreach ($cart_items as $cart_item_key => $cart_item) {
+//     if ($cart_item_key == $this_item_key) {
+//       WC()->cart->remove_cart_item($cart_item_key);
+//     }
+//   }
 
-  k_ajax_get_cart();
+//   k_ajax_get_cart();
 
-  die();
-}
-add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
-add_action('wp_ajax_nopriv_remove_cart_item', 'k_ajax_remove_cart_item');
+//   die();
+// }
+// add_action('wp_ajax_remove_cart_item', 'k_ajax_remove_cart_item');
+// add_action('wp_ajax_nopriv_remove_cart_item', 'k_ajax_remove_cart_item');
 
 /**
  * Remove all items from cart

@@ -12,11 +12,11 @@
     <div class="k-inner k-inner--md">
 
       <div class="k-footer--item k-footer--logo">
-        <div class="koi-logo-full">
-          <div class="k-svg-wrapper">
-            <?php get_template_part('partials/svg/koi-logo-full'); ?>
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img src="<?php echo $root . '/dist/img/koi-logo-main@2x.png'; ?>" alt="" class="k-figure--img" />
           </div>
-        </div>
+        </figure>
         <div class="k-footer--social k-rte-content">
           <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">Facebook</a>
           <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">Instagram</a>
