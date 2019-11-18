@@ -1,0 +1,31 @@
+.page-template-cart {
+  .k-header {
+    top: 0 !important;
+
+    &--top {
+      display: none;
+    }
+
+    &--nav {
+      display: none;
+    }
+
+    &--navtoggle {
+      display: none;
+    }
+
+    &--logo {
+      transform: scale(0.7);
+    }
+  }
+
+  .k-cart {
+    &__headline h1 {
+      margin-top: 0;
+    }
+  }
+
+  .k-ctabanner {
+    display: none;
+  }
+}

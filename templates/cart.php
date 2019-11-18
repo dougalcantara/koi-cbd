@@ -258,7 +258,5 @@ if (sizeof($items_in_cart) == 0) { ?>
     'products' => $cart_acf['recommended_products'],
   );
 
-  include(locate_template('partials/promo-slider.php'));
-
   get_footer();
 ?>

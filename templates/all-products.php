@@ -59,7 +59,7 @@ $all_categories = get_categories($args);
       </div>
 
       <div class="k-productcard--action">
-        <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Shop Now</a>
+        <a href="<?php echo $product_cat->slug ?>" class="k-button k-button--default">Shop Now</a>
       </div>
 
     </div>
