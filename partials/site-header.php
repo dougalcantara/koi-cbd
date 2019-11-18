@@ -9,15 +9,15 @@ $url = site_url();
       <form action="POST">
         <fieldset class="k-form--group">
           <label for="k-newsletter-first" class="k-header__newsletter-label">First Name</label>
-          <input class="k-input" type="text" name="first name" id="k-newsletter-first">
+          <input class="k-input" type="text" name="first name" id="k-newsletter-first" required>
         </fieldset>
         <fieldset class="k-form--group">
           <label for="k-newsletter-last" class="k-header__newsletter-label">Last Name</label>
-          <input class="k-input" type="text" name="last name" id="k-newsletter-last">
+          <input class="k-input" type="text" name="last name" id="k-newsletter-last" required>
         </fieldset>        
         <fieldset class="k-form--group">
           <label for="k-newsletter-email" class="k-header__newsletter-label">Email</label>
-          <input class="k-input" type="text" name="email" id="k-newsletter-email">
+          <input class="k-input" type="text" name="email" id="k-newsletter-email" required>
         </fieldset>
         <button class="k-header__newsletter-submit k-button k-button--primary">Sign Up</button>
       </form>

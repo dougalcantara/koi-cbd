@@ -34,6 +34,10 @@
     color: $true-white;
     max-width: 40em;
 
+    .k-inner {
+      justify-content: center;
+    }
+
     .k-preheading {
       color: $highlight;
     }
@@ -107,10 +111,17 @@
   .k-cta--subscribe {
     text-align: center;
 
+    &--headline {
+      flex-basis: 100%;
+    }
+
+    .k-cta--content {
+      width: 100%;
+    }
+
     .k-cta--preheading,
     .k-headline,
     .k-button {
-      display: block;
       margin: auto;
     }
 
@@ -121,7 +132,6 @@
     }
 
     .k-headline {
-      margin-left: 12.5%;
       margin-bottom: 1em;
       max-width: 75%;
     }
@@ -131,7 +141,7 @@
 @media (min-width: $bp-lg) {
   .k-cta--subscribe {
     .k-headline {
-      margin: 0 25% 1em 25%;
+      margin-bottom: 1em;
       max-width: 50%;
     }
   }
