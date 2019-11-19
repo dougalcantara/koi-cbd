@@ -8,8 +8,12 @@ const $variantSelects = $(
 const $productForm = $('.k-productform');
 const $priceTarget = $('.k-productform--pricetarget');
 const $pricePrefix = $('#k-bundle-price-prefix');
-const $bundledItemSelects = $('.k-productform--select-bundled-item');
-const $bundledVariants = $('.k-productform--varianttoggle');
+const $bundledItemSelects = $(
+  '.k-producthero--bundle .k-productform--select-bundled-item'
+);
+const $bundledVariants = $(
+  '.k-producthero--bundle .k-productform--varianttoggle'
+);
 const $addToCartTrigger = $('.k-productform .k-add-to-cart');
 const $increment = $('#k-increase');
 const $decrement = $('#k-reduce');
@@ -46,19 +50,37 @@ $decrement.click(function(e) {
   }
 });
 
-$variantSelects.click(function() {
-  const $t = $(this).find('.k-productform--varianttoggle');
+$variantSelects.click(function(e) {
+  setVariant($(this));
+});
+
+$variantSelects.keypress(function(e) {
+  if (e.originalEvent.key === 'Enter' || e.originalEvent.keyCode === 13) {
+    setVariant($(this), true);
+  }
+});
+
+function setVariant(context, wasKeypress = false) {
+  let $t;
+
+  if (wasKeypress) {
+    const $checkbox = context.find('input');
+    $checkbox.prop('checked', !$checkbox[0].checked);
+  }
+
+  $t = context.find('.k-productform--varianttoggle');
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
 
   $priceTarget.text(`$${variantPrice}`);
   $addToCartTrigger.attr('data-product-id', variantId);
-});
+}
 
 /**
  * Handle drawer state when selecting an item from a Product Bundle
  */
 $bundledItemSelects.click(function() {
+  console.log('bundledItemSelects');
   const $t = $(this);
 
   const $targetDrawer = $t.siblings().last();
@@ -108,6 +130,7 @@ $bundledItemSelects.click(function() {
  * in a Product Bundle.
  */
 $bundledVariants.click(function() {
+  console.log('bundledVariant');
   const $t = $(this);
   let $selectedBundledVariants;
 
