@@ -1,6 +1,6 @@
 <?php
 /* Template Name: 2019 Account Page */
-// O@1sBFPLQMH0i5vMMASDv1Fr
+
 /**
  * My Account page
  *
@@ -24,7 +24,7 @@ do_action('k_before_first_section');
 
 // 301 to acct login page if user not logged in
 if (!is_user_logged_in()) :
-  wp_redirect(site_url() . '/account/login', 301);
+  wp_redirect(site_url() . '/login', 301);
 endif;
 ?>
 

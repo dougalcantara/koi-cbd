@@ -6,6 +6,7 @@ import './global/forms';
 import './global/ajax-cart';
 import './global/form-submissions';
 import './global/lazyloading';
+import './global/yotpo';
 
 import './components/site-header';
 import './components/promo-slider';
