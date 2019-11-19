@@ -1,4 +1,5 @@
 import { $doc } from '../global/selectors';
+import wasEnter from '../helpers/wasEnter';
 
 const $productHero = $('.k-producthero');
 const $productHeroCarousel = $('.k-producthero--gallery');
@@ -10,6 +11,9 @@ const $priceTarget = $('.k-productform--pricetarget');
 const $pricePrefix = $('#k-bundle-price-prefix');
 const $bundledItemSelects = $(
   '.k-producthero--bundle .k-productform--select-bundled-item'
+);
+const $bundleOptionLabels = $(
+  '.k-producthero--bundle .k-productform--bundleselect__item > label'
 );
 const $bundledVariants = $(
   '.k-producthero--bundle .k-productform--varianttoggle'
@@ -55,7 +59,7 @@ $variantSelects.click(function(e) {
 });
 
 $variantSelects.keypress(function(e) {
-  if (e.originalEvent.key === 'Enter' || e.originalEvent.keyCode === 13) {
+  if (wasEnter(e)) {
     setVariant($(this), true);
   }
 });
@@ -80,8 +84,19 @@ function setVariant(context, wasKeypress = false) {
  * Handle drawer state when selecting an item from a Product Bundle
  */
 $bundledItemSelects.click(function() {
-  console.log('bundledItemSelects');
-  const $t = $(this);
+  handleBundleOption($(this));
+});
+
+$bundleOptionLabels.keypress(function(e) {
+  if (wasEnter(e)) {
+    const $checkbox = $(this).siblings('input');
+    $checkbox.prop('checked', !$checkbox[0].checked);
+    handleBundleOption($checkbox);
+  }
+});
+
+function handleBundleOption(contextElement) {
+  const $t = contextElement;
 
   const $targetDrawer = $t.siblings().last();
   const targetHeight = $targetDrawer
@@ -90,6 +105,10 @@ $bundledItemSelects.click(function() {
     .outerHeight();
 
   if ($t.is(':checked')) {
+    const $labels = $targetDrawer.find('label');
+    // make open labels tab accessible
+    $labels.attr('tabindex', '0');
+
     $targetDrawer.height(targetHeight);
   } else {
     /**
@@ -121,6 +140,17 @@ $bundledItemSelects.click(function() {
     // remove active class from selected variants
     _variantSelects.removeClass('bundled-variant-selected');
     $targetDrawer.height(0);
+
+    // make closed labels non-tabbable
+    const $closedLabels = $targetDrawer.find($bundledVariants);
+    $closedLabels.attr('tabindex', '-1');
+  }
+}
+
+$bundledVariants.keypress(function(e) {
+  if (wasEnter(e)) {
+    const $checkbox = $(this).siblings('input');
+    $checkbox.prop('checked', !$checkbox[0].checked);
   }
 });
 
