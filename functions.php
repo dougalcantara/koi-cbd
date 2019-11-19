@@ -170,7 +170,7 @@ function k_ajax_get_cart() {
   $response = array();
   $expanded = array();
 
-  foreach($cart_items as $cart_item) {
+  foreach($cart_items as $index => $cart_item) {
     $product = wc_get_product($cart_item['product_id']);
 
     if ($product->get_type() == 'variable') {
@@ -189,7 +189,9 @@ function k_ajax_get_cart() {
       'price' => $product->get_price(),
       'is_bundle' => wc_pb_is_bundle_container_cart_item($cart_item),
       'is_bundled_item' => wc_pb_is_bundled_cart_item($cart_item),
+      'key' => $cart_items[$index]['key'],
     );
+    $cart_items[$index]['product_name'] = $_product['name'];
 
     array_push($expanded, $_product);
   }

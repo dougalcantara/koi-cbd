@@ -19,6 +19,7 @@ const $incrementCartItem = $('.k-increase');
 const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const $cartSidebarToggle = $('#k-carttoggle');
 const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
+const cartSubtotal = document.querySelector('.k-cart-sidebar--subtotal');
 
 /**
  * Need this because bundles have a dynamic price, based on the items
@@ -53,16 +54,39 @@ function updateCartStatus(cartItems, expandedProducts) {
     $cartNum.removeClass('k-has-value');
   }
 
-  handleCartSidebar(expandedProducts);
+  updateSubtotal();
+  handleCartSidebar(cartItems, expandedProducts);
 }
 
-function handleCartSidebar(cartItems) {
+function updateSubtotal() {
+  let runningTotal = 0;
+
+  AjaxCart.getCartItems().then(res => {
+    for (const item in res.cart_items) {
+      runningTotal += res.cart_items[item]['line_subtotal'];
+    }
+    cartSubtotal.textContent = `$${runningTotal.toFixed(2)}`;
+  });
+}
+
+function handleCartSidebar(cartItems, expandedProducts) {
   $cartItemsTarget.empty(); // handles duplicate items being added while still on the same page
 
-  cartItems.forEach(product => {
-    const isBundledItem = product.is_bundled_item;
+  expandedProducts.forEach(product => {
+    const belongsToBundle = product.is_bundled_item;
+    let bundledPrice = 0;
 
-    if (isBundledItem) return;
+    if (belongsToBundle) {
+      return;
+    } else if (product.is_bundle) {
+      bundledPrice = getBundlePrice(product, cartItems);
+
+      if (bundledPrice === null) {
+        bundledPrice = 'View In Cart';
+      } else {
+        bundledPrice = `$${bundledPrice}`;
+      }
+    }
 
     const quantity = product.is_bundle ? '1' : product.quantity;
     const totalPrice = `$${(product.price * quantity).toFixed(2)}`;
@@ -75,7 +99,9 @@ function handleCartSidebar(cartItems) {
             <a href="${product.permalink}">${product.name}</a>
           </h3>
           <p>Quantity: ${quantity}</p>
-          <p class="k-bigtext">${product.is_bundle ? '' : totalPrice}</p>
+          <p class="k-bigtext">${
+            product.is_bundle ? bundledPrice : totalPrice
+          }</p>
         </div>
       </div>
     `);
@@ -84,9 +110,27 @@ function handleCartSidebar(cartItems) {
   $cartSidebar.addClass('k-cart-sidebar--loaded');
 }
 
+function getBundlePrice(bundle, cartItems) {
+  const correspondingCartItem = cartItems.filter(
+    cartItem => bundle.key === cartItem.key
+  )[0];
+  let bundlePrice = 0;
+
+  if (!Array.isArray(correspondingCartItem.bundled_items)) {
+    console.error(Error('Could not identify bundled items.'));
+    return null;
+  }
+
+  correspondingCartItem.bundled_items.forEach(key => {
+    const matchingProduct = cartItems.filter(item => key === item.key)[0];
+    bundlePrice += matchingProduct.line_subtotal;
+  });
+
+  return parseFloat(bundlePrice.toFixed(2));
+}
+
 async function addSingleItemToCart(e) {
   e.preventDefault();
-
   const $t = $(this);
   const productId = parseInt($t[0].dataset.productId);
   const quantity = parseInt($('#k-num-to-add').val());
@@ -94,13 +138,14 @@ async function addSingleItemToCart(e) {
   $t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
+  cartSubtotal.textContent = 'Processing...';
 
   const {
     cart_items: cartItems,
     expanded_products: expandedProducts,
   } = await AjaxCart.addItem(productId, quantity);
 
-  handleCartSidebar(expandedProducts);
+  // handleCartSidebar(expandedProducts);
 
   $t.attr('disabled', false);
 
@@ -135,6 +180,7 @@ async function addBundleToCart(e) {
   t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
+  cartSubtotal.textContent = 'Processing...';
 
   const getUserBundleSelections = function() {
     const selections = [];
@@ -175,7 +221,7 @@ async function addBundleToCart(e) {
     price
   );
 
-  handleCartSidebar(expandedProducts);
+  // handleCartSidebar(expandedProducts);
 
   t.attr('disabled', false);
 
