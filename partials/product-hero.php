@@ -1,3 +1,4 @@
+<?php global $wp; ?>
 <section
   class="k-producthero <?php echo $product_wc_type == 'bundle' ? 'k-producthero--bundle' : NULL; ?>"
   data-yotpo-product-id="<?php echo $product_id ?>"
@@ -20,7 +21,15 @@
           
           <div class="k-producthero--reviews k-reviewembed">
             <p>
-              <a href="#0" class="k-accent-text k-createreview">Be the first to review!</a>
+              <a
+                href="#0"
+                class="k-accent-text k-createreview"
+                data-product-sku="<?php echo $product->get_sku(); ?>"
+                data-product-title="<?php echo $product->get_title(); ?>"
+                data-product-url="<?php echo site_url() . '/' . $wp->request; ?>"
+              >
+                Be the first to review!
+              </a>
             </p>
           </div>
 

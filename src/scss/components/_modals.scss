@@ -134,3 +134,158 @@
     color: $true-white;
   }
 }
+
+.k-modal--review {
+  position: fixed;
+  top: 10em;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  transition: transform 0.4s $ease-out-circ, opacity 0.4s $ease-out-circ;
+  width: 90%;
+  max-width: 32em;
+  max-height: 60vh;
+  overflow-y: scroll;
+  z-index: -100;
+  border-radius: 0.33em;
+  pointer-events: none;
+  opacity: 0;
+
+  &.k-modal--open {
+    z-index: 100;
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &.k-modal--submitting,
+  &.k-modal--success {
+    .k-form {
+      opacity: 0;
+    }
+  }
+
+  &.k-modal--success {
+    .k-form {
+      height: 0;
+    }
+
+    .k-modal__successmsg {
+      opacity: 1;
+    }
+  }
+
+  .k-modal__successmsg {
+    position: absolute;
+    bottom: 2em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s $ease-out-circ;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .k-modal--content {
+    background: $true-white;
+    padding: 3em 2em;
+    position: relative;
+  }
+
+  .k-modal__close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-family: $heading-font;
+    font-size: 200%;
+    margin: 0;
+    line-height: 1;
+
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+
+  .k-headline {
+    margin: 0;
+  }
+
+  .k-review__producttitle {
+    margin-top: 0;
+    font-style: italic;
+    color: $primary;
+  }
+
+  .k-review__rating {
+    p {
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+  }
+
+  .k-form {
+    transition: opacity 0.4s $ease-out-circ, height 0.4s $ease-out-circ;
+    opacity: 1;
+
+    &__group {
+      margin-bottom: 1em;
+
+      &--textarea {
+        label {
+          margin-bottom: 0.25em;
+        }
+
+        textarea {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &__actions {
+      margin-top: 2em;
+
+      .k-button {
+        width: 100%;
+      }
+    }
+  }
+
+  .k-review__ratingitem {
+    &:last-child {
+      margin-top: 0.33em;
+    }
+  }
+
+  .k-input {
+    & + label {
+      position: absolute;
+      top: 1em;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  textarea {
+    border: none;
+    border-radius: 0.33em;
+    -webkit-appearance: none;
+    background: $bg-gray;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media (min-width: $bp-md) {
+  .k-modal--review {
+    width: 60%;
+    top: 15em;
+  }
+}

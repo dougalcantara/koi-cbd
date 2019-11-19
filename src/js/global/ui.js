@@ -5,6 +5,7 @@ import {
   $cartSidebar,
   $searchModal,
   $backdrop,
+  $reviewModal,
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
@@ -19,6 +20,9 @@ export const breakpoints = {
 
 const $tiltTargets = $('.k-tilt');
 const $blogFilterBy = $('.k-blognav--filterby select');
+const $logoutTrigger = $('.k-customer-logout');
+
+console.log($logoutTrigger);
 
 function slugify(string) {
   return string.replace(/ /g, '-').toLowerCase();
@@ -76,9 +80,22 @@ $backdrop.click(function() {
 
     $searchModal.removeClass('k-modal--open');
 
+    $reviewModal.removeClass('k-modal--open');
+
     closeAllDropdowns();
     closeSidebar();
   }
 
   $backdrop.removeClass('active');
+});
+
+$logoutTrigger.click(function(e) {
+  e.preventDefault();
+
+  $.ajax({
+    url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
+    method: 'GET',
+    data: { action: 'customer_logout' },
+    complete: () => (window.location.href = `${window.SITE_GLOBALS.root}`),
+  });
 });

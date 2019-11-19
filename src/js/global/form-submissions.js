@@ -89,25 +89,50 @@ $veteranSignup.submit(function(e) {
     ],
   };
 
-  $.ajax({
-    method: 'POST',
-    url: `${BASE_URL}/${formId}`,
-    contentType: 'application/json',
-    data: JSON.stringify(hsPayload),
-    complete: res => console.log('HS res: ', res),
-  });
+  const file = $t.find('#k-veterans-paperwork')[0].files[0];
+  const filename = file.name;
+  const fr = new FileReader();
+  const img = new Image();
 
+  fr.readAsDataURL(file);
+  fr.onload = function({ target }) {
+    img.src = target.result;
+    img.onload = function() {
+      $.ajax({
+        method: 'POST',
+        url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
+        data: {
+          action: 'upload_veteran_paperwork',
+          paperwork: img.src,
+          filename,
+        },
+        complete: res => console.log(res),
+      });
+    };
+  };
+
+  // const fd = new FormData();
   // const file = $t.find('#k-veterans-paperwork')[0].files[0];
-  // const fr = new FileReader();
-  // const img = new Image();
 
-  // fr.readAsDataURL(file);
-  // fr.onload = function({ target }) {
-  //   img.src = target.result;
-  //   img.onload = function() {
-  //     console.log(img.src);
-  //   };
-  // };
+  // fd.append('file', file, file.name);
+
+  // $.ajax({
+  //   method: 'POST',
+  //   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
+  //   cache: false,
+  //   processData: false,
+  //   contentType: 'multipart/form-data',
+  //   data: fd,
+  //   complete: res => console.log(res),
+  // });
+
+  // $.ajax({
+  //   method: 'POST',
+  //   url: `${BASE_URL}/${formId}`,
+  //   contentType: 'application/json',
+  //   data: JSON.stringify(hsPayload),
+  //   complete: res => console.log('HS res: ', res),
+  // });
 
   // const fd = new FormData();
   // const file = $t.find('#k-veterans-paperwork')[0].files[0];

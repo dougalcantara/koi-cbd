@@ -1156,6 +1156,7 @@ form input[type='radio'] + label:hover {
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .k-input.has-value + label, .k-input:focus + label {
@@ -4424,6 +4425,148 @@ form input[type='radio'] + label:hover {
   color: #fff;
 }
 
+.k-modal--review {
+  position: fixed;
+  top: 10em;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  transition: transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 90%;
+  max-width: 32em;
+  max-height: 60vh;
+  overflow-y: scroll;
+  z-index: -100;
+  border-radius: 0.33em;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.k-modal--review.k-modal--open {
+  z-index: 100;
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.k-modal--review.k-modal--submitting .k-form, .k-modal--review.k-modal--success .k-form {
+  opacity: 0;
+}
+
+.k-modal--review.k-modal--success .k-form {
+  height: 0;
+}
+
+.k-modal--review.k-modal--success .k-modal__successmsg {
+  opacity: 1;
+}
+
+.k-modal--review .k-modal__successmsg {
+  position: absolute;
+  bottom: 2em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.k-modal--review .k-modal__successmsg p {
+  margin: 0;
+}
+
+.k-modal--review .k-modal--content {
+  background: #fff;
+  padding: 3em 2em;
+  position: relative;
+}
+
+.k-modal--review .k-modal__close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-family: "Recoleta Regular", serif;
+  font-size: 200%;
+  margin: 0;
+  line-height: 1;
+}
+
+.k-modal--review .k-modal__close:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.k-modal--review .k-headline {
+  margin: 0;
+}
+
+.k-modal--review .k-review__producttitle {
+  margin-top: 0;
+  font-style: italic;
+  color: #f4b13e;
+}
+
+.k-modal--review .k-review__rating p {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.k-modal--review .k-form {
+  transition: opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1), height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 1;
+}
+
+.k-modal--review .k-form__group {
+  margin-bottom: 1em;
+}
+
+.k-modal--review .k-form__group--textarea label {
+  margin-bottom: 0.25em;
+}
+
+.k-modal--review .k-form__group--textarea textarea {
+  margin-top: 0;
+}
+
+.k-modal--review .k-form__actions {
+  margin-top: 2em;
+}
+
+.k-modal--review .k-form__actions .k-button {
+  width: 100%;
+}
+
+.k-modal--review .k-review__ratingitem:last-child {
+  margin-top: 0.33em;
+}
+
+.k-modal--review .k-input + label {
+  position: absolute;
+  top: 1em;
+}
+
+.k-modal--review .k-input:focus {
+  outline: none;
+}
+
+.k-modal--review textarea {
+  border: none;
+  border-radius: 0.33em;
+  -webkit-appearance: none;
+  background: #f2f2f2;
+}
+
+.k-modal--review textarea:focus {
+  outline: none;
+}
+
+@media (min-width: 767px) {
+  .k-modal--review {
+    width: 60%;
+    top: 15em;
+  }
+}
+
 .k-fullwidthvid {
   position: relative;
 }
@@ -5912,6 +6055,10 @@ form input[type='radio'] + label:hover {
 .k-dashboard--sidebar a {
   color: #080907;
   font-family: "Recoleta Regular", serif;
+}
+
+.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--payment-methods {
+  display: none;
 }
 
 @media (min-width: 992px) {
