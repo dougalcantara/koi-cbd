@@ -5,6 +5,7 @@ import {
   $cartSidebar,
   $searchModal,
   $backdrop,
+  $reviewModal,
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
@@ -75,6 +76,8 @@ $backdrop.click(function() {
     $cartSidebar.removeClass('k-cart-sidebar--open');
 
     $searchModal.removeClass('k-modal--open');
+
+    $reviewModal.removeClass('k-modal--open');
 
     closeAllDropdowns();
     closeSidebar();
