@@ -76,7 +76,7 @@ $url = site_url();
               </div>
             </ul>
           </li>
-          <li><a class="k-upcase" href="<?php echo $url; ?>/account">Account</a></li>
+          <li><a class="k-upcase" href="<?php echo $url; ?>/account/">Account</a></li>
 
           <li class="k-header--cart">
             <a id="k-carttoggle" href="#0">

@@ -4,14 +4,17 @@ $root = get_template_directory_uri();
 /* Template Name: 2019 Account Login Page */
 defined( 'ABSPATH' ) || exit;
 
-get_header();
-
-do_action('k_before_first_section');
-
 // 301 to main acct page if user logged in
 if (is_user_logged_in()) {
   wp_redirect(site_url() . '/account', 301);
 }
+
+get_header();
+
+do_action('k_before_first_section');
+
+
+
 ?>
 
 <section class="woocommerce-MyAccount-content k-block k-block--md k-login">

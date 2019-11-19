@@ -136,6 +136,10 @@
   }
 }
 
+.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--payment-methods {
+  display: none;
+}
+
 @media (min-width: $bp-lg) {
   .k-login {
     height: calc(100vh - 9.75em);
