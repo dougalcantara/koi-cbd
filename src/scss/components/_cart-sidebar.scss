@@ -93,7 +93,7 @@
     top: 3em;
     bottom: 6em;
     overflow: scroll;
-    padding: 2em 0;
+    margin: 2em 0;
 
     &::-webkit-scrollbar {
       width: 0px;
@@ -188,9 +188,19 @@
       padding: 0 3em;
     }
 
+    &__summary {
+      h4 {
+        margin: 0.5em 0;
+      }
+    }
+
     &__actions {
       .k-liner {
-        padding: 2em 3em;
+        padding: 1em 3em;
+
+        &:first-of-type {
+          padding: 1em 3em 0;
+        }
       }
 
       .k-button {

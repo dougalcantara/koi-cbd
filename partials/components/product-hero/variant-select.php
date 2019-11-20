@@ -19,6 +19,7 @@ foreach($product->get_available_variations() as $i => $variant) {
         echo $has_quantity_attributes ? ' has-quantity' : NULL;
       ?>
     "
+    tabindex="0"        
   >
   <?php
   if ($has_quantity_attributes) : ?>
@@ -51,7 +52,7 @@ foreach($product->get_available_variations() as $i => $variant) {
       for="<?php echo $this_attribute.$i; ?>"
       class="k-productform--varianttoggle <?php echo $out_of_stock ? 'k-out-of-stock' : NULL; ?>"
       data-variant-id="<?php echo $variant_id; ?>"
-      data-variant-price="<?php echo $variant['display_price']; ?>"
+      data-variant-price="<?php echo $variant['display_price']; ?>"  
     >
       <span>
         <?php if ($has_flavor_attribute) : echo $attributes['attribute_flavor']; endif; ?>
