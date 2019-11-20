@@ -160,7 +160,6 @@ $bundledVariants.keypress(function(e) {
  * in a Product Bundle.
  */
 $bundledVariants.click(function() {
-  console.log('bundledVariant');
   const $t = $(this);
   let $selectedBundledVariants;
 

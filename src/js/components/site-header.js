@@ -6,6 +6,7 @@ import {
   $win,
 } from '../global/selectors';
 import debounce from '../helpers/debounce';
+import wasEnter from '../helpers/wasEnter';
 
 const headerHeight = () => $header.outerHeight();
 const headerOffset = () => $header.find('.k-header--top').outerHeight();
@@ -13,6 +14,8 @@ const headerOffset = () => $header.find('.k-header--top').outerHeight();
 const $nav = $header.find('.k-header--nav');
 const $navTrigger = $('#k-nav-trigger');
 const $dropdownTriggers = $('.k-has-dropdown a');
+const $accessibleSkip = $('.k-header__skip-to-main');
+const $main = $('main');
 
 let didScroll = false;
 
@@ -89,3 +92,35 @@ $navTrigger.click(toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));
 window.addEventListener('scroll', () => (didScroll = true));
 document.addEventListener('DOMContentLoaded', doHeaderOffsets);
+
+$accessibleSkip.focusin(function() {
+  $(this).addClass('k-header__skip-to-main--focused');
+});
+
+$accessibleSkip.blur(function() {
+  $(this).removeClass('k-header__skip-to-main--focused');
+});
+
+$accessibleSkip.click(() => {
+  console.log('click');
+  console.log($main);
+  $main.focus();
+});
+
+$accessibleSkip.keypress(function(e) {
+  if (wasEnter(e)) {
+    console.log('enter');
+    console.log($main);
+    $main.focus();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const all = document.querySelectorAll('*');
+
+  all.forEach(el => {
+    el.addEventListener('focus', () => {
+      console.log(el);
+    });
+  });
+});

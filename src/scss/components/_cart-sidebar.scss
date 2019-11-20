@@ -12,6 +12,7 @@
   transition: transform 0.4s $ease-out-circ;
   border-left: 1px solid #ddd;
   overflow: hidden;
+  outline-color: $primary;
 
   &--open {
     transform: translateX(0);

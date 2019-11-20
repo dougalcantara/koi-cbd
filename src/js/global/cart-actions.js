@@ -1,4 +1,5 @@
 import AjaxCart from './ajax-cart';
+import wasEnter from '../helpers/wasEnter';
 import {
   $win,
   $doc,
@@ -20,6 +21,7 @@ const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const $cartSidebarToggle = $('#k-carttoggle');
 const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
 const cartSubtotal = document.querySelector('.k-cart-sidebar--subtotal');
+const $checkout = $('.k-trap-focus-trigger');
 
 /**
  * Need this because bundles have a dynamic price, based on the items
@@ -138,6 +140,7 @@ async function addSingleItemToCart(e) {
   $t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
+  $cartSidebar.focus();
   cartSubtotal.textContent = 'Processing...';
 
   const {
@@ -180,6 +183,7 @@ async function addBundleToCart(e) {
   t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
+  $cartSidebar.focus();
   cartSubtotal.textContent = 'Processing...';
 
   const getUserBundleSelections = function() {
@@ -306,6 +310,11 @@ $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
 $addItemToBundle.click(addItemToBundle);
 $cartSidebarClose.click(closeSidebar);
+$cartSidebarClose.keypress(function(e) {
+  if (wasEnter(e)) {
+    closeSidebar();
+  }
+});
 $cartSidebarToggle.click(function(e) {
   e.preventDefault();
 
@@ -322,5 +331,6 @@ $cartSidebarToggle.click(function(e) {
   } else {
     $body.addClass('cart-sidebar-open');
     $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+    $cartSidebar.focus();
   }
 });
