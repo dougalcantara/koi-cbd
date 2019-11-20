@@ -201,6 +201,37 @@
     margin: 2em 0;
     background: $true-white;
 
+    .k-veteran-coupon {
+      border-bottom: 1px solid #dedede;
+      padding-bottom: 0.5em;
+
+      &__liner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__title {
+        flex-basis: 75%;
+
+        p {
+          line-height: 1.2;
+        }
+      }
+
+      &__amount {
+        flex-basis: 25%;
+        text-align: right;
+
+        a {
+          color: $primary;
+
+          &:hover {
+            color: red !important;
+          }
+        }
+      }
+    }
+
     &__liner {
       padding: 2em;
     }

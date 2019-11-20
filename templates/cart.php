@@ -189,7 +189,7 @@ if (sizeof($items_in_cart) == 0) { ?>
           </div>
 
           <div class="k-cart--item k-cart--meta">
-          <?php if (wc_coupons_enabled()) { ?>
+          <?php if (wc_coupons_enabled()) : ?>
 
             <div class="k-cart--meta__coupon">
               <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
@@ -206,7 +206,7 @@ if (sizeof($items_in_cart) == 0) { ?>
             </div>
 
           <?php 
-          }
+          endif;
           ?>
           </div>
 
@@ -217,10 +217,21 @@ if (sizeof($items_in_cart) == 0) { ?>
     <div class="k-cart--sidebar">
       <div class="k-cart--sidebar__liner">
         <?php
-          
-          $discount_amount = NULL;
+        $discount_amount = NULL;
 
-          foreach ($cart->get_coupons() as $code => $coupon) : ?>
+        foreach ($cart->get_coupons() as $code => $coupon) :
+          if ($code === 'veteran coupon') : ?>
+          <div class="k-veteran-coupon">
+            <div class="k-veteran-coupon__liner">
+              <div class="k-veteran-coupon__title">
+                <p>Koi Veteran Discount (&mdash;25%)</p>
+              </div>
+              <div class="k-veteran-coupon__amount">
+                <p><?php echo wc_cart_totals_coupon_html($coupon); ?></p>
+              </div>
+            </div>
+          </div>
+          <?php else : ?>
           <div class="k-coupon">
             <div class="k-coupon__title">
               <?php echo wc_cart_totals_coupon_label($coupon); ?>
@@ -229,13 +240,13 @@ if (sizeof($items_in_cart) == 0) { ?>
               <p><?php echo wc_cart_totals_coupon_html($coupon); ?></p>
             </div>
           </div>
-        <?php
+          <?php
+          endif;
           // we can safely do this post-loop because only one coupon can be used at a time.
           // That makes the loop useless, but I'm just going to leave it since that may change eventually.
           $discount_amount = $coupon->get_amount();
 
-          endforeach;
-        ?>
+        endforeach; ?>
         <div class="k-cart__subtotal">
           <p class="k-upcase">Subtotal</p>
           <?php
