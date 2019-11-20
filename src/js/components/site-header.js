@@ -102,25 +102,11 @@ $accessibleSkip.blur(function() {
 });
 
 $accessibleSkip.click(() => {
-  console.log('click');
-  console.log($main);
   $main.focus();
 });
 
 $accessibleSkip.keypress(function(e) {
   if (wasEnter(e)) {
-    console.log('enter');
-    console.log($main);
     $main.focus();
   }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const all = document.querySelectorAll('*');
-
-  all.forEach(el => {
-    el.addEventListener('focus', () => {
-      console.log(el);
-    });
-  });
 });
