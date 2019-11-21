@@ -31,10 +31,10 @@ class Members {
     $response = new WP_REST_Response($contact);
     if($request['objectId']) {
       $response->set_status(200);
-      $this->create_user($contact);
       $response->set_data($this->sendUser([
         'vid' => $request['objectId'],
-        'password' => $contact['password']
+        'password' => $contact['password'],
+        'new_user' => $this->create_user($contact)
       ]));
     } else {
       $response->set_status(501);
@@ -62,9 +62,11 @@ class Members {
       $wp_user = get_user_by('email', $fields['email']);
       $update = $wp_user;
       $update->set_role('veteran');
-      return wp_update_user($wp_user, $update);
+      wp_update_user($wp_user, $update);
+      return false;
     } else {
-      return wp_insert_user($user);
+      wp_insert_user($user);
+      return true;
     }
   }
 
@@ -81,6 +83,10 @@ class Members {
         array(
           'property' => 'veteran_temp_password',
           'value' => $user['password']
+        ),
+        array(
+          'property' => 'new_wordpress_user',
+          'value' => $user['new_user']
         )
       )
     ]));
