@@ -1,3 +1,5 @@
+import preventScrollOnDrag from '../helpers/FlickityEvents';
+
 const carousel = document.querySelector(
   '.k-testimonialslider .k-testimonialslider--carousel'
 );
@@ -17,6 +19,8 @@ const flktyOpts = {
 function initializeSlider() {
   if (!carousel) return;
   flkty = new Flickity(carousel, flktyOpts);
+
+  preventScrollOnDrag(flkty);
 }
 
 document.addEventListener('DOMContentLoaded', initializeSlider);
