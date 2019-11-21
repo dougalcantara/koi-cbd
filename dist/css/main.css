@@ -4058,6 +4058,41 @@ form input[type='radio'] + label:hover {
   background: #fff;
 }
 
+.k-cart--sidebar .k-veteran-coupon {
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 0.5em;
+}
+
+.k-cart--sidebar .k-veteran-coupon__liner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.k-cart--sidebar .k-veteran-coupon__title {
+  -ms-flex-preferred-size: 75%;
+  flex-basis: 75%;
+}
+
+.k-cart--sidebar .k-veteran-coupon__title p {
+  line-height: 1.2;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount {
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  text-align: right;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount a {
+  color: #f4b13e;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount a:hover {
+  color: red !important;
+}
+
 .k-cart--sidebar__liner {
   padding: 2em;
 }
@@ -6647,12 +6682,12 @@ form input[type='radio'] + label:hover {
   font-size: 125%;
 }
 
-.page-template-veteran-signup .k-introtext h2 {
-  margin: 0 0 1em 0;
+.page-template-veteran-signup .k-introtext {
+  padding-bottom: 2em;
 }
 
-.k-veterans {
-  background-image: linear-gradient(to bottom, #fff, #f2f2f2);
+.page-template-veteran-signup .k-introtext h2 {
+  margin: 0 0 1em 0;
 }
 
 .k-veterans .k-form__actions {
