@@ -9,7 +9,7 @@
       <div class="k-latestbatch--description k-rte-content">
         <p>Koi CBD is 100% natural, 99%+ pure CBD manufactured in an ISO Certified Lab, and contains 0% THC. We use only the highest quality ingredients available, but we don't stop there.</p>
         <p>All Koi products are lab-tested for purity, consistency, and safety. Plus, we offer full traceability on every batch of our CBD - from plant to finished product.</p>
-        <a href="#0" class="k-upcase">View All Lab Results</a>
+        <a href="<?php echo site_url() . '/lab-results'; ?>" class="k-upcase">View All Lab Results</a>
       </div>
     </div>
 
