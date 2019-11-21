@@ -1,5 +1,7 @@
 import { $doc } from '../global/selectors';
 import wasEnter from '../helpers/wasEnter';
+import PreventScrollOnDrag from '../helpers/FlickityEvents';
+import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 const $productHero = $('.k-producthero');
 const $productHeroCarousel = $('.k-producthero--gallery');
@@ -212,6 +214,8 @@ $doc.ready(function() {
     imagesLoaded: true,
     prevNextButtons: false,
   });
+
+  preventScrollOnDrag(flkty);
 
   $prev.click(() => flkty.previous());
   $next.click(() => flkty.next());

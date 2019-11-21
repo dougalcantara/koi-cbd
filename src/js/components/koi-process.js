@@ -1,5 +1,6 @@
 import { $doc, $header } from '../global/selectors';
 import getQueryVar from '../helpers/getQueryVar';
+import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 const $parent = $('.k-process');
 const $slideSelectors = $parent.find('.k-process__iconrow__item');
@@ -66,6 +67,8 @@ $doc.ready(function() {
       },
     },
   });
+
+  preventScrollOnDrag(flkty);
 
   handlePageLand();
 });
