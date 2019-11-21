@@ -112,7 +112,7 @@
     </div>
     <div class="k-videogallery--item k-videogallery--description k-rte-content">
       <p class="k-headline k-headline--xs">It all starts at our organic hemp farms in Kentucky, Colorado & Oklahoma, each carefully selected to meet highest standards of agricultural quality and consistency.</p>
-      <a class="k-underline k-weight--lg" href="#0">Get The Full Story</a>
+      <a class="k-underline k-weight--lg" href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>">Get The Full Story</a>
     </div>
   </div>
 </section>
