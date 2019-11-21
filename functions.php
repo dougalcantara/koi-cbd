@@ -383,6 +383,32 @@ function k_increment_cart_item() {
 }
 add_action('wp_ajax_increment_cart_item', 'k_increment_cart_item');
 add_action('wp_ajax_nopriv_increment_cart_item', 'k_increment_cart_item');
+
+function k_update_item_quantity() {
+  $cart_item_key = $_POST['cart_item_key'];
+  $cart_item_new_quantity = intval($_POST['cart_item_quantity']);
+
+  WC()->cart->set_quantity($cart_item_key, $cart_item_new_quantity);
+
+  die();
+}
+add_action('wp_ajax_update_item_quantity', 'k_update_item_quantity');
+add_action('wp_ajax_nopriv_update_item_quantity', 'k_update_item_quantity');
+
+function k_update_all_item_quantities() {
+  $update_keys = $_POST['cart_item_keys'];
+  $update_quantities = $_POST['cart_item_quantities'];
+
+  $cart_items = WC()->cart->get_cart();
+
+  foreach($update_keys as $index => $key) {
+    WC()->cart->set_quantity($key, intval($update_quantities[$index]));
+  }
+
+  die();
+}
+add_action('wp_ajax_update_all_item_quantities', 'k_update_all_item_quantities');
+add_action('wp_ajax_nopriv_update_all_item_quantities', 'k_update_all_item_quantities');
 // == end AJAX fn's == //
 
 

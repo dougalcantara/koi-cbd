@@ -116,4 +116,40 @@ AjaxCart.incrementCartItem = async function(key, prevQuantity) {
   return this.getCartItems();
 };
 
+AjaxCart.updateItemQuantity = async function(key, newQuantity) {
+  try {
+    await _makeRequest({
+      method: 'POST',
+      data: {
+        action: 'update_item_quantity',
+        cart_item_quantity: newQuantity,
+        cart_item_key: key,
+      },
+      onComplete: () => {
+        window.location = window.location += `?open_cart=true`;
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+AjaxCart.updateAllItemQuantities = async function(keys, newQuantities) {
+  try {
+    await _makeRequest({
+      method: 'POST',
+      data: {
+        action: 'update_all_item_quantities',
+        cart_item_keys: keys,
+        cart_item_quantities: newQuantities,
+      },
+      onComplete: () => {
+        window.location += `?open_cart=true`;
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default AjaxCart;

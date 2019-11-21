@@ -1,5 +1,6 @@
 import AjaxCart from './ajax-cart';
 import wasEnter from '../helpers/wasEnter';
+import AjaxCartItem from '../components/ajax-cart-item';
 import {
   $win,
   $doc,
@@ -8,6 +9,7 @@ import {
   $backdrop,
   $cartSidebar,
 } from './selectors';
+import CartItem from '../components/ajax-cart-item';
 
 const $addToCart = $('.k-add-to-cart');
 const $addItemToBundle = $('.k-productform--select-bundled-item');
@@ -21,7 +23,6 @@ const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const $cartSidebarToggle = $('#k-carttoggle');
 const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
 const cartSubtotal = document.querySelector('.k-cart-sidebar--subtotal');
-const $checkout = $('.k-trap-focus-trigger');
 
 /**
  * Need this because bundles have a dynamic price, based on the items
@@ -94,22 +95,52 @@ function handleCartSidebar(cartItems, expandedProducts) {
     const totalPrice = `$${(product.price * quantity).toFixed(2)}`;
 
     $cartItemsTarget.append(/*html*/ `
-      <div class="k-cart-sidebar__item">
+      <div class="k-cart-sidebar__item" data-item-key="${product.key}">
         <div class="k-cart-sidebar__item__liner">
           <img src="${product.thumbnail_url}" alt="" />
           <h3>
             <a href="${product.permalink}">${product.name}</a>
           </h3>
-          <p>Quantity: ${quantity}</p>
-          <p class="k-bigtext">${
-            product.is_bundle ? bundledPrice : totalPrice
-          }</p>
+          <div class="k-cart-sidebar__item-actions">
+            <span class="k-cart-sidebar__quantity">Quantity:</span>
+            <div class="k-productform--quantity">
+              <button class="k-reduce" class="" type="button">-</button>
+              <input id="k-num-to-add" type="number" value="${
+                product.quantity
+              }" min="0" step="1" />
+              <button class="k-increase" class="" type="button">+</button>
+            </div>
+            <p class="k-bigtext">
+            <span class="k-cart-sidebar__item-price">${
+              product.is_bundle ? bundledPrice : totalPrice
+            }</span>
+            <button class="k-cart-sidebar__item-update k-button k-button--primary">Update</button>
+            </p>
+          </div>
         </div>
       </div>
     `);
   });
 
+  initializecartItems();
   $cartSidebar.addClass('k-cart-sidebar--loaded');
+}
+
+function initializecartItems() {
+  const $items = $('.k-cart-sidebar__item');
+
+  window.__cartItems = [];
+
+  $items.each(function(index, element) {
+    const item = new CartItem($(this), element, element.dataset.itemKey);
+    window.__cartItems.push(item);
+  });
+
+  if (window.location.search.includes('open_cart=true')) {
+    $backdrop.addClass('active');
+    $cartSidebar.addClass('k-cart-sidebar--open');
+    $cartSidebar.focus();
+  }
 }
 
 function getBundlePrice(bundle, cartItems) {
@@ -128,7 +159,7 @@ function getBundlePrice(bundle, cartItems) {
     bundlePrice += matchingProduct.line_subtotal;
   });
 
-  return parseFloat(bundlePrice.toFixed(2));
+  return bundlePrice.toFixed(2);
 }
 
 async function addSingleItemToCart(e) {
