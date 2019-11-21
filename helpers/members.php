@@ -5,23 +5,19 @@
  * Then sends back to HS with password and reset link.
  */
 
+defined('ABSPATH') || exit;
+
 class Members {
 
   private $api_key = '9f7da0c8-2d44-40e9-86da-125a458151ce';
 
   public function __construct() {
-    add_action('rest_api_init', array($this, 'endpoint'));
+    add_shortcode('update-veteran', array($this, 'create'));
   }
 
-  public function endpoint() {
-    register_rest_route('veterans/v1', 'create', array(
-      'methods' => 'POST',
-      'callback' => array($this, 'create')
-    ));
-  }
-
-  public function create($request) {
-    $contactData = json_decode($this->get_hubspot_user($request['objectId']), true);
+  public function create() {
+    $objectId = $_POST['objectId'];
+    $contactData = json_decode($this->get_hubspot_user($objectId), true);
     $contact = array(
       'firstname' => $contactData['properties']['firstname']['value'],
       'lastname' => $contactData['properties']['lastname']['value'],
@@ -29,10 +25,10 @@ class Members {
       'password' => wp_generate_password(20)
     );
     $response = new WP_REST_Response($contact);
-    if($request['objectId']) {
+    if($objectId) {
       $response->set_status(200);
       $response->set_data($this->sendUser([
-        'vid' => $request['objectId'],
+        'vid' => $objectId,
         'password' => $contact['password'],
         'new_user' => $this->create_user($contact)
       ]));
