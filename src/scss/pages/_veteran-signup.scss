@@ -1,5 +1,7 @@
 .page-template-veteran-signup {
   .k-introtext {
+    padding-bottom: 2em;
+
     h2 {
       margin: 0 0 1em 0;
     }
@@ -7,8 +9,6 @@
 }
 
 .k-veterans {
-  background-image: linear-gradient(to bottom, $true-white, $bg-gray);
-
   .k-form__actions {
     margin-top: 2em;
     text-align: center;

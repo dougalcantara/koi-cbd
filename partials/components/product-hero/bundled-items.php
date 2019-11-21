@@ -20,8 +20,9 @@
         data-max-items="<?php echo $max_items; ?>"
         data-parent-id="<?php echo $parent_id; ?>"
         data-bundled-product-key="<?php echo $bundled_item_key; ?>"
+        tabindex="-1"
       />
-      <label for="<?php echo 'product-id|'.$bundled_item_key; ?>">
+      <label for="<?php echo 'product-id|'.$bundled_item_key; ?>" tabindex="0">
         <span><?php echo $bundled_item_name; ?></span>
       </label>
 
@@ -47,6 +48,7 @@
               data-variant-id="<?php echo $variant_id; ?>"
               data-variant-price="<?php echo $price_with_discount; ?>"
               data-variant-strength="<?php echo $this_attribute; ?>"
+              tabindex="-1"
             />
             <label
               for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"

@@ -751,6 +751,11 @@ a:hover,
   }
 }
 
+.fade {
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 .is-ie11 #k-backdrop {
   display: none;
 }
@@ -1169,6 +1174,21 @@ form input[type='radio'] + label:hover {
   width: 100%;
   z-index: 101;
   background: #fff;
+}
+
+.k-header__skip-to-main {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -105%);
+  z-index: 99;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1), color 1s cubic-bezier(0.075, 0.82, 0.165, 1), border-color 1s cubic-bezier(0.075, 0.82, 0.165, 1), transform 0.35s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
+}
+
+.k-header__skip-to-main--focused {
+  transform: translate(-50%, 0);
 }
 
 .k-header .k-has-dropdown {
@@ -2063,6 +2083,15 @@ form input[type='radio'] + label:hover {
   width: 1em;
 }
 
+.k-productcard:hover h3 > a {
+  color: #f4b13e;
+}
+
+.k-productcard:hover .k-button {
+  color: white;
+  background: #f4b13e;
+}
+
 .k-articlecard * {
   margin: 0;
 }
@@ -2927,8 +2956,10 @@ form input[type='radio'] + label:hover {
   outline: none;
 }
 
-.k-productform--quantity #k-reduce,
-.k-productform--quantity #k-increase {
+.k-productform--quantity #k-reduce, .k-productform--quantity .k-cart-sidebar__item-actions .k-reduce, .k-cart-sidebar__item-actions .k-productform--quantity .k-reduce,
+.k-productform--quantity #k-increase,
+.k-productform--quantity .k-cart-sidebar__item-actions .k-increase,
+.k-cart-sidebar__item-actions .k-productform--quantity .k-increase {
   position: absolute;
   top: 50%;
   left: 0.5em;
@@ -2939,12 +2970,17 @@ form input[type='radio'] + label:hover {
   font-weight: 500;
 }
 
-.k-productform--quantity #k-reduce:hover,
-.k-productform--quantity #k-increase:hover {
+.k-productform--quantity #k-reduce:hover, .k-productform--quantity .k-cart-sidebar__item-actions .k-reduce:hover, .k-cart-sidebar__item-actions .k-productform--quantity .k-reduce:hover,
+.k-productform--quantity #k-increase:hover,
+.k-productform--quantity .k-cart-sidebar__item-actions .k-increase:hover,
+.k-cart-sidebar__item-actions .k-productform--quantity .k-increase:hover {
   cursor: pointer;
 }
 
-.k-productform--quantity #k-increase {
+
+.k-productform--quantity #k-increase,
+.k-productform--quantity .k-cart-sidebar__item-actions .k-increase,
+.k-cart-sidebar__item-actions .k-productform--quantity .k-increase {
   right: 0.5em;
   left: auto;
 }
@@ -4049,6 +4085,41 @@ form input[type='radio'] + label:hover {
   background: #fff;
 }
 
+.k-cart--sidebar .k-veteran-coupon {
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 0.5em;
+}
+
+.k-cart--sidebar .k-veteran-coupon__liner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.k-cart--sidebar .k-veteran-coupon__title {
+  -ms-flex-preferred-size: 75%;
+  flex-basis: 75%;
+}
+
+.k-cart--sidebar .k-veteran-coupon__title p {
+  line-height: 1.2;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount {
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  text-align: right;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount a {
+  color: #f4b13e;
+}
+
+.k-cart--sidebar .k-veteran-coupon__amount a:hover {
+  color: red !important;
+}
+
 .k-cart--sidebar__liner {
   padding: 2em;
 }
@@ -4656,6 +4727,7 @@ form input[type='radio'] + label:hover {
   transition: transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   border-left: 1px solid #ddd;
   overflow: hidden;
+  outline-color: #f4b13e;
 }
 
 .k-cart-sidebar--open {
@@ -4672,6 +4744,10 @@ form input[type='radio'] + label:hover {
   position: relative;
 }
 
+.k-cart-sidebar__subtotal {
+  margin: 0;
+}
+
 .k-cart-sidebar__actions {
   position: fixed;
   bottom: 0;
@@ -4686,7 +4762,11 @@ form input[type='radio'] + label:hover {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   position: relative;
-  padding: 2em 1em 8em 1em;
+  padding: 1em;
+}
+
+.k-cart-sidebar__actions .k-liner:first-of-type {
+  padding-bottom: 0;
 }
 
 .k-cart-sidebar__actions .k-button {
@@ -4697,6 +4777,62 @@ form input[type='radio'] + label:hover {
 
 .k-cart-sidebar__actions .k-button:first-child {
   margin-bottom: 0.25em;
+}
+
+.k-cart-sidebar__item-actions {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.k-cart-sidebar__item-actions .k-productform--quantity {
+  width: auto !important;
+  -ms-flex-preferred-size: auto !important;
+  flex-basis: auto !important;
+}
+
+.k-cart-sidebar__item-actions input[type='number'] {
+  padding: 0.5em 1em;
+  max-width: 8ch;
+}
+
+.k-cart-sidebar__item-actions .k-reduce {
+  position: static;
+  padding: 0 !important;
+}
+
+.k-cart-sidebar__item-actions .k-increase {
+  position: static;
+  padding: 0 !important;
+}
+
+.k-cart-sidebar__item-actions .k-bigtext {
+  margin-left: auto;
+}
+
+.k-cart-sidebar__quantity {
+  margin-right: 1em !important;
+}
+
+.k-cart-sidebar__item-update {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  padding: 0.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.65s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.k-cart-sidebar__item-update--active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .k-cart-sidebar__close, .k-cart-sidebar__title {
@@ -4737,6 +4873,7 @@ form input[type='radio'] + label:hover {
 }
 
 .k-cart-sidebar__item {
+  font-size: 80%;
   padding: 1em 0;
   border-bottom: 1px solid #ddd;
 }
@@ -4777,11 +4914,6 @@ form input[type='radio'] + label:hover {
 
 .k-cart-sidebar__item h3 a {
   color: #080907;
-}
-
-.k-cart-sidebar__item p {
-  -ms-flex-preferred-size: 50%;
-  flex-basis: 50%;
 }
 
 .k-cart-sidebar__item p:last-child {
@@ -6647,12 +6779,12 @@ form input[type='radio'] + label:hover {
   font-size: 125%;
 }
 
-.page-template-veteran-signup .k-introtext h2 {
-  margin: 0 0 1em 0;
+.page-template-veteran-signup .k-introtext {
+  padding-bottom: 2em;
 }
 
-.k-veterans {
-  background-image: linear-gradient(to bottom, #fff, #f2f2f2);
+.page-template-veteran-signup .k-introtext h2 {
+  margin: 0 0 1em 0;
 }
 
 .k-veterans .k-form__actions {

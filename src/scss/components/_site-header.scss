@@ -5,6 +5,22 @@
   z-index: 101;
   background: $true-white;
 
+  &__skip-to-main {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -105%);
+    z-index: 99;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transition: background 1s $ease-out-circ, color 1s $ease-out-circ,
+      border-color 1s $ease-out-circ, transform 0.35s $ease-out-circ !important;
+
+    &--focused {
+      transform: translate(-50%, 0);
+    }
+  }
+
   .k-has-dropdown {
     position: relative;
 

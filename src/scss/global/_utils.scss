@@ -1,3 +1,8 @@
 .k-headerpadding {
   // transition: padding .4s $ease-out-circ;
 }
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.35s $ease-out-circ;
+}
