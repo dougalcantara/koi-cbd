@@ -1,0 +1,9 @@
+.k-breadcrumb {
+  a {
+    color: $primary;
+    position: relative;
+    &:hover {
+      color: $bg-dark !important;
+    }
+  }
+}

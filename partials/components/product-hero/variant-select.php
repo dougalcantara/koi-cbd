@@ -19,7 +19,7 @@ foreach($product->get_available_variations() as $i => $variant) {
         echo $has_quantity_attributes ? ' has-quantity' : NULL;
       ?>
     "
-    tabindex="0"        
+    tabindex="0"
   >
   <?php
   if ($has_quantity_attributes) : ?>

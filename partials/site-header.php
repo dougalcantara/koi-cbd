@@ -4,6 +4,7 @@ $url = site_url();
 ?>
 
 <header class="k-header">
+  <button class="k-header__skip-to-main k-button k-button--primary">Skip To Main Content</button>
   <div class="k-header__newsletter-signup">
     <div class="k-inner k-inner--xl">
       <form action="POST">
@@ -35,7 +36,7 @@ $url = site_url();
     </div>
   </div>
   <div class="k-header--main">
-    <div class="k-header--nav">
+    <nav class="k-header--nav">
       <div class="k-header--nav__content">
         <ul>
           <li class="k-has-dropdown">
@@ -92,7 +93,7 @@ $url = site_url();
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
     <div class="k-inner k-inner--xl">
       <div class="k-header--logo">
         <a href="<?php echo site_url(); ?>">

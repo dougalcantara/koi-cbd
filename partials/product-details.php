@@ -63,6 +63,25 @@
           </div>
         </div>
         <?php endif; ?>
+        <?php if ($product_acf['cbd_concentration']) : ?>
+        <div class="k-productdetails--accordion__item">
+          <div class="k-productdetails--accordion__trigger">
+            <p class="k-upcase">CBD Concentration <span class="k-weight--lg">+</span></p>
+          </div>
+          <div class="k-productdetails--accordion__drawer">
+            <ul>
+              <?php
+              foreach($product_acf['cbd_concentration'] as $concentration) { ?>
+                <li>
+                  <p><?php echo $concentration['concentration']; ?></p>
+                </li>
+              <?php
+              }
+              ?>
+            </ul>
+          </div>
+        </div>
+        <?php endif; ?>        
         <?php if ($product_acf['suggested_uses']) : ?>
         <div class="k-productdetails--accordion__item">
           <div class="k-productdetails--accordion__trigger">

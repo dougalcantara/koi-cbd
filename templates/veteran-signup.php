@@ -23,115 +23,18 @@ echo k_hero(array(
 
 <section class="k-veterans k-block k-block--md k-no-padding--top">
   <div class="k-inner k-inner--sm">
-  
-    <form class="k-veterans__forms" id="k-veteran-signup">
 
-      <div class="k-veterans__form k-form">
-        <div class="k-liner">
+    <!--[if lte IE 8]>
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+    <script>
+      hbspt.forms.create({
+      portalId: "6283239",
+      formId: "98d14bc4-a93c-499b-bc41-fd56e2c631ef"
+    });
+    </script>
 
-          <div class="k-veterans__heading">
-            <div class="k-liner">
-              <h3>Personal Details</h3>
-            </div>
-          </div>
-          <div class="k-veterans__fields">
-            <div class="k-form__group">
-              <input type="text" class="k-input" id="k-veterans-firstname" />
-              <label for="k-veterans-firstname">First Name</label>
-            </div>
-            <div class="k-form__group">
-              <input type="text" class="k-input" id="k-veterans-lastname" />
-              <label for="k-veterans-lastname">Last Name</label>
-            </div>
-            <div class="k-form__group">
-              <input type="email" class="k-input" id="k-veterans-email" />
-              <label for="k-veterans-email">Email Address</label>
-            </div>
-            <div class="k-form__group">
-              <input type="text" class="k-input" id="k-veterans-username" />
-              <label for="k-veterans-username">Username</label>
-            </div>
-            <div class="k-form__group">
-              <input type="password" class="k-input" id="k-veterans-password" />
-              <label for="k-veterans-password">Password</label>
-            </div>
-            <div class="k-form__group">
-              <input type="password" class="k-input" id="k-veterans-password--confirm" />
-              <label for="k-veterans-password--confirm">Confirm Password</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="k-veterans__form k-form">
-        <div class="k-liner">
-
-          <div class="k-veterans__heading">
-            <div class="k-liner">
-              <h3>Other Information</h3>
-            </div>
-          </div>
-          <div class="k-veterans__fields">
-            <div class="k-form__group">
-              <div class="k-form__sectiontitle">
-                <p>Have You Tried Koi CBD's Products Before?</p>
-              </div>
-              <div class="k-form__radiobutton k-has-tried">
-                <input type="radio" name="has-tried-koi" value="Yes" id="k-veterans-hastried--yes">
-                <label for="k-veterans-hastried--yes">Yes</label>
-              </div>
-              <div class="k-form__radiobutton">
-                <input type="radio" name="has-tried-koi" value="No" id="k-veterans-hastried--no">
-                <label for="k-veterans-hastried--no">No</label>
-              </div>
-            </div>
-            <div class="k-form__group">
-              <div class="k-form__sectiontitle">
-                <p>Upload Military ID, VA Pay Stub, or Honorable/Medical Discharge paperwork</p>
-              </div>
-              <div class="k-form__fileupload">
-                <input type="file" class="k-input" id="k-veterans-paperwork" name="veteran-paperwork" />
-                <label for="k-veterans-paperwork">Upload A File</label>
-                <script type="text/javascript">
-                  (function() {
-                    var uploader = document.querySelector('#k-veterans-paperwork');
-                    var interval;
-
-                    interval = setInterval(function() {
-                      if (uploader.value) {
-                        clearInterval(interval);
-                        uploader.classList.add('has-value');
-                      }
-                    }, 50);
-                  })();
-                </script>
-              </div>
-            </div>
-            <div class="k-form__group">
-              <div class="k-form__sectiontitle">
-                <p>How Did You Hear About Us?</p>
-              </div>
-              <select name="k-referred-by" id="k-veterans-referral">
-                <option value="">Select One</option>
-                <option value="Online/Search Engines">Online / Search Engines</option>
-                <option value="Social Media">Social Media</option>
-                <option value="Word of Mouth">Word of Mouth</option>
-                <option value="Local Retail">Local Retail</option>
-                <option value="Trade Show">Trade Show</option>
-                <option value="TV">TV</option>
-                <option value="Magazine Ad">Magazine Ad</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="k-form__actions">
-              <button type="submit" class="k-button k-button--primary">Submit Application</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </form>
   </div>
 </section>
 

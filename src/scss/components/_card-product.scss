@@ -86,4 +86,13 @@
       width: 1em;
     }
   }
+  &:hover {
+    h3 > a {
+      color: $primary;
+    }
+    .k-button {
+      color: white;
+      background: $primary;
+    }
+  }
 }

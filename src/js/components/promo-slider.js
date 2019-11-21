@@ -1,3 +1,5 @@
+import preventScrollOnDrag from '../helpers/FlickityEvents';
+
 const $promoSlider = $('.k-promoslider');
 const $carousel = $promoSlider.find('.k-promoslider--carousel');
 const $prev = $promoSlider.find('.k-promoslider__prev');
@@ -19,6 +21,8 @@ const flktyOpts = {
 document.addEventListener('DOMContentLoaded', () => {
   if (!$carousel.length) return;
   flkty = new Flickity($carousel[0], flktyOpts);
+
+  preventScrollOnDrag(flkty);
 
   $prev.click(() => flkty.previous());
   $next.click(() => flkty.next());
