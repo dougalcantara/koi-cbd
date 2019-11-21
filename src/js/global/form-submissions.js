@@ -53,7 +53,7 @@ $veteranSignup.submit(function(e) {
       .find('.k-has-tried')
       .find('input[type=radio]:checked')
       .val(),
-    paperwork: $t.find('#k-veterans-paperwork').val(),
+    paperwork: $t.find('#k-veterans-paperwork'),
   };
 
   const hsPayload = {
@@ -89,95 +89,54 @@ $veteranSignup.submit(function(e) {
     ],
   };
 
-  const file = $t.find('#k-veterans-paperwork')[0].files[0];
+  const file = fields.paperwork[0].files[0];
   const filename = file.name;
   const fr = new FileReader();
-  const img = new Image();
 
   fr.readAsDataURL(file);
-  fr.onload = function({ target }) {
-    img.src = target.result;
-    img.onload = function() {
-      $.ajax({
-        method: 'POST',
-        url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
-        data: {
-          action: 'upload_veteran_paperwork',
-          paperwork: img.src,
-          filename,
-        },
-        complete: res => console.log(res),
-      });
+  fr.onload = async function({ target }) {
+    console.log(target.result);
+
+    const data = {
+      filename: filename.substr(0, filename.lastIndexOf('.')) || filename,
+      b64: target.result,
     };
+
+    console.log(data);
+
+    const response = await fetch(
+      'https://koi-veteran-paperwork-submit.herokuapp.com/',
+      {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then(response => console.log(response))
+      .then(json => console.log(json));
+
+    // $.ajax({
+    //   method: 'POST',
+    //   url:
+    //     'https://cors-anywhere.herokuapp.com/',
+    //   contentType: 'application/json',
+    //   data,
+    //   complete: res => console.log(res),
+    // });
+    // img.onload = function() {
+    //   $.ajax({
+    //     method: 'POST',
+    //     url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
+    //     data: {
+    //       action: 'upload_veteran_paperwork',
+    //       paperwork: img.src,
+    //       filename,
+    //     },
+    //     complete: res => console.log(res),
+    //   });
+    // };
   };
-
-  // const fd = new FormData();
-  // const file = $t.find('#k-veterans-paperwork')[0].files[0];
-
-  // fd.append('file', file, file.name);
-
-  // $.ajax({
-  //   method: 'POST',
-  //   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
-  //   cache: false,
-  //   processData: false,
-  //   contentType: 'multipart/form-data',
-  //   data: fd,
-  //   complete: res => console.log(res),
-  // });
-
-  // $.ajax({
-  //   method: 'POST',
-  //   url: `${BASE_URL}/${formId}`,
-  //   contentType: 'application/json',
-  //   data: JSON.stringify(hsPayload),
-  //   complete: res => console.log('HS res: ', res),
-  // });
-
-  // const fd = new FormData();
-  // const file = $t.find('#k-veterans-paperwork')[0].files[0];
-
-  // fd.append('file', file, file.name);
-
-  // $.ajax({
-  //   method: 'POST',
-  //   cache: false,
-  //   processData: false,
-  //   contentType: 'multipart/form-data',
-  //   url:
-  //
-  //     files: fd.get('file'),
-  //   },
-  //   complete: res => console.log(res),
-  // });
-
-  // const f = new FileReader();
-
-  // f.onload = function(img) {
-  //   img.src = fields.paperwork;
-  // }
-
-  // $.ajax
-
-  // $.ajax({
-  //   dataType: 'json',
-  //   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
-  //   method: 'POST',
-  //   data: {
-  //     action: 'create_veteran_user',
-  //     email: $t.find('#k-veterans-email').val(),
-  //     password: $t.find('#k-veterans-password').val(),
-  //   },
-  //   complete: res => {
-  //     console.log('WP res: ', res);
-
-  //     $.ajax({
-  //       method: 'POST',
-  //       url: `${BASE_URL}/${formId}`,
-  //       contentType: 'application/json',
-  //       data: JSON.stringify(),
-  //       complete: res => console.log('HS res: ', res),
-  //     });
-  //   },
-  // });
 });
