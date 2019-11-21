@@ -1,4 +1,7 @@
 <?php
+
+require_once( __DIR__ . '/helpers/members.php');
+
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
 		'page_title' => 'Site Content',
@@ -472,4 +475,8 @@ function zero_discount_for_excluded_products($discount, $discounting_amount, $ca
         $discount = 0;
 
     return $discount;
+}
+
+if(class_exists('Members')) {
+  $members = new Members();
 }
