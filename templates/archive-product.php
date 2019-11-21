@@ -51,7 +51,7 @@ get_template_part('partials/components/randoms/breadcrumb');
 
     foreach($products as $idx => $product) {
       $product_is_hidden = $product->get_status() === 'draft' || $product->get_catalog_visibility() === 'hidden';
-      
+      // var_dump($product_is_hidden);
       if ($product_is_hidden) : continue; endif;
 
       $name = $product->get_name();
