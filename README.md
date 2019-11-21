@@ -48,3 +48,5 @@ Homepage - `home.php` - Template Name: 2019 Homepage
 
 About Us - `page-aboutus.php`
   - Gets its data from Site Content -> About Us, no ACF tied to this template either
+
+Contact - `templates/contact.php`
