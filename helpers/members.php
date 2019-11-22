@@ -22,22 +22,29 @@ class Members {
     ));
   }
 
+  private function log($string) {
+    $open = fopen( get_template_directory().'/rest.log', "w" );
+    $write = fwrite( $open, $string);
+    fclose( $open );
+  }
+
   public function process($request) {
+    $payload = json_decode($request->get_body(), true);
     $response = new WP_REST_Response();
+    $response->set_data($payload['objectId']);
+    $this->log(json_encode($payload['propertyName'], true));
     if($request['propertyName'] == 'military_id') {
-      if($msg = $this->create($request['objectId'])) {
+      if($this->create($request['id'])) {
         $response->set_status(200);
       } else {
-        $response->set_status(501);
+        $response->set_status(418);
       }
-      $response->set_data($msg);
     } else {
-      if($msg = $this->approve($request)) {
+      if($this->approve($request)) {
         $response->set_status(200);
       } else {
-        $response->set_status(501);
+        $response->set_status(450);
       }
-      $response->set_data($msg);
     }
     return $response;
   }
