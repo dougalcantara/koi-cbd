@@ -19,6 +19,10 @@ $url = site_url();
  */
 
 $user_is_veteran = in_array('veteran', get_userdata(get_current_user_id())->roles);
+/**
+ * Important! Also need to check if user was previously qualified as vet via Ultimate Member.
+ * I believe it can be a check for get_user_metadata() or something like that.
+ */
 $user_veteran_status = get_fields('user_' . get_current_user_id())['veteran_status'];
 $is_approved_veteran = $user_is_veteran && $user_veteran_status == 'Veteran Approved';
 $veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());

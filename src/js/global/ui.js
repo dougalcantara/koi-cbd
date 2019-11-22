@@ -22,8 +22,6 @@ const $tiltTargets = $('.k-tilt');
 const $blogFilterBy = $('.k-blognav--filterby select');
 const $logoutTrigger = $('.k-customer-logout');
 
-console.log($logoutTrigger);
-
 function slugify(string) {
   return string.replace(/ /g, '-').toLowerCase();
 }

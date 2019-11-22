@@ -50,6 +50,10 @@ get_template_part('partials/components/randoms/breadcrumb');
     $products = wc_get_products($args);
 
     foreach($products as $idx => $product) {
+      $product_is_hidden = $product->get_status() === 'draft' || $product->get_catalog_visibility() === 'hidden';
+      // var_dump($product_is_hidden);
+      if ($product_is_hidden) : continue; endif;
+
       $name = $product->get_name();
       $id = $product->get_id();
       $image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large')[0];
