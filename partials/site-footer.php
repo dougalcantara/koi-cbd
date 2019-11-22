@@ -43,7 +43,7 @@
             <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
             <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
             <!-- <li><a href="#0">Ambassadors</a></li> -->
-            <li><a href="<?php echo $url . '/veteran-signup'; ?>">Veterans</a></li>
+            <li><a href="<?php echo $url . '/veteran-program'; ?>">Veterans</a></li>
             <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
         </div>
