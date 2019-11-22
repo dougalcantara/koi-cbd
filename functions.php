@@ -506,3 +506,9 @@ function zero_discount_for_excluded_products($discount, $discounting_amount, $ca
 if(class_exists('Members')) {
   $members = new Members();
 }
+
+function admin_styles() {
+  wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/admin.css' );
+}
+add_action( 'admin_enqueue_scripts', 'admin_styles' );
+add_action( 'login_enqueue_scripts', 'admin_styles' );
