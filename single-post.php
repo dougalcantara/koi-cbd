@@ -40,7 +40,7 @@ do_action('k_before_first_section');
 
       <ul>
         <li><a href="<?php echo site_url(); ?>">Home</a>&nbsp;&rsaquo;&nbsp;</li>
-        <li><a href="<?php echo site_url().'/resources'; ?>">Resources</a>&nbsp;&rsaquo;&nbsp;</li>
+        <li><a href="<?php echo site_url().'/blog'; ?>">Resources</a>&nbsp;&rsaquo;&nbsp;</li>
         <li><a href="<?php echo site_url().'/blog'; ?>">Koi Blog</a>&nbsp;&rsaquo;&nbsp;</li>
         <li><?php echo get_the_title(); ?></li>
       </ul>
