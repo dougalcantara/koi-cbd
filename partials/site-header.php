@@ -40,7 +40,7 @@ $url = site_url();
       <div class="k-header--nav__content">
         <ul>
           <li class="k-has-dropdown">
-            <a class="k-upcase" href="#0"><span>&#9660;</span> Shop</a>
+            <a class="k-upcase"><span>&#9660;</span> Shop</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures</a></li>
@@ -56,7 +56,7 @@ $url = site_url();
           </li>
           <li><a class="k-upcase" href="<?php echo $url . '/cbd-101'; ?>">CBD 101</a></li>
           <li class="k-has-dropdown">
-            <a class="k-upcase" href="#0"><span>&#9660;</span> Resources</a>
+            <a class="k-upcase"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
@@ -68,7 +68,7 @@ $url = site_url();
         <ul>
           <!-- <li><a class="k-upcase" href="<?php echo $url; ?>/#0">Community</a></li> -->
           <li class="k-has-dropdown">
-            <a class="k-upcase" href="#0"><span>&#9660;</span> About Us</a>
+            <a class="k-upcase"><span>&#9660;</span>About Us</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/about-us' ?>">Koi Story</a></li>
@@ -80,7 +80,7 @@ $url = site_url();
           <li><a class="k-upcase" href="<?php echo $url; ?>/account/">Account</a></li>
 
           <li class="k-header--cart">
-            <a id="k-carttoggle" href="#0">
+            <a id="k-carttoggle">
               <i class="icon-bag"></i>
               <span id="k-cartnum" class="">0</span>
             </a>
