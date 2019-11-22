@@ -16,32 +16,53 @@ class Members {
   }
 
   public function endpoint() {
-    register_rest_route('veterans/v1', 'create', array(
+    register_rest_route('veterans/v1', 'process', array(
       'methods' => 'POST',
-      'callback' => array($this, 'create')
+      'callback' => array($this, 'process')
     ));
   }
 
-  public function create($request) {
-    $contactData = json_decode($this->get_hubspot_user($request['objectId']), true);
+  public function process($request) {
+    $response = new WP_REST_Response();
+    if($request['propertyName'] == 'military_id') {
+      if($msg = $this->create($request['objectId'])) {
+        $response->set_status(200);
+      } else {
+        $response->set_status(501);
+      }
+      $response->set_data($msg);
+    } else {
+      if($msg = $this->approve($request)) {
+        $response->set_status(200);
+      } else {
+        $response->set_status(501);
+      }
+      $response->set_data($msg);
+    }
+    return $response;
+  }
+
+  public function create($vid) {
+    $contactData = json_decode($this->get_hubspot_user($vid), true);
     $contact = array(
       'firstname' => $contactData['properties']['firstname']['value'],
       'lastname' => $contactData['properties']['lastname']['value'],
       'email' => $contactData['properties']['email']['value'],
       'password' => wp_generate_password(20)
     );
-    $response = new WP_REST_Response($contact);
-    if($request['objectId']) {
-      $response->set_status(200);
-      $response->set_data($this->sendUser([
-        'vid' => $request['objectId'],
-        'password' => $contact['password'],
-        'new_user' => $this->create_user($contact)
-      ]));
-    } else {
-      $response->set_status(501);
-    }
-    return $response;
+    return $this->sendUser([
+      'vid' => $vid,
+      'password' => $contact['password'],
+      'new_user' => $this->create_user($contact) ? true : false,
+      'veteran_program' => 'veteran_applied'
+    ]);
+  }
+
+  public function approve($request) {
+    $contactData = json_decode($this->get_hubspot_user($request['objectId']), true);
+    $wp_user = get_user_by('email', $contactData['properties']['email']['value']);
+    update_field('veteran_status', 'Veteran Approved', 'user_'.$wp_user->ID);
+    return $wp_user;
   }
 
   public function get_hubspot_user($id) {
@@ -89,6 +110,10 @@ class Members {
         array(
           'property' => 'new_wordpress_user',
           'value' => $user['new_user']
+        ),
+        array(
+          'property' => 'veteran_program',
+          'value' => 'veteran_applied'
         )
       )
     ]));
