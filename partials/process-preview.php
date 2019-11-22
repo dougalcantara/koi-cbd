@@ -5,10 +5,9 @@
 <section class="k-videogallery k-block k-block--md">
   <div class="k-inner k-inner--md">
     <div class="k-videogallery--item k-videogallery--title">
-      <h2 class="k-headline k-headline--sm">How We Cultivate the World's Finest CBD</h2>
+      <h2 class="k-headline k-headline--sm"><?php the_field('homepage_video_gallery_title','option'); ?></h2>
       <div class="k-rte-content">
-        <p>As members of the U.S. Hemp Roundtable Board of Directors, the Hemp Industries Association, and the California Hemp Council, we passionately uphold the integrity of not just our products, but the CBD industry as a whole.</p>
-        <p>Click the icons below, and learn how we infuse quality into every step of product development, from seed to bottle.</p>
+        <p><?php the_field('homepage_video_gallery_text','option'); ?></p>
       </div>
     </div>
     <div class="k-videogallery--item k-videogallery--video has-play-button">
@@ -17,7 +16,7 @@
           <img data-src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
         </div>
       </figure>
-      <div class="k-player" data-plyr-provider="youtube" data-plyr-embed-id="UmDNOk4_3g8"></div>
+      <div class="k-player" data-plyr-provider="youtube" data-plyr-embed-id="<?php the_field('homepage_video_gallery_video_link','option'); ?>"></div>
       <?php
       get_template_part('partials/svg/koi-play-button');
       ?>
@@ -111,7 +110,7 @@
       </a>
     </div>
     <div class="k-videogallery--item k-videogallery--description k-rte-content">
-      <p class="k-headline k-headline--xs">It all starts at our organic hemp farms in Kentucky, Colorado & Oklahoma, each carefully selected to meet highest standards of agricultural quality and consistency.</p>
+      <p class="k-headline k-headline--xs"><?php the_field('homepage_video_gallery_description','option'); ?></p>
       <a class="k-underline k-weight--lg" href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>">Get The Full Story</a>
     </div>
   </div>
