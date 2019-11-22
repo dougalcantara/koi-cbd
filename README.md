@@ -96,7 +96,14 @@ If any page is acting funky, or you can't figure out why a page isn't doing what
   - Has a HubSpot form that creates a veteran user in WP after the user's `military_id` contact prop is set in HubSpot. Once the Koi team reviews that user's paperwork/id, they will switch that user's `veteran_program` to either "Veteran Program Approved" or "Veteran Program Denied".
 
 
-TODO:
+##TODO:
 
 1. Account Reset Page
+1. Veterans: Exisiting Veterans need a status check which is different to ACF field
+1. Product category slugs must be correct
+1. Remove 'Magnetic' from all page titles
+1. Yoast update settings on staging & prod
+1. Check Lab results match correctly
+1. Confirm /store-finder works perfectly
+
 
