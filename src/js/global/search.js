@@ -1,4 +1,4 @@
-import { $backdrop, $searchModal } from './selectors';
+import {$backdrop, $header, $searchModal} from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
 
 const $searchTrigger = $('.k-searchtrigger');
@@ -14,6 +14,7 @@ $searchTrigger.click(function() {
   } else {
     $searchModal.addClass('k-modal--open');
     $backdrop.addClass('active');
+    $header.removeClass('is-open');
   }
 });
 
