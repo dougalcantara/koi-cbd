@@ -10,7 +10,7 @@ do_action('k_before_first_section');
 $hero_fields = array(
   'preheading' => 'Experience The',
   'headline' => get_the_title(),
-  'body' => '<p>New products, balanced lives, and CBD in the news. Find it all and more on our blog.</p>',
+  'body' => 'New products, balanced lives, and CBD in the news. Find it all and more on our blog.',
   'background_image' => get_fields()['blog_listing_hero_background_image']['url'],
 );
 
