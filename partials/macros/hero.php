@@ -9,12 +9,12 @@ function k_hero($args) {
 
       <div class="k-hero--content">
 
-        <div class="k-hero--preheading k-upcase"><?php echo $args['preheading']; ?></div>
+        <h4 class="k-hero--preheading k-upcase"><?php echo $args['preheading']; ?></h4>
 
-        <h2 class="k-headline k-headline--md"><?php echo $args['headline'] ?></h2>
+        <h1 class="k-headline k-headline--md"><?php echo $args['headline'] ?></h1>
 
         <div class="k-rte-content">
-          <p><?php echo $args['body']; ?></p>
+          <h2><?php echo $args['body']; ?></h2>
         </div>
 
       </div>
