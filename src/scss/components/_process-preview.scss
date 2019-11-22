@@ -26,6 +26,7 @@
 
     .k-play-button {
       opacity: 0;
+      display: none;
     }
   }
 
@@ -262,4 +263,7 @@
       }
     }
   }
+}
+.k-videogallery.video-playing .k-videogallery--video .k-figure {
+  pointer-events: none;
 }
