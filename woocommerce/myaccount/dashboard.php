@@ -21,7 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-
 <p>
 <?php
 	/* translators: 1: user display name 2: logout url */
@@ -33,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$username = $current_user->display_name;
 ?>
-	Hello, <?php echo $username; ?> (Not <?php echo $username; ?>? <a href="#0" class="k-customer-logout">Log out</a>)
+	Hello, <?php echo $username; ?> <span>(Not <?php echo $username; ?>?)</span> <a href="#0" class="k-button k-button--primary k-customer-logout">Log out</a>
 </p>
 
 <p><?php
