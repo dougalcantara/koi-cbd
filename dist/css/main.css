@@ -7022,6 +7022,14 @@ form input[type='radio'] + label:hover {
   background: #fff;
 }
 
+.page-template-location-finder .mapboxgl-popup-anchor-bottom {
+  z-index: 99;
+}
+
+.page-template-location-finder #lfe-root form label {
+  min-width: 0;
+}
+
 .page-template-cart .k-header {
   top: 0 !important;
 }

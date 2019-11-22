@@ -6,7 +6,7 @@ const $submit = $('.k-header__newsletter-submit');
 const $form = $('.k-header__newsletter-signup form');
 const openClass = 'k-header__newsletter-signup--open';
 
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
   let timeout;
   return function() {
     let context = this,
