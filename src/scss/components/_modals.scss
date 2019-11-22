@@ -55,14 +55,18 @@
 
     .k-headline {
       position: absolute;
-      top: 0;
+      top: -40px;
       right: 0;
-      transition: transform 0.4s $ease-out-circ;
+      transition: all 0.4s $ease-in-out-quint;
+      transform: rotate(45deg);
+      transform-origin: center;
+      color: $primary;
+      font-size: 6em;
     }
 
     &:hover {
       .k-headline {
-        transform: scale(1.25);
+        transform: rotate(-45deg);
       }
     }
   }

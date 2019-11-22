@@ -20,7 +20,7 @@ $root = get_template_directory_uri();
       </div>
       <div class="k-modal--close k-searchtrigger">
         <div class="k-modal--close__liner">
-          <span class="k-headline k-headline--sm">X</span>
+          <span class="k-headline k-headline--sm">+</span>
         </div>
       </div>
     </div>
