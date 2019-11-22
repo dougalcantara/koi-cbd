@@ -26,3 +26,5 @@ import './components/product-latest-batch';
 import './components/video-players';
 import './components/newsletter-signup';
 import './components/newsletter-cta';
+
+import 'promise-polyfill/src/polyfill';
