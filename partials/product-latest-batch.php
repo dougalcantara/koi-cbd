@@ -9,7 +9,7 @@
       <div class="k-latestbatch--description k-rte-content">
         <p>Koi CBD is 100% natural, 99%+ pure CBD manufactured in an ISO Certified Lab, and contains 0% THC. We use only the highest quality ingredients available, but we don't stop there.</p>
         <p>All Koi products are lab-tested for purity, consistency, and safety. Plus, we offer full traceability on every batch of our CBD - from plant to finished product.</p>
-        <a href="#0" class="k-upcase">View All Lab Results</a>
+        <a href="<?php echo site_url() . '/lab-results'; ?>" class="k-upcase">View All Lab Results</a>
       </div>
     </div>
 
@@ -44,7 +44,7 @@
             </div>
             <div>
               <p class="k-upcase">Batch #</p>
-              <p class="k-upcase k-latestbatch--strength">8296NLL250</p>
+              <p id="k-batchid" class="k-upcase k-latestbatch--strength">8296NLL250</p>
             </div>
           </div>
           <div class="k-latestbatch--results__column">
@@ -58,11 +58,11 @@
             </div>
           </div>
           <div class="k-latestbatch--results__column">
-            <p class="k-bigtext">0.0000% <span>Total THC</span></p>
-            <p class="k-bigtext">249.1979 mg/unit <span>Total CBD</span></p>
+            <p id="k-totalthc" class="k-bigtext">0.0000% <span>Total THC</span></p>
+            <p id="k-totalcbd" class="k-bigtext">249.1979 mg/unit <span>Total CBD</span></p>
           </div>
           <div class="k-latestbatch--results__column">
-            <a href="#0"></a>
+            <a id="k-coaurl" href="#0" target="_blank" rel="noopener, noreferrer"></a>
             <span>.PDF &darr;</span>
           </div>
 

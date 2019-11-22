@@ -10,6 +10,7 @@ get_header();
 echo k_hero(array(
   'headline' => 'Koi CBD Veteran Program',
   'body' => 'Our way of thanking all those who have served.',
+  'background_image' => get_fields()['veteran_hero_background_image']['url'],
 ));
 ?>
 
