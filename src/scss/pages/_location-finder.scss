@@ -4,4 +4,13 @@
     z-index: 99;
     background: $true-white;
   }
+  .mapboxgl-popup-anchor-bottom {
+    z-index: 99;
+  }
+
+  #lfe-root {
+    form label {
+      min-width: 0;
+    }
+  }
 }
