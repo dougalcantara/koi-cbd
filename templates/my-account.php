@@ -30,7 +30,6 @@ endif;
 
 <section class="k-dashboard k-block k-block--md woocommerce-MyAccount-content">
 	<div class="k-inner k-inner--xl">
-
 		<div class="k-dashboard--sidebar">
 			<?php	do_action('woocommerce_account_navigation'); ?>
 		</div>
