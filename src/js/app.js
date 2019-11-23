@@ -29,3 +29,4 @@ import './components/newsletter-cta';
 import './components/location-finder';
 
 import 'promise-polyfill/src/polyfill';
+import './dirty';
