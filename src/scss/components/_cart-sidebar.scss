@@ -173,6 +173,7 @@
       display: flex;
       justify-content: space-between;
       flex-flow: row wrap;
+      align-items: center;
     }
 
     img,
@@ -182,11 +183,11 @@
 
     img {
       flex-basis: 2em;
-      max-width: 2em;
+      max-width: 6em;
     }
 
     h3 {
-      flex-basis: 80%;
+      flex-basis: 68%;
       text-align: right;
 
       a {
