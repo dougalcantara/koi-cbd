@@ -105,6 +105,4 @@ If any page is acting funky, or you can't figure out why a page isn't doing what
 1. Yoast update settings on staging & prod
 1. Check Lab results match correctly
 1. Confirm /store-finder works perfectly
-1. Create blog listing page and hook up ACF field for hero img
-
 
