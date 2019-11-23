@@ -90,21 +90,71 @@
         }
       }
     }
+    a {
+      color: $accent-text;
+
+      &:hover {
+        color: $primary;
+      }
+    }
   }
 }
 
 .k-dashboard {
   background: $bg-gray;
+  position: relative;
+  & > .k-inner {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   &--main__liner,
   &--sidebar__liner {
-    padding: 2em;
-    background: $true-white;
     border-radius: 0.33em;
+  }
+  &--main__liner {
+
+    .my-dashboard {
+      background: $true-white;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+      padding: 2em;
+      font-size: 1.1em;
+      margin: 0 0 1em 0;
+      border-radius: 0.33em;
+      transition: box-shadow .5s ease;
+     &:nth-child(2) {
+       display: flex;
+       justify-content: flex-start;
+       align-items: flex-start;
+       flex-direction: column;
+       &:before {
+         content: 'My Account';
+         position: absolute;
+         top: 5%;
+         left: 5%;
+       }
+     }
+      .k-button, .k-button--primary {
+        padding: .3em 2em;
+      }
+      span {
+        margin: 1em 0;
+      }
+      &:nth-child(3) {
+        a {
+          text-decoration: underline;
+          color: $true-black;
+          font-weight: 500;
+        }
+      }
+      &:hover {
+        box-shadow: 0 0 20px rgba(0,0,0,.2);
+      }
+    }
   }
 
   &--sidebar {
-    margin-bottom: 2em;
+    margin: 2em 0;
 
     &__liner {
       position: relative;
@@ -112,6 +162,24 @@
       ul {
         position: relative;
         z-index: 2;
+      }
+      li {
+        transition: box-shadow .5s ease;
+        a {
+          padding: .5em;
+          background: white;
+          border-radius: 0.33em;
+          display: flex;
+          justify-content: center;
+          box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+        }
+        &:hover {
+          box-shadow: 0 0 20px rgba(0,0,0,.2);
+          a {
+            color: $primary;
+          }
+        }
       }
     }
 
@@ -215,14 +283,29 @@
     & > .k-inner {
       display: flex;
       justify-content: space-between;
+      flex-direction: row;
     }
 
     &--sidebar {
       flex-basis: 25%;
+      margin: 0 0 2em 0;
     }
 
     &--main {
       flex-basis: 70%;
+    }
+    &--main__liner {
+
+      p {
+        &:nth-child(2) {
+          &:before {
+            content: 'My Account';
+            position: absolute;
+            top: 12%;
+            left: 32%;
+          }
+        }
+      }
     }
   }
 }

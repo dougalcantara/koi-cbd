@@ -18,7 +18,7 @@ if ($product_wc_type == 'variable') {
     <div class="k-producthero--slide">
       <div class="k-figure">
         <div class="k-figure--liner">
-          <img src="<?php echo wp_get_attachment_image_url($product->get_image_id(), 'large'); ?>" alt="" class="k-figure--img" />
+          <img src="<?php echo wp_get_attachment_image_url($product->get_image_id(), 'large'); ?>" alt="" class="k-figure--img"/>
         </div>
       </div>
     </div>

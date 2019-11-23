@@ -126,15 +126,20 @@
 
   &__title {
     left: 1em;
+    color: $primary
   }
 
   &__close {
     right: 1em;
-    transition: color 0.4s $ease-out-circ, transform 0.2s $ease-out-circ;
+    top: 0;
+    transition: all 0.4s $ease-in-out-quint;
+    transform: rotate(45deg);
+    transform-origin: center;
+    color: $primary;
+    font-size: 2em;
 
     &:hover {
-      color: red;
-      transform: scale(1.1);
+      transform: rotate(-45deg);
     }
   }
 
@@ -213,7 +218,8 @@
     }
 
     &__close {
-      right: 2em;
+      right: 1em;
+      top: 1rem;
 
       &:hover {
         cursor: pointer;
@@ -222,7 +228,6 @@
 
     &__title {
       left: 2em;
-      color: $primary;
     }
 
     &__item {
@@ -275,7 +280,7 @@
     }
 
     &__close {
-      right: 3em;
+      right: 1em;
     }
 
     &__title {

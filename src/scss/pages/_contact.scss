@@ -39,9 +39,12 @@
 
     &__heading {
       position: relative;
+      user-select: none;
+      transition: color .25s ease;
 
       &:hover {
         cursor: pointer;
+        color: $primary;
       }
 
       h2 {
