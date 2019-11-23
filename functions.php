@@ -512,10 +512,3 @@ function admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
 add_action( 'login_enqueue_scripts', 'admin_styles' );
-
-
-add_theme_support( 'yoast-seo-breadcrumbs' );
-
-if (function_exists('yoast_breadcrumb')) {
-  yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
-}

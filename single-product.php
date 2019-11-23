@@ -34,6 +34,7 @@ while (have_posts()) : the_post();
   do_action('k_before_first_section');
 
   include(locate_template('partials/product-hero.php'));
+  get_template_part('partials/components/randoms/breadcrumb');
   include(locate_template('partials/product-details.php'));
 
   if ($product_category != 'Merchandise' && $product_category != 'CBD Vape Devices') : // these categories don't have lab results associated with them

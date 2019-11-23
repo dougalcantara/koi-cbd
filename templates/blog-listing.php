@@ -44,8 +44,7 @@ $all_posts = get_posts($query_args);
 ?>
 
 <section class="k-blognav">
-<?php
-  get_template_part('partials/components/randoms/breadcrumb'); ?>
+<?php get_template_part('partials/components/randoms/breadcrumb'); ?>
   <div class="k-blognav--filterby">
     <label for="select-blog-category">Filter By&nbsp;&rsaquo;&nbsp;</label>
     <select name="select-blog-category" id="select-blog-category">

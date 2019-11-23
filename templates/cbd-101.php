@@ -26,6 +26,11 @@ echo k_hero($hero_fields);
 
 // Below is the same exact section as the blog listing, with CTA breaks and everything
 ?>
+<div class="k-breadcrumb k-block k-block--sm">
+  <div class="k-inner k-inner--md">
+    <?php yoast_breadcrumb( '<p id="breadcrumbs">','</p>' ); ?>
+  </div>
+</div>
 <section class="k-bloglist k-block k-block--md">
   <div class="k-inner k-inner--md">
   <?php

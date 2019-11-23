@@ -12,6 +12,7 @@ echo k_hero(array(
   'body' => 'Our way of thanking all those who have served.',
   'background_image' => get_fields()['veteran_hero_background_image']['url'],
 ));
+get_template_part('partials/components/randoms/breadcrumb');
 ?>
 
 <section class="k-introtext k-block k-block--md">
