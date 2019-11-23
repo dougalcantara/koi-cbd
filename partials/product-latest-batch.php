@@ -49,11 +49,11 @@
           </div>
           <div class="k-latestbatch--results__column">
             <div>
-              <p class="k-upcase">8.5MG of CBD / 1ML</p>
+              <p class="k-upcase">8.5<?php the_field('unit', get_the_ID()); ?></p>
               <p class="k-upcase k-latestbatch--strength">(Full dropper / Serving Size)</p>
             </div>
             <div>
-              <p class="k-upcase">Approx. 0.42MG of CBD / drop</p>
+              <p class="k-upcase">Approx. 0.42<?php the_field('units_per_item', get_the_ID()); ?></p>
               <p class="k-upcase k-latestbatch--strength">(Depending on drop size)</p>
             </div>
           </div>
