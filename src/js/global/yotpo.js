@@ -40,7 +40,7 @@ $reviewModalForm.submit(async function(e) {
     url: 'https://api.yotpo.com/v1/widget/reviews',
     method: 'POST',
     data: {
-      appkey: 'MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG',
+      appkey: 'AXADc1rXubJYln9af9KlCO2iSAZehe2FIPjdwoVS',
       domain: 'https://koicbddev.wpengine.com',
       sku: $t.data('product-sku'),
       product_title: $t.data('product-title'),

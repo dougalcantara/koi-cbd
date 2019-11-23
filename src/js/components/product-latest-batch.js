@@ -6,6 +6,7 @@ const $batchIdTarget = $parent.find('#k-batchid');
 const $thcTarget = $parent.find('.k-totalthc__render-target');
 const $cbdTarget = $parent.find('.k-totalcbd__render-target');
 const $coaTarget = $parent.find('#k-coaurl');
+const $variantTarget = $parent.find('.k-latestbatch__variant-render-target');
 const $resultsContainer = $('.k-latestbatch--results');
 const $columns = $('.k-latestbatch--results__column');
 
@@ -28,7 +29,7 @@ $tabs.click(function() {
   $t.addClass('active');
 
   if ($t.data('response')) {
-    setResults($t.data('response'));
+    setResults($t.data('response'), $t);
   } else {
     getResult($t, sku);
   }
@@ -41,7 +42,7 @@ function getResult($t, sku) {
     complete: ({ responseJSON }) => {
       try {
         $t.data('response', responseJSON.data[0]);
-        setResults(responseJSON.data[0]);
+        setResults(responseJSON.data[0], $t);
       } catch (error) {
         console.warn(responseJSON);
         insertSearchPrompt();
@@ -54,6 +55,10 @@ function getResult($t, sku) {
 
 function insertSearchPrompt() {
   const url = window.location.href.split('/product')[0];
+
+  if (window.__labError === true) {
+    removeSearchPrompt();
+  }
 
   window.__labError = true;
 
@@ -80,13 +85,16 @@ function removeSearchPrompt() {
   window.__labError = false;
 }
 
-function setResults(results) {
+function setResults(results, $t) {
   const { batchid, totalthc, totalcbd, coaurl } = results;
   $batchIdTarget.text(batchid);
   $thcTarget.text(totalthc);
   $cbdTarget.text(totalcbd);
   $coaTarget.attr('href', coaurl);
   $coaTarget.attr('href', coaurl);
+  if ($variantTarget[0]) {
+    $variantTarget.text($t.text());
+  }
 
   if (window.__labError === true) {
     removeSearchPrompt();
