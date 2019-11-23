@@ -1,0 +1,76 @@
+.login h1 > a {
+  display: none;
+}
+
+.login h1 {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-image: url('dist/img/koi-logo-main@2x.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto 1em auto;
+}
+
+.login input:focus {
+  border-color: #d19034;
+  box-shadow: 0 0 2px #d19034;
+}
+
+.login #login_error, .login .message, .login .success {
+  border-left-color: #d19034;
+}
+
+.wp-core-ui .button-primary {
+  background: #d19034;
+  border-color: #d19034 #d19034 #d19034;
+  box-shadow: 0 1px 0 #d19034;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none !important;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+  background: #222222;
+  border-color: #222222;
+  color: #fff;
+}
+
+#wp-admin-bar-wp-logo, #wpfooter, #dashboard_primary, .update-nag  {
+  display: none;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
+  box-shadow: 0 1px 0 #d19034, 0 0 2px 1px #d19034;
+}
+
+.wp-core-ui .button-primary {
+  background: #d19034;
+  border-color: #d19034;
+  box-shadow: 0 1px 0 #d19034;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.wp-has-current-submenu {
+  background: #d19034;
+}
+
+#adminmenu li.menu-top:hover, #adminmenu li.opensub>a.menu-top, #adminmenu li>a.menu-top:focus {
+  color: #d19034;
+}
+
+.wp-menu-name, #adminmenu div.wp-menu-image:before {
+  color: white !important;
+}
+
+.post-new-php a, .wp-core-ui .button-link {
+  color: #d19034;
+}
+
+input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, select:focus, textarea:focus {
+  border-color: #d19034;
+  box-shadow: 0 0 2px rgba(210, 143, 52,.8);
+}

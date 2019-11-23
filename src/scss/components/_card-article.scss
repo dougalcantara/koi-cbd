@@ -14,6 +14,7 @@
 
     img {
       transition: transform 2s $ease-out-circ;
+      object-fit: cover;
     }
 
     &:hover {

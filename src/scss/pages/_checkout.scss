@@ -329,3 +329,12 @@
     padding: 4em 3em;
   }
 }
+
+body.page-template-page-checkout {
+  .k-header--nav, .k-header--top {
+    display: none !important;
+  }
+  .k-header--logo {
+    transform: scale(0.7) !important;
+  }
+}
