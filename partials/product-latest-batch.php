@@ -14,6 +14,7 @@
     </div>
 
     <div class="k-latestbatch--main">
+      <h1><?php var_dump($product_wc_type); ?></h1>
       <?php if ($product_wc_type == 'variable') : ?>
       <nav class="k-latestbatch--tabs">
       <?php
@@ -23,6 +24,7 @@
         $this_attribute = formatAttrName(reset($attributes));
         $sku = $_variant->get_sku();
       ?>
+        <p><?php echo $product; ?></p>
         <div class="k-latestbatch--tabs__tab <?php echo $i == 0 ? 'active' : '' ?>" data-product-sku="<?php echo $sku; ?>">
           <?php if ($has_flavor_attribute) : ?>
           <span>
@@ -33,6 +35,10 @@
         </div>
       <?php endforeach; ?>
       </nav>
+      <?php elseif ($product_wc_type == 'simple'): ?>
+        <div class="k-latestbatch--tabs__tab active" data-product-sku="<?php echo $product->sku ?>">
+          <span><?php echo $product->name; ?></span>
+        </div>
       <?php endif; ?>
       <div class="k-latestbatch--results">
         <div class="k-latestbatch--results__liner">
@@ -40,7 +46,7 @@
           <div class="k-latestbatch--results__column">
             <div>
               <p class="k-upcase"><?php echo trim(explode(',', get_the_title())[1]); ?></p>
-              <p class="k-upcase k-latestbatch--strength">250 MG</p>
+              <p class="k-upcase k-latestbatch--strength"><?php if ($product_wc_type != 'simple'): ?>250 MG<?php endif; ?></p>
             </div>
             <div>
               <p class="k-upcase">Batch #</p>
@@ -58,8 +64,8 @@
             </div>
           </div>
           <div class="k-latestbatch--results__column">
-            <p id="k-totalthc" class="k-bigtext">0.0000% <span>Total THC</span></p>
-            <p id="k-totalcbd" class="k-bigtext">249.1979 mg/unit <span>Total CBD</span></p>
+            <p id="k-totalthc" class="k-bigtext"> <span class="k-totalthc__render-target">0.0000</span>% <span class="k-measurement">Total THC</span></p>
+            <p id="k-totalcbd" class="k-bigtext"> <span class="k-totalcbd__render-target">249.1979</span>mg/unit <span class="k-measurement">Total CBD</span></p>
           </div>
           <div class="k-latestbatch--results__column">
             <a id="k-coaurl" href="#0" target="_blank" rel="noopener, noreferrer"></a>
