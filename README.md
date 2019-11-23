@@ -96,6 +96,11 @@ If any page is acting funky, or you can't figure out why a page isn't doing what
   - Has a HubSpot form that creates a veteran user in WP after the user's `military_id` contact prop is set in HubSpot. Once the Koi team reviews that user's paperwork/id, they will switch that user's `veteran_program` to either "Veteran Program Approved" or "Veteran Program Denied".
 
 
+## Launch Issues
+- uploads directory missing items
+- redirects not clear
+- there is no no-index meta tag
+
 ##TODO:
 
 1. Account Reset Page

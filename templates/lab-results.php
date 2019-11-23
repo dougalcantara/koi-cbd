@@ -30,6 +30,8 @@ get_header();
   </div>
 </section>
 
+<?php get_template_part('partials/components/randoms/breadcrumb'); ?>
+
 <section class="k-labresults k-block k-block--md">
   <div class="k-inner k-inner--md">
 

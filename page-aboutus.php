@@ -25,6 +25,14 @@ get_header();
   </div>
 </section>
 
+<nav class="k-blog-breadcrumb">
+  <div class="k-inner k-inner--xl">
+    <div class="k-blog-breadcrumb--content">
+      <?php yoast_breadcrumb( '<p id="breadcrumbs">','</p>' ); ?>
+    </div>
+  </div>
+</nav>
+
 <section class="k-twoup-text k-block k-block--md k-half-padding--bottom">
   <div class="k-inner k-inner--md">
 

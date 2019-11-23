@@ -33,22 +33,7 @@ do_action('k_before_first_section');
   </div>
 </section>
 
-<nav class="k-blog-breadcrumb">
-  <div class="k-inner k-inner--xl">
-
-    <div class="k-blog-breadcrumb--content">
-
-      <ul>
-        <li><a href="<?php echo site_url(); ?>">Home</a>&nbsp;&rsaquo;&nbsp;</li>
-        <li><a href="<?php echo site_url().'/blog'; ?>">Resources</a>&nbsp;&rsaquo;&nbsp;</li>
-        <li><a href="<?php echo site_url().'/blog'; ?>">Koi Blog</a>&nbsp;&rsaquo;&nbsp;</li>
-        <li><?php echo get_the_title(); ?></li>
-      </ul>
-
-    </div>
-
-  </div>
-</nav>
+<?php get_template_part('partials/components/randoms/breadcrumb'); ?>
 
 <section class="k-blogcontent k-block k-block--md">
   <div class="k-inner k-inner--xl">
