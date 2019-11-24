@@ -44,6 +44,12 @@
       flex-flow: row wrap;
       position: relative;
       padding: 1em;
+      /* 
+      * I'm not sure the correct amount because I can't debug on my phone on this network
+      * but this should solve the checkout & view cart buttons being covered up on iOS by 
+      * the bottom browser bar.
+      */
+      padding-bottom: 6em;
 
       &:first-of-type {
         padding-bottom: 0;
@@ -126,7 +132,7 @@
 
   &__title {
     left: 1em;
-    color: $primary
+    color: $primary;
   }
 
   &__close {
@@ -233,6 +239,12 @@
 
     &__item {
       padding: 2em 0;
+    }
+
+    &__actions {
+      .k-liner {
+        padding-bottom: 1em;
+      }
     }
   }
 }
