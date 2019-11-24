@@ -47,6 +47,7 @@ foreach($product->get_available_variations() as $i => $variant) {
       name="variant-select"
       id="<?php echo $this_attribute.$i; ?>"
       value="<?php echo $this_attribute; ?>"
+      <?php echo $i == 0 ? 'checked' : '' ?>
     />
     <label
       for="<?php echo $this_attribute.$i; ?>"
