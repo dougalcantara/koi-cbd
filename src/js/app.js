@@ -26,5 +26,7 @@ import './components/product-latest-batch';
 import './components/video-players';
 import './components/newsletter-signup';
 import './components/newsletter-cta';
+import './components/location-finder';
 
 import 'promise-polyfill/src/polyfill';
+import './dirty';

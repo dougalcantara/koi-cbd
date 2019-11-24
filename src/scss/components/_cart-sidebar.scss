@@ -44,6 +44,12 @@
       flex-flow: row wrap;
       position: relative;
       padding: 1em;
+      /* 
+      * I'm not sure the correct amount because I can't debug on my phone on this network
+      * but this should solve the checkout & view cart buttons being covered up on iOS by 
+      * the bottom browser bar.
+      */
+      padding-bottom: 6em;
 
       &:first-of-type {
         padding-bottom: 0;
@@ -126,15 +132,20 @@
 
   &__title {
     left: 1em;
+    color: $primary;
   }
 
   &__close {
     right: 1em;
-    transition: color 0.4s $ease-out-circ, transform 0.2s $ease-out-circ;
+    top: 0;
+    transition: all 0.4s $ease-in-out-quint;
+    transform: rotate(45deg);
+    transform-origin: center;
+    color: $primary;
+    font-size: 2em;
 
     &:hover {
-      color: red;
-      transform: scale(1.1);
+      transform: rotate(-45deg);
     }
   }
 
@@ -168,6 +179,7 @@
       display: flex;
       justify-content: space-between;
       flex-flow: row wrap;
+      align-items: center;
     }
 
     img,
@@ -177,11 +189,11 @@
 
     img {
       flex-basis: 2em;
-      max-width: 2em;
+      max-width: 6em;
     }
 
     h3 {
-      flex-basis: 80%;
+      flex-basis: 68%;
       text-align: right;
 
       a {
@@ -213,7 +225,8 @@
     }
 
     &__close {
-      right: 2em;
+      right: 1em;
+      top: 1rem;
 
       &:hover {
         cursor: pointer;
@@ -222,11 +235,16 @@
 
     &__title {
       left: 2em;
-      color: $primary;
     }
 
     &__item {
       padding: 2em 0;
+    }
+
+    &__actions {
+      .k-liner {
+        padding-bottom: 1em;
+      }
     }
   }
 }
@@ -275,7 +293,7 @@
     }
 
     &__close {
-      right: 3em;
+      right: 1em;
     }
 
     &__title {

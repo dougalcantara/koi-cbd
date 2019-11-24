@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<p>
+<p class="my-dashboard">
 <?php
 	/* translators: 1: user display name 2: logout url */
 	// printf(
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	Hello, <?php echo $username; ?> <span>(Not <?php echo $username; ?>?)</span> <a href="#0" class="k-button k-button--primary k-customer-logout">Log out</a>
 </p>
 
-<p><?php
+<p class="my-dashboard"><?php
 	printf(
 		__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
 		esc_url( wc_get_endpoint_url( 'orders' ) ),

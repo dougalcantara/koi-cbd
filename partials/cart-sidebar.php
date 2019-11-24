@@ -4,7 +4,7 @@
     <div class="k-cart-sidebar__content">
       <div id="k-ajaxcart-cartitems"></div>
     </div>
-    <div class="k-cart-sidebar__close" tabindex="0" aria-label="close"><h2>X</h2></div>
+    <div class="k-cart-sidebar__close" tabindex="0" aria-label="close"><h2>+</h2></div>
   </div>
 
   <div class="k-cart-sidebar__actions">

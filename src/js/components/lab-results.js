@@ -1,43 +1,64 @@
 import Fuse from 'fuse.js';
 
-const sampleTests = [
-  {
-    type: 'tincture',
-    flavor: 'peppermint',
-    variation: '250 mg',
-    batchid: '123456',
-    totalthc: '0.000%',
-    totalcbd: '249.1979 mg/unit',
-    coaurl: '#0',
-  },
-  {
-    type: 'edible',
-    flavor: 'gummies',
-    variation: '',
-    batchid: '654321',
-    totalthc: '0.000%',
-    totalcbd: '249.1979 mg/unit',
-    coaurl: '#0',
-  },
-  {
-    type: 'pet',
-    flavor: '',
-    variation: '',
-    batchid: '135791',
-    totalthc: '0.000%',
-    totalcbd: '249.1979 mg/unit',
-    coaurl: '#0',
-  },
-  {
-    type: 'vape',
-    flavor: 'spearmint',
-    variation: '250 mg',
-    batchid: 'kjhdfu',
-    totalthc: '0.000%',
-    totalcbd: '249.1979 mg/unit',
-    coaurl: '#0',
-  },
-];
+// const sampleTests = [
+//   {
+//     type: 'tincture',
+//     flavor: 'peppermint',
+//     variation: '250 mg',
+//     batchid: '123456',
+//     totalthc: '0.000%',
+//     totalcbd: '249.1979 mg/unit',
+//     coaurl: '#0',
+//   },
+//   {
+//     type: 'edible',
+//     flavor: 'gummies',
+//     variation: '',
+//     batchid: '654321',
+//     totalthc: '0.000%',
+//     totalcbd: '249.1979 mg/unit',
+//     coaurl: '#0',
+//   },
+//   {
+//     type: 'pet',
+//     flavor: '',
+//     variation: '',
+//     batchid: '135791',
+//     totalthc: '0.000%',
+//     totalcbd: '249.1979 mg/unit',
+//     coaurl: '#0',
+//   },
+//   {
+//     type: 'vape',
+//     flavor: 'spearmint',
+//     variation: '250 mg',
+//     batchid: 'kjhdfu',
+//     totalthc: '0.000%',
+//     totalcbd: '249.1979 mg/unit',
+//     coaurl: '#0',
+//   },
+// ];
+
+let sampleTests;
+getResults();
+
+function getResults() {
+  const RESULTS_URL = 'https://koi-test-results-api.herokuapp.com/results';
+  $.ajax({
+    url: `${RESULTS_URL}`,
+    method: 'GET',
+    complete: ({ responseJSON }) => {
+      try {
+        // $t.data('response', responseJSON.data[0]);
+        // setResults(responseJSON.data[0]);
+        sampleTests = responseJSON.data;
+      } catch (error) {
+        console.warn(responseJSON);
+        throw new Error(error);
+      }
+    },
+  });
+}
 
 const $resultsForm = $('#k-resultssearch');
 const $insertTarget = $('#resultsembedtarget');
@@ -48,7 +69,7 @@ const fuseOpts = {
   distance: 100,
   maxPatternLength: 32,
   minMatchCharLength: 1,
-  keys: ['type', 'flavor', 'batchid', 'variation'],
+  keys: ['type', 'flavor', 'batchid', 'productsku', 'ordername'],
 };
 
 function displayResults(e) {
@@ -58,11 +79,14 @@ function displayResults(e) {
   const f = new Fuse(sampleTests, fuseOpts);
   const searchVal = $t.find('input[type="text"]').val();
   const results = f.search(searchVal);
+  console.log(results.length);
 
   $insertTarget.empty();
 
-  results.forEach(test =>
-    $insertTarget.append(`
+  results.forEach(test => {
+    console.log(test.ordername);
+
+    $insertTarget.append(/*html*/ `
       <div class="k-latestbatch--results">
         <div class="k-latestbatch--results__liner">
 
@@ -97,8 +121,8 @@ function displayResults(e) {
 
         </div>
       </div>
-    `)
-  );
+    `);
+  });
 }
 
 $resultsForm.submit(displayResults);
