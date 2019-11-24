@@ -1,0 +1,21 @@
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2em;
+  a {
+    display: block;
+    margin-right: .75em;
+    transition: all .25s ease;
+    opacity: .8;
+    svg {
+      width: 2em;
+      height: 2em;
+      transition: all .25s ease;
+    }
+    &:hover {
+      transform: scale(1.1);
+      opacity: .4;
+    }
+  }
+}

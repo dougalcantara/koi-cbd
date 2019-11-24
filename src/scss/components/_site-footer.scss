@@ -72,6 +72,26 @@
       padding: 0;
       margin: 0;
     }
+    a {
+      text-decoration: none !important;
+      position: relative;
+      &:after {
+        position: absolute;
+        right: calc(100% + .5em);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 0;
+        content: '';
+        background: black;
+        transition: all .3s ease;
+      }
+      &:hover {
+        &:after {
+          height: 100%;
+        }
+      }
+    }
   }
 
   &--badges {
