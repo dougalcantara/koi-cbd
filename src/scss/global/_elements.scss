@@ -3,7 +3,9 @@
     display: none;
   }
 }
-
+* {
+  outline: none;
+}
 body {
   &.cart-sidebar-open {
     height: 100vh;
