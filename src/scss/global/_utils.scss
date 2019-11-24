@@ -6,3 +6,40 @@
   opacity: 0;
   transition: opacity 0.35s $ease-out-circ;
 }
+
+.k-result-error {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba($black, 0.75);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+  }
+
+  &--blur {
+    filter: blur(3px);
+  }
+}
+
+.k-latestbatch__error {
+  position: absolute;
+  text-align: center;
+  color: $true-white;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: $true-white;
+  }
+}
