@@ -3,11 +3,12 @@
 ## First thing's first &mdash; Launch Day Checklist:
 >For the developer:
 Before launch, perform the following:
-1) Create a restore point for the Production env inside of WPEngine
-2) Check to make sure all ACF declarations match between Production & Staging envs
-3) Check to make sure all latest KOI2019 theme files are present in the Production env
+1. Create a restore point for the Production env inside of WPEngine
+1. Check to make sure all ACF declarations match between Production & Staging envs
+1. Check to make sure all latest KOI2019 theme files are present in the Production env
    - Can get the latest from the `master` branch on GitHub is this is not the case
-4) Check that the following pages exist inside of the Production env admin: (note &mdash; these pages need to be assigned templates once the theme has been switched, see [Template Guide](#template-guide))
+1. Sync up the uploads directory to the live site
+1. Check that the following pages exist inside of the Production env admin: (note &mdash; these pages need to be assigned templates once the theme has been switched, see [Template Guide](#template-guide))
    - Homepage
    - About Us
    - Contact
@@ -27,15 +28,15 @@ Before launch, perform the following:
    - Utility pages
 
 For actual launch:
-1) Swap theme from Divi Child Theme -> KOI2019
-2) Deactivate both Divi plugins ("Divi Blog Extras" & "Divi Ultimate Blog Plugin")
-3) Deactivate "WooCommerce Product Bundles - Min/Max Items" plugin
-4) Update site "Reading" settings (Settings -> Reading) to point the the "Homepage" option at the Homepage template that we made
-5) Update "Merchandise" category `slug` from "hats" to "merchandise" (lowercase)
-6) Remove the following redirects (may need to do this in both Redirection and Yoast settings):
+1. Swap theme from Divi Child Theme -> KOI2019
+1. Deactivate both Divi plugins ("Divi Blog Extras" & "Divi Ultimate Blog Plugin")
+1. Deactivate "WooCommerce Product Bundles - Min/Max Items" plugin
+1. Update site "Reading" settings (Settings -> Reading) to point the the "Homepage" option at the Homepage template that we made
+1. Update "Merchandise" category `slug` from "hats" to "merchandise" (lowercase)
+1. Remove the following redirects (may need to do this in both Redirection and Yoast settings):
    - /about-koi-cbd
    - /cbd-vape
-7) Remove meta no-index tag from `header.php`
+1. Remove meta no-index tag from `header.php`
 
 ## Template Guide
 > I'm listing these templates here as if you were setting up this site from scratch. Luckily most, if not all of these pages have already been created in Koi's production env. 

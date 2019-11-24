@@ -86,7 +86,7 @@ $root = get_template_directory_uri();
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-bottle');
+          get_template_part('partials/svg/koi-barcode');
           ?>
         </div>
         <div class="k-process__iconrow__title">
