@@ -1,6 +1,5 @@
 import { $doc } from '../global/selectors';
 import wasEnter from '../helpers/wasEnter';
-import PreventScrollOnDrag from '../helpers/FlickityEvents';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 const $productHero = $('.k-producthero');
@@ -29,6 +28,13 @@ const $next = $productHeroCarousel.find('.k-producthero__next');
 
 const minItems = $productHero.data('min-items');
 let flkty;
+
+$doc.ready(() => {
+  if ($variantSelects.length > 0) {
+    const $firstVariant = $variantSelects.first();
+    setVariant($firstVariant);
+  }
+});
 
 $increment.click(function increment(e) {
   e.preventDefault();
@@ -77,7 +83,6 @@ function setVariant(context, wasKeypress = false) {
   $t = context.find('.k-productform--varianttoggle');
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
-
   $priceTarget.text(`$${variantPrice}`);
   $addToCartTrigger.attr('data-product-id', variantId);
 }

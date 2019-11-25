@@ -1,8 +1,12 @@
 import Fuse from 'fuse.js';
 import Test from '../helpers/Test';
+import { $body } from '../global/selectors';
 
 let sampleTests;
-getResults();
+
+if ($body.hasClass('page-template-lab-results')) {
+  getResults();
+}
 
 const $resultsForm = $('#k-resultssearch');
 const $insertTarget = $('#resultsembedtarget');
