@@ -41,7 +41,7 @@
             $orders = wc_get_orders( array(
               'meta_key' => '_customer_user',
               'meta_value' => $user,
-              'numberposts' => -1
+              'numberposts' => 10
             )); ?>
           <?php if($orders): ?>
             <?php foreach($orders as $order): ?>
@@ -60,6 +60,9 @@
                 </div>
               </div>
             <?php endforeach; ?>
+            <div class="list-link">
+              <a href="#">All Orders</a>
+            </div>
           <?php else: ?>
             <p>You have no orders yet</p>
           <?php endif; ?>

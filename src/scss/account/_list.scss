@@ -20,18 +20,33 @@
   &-row {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid hsl(0, 0%, 85%);
+    border-top: 1px solid hsl(0, 0%, 85%);
     padding: .25em 0;
     font-size: .9em;
     color: hsl(0, 0%, 40%);
     &-item {
       flex: 1;
     }
-    &:last-child {
-      border-bottom: none;
-    }
     span {
       text-transform: uppercase;
+    }
+    &:first-child {
+      border-top: none;
+    }
+  }
+  &-link {
+    margin-top: 2em;
+    a {
+      font-size: .9em;
+      text-transform: uppercase;
+      background: hsl(0, 0%, 60%);
+      padding: .25em 1em .2em 1em;
+      display: inline-block;
+      color: white !important;
+      transition: all .25s ease;
+      &:hover {
+        background: $primary-dark;
+      }
     }
   }
 }
