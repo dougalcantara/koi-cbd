@@ -83,7 +83,6 @@ function setVariant(context, wasKeypress = false) {
   $t = context.find('.k-productform--varianttoggle');
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
-  debugger;
   $priceTarget.text(`$${variantPrice}`);
   $addToCartTrigger.attr('data-product-id', variantId);
 }
