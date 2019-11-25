@@ -75,7 +75,9 @@ function updateSubtotal() {
 function handleCartSidebar(cartItems, expandedProducts) {
   $cartItemsTarget.empty(); // handles duplicate items being added while still on the same page
 
-  expandedProducts.forEach(product => {
+  const reversedExpandedProducts = expandedProducts.reverse();
+
+  reversedExpandedProducts.forEach(product => {
     const belongsToBundle = product.is_bundled_item;
     let bundledPrice = 0;
 

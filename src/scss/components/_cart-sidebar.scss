@@ -164,7 +164,7 @@
 
   &__item {
     font-size: 80%;
-    padding: 1em 0;
+    padding: 1em 0.33em;
     border-bottom: 1px solid #ddd;
 
     &:last-child {
@@ -238,7 +238,7 @@
     }
 
     &__item {
-      padding: 2em 0;
+      padding: 2em 0.33em;
     }
 
     &__actions {
