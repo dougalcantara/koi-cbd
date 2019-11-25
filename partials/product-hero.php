@@ -82,11 +82,7 @@
                 <?php
                 endif;
                 if ($product_wc_type == 'bundle') : ?> data-bundle-id="<?php echo $product_id; ?>"
-                <?php
-                else : ?> data-product-id=""
-                <?php
-                endif;
-                ?>
+                <?php endif; ?>
               >
                 <?php
                 if ($out_of_stock) : ?> Out Of Stock
@@ -124,11 +120,11 @@
                   endforeach;
                 ?>
                   <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
-                  <span class="k-productform--pricetarget" data-price="<?php echo $product->get_price(); ?>">$<?php echo $bundle_price; ?></span>
+                  <span class="k-productform--pricetarget">$<?php echo $bundle_price; ?></span>
                   <sup>20% off!</sup>
                 <?php
                 } else { ?>
-                  <span class="k-productform--pricetarget" data-price="<?php echo $product->get_price(); ?>">$<?php echo $product->get_price(); ?></span>
+                  <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>
                 <?php
                 }
                 ?>

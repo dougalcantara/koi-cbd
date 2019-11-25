@@ -30,15 +30,10 @@ const minItems = $productHero.data('min-items');
 let flkty;
 
 $doc.ready(() => {
-  const $firstVariant = $variantSelects.first();
-  console.log($firstVariant);
-
-  setVariant($firstVariant);
-  // $variantSelects.each(function(index) {
-  //   if (index === 0) {
-  //     setVariant($(this), false);
-  //   }
-  // });
+  if ($variantSelects.length > 0) {
+    const $firstVariant = $variantSelects.first();
+    setVariant($firstVariant);
+  }
 });
 
 $increment.click(function increment(e) {
@@ -88,7 +83,7 @@ function setVariant(context, wasKeypress = false) {
   $t = context.find('.k-productform--varianttoggle');
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
-
+  debugger;
   $priceTarget.text(`$${variantPrice}`);
   $addToCartTrigger.attr('data-product-id', variantId);
 }

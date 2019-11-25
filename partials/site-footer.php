@@ -19,12 +19,28 @@
         </figure>
         <div class="k-footer--social k-rte-content">
           <div class="social-icons">
-            <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">
-              <?php get_template_part('partials/svg/facebook'); ?>
-            </a>
-            <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
-              <?php get_template_part('partials/svg/twitter'); ?>
-            </a>
+            <div class="social-icons-row">
+              <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/facebook'); ?>
+              </a>
+              <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/twitter'); ?>
+              </a>
+              <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/instagram'); ?>
+              </a>
+            </div>
+            <div class="social-icons-row">
+              <a href="https://www.youtube.com/channel/UCe8IzqpmK6p-kpeHndvXGuQ/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/youtube'); ?>
+              </a>
+              <a href="https://www.pinterest.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/pinterest'); ?>
+              </a>
+              <a href="https://www.linkedin.com/company/koi-cbd" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/linkedin'); ?>
+              </a>
+            </div>
           </div>
         </div>
       </div>
