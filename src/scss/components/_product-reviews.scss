@@ -59,13 +59,26 @@
       display: inline-block;
 
       .k-arrow {
+        circle,
+        polyline,
+        line {
+          stroke: #cccccc;
+        }
         &:hover {
-          cursor: default;
+          cursor: pointer;
 
           circle,
           polyline,
           line {
-            stroke: #cccccc;
+            stroke: $primary;
+          }
+        }
+
+        &--voted {
+          circle,
+          polyline,
+          line {
+            stroke: $primary;
           }
         }
       }

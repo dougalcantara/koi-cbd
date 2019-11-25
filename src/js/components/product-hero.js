@@ -1,6 +1,5 @@
 import { $doc } from '../global/selectors';
 import wasEnter from '../helpers/wasEnter';
-import PreventScrollOnDrag from '../helpers/FlickityEvents';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 const $productHero = $('.k-producthero');
@@ -29,6 +28,18 @@ const $next = $productHeroCarousel.find('.k-producthero__next');
 
 const minItems = $productHero.data('min-items');
 let flkty;
+
+$doc.ready(() => {
+  const $firstVariant = $variantSelects.first();
+  console.log($firstVariant);
+
+  setVariant($firstVariant);
+  // $variantSelects.each(function(index) {
+  //   if (index === 0) {
+  //     setVariant($(this), false);
+  //   }
+  // });
+});
 
 $increment.click(function increment(e) {
   e.preventDefault();
