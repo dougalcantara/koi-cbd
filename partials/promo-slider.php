@@ -14,7 +14,7 @@
     <div class="k-promoslider--titlerow">
       <span class="k-upcase k-promoslider--titlerow__item">Featured</span>
       <h2 class="k-headline k-headline--sm k-promoslider--titlerow__item"><?php echo $slider_fields['headline']; ?></h2>
-      <a href="#0" class="k-upcase k-promoslider--titlerow__item">Shop All</a>
+      <a href="<?php echo get_home_url();?>/cbd-products" class="k-upcase k-promoslider--titlerow__item">Shop All</a>
     </div>
   </div>
   <div class="k-inner k-inner--md">
