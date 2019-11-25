@@ -82,8 +82,7 @@
                 <?php
                 endif;
                 if ($product_wc_type == 'bundle') : ?> data-bundle-id="<?php echo $product_id; ?>"
-                <?php
-                else : ?> data-product-id=""
+                <?php else:$variant =$product->get_available_variations()[0]; ?> data-product-id="<?php echo $variant['variation_id']; ?>"
                 <?php
                 endif;
                 ?>
