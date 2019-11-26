@@ -42,11 +42,7 @@ $increment.click(function increment(e) {
   let oldQ = parseInt($quantity.val());
   const newQ = ++oldQ;
 
-  if (newQ > 10) {
-    return alert('Max 10 items.');
-  } else {
-    $quantity.val(newQ);
-  }
+  $quantity.val(newQ);
 });
 
 $decrement.click(function(e) {

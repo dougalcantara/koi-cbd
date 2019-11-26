@@ -23,6 +23,13 @@
         margin: 0;
         font-size: 125%;
         font-weight: 300;
+        a {
+          color: $primary;
+          transition: opacity .25s ease;
+          &:hover {
+            opacity: .5;
+          }
+        }
       }
 
       &:last-child {
@@ -65,6 +72,7 @@
         display: inline-block;
         margin: 0;
         font-size: 125%;
+        user-select: none;
       }
 
       span {

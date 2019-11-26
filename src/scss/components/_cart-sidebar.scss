@@ -79,7 +79,7 @@
     }
 
     input[type='number'] {
-      padding: 0.5em 1em;
+      padding: 0.5em;
       max-width: 8ch;
     }
 
@@ -145,7 +145,7 @@
     font-size: 2em;
 
     &:hover {
-      transform: translateX(-1em)  rotate(-45deg);
+      transform: translateX(-1em) rotate(-45deg);
     }
   }
 
@@ -245,6 +245,10 @@
       .k-liner {
         padding-bottom: 1em;
       }
+    }
+
+    input[type='number'] {
+      font-size: 100%;
     }
   }
 }

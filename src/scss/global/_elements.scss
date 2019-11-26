@@ -261,6 +261,21 @@ img[data-src] {
   }
 }
 
+input[type='number'] {
+  padding: 0.5em 0.25em 0.5em 1ch;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+@media (min-width: $bp-sm) {
+  input[type='number'] {
+    font-size: 175%;
+  }
+}
+
 @media (min-width: $bp-md) {
   #k-cartnum {
     top: -1.15em;

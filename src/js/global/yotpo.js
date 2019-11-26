@@ -57,8 +57,32 @@ $reviewModalForm.submit(async function(e) {
       if (status !== 200) {
         return alert('Something went wrong, please try again.');
       } else {
+        console.log({ status });
         $parentModal.addClass('k-modal--success');
 
+        const payload = {
+          fields: [
+            {
+              name: 'email',
+              value: email,
+            },
+            {
+              name: 'latest_reviewed_product',
+              value: $t.data('product-title'),
+            },
+            {
+              name: 'latest_product_rating',
+              value: reviewStars,
+            },
+            {
+              name: 'product_review',
+              value: reviewContent,
+            },
+          ],
+          submittedAt: Date.now(),
+        };
+
+        submitToHubspot(payload);
         setTimeout(function() {
           $parentModal.removeClass('k-modal--open');
           $backdrop.removeClass('active');
@@ -67,6 +91,25 @@ $reviewModalForm.submit(async function(e) {
     },
   });
 });
+
+function submitToHubspot(payload) {
+  const reviewEndpoint =
+    'https://api.hsforms.com/submissions/v3/integration/submit/6283239/8995f00b-5b5c-4b7d-abcc-e19552bc6174';
+  console.log(payload);
+  let formSubmit = false;
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', reviewEndpoint, true);
+  xhr.setRequestHeader('content-type', 'application/json');
+  xhr.send(JSON.stringify(payload));
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
+      formSubmit = true;
+      console.log('success!');
+    } else {
+      console.warn('error!');
+    }
+  };
+}
 
 $reviewModalClose.click(function() {
   $backdrop.removeClass('active');
