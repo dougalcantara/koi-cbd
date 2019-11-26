@@ -67,7 +67,19 @@
           Shipping Address
         </div>
         <div class="field-value">
-
+          <?php
+          $user = get_current_user_id();
+          $order = wc_get_orders( array(
+            'meta_key' => '_customer_user',
+            'meta_value' => $user,
+            'numberposts' => 1
+          ))[0]; ?>
+          <?php echo $order->get_data()['shipping']['address_1']; ?><br>
+          <?php echo $order->get_data()['shipping']['address_2']; ?><br>
+          <?php echo $order->get_data()['shipping']['city']; ?><br>
+          <?php echo $order->get_data()['shipping']['state']; ?><br>
+          <?php echo $order->get_data()['shipping']['postcode']; ?><br>
+          <?php echo $order->get_data()['shipping']['country']; ?><br>
         </div>
       </div>
     </div>
