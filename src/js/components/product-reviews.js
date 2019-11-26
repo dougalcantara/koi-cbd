@@ -6,6 +6,12 @@ $doc.ready(() => {
   const renderTarget = document.querySelector(
     '.k-productreviews__render-target'
   );
+  const productStore = document.querySelector('.k-producthero');
+
+  if (!productStore) return;
+
+  const sku = productStore.dataset.productSku;
+  const productTitle = productStore.dataset.productTitle;
 
   let reviews;
   const baseUrl = `https://api.yotpo.com`;
@@ -26,11 +32,13 @@ $doc.ready(() => {
           appId,
           renderTarget,
           reviews,
+          sku,
+          productTitle,
         };
 
         renderReviews(opts);
       } else {
-        renderTarget.innerHTML = noReviews();
+        renderTarget.innerHTML = noReviews(sku, productTitle);
         appendModalListeners();
       }
     });
@@ -43,14 +51,14 @@ $doc.ready(() => {
   }
 });
 
-function noReviews() {
+function noReviews(sku, title) {
   const markup = /*html*/ `
       <p>None yet! Be the first to <a href="#0" class="k-createreview">leave a review.</a></p>    
     `;
   return markup;
 }
 
-function appendModalListeners() {
+function appendModalListeners(sku, title) {
   const $titleTarget = $reviewModal.find('.k-review__producttitle span');
   const $reviewModalForm = $reviewModal.find('.k-form--review');
   const $createReviewTriggers = $('.k-createreview');
@@ -58,8 +66,8 @@ function appendModalListeners() {
   $createReviewTriggers.click(async function() {
     const $t = $(this);
 
-    const productSku = $t.data('product-sku');
-    const productTitle = $t.data('product-title');
+    const productSku = sku;
+    const productTitle = title;
 
     $titleTarget.text(productTitle);
 
@@ -72,16 +80,35 @@ function appendModalListeners() {
 }
 
 function renderReviews(opts) {
-  const { reviews, baseUrl, appId, renderTarget } = opts;
+  const { reviews, baseUrl, appId, renderTarget, sku, productTitle } = opts;
 
-  reviews.forEach(review => {
-    const productReview = new ProductReview({
-      baseUrl: baseUrl,
-      appId: appId,
-      review: review,
-      renderTarget: renderTarget,
-      voting: true,
-      showRating: true,
-    });
+  reviews.forEach((review, index) => {
+    /*
+      Some products have hundreds of reviews. For now, only render the 10 most recent.
+    */
+    if (index <= 10) {
+      const productReview = new ProductReview({
+        baseUrl: baseUrl,
+        appId: appId,
+        review: review,
+        renderTarget: renderTarget,
+        voting: true,
+        showRating: true,
+      });
+    }
   });
+
+  appendReviewPrompt(sku, productTitle);
+}
+
+function appendReviewPrompt(sku, title) {
+  const $reviewContainerLeft = $('.k-productreviews--title');
+
+  const reviewPromptMarkup = /*html*/ `
+    <p><a href="#0" class="k-createreview k-upcase" data-product-sku="" data-product-title="">Write a review</a></p>
+  `;
+
+  $reviewContainerLeft.append(reviewPromptMarkup);
+
+  appendModalListeners(sku, title);
 }

@@ -44,15 +44,15 @@ $root = get_template_directory_uri();
       >
         <div class="k-form__liner">
           <div class="k-form__group">
-            <input class="k-input" type="email" name="email" id="k-review-email" />
+            <input class="k-input" type="email" name="email" id="k-review-email" required/>
             <label for="k-reviewemail">Email Address</label>
           </div>
           <div class="k-form__group">
-            <input type="text" class="k-input" name="displayname" id="k-review-displayname" />
+            <input type="text" class="k-input" name="displayname" id="k-review-displayname" required/>
             <label for="k-review-displayname">Display Name</label>
           </div>
           <div class="k-form__group">
-            <input type="text" name="reviewtitle" id="k-review-title" class="k-input" />
+            <input type="text" name="reviewtitle" id="k-review-title" class="k-input" required/>
             <label for="k-review-title">Review Title</label>
           </div>
 

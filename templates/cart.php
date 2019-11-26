@@ -156,16 +156,15 @@ if (sizeof($items_in_cart) == 0) { ?>
                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                   } else { ?>
                     <div class="k-cart--quantity">
-                      <button type="button" class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button>
+                      <!-- <button type="button" class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button> -->
                       <input
                         id="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         type="number"
                         name="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         value="<?php echo $cart_item['quantity'] ?>"
                         min="0"
-                        max="10"
                         />
-                      <button type="button" class="k-increase" data-cart-item-key="<?php echo $cart_item_key; ?>">+</button>
+                      <!-- <button type="button" class="k-increase" data-cart-item-key="<?php echo $cart_item_key; ?>">+</button> -->
                     </div>
                   <?php
                   }
