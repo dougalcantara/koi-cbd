@@ -5,6 +5,23 @@
   @media (min-width: $bp-md) {
     flex: 4;
   }
+  &-nav {
+    margin: 1em 0 2em 0;
+    &-label {
+      text-transform: uppercase;
+      color: $primary;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      color: hsl(0,0%, 20%) !important;
+    }
+  }
   &-content {
     background: $alto;
     padding: 1em;
@@ -24,7 +41,7 @@
     }
   }
   &-fields {
-    color: #444;
+    color: hsl(0,0%,50%);
   }
   .field {
     margin-bottom: 1em;
