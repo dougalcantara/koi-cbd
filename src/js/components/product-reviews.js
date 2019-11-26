@@ -6,9 +6,10 @@ $doc.ready(() => {
   const renderTarget = document.querySelector(
     '.k-productreviews__render-target'
   );
-
   const productStore = document.querySelector('.k-producthero');
-  // const sku = document.querySelector('.k-producthero').dataset.productSku;
+
+  if (!productStore) return;
+
   const sku = productStore.dataset.productSku;
   const productTitle = productStore.dataset.productTitle;
 
