@@ -12,7 +12,7 @@
       </li>
       <li>
         <a href="<?php echo home_url(); ?>/account">
-          Account
+          Account  w
         </a>
       </li>
       <li>

@@ -26,6 +26,13 @@
       }
       .btn {
         margin-top: 1em;
+        outline: none;
+        &-success {
+          background: mediumseagreen;
+        }
+        &-error {
+          background: palevioletred;
+        }
       }
     }
   }

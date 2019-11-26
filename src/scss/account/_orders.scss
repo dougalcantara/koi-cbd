@@ -50,3 +50,22 @@
     }
   }
 }
+
+.order {
+  &-table {
+
+  }
+  &-row {
+    display: flex;
+    max-width: 20em;
+  }
+  &-label, &-value {
+    flex: 1;
+  }
+  &-label {
+    margin-right: 1em;
+  }
+  &-value {
+    color: $primary-dark;
+  }
+}

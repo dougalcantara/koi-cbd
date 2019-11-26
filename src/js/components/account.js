@@ -7,19 +7,63 @@ const api = new WooCommerceRestApi({
 });
 
 (() => {
-  const accountForm = document.querySelector('#update-account');
-  if(accountForm) {
-   accountForm.addEventListener('submit', e => {
-     e.preventDefault();
-     api.put(`customers/${accountForm.getAttribute('data-customer')}`, {
-       first_name: "James"
-     })
-       .then(response => {
-         console.log(response);
-       })
-       .catch(error => {
-         console.log(error);
-       });
-   })
+
+  const button = {
+    update: btn => {
+      btn.innerHTML = 'Saved';
+      btn.classList.remove('btn-loading');
+      btn.classList.add('btn-success');
+    },
+    success: btn => {
+      btn.classList.remove('btn-success');
+      btn.innerHTML = 'Update';
+    },
+    error: btn => {
+      btn.innerHTML = 'Error';
+      btn.classList.remove('btn-loading');
+      btn.classList.add('btn-error');
+    }
+  };
+
+  function update_account() {
+    const form = document.querySelector('#update-account'),
+          btn = form.querySelector('.btn-submit');
+
+    btn.innerHTML = 'Saving';
+    btn.classList.add('btn-loading');
+    api.put(`customers/${form.getAttribute('data-customer')}`, {
+      first_name: form.querySelector('#firstname').value,
+      last_name: form.querySelector('#lastname').value,
+      email: form.querySelector('#email').value
+    })
+      .then(() => {
+        button.update(btn);
+        setTimeout(() => {
+          button.success(btn);
+        }, 2000);
+      })
+      .catch(() => {
+        button.error(btn);
+      });
   }
+
+  function update_password() {
+
+  }
+
+  if(document.querySelector('#update-account')) {
+    document.querySelector('#update-account').addEventListener('submit', e => {
+      e.preventDefault();
+      update_account();
+    });
+  }
+
+  if(document.querySelector('#update-password')) {
+    document.querySelector('#update-password').addEventListener('submit', e => {
+      e.preventDefault();
+      update_password();
+    });
+  }
+
+
 })();
