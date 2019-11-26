@@ -136,16 +136,16 @@
   }
 
   &__close {
-    right: 1em;
+    right: 0;
     top: 0;
     transition: all 0.4s $ease-in-out-quint;
-    transform: rotate(45deg);
+    transform: translateX(-1em) rotate(45deg);
     transform-origin: center;
     color: $primary;
     font-size: 2em;
 
     &:hover {
-      transform: rotate(-45deg);
+      transform: translateX(-1em)  rotate(-45deg);
     }
   }
 
@@ -164,7 +164,7 @@
 
   &__item {
     font-size: 80%;
-    padding: 1em 0;
+    padding: 1em 0.33em;
     border-bottom: 1px solid #ddd;
 
     &:last-child {
@@ -238,7 +238,7 @@
     }
 
     &__item {
-      padding: 2em 0;
+      padding: 2em 0.33em;
     }
 
     &__actions {

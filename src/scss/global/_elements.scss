@@ -3,7 +3,7 @@
     display: none;
   }
 }
-* {
+main {
   outline: none;
 }
 body {
@@ -229,6 +229,11 @@ img[data-src] {
 
   &--liner {
     padding-bottom: 100%;
+    pointer-events: none;
+
+    * {
+      pointer-events: none;
+    }
   }
 
   svg {
