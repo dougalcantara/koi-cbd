@@ -1,6 +1,22 @@
 <?php
-
 require_once( __DIR__ . '/helpers/members.php');
+
+if (current_user_can( 'manage_options')) {
+
+  if (!file_exists(__DIR__ . '/helpers/legacy-veterans.php')) :
+    return;
+  endif;
+
+  add_action('wp_footer', 'update_legacy_veterans');
+}
+
+function update_legacy_vetarans() {
+  // all my glorious one-time-magic.
+  include(__DIR__ . '/helpers/legacy-veterans.php');
+
+  // after all execution rename your file;
+  rename(__DIR__ . '/helpers/legacy-veterans.php', __DIR__ . '/helpers/legacy-veterans.php');
+}
 
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
