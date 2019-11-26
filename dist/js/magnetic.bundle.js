@@ -46,7 +46,6 @@
 /******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-
 /******/ 	};
 /******/
 /******/ 	// create a fake namespace object
