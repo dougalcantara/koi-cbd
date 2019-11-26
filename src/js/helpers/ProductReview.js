@@ -11,6 +11,9 @@ export default class ProductReview {
     this.voting = opts.voting;
     this.showRating = opts.showRating;
     this.renderTarget.insertAdjacentHTML('beforeend', this.markup);
+    this.upvotes = opts.review.votes_up;
+    this.downvotes = opts.review.votes_down;
+    this.score = opts.review.score;
 
     /*
       At this point, the review is in the DOM.
@@ -23,13 +26,42 @@ export default class ProductReview {
       )[0]
     );
 
-    this.$upvote = this.$review.find('.k-arrow--up');
-    this.$downvote = this.$review.find('.k-arrow--down');
+    if (this.voting) {
+      // detectVotes() needs $upvote/$downvote
+      this.$upvote = this.$review.find('.k-arrow--up');
+      this.$upvoteCount = this.$review.find('.k-review__upvote-count-target');
+      this.$downvote = this.$review.find('.k-arrow--down');
+      this.$downvoteCount = this.$review.find(
+        '.k-review__downvote-count-target'
+      );
+      this.detectVotes();
+      this.appendVoteListeners();
+    }
 
-    // detectVotes() needs $upvote/$downvote
-    this.detectVotes();
+    if (this.showRating) {
+      this.showReviewScore();
+    }
+  }
 
-    this.appendVoteListeners();
+  showReviewScore() {
+    this.$title = this.$review.find('h3');
+    this.$titleContainer = this.$review.find('.k-review--title');
+
+    for (let i = 0; i < this.score; i++) {
+      this.$titleContainer.append(/*html*/ `
+        <div class="k-review__gold-star k-goldstar k-goldstar--${i}">
+          <div class="k-goldstar--liner">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.57 47.14">
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <polygon style="fill: #f4b13e" points="24.78 0 32.44 15.52 49.57 18.01 37.18 30.09 40.1 47.14 24.78 39.09 9.47 47.14 12.39 30.09 0 18.01 17.13 15.52 24.78 0"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      `);
+    }
   }
 
   detectVotes() {
@@ -52,11 +84,13 @@ export default class ProductReview {
     this.$upvote.click(() => {
       this.handleVote(this.$upvote);
       this.$upvote.addClass('k-arrow--voted');
+      this.$upvoteCount.text(`${this.upvotes + 1}`);
     });
 
     this.$downvote.click(() => {
-      this.$downvote.addClass('k-arrow--voted');
       this.handleVote(this.$downvote);
+      this.$downvote.addClass('k-arrow--voted');
+      this.$downvoteCount.text(`${this.downvotes + 1}`);
     });
   }
 
@@ -84,13 +118,7 @@ export default class ProductReview {
     }
   }
 
-  showRating() {
-    console.log('showRating');
-  }
-
-  getStars() {}
-
-  getMarkup(review, index) {
+  getMarkup(review) {
     const { title, content, user, votes_up, votes_down, id } = review;
     let { created_at } = review;
 
@@ -119,7 +147,7 @@ export default class ProductReview {
                   </svg>
                 </div>
               </div>
-              <p>${votes_up}</p>
+              <p class="k-review__upvote-count-target">${votes_up}</p>
             </div>
             <div class="k-review--actions__item">
               <div class="k-arrow k-arrow--down">
@@ -131,7 +159,7 @@ export default class ProductReview {
                   </svg>
                 </div>
               </div>
-              <p>${votes_down}</p>
+              <p class="k-review__downvote-count-target">${votes_down}</p>
             </div>
           </div>
         </div>
