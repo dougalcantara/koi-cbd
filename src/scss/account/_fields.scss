@@ -1,0 +1,32 @@
+.account {
+  .fields {
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+      &-label {
+        margin-bottom: .25em;
+        color: hsl(0, 0%, 30%);
+      }
+      &-input {
+        background: none;
+        border: 5px solid white;
+        padding: .5em;
+        color: hsl(0, 0%, 30%);
+        background: white;
+        transition: all .25s ease;
+        &[disabled] {
+          color: hsl(0, 0%, 50%);
+          background: hsl(0,0%,95.5%);
+        }
+        &:hover {
+          outline: none;
+          background: hsl(0,0%,95.5%);
+        }
+      }
+      .btn {
+        margin-top: 1em;
+      }
+    }
+  }
+}
