@@ -63,6 +63,10 @@ $quantity.change(function() {
 });
 
 function checkQuantityAgainstPrice() {
+  if ($quantity.val() < 0 || $quantity.val() == NaN || !$quantity.val()) {
+    $quantity.val(1);
+  }
+
   let quantity = parseInt($quantity.val());
   let price = $quantity.data('variant-price');
   $priceTarget.text(`$${(quantity * price).toFixed(2)}`);
