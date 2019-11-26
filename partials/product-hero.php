@@ -3,6 +3,8 @@
   class="k-producthero <?php echo $product_wc_type == 'bundle' ? 'k-producthero--bundle' : NULL; ?>"
   data-yotpo-product-id="<?php echo $product_id ?>"
   data-min-items="<?php echo $min_items; ?>"
+  data-product-sku="<?php echo $product->get_sku(); ?>"
+  data-product-title="<?php echo the_title(); ?>"
 >
   <div class="k-inner k-inner--xl">
     <?php
