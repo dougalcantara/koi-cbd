@@ -1,6 +1,7 @@
 import { $doc, $win } from '../global/selectors';
 
 const $sidebar = $('.k-cart-sidebar');
+
 const $title = $sidebar.find('.k-cart-sidebar__title');
 const $actions = $sidebar.find('.k-cart-sidebar__actions');
 const $content = $sidebar.find('.k-cart-sidebar__content');

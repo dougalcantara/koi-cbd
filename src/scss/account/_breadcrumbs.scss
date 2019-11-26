@@ -1,0 +1,27 @@
+.account-breadcrumbs {
+  font-size: .9em;
+  &-inside {
+    margin: 0 auto;
+    padding: 0 0 .5em 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #CCC;
+  }
+  li {
+    list-style: none;
+    margin-right: 1.25em;
+    position: relative;
+    &:not(:last-child) {
+      &:after {
+        position: absolute;
+        left: calc(100% + .5em);
+        top: 50%;
+        transform: translateY(-50%);
+        content: '\203A';
+      }
+    }
+  }
+  a {
+    color: $primary;
+  }
+}
