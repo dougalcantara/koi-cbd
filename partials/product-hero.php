@@ -53,10 +53,13 @@
           if ($product_wc_type == 'bundle') {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
+          <div class="k-productform--item k-productform__desc">
+            <span class="k-upcase">Qty</span><span class="k-upcase">Price</span>
+          </div>
             <div class="k-productform--item k-productform--quantity">
-              <button id="k-reduce" class="" type="button">-</button>
-              <input id="k-num-to-add" type="number" value="1" max="10" min="1" step="1" />
-              <button id="k-increase" class="" type="button">+</button>
+              <!-- <button id="k-reduce" class="" type="button">-</button> -->
+              <input id="k-num-to-add" type="number" value="1" min="1" step="1" />
+              <!-- <button id="k-increase" class="" type="button">+</button> -->
             </div>
           <?php
           }

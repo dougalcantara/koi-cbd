@@ -104,13 +104,13 @@ function handleCartSidebar(cartItems, expandedProducts) {
             <a href="${product.permalink}">${product.name}</a>
           </h3>
           <div class="k-cart-sidebar__item-actions">
-            <span class="k-cart-sidebar__quantity">Quantity:</span>
+            <span class="k-cart-sidebar__quantity k-upcase">QTY:</span>
             <div class="k-productform--quantity">
-              <button class="k-reduce" class="" type="button">-</button>
+              <!-- <button class="k-reduce" class="" type="button">-</button> -->
               <input id="k-num-to-add" type="number" value="${
                 product.quantity
               }" min="0" step="1" />
-              <button class="k-increase" class="" type="button">+</button>
+              <!-- <button class="k-increase" class="" type="button">+</button> -->
             </div>
             <p class="k-bigtext">
             <span class="k-cart-sidebar__item-price">${
