@@ -7129,7 +7129,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _glo
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _woocommerce_woocommerce_rest_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @woocommerce/woocommerce-rest-api */ \"./node_modules/@woocommerce/woocommerce-rest-api/index.mjs\");\n\nconsole.log(_woocommerce_woocommerce_rest_api__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n//# sourceURL=webpack:///./src/js/components/account.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _woocommerce_woocommerce_rest_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @woocommerce/woocommerce-rest-api */ \"./node_modules/@woocommerce/woocommerce-rest-api/index.mjs\");\n\nvar api = new _woocommerce_woocommerce_rest_api__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  url: 'http://localhost:8888/koicbd',\n  consumerKey: 'ck_fe76fcf31fe262cd7c36f78fcb98c1f280313aef',\n  consumerSecret: 'cs_a9a9c5a41bef061cf30599dd4390bc31d786494c',\n  version: 'wc/v3'\n});\n\n(function () {\n  var accountForm = document.querySelector('#update-account');\n\n  if (accountForm) {\n    accountForm.addEventListener('submit', function (e) {\n      e.preventDefault();\n      api.put(\"customers/\".concat(accountForm.getAttribute('data-customer')), {\n        first_name: \"James\"\n      }).then(function (response) {\n        console.log(response);\n      }).catch(function (error) {\n        console.log(error);\n      });\n    });\n  }\n})();\n\n//# sourceURL=webpack:///./src/js/components/account.js?");
 
 /***/ }),
 
