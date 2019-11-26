@@ -512,3 +512,9 @@ function admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
 add_action( 'login_enqueue_scripts', 'admin_styles' );
+
+function check_login() {
+  if(!is_user_logged_in()) {
+    wp_redirect(home_url() . '/login');
+  }
+}
