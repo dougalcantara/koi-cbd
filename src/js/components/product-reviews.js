@@ -24,7 +24,7 @@ $doc.ready(() => {
     getReviews(productId).then(res => {
       reviews = res.data.response.reviews;
 
-      console.log(reviews);
+      // console.log(reviews);
 
       if (reviews.length > 0) {
         const opts = {
