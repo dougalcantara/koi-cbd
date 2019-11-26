@@ -14,6 +14,7 @@ export default class ProductReview {
     this.upvotes = opts.review.votes_up;
     this.downvotes = opts.review.votes_down;
     this.score = opts.review.score;
+    this.alreadyVoted = false;
 
     /*
       At this point, the review is in the DOM.
@@ -84,13 +85,17 @@ export default class ProductReview {
     this.$upvote.click(() => {
       this.handleVote(this.$upvote);
       this.$upvote.addClass('k-arrow--voted');
-      this.$upvoteCount.text(`${this.upvotes + 1}`);
+      if (!this.alreadyVoted) {
+        this.$upvoteCount.text(`${this.upvotes + 1}`);
+      }
     });
 
     this.$downvote.click(() => {
       this.handleVote(this.$downvote);
       this.$downvote.addClass('k-arrow--voted');
-      this.$downvoteCount.text(`${this.downvotes + 1}`);
+      if (!this.alreadyVoted) {
+        this.$downvoteCount.text(`${this.downvotes + 1}`);
+      }
     });
   }
 
@@ -104,6 +109,7 @@ export default class ProductReview {
     */
     if (window.localStorage.getItem(`yotpo_vote-${this.reviewId}`)) {
       // the user has already voted on this item.
+      this.alreadyVoted = true;
       alert('you have already voted on this review.');
       element.removeClass('k-arrow--voted');
       return;
