@@ -40,9 +40,9 @@ get_header();
       <h2 class="k-headline k-headline--md"><?php echo $site_content['trust_section_heading']; ?></h2>
       <p class="k-bigtext"><?php echo $site_content['trust_section_subheading']; ?></p>
       <div class="k-twoup-imagerow">
-      <img src="<?php echo $root . '/dist/img/us-hemp-roundtable-badge@2x.png'; ?>" alt="">
-      <img src="<?php echo $root . '/dist/img/hia-member-badge@2x.png'; ?>" alt="">
-      <img src="<?php echo $root . '/dist/img/chc-badge@2x.png'; ?>" alt="">
+        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
+        <img src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
+        <img src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
       </div>
     </div>
 
