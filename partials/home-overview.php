@@ -72,7 +72,7 @@
         <a href="<?php echo site_url().'/cbd-for-pets'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/Koi-lifestyleimagecomp-pet-treats.png' ?>" alt="" />
             </div>
           </figure>
         </a>

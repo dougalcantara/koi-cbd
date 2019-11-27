@@ -29,5 +29,6 @@ import './components/newsletter-cta';
 import './components/location-finder';
 import './components/checkout-validation';
 import './components/prod-qty';
-import './components/account';
+import './components/cart-template';
+
 import 'promise-polyfill/src/polyfill';

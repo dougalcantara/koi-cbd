@@ -28,7 +28,7 @@ $url = site_url();
   <div class="k-header--top k-promobanner">
     <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
-        <span class="k-upcase">Free shipping & returns for all US orders</span>
+        <span class="k-upcase">Free shipping on all US orders over $35</span>
       </div>
       <div class="k-promobanner--item">
         <span class="k-upcase k-header__newsletter-trigger">Sign up for our newsletter for 10% off</span>
@@ -60,7 +60,7 @@ $url = site_url();
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
-                <li><a href="<?php echo $url . '/blog'; ?>">Blog</a></li>
+                <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
               </div>
             </ul>
           </li>
