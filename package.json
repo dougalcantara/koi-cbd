@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development gulp",
-    "deploy": "/bin/zsh  /Applications/MAMP/htdocs/koicbd/wp-content/themes/koitheme/deploy.sh"
+    "build": "NODE_ENV=production gulp",
+    "deploy": "npm run build && /bin/zsh  /Applications/MAMP/htdocs/koicbd/wp-content/themes/KOI-2019/deploy.sh"
   },
   "keywords": [],
   "author": "",
