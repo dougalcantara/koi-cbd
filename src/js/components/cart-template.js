@@ -8,7 +8,6 @@ $doc.ready(async function() {
 
   if ($body.hasClass('page-template-cart')) {
     let cart = await AjaxCart.getCartItems();
-    console.log(cart);
 
     window.__cartItems = [];
 

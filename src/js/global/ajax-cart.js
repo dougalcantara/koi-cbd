@@ -126,7 +126,6 @@ AjaxCart.updateItemQuantity = async function(key, newQuantity) {
         cart_item_key: key,
       },
       onComplete: () => {
-        alert('HERE');
         if (!window.location.href.includes('open_cart')) {
           window.location = window.location += `?open_cart=true`;
         } else {

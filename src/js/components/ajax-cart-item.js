@@ -12,7 +12,6 @@ export default class CartItem {
     this.$price = $this.find('.k-cartItem--price-target');
     this.originalValue = parseInt(this.$input.val());
     this.appendListeners();
-    console.log(this);
   }
 
   appendListeners() {
