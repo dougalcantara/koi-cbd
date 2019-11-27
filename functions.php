@@ -1,5 +1,4 @@
 <?php
-
 require_once( __DIR__ . '/helpers/members.php');
 
 if (function_exists('acf_add_options_page')) {
