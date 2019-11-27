@@ -101,7 +101,9 @@ $root = get_template_directory_uri();
   </div>
 
   <?php
-    get_template_part('partials/cart-sidebar');
+    if (is_page_template('templates/cart.php') == false) {
+      get_template_part('partials/cart-sidebar');
+    }
     global $wp;
   ?>
   

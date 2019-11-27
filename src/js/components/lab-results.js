@@ -12,13 +12,13 @@ const $resultsForm = $('#k-resultssearch');
 const $insertTarget = $('#resultsembedtarget');
 const fuseOpts = {
   shouldSort: true,
-  threshold: 0.25,
+  threshold: 0.0,
   location: 0,
   distance: 100,
   maxPatternLength: 32,
   minMatchCharLength: 3,
   includeScore: true,
-  keys: ['type', 'flavor', 'batchid', 'productsku', 'ordername'],
+  keys: [/* 'type', 'flavor',*/ 'batchid' /*, 'productsku', 'ordername' */],
 };
 
 $resultsForm.submit(displayResults);
@@ -74,7 +74,8 @@ function displayTermPrompt() {
     <div class="k-latestbatch--results">
       <div class="k-latestbatch--results__liner k-latestbatch--results__liner--error">
         <h1>Sorry, we can't seem to find that.</h1>
-        <p>Try searching for a product name, batch number, SKU, or strength.</p>
+        <!-- <p>Try searching for a product name, batch number, SKU, or strength.</p> -->
+        <p>Try searching for a valid batch number.</p>
       </div>
     </div>    
   `);

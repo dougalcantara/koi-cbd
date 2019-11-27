@@ -106,14 +106,12 @@ function handleCartSidebar(cartItems, expandedProducts) {
           <div class="k-cart-sidebar__item-actions">
             <span class="k-cart-sidebar__quantity k-upcase">QTY:</span>
             <div class="k-productform--quantity">
-              <!-- <button class="k-reduce" class="" type="button">-</button> -->
               <input id="k-num-to-add" type="number" value="${
                 product.quantity
               }" min="0" step="1" />
-              <!-- <button class="k-increase" class="" type="button">+</button> -->
             </div>
             <p class="k-bigtext">
-            <span class="k-cart-sidebar__item-price">${
+            <span class="k-cart-sidebar__item-price k-cartItem--price-target">${
               product.is_bundle ? bundledPrice : totalPrice
             }</span>
             <button class="k-cart-sidebar__item-update k-button k-button--primary">Update</button>
@@ -315,6 +313,7 @@ export function closeSidebar() {
 
 // == event listeners == //
 $doc.ready(async function() {
+  if ($body.hasClass('page-template-cart')) return;
   const {
     cart_items: cartItems,
     expanded_products: expandedProducts,
