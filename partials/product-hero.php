@@ -83,7 +83,7 @@
                 if ($out_of_stock) : ?> disabled
                 <?php
                 endif;
-                if ($product_wc_type == 'simple') : ?> data-product-id="<?php echo $product_id; ?>"
+                if ($product_wc_type == 'simple') : ?> data-product-id="<?php echo $product_id;?>" data-price="<?php echo $product->get_price(); ?>"
                 <?php
                 endif;
                 if ($product_wc_type == 'bundle') : ?> data-bundle-id="<?php echo $product_id; ?>"
