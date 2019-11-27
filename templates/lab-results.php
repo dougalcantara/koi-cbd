@@ -36,7 +36,7 @@ get_header();
   <div class="k-inner k-inner--md">
 
     <div class="k-labresults__searchform">
-      <span class="k-preheading k-upcase">Search by product name or Batch #</span>
+      <span class="k-preheading k-upcase">Search by Batch #</span>
       <form class="k-form" id="k-resultssearch">
         <div class="k-form__content">
           <input

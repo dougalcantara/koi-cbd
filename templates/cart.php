@@ -97,7 +97,7 @@ if (sizeof($items_in_cart) == 0) { ?>
             if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
               $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key); ?>
 
-              <div class="k-cart--item woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+              <div class="k-cart--item woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>" data-product-id="<?php echo $_product->get_id(); ?>">
                 <div class="k-cart--item__liner">
 
                   <div class="k-cart--item__thumbnail">
@@ -156,7 +156,6 @@ if (sizeof($items_in_cart) == 0) { ?>
                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                   } else { ?>
                     <div class="k-cart--quantity">
-                      <!-- <button type="button" class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button> -->
                       <input
                         id="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         type="number"
@@ -164,7 +163,6 @@ if (sizeof($items_in_cart) == 0) { ?>
                         value="<?php echo $cart_item['quantity'] ?>"
                         min="0"
                         />
-                      <!-- <button type="button" class="k-increase" data-cart-item-key="<?php echo $cart_item_key; ?>">+</button> -->
                     </div>
                   <?php
                   }
@@ -173,11 +171,13 @@ if (sizeof($items_in_cart) == 0) { ?>
 
                   <div class="k-cart--item__price">
                     <?php
-                    if ($_product->get_type() != 'bundle') { ?>
-                      <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
-                    <?php
-                    }
-                    ?>
+                    if ($_product->get_type() != 'bundle') : ?>
+                      <p class="k-bigtext k-cartItem--price-target"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
+                      <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
+                    <?php else: ?>
+                      <p class="k-bigtext">&nbsp;</p>
+                      <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
+                    <?php endif; ?>
                   </div>
 
                 </div>

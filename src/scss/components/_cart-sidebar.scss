@@ -104,11 +104,17 @@
     margin-right: 1em !important;
   }
 
+  .k-cart-sidebar__item-update {
+    // this selector is because I want the buttons
+    // to maintain default button styling outside of
+    // the cart.
+    padding: 0.5em;
+  }
+
   &__item-update {
     position: absolute;
     top: 0%;
     right: 0%;
-    padding: 0.5em;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.65s $ease-out-circ;
