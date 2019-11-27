@@ -23,7 +23,7 @@
               <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">
                 <?php get_template_part('partials/svg/facebook'); ?>
               </a>
-              <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+              <a href="https://twitter.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
                 <?php get_template_part('partials/svg/twitter'); ?>
               </a>
               <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
