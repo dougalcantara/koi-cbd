@@ -63,8 +63,8 @@
           <ul>
             <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
             <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
+            <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
             <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
-            <!-- <li><a href="#0">Ambassadors</a></li> -->
             <li><a href="<?php echo $url . '/veteran-program'; ?>">Veterans</a></li>
             <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
@@ -74,9 +74,7 @@
           <ul>
             <li><a href="<?php echo $url . '/terms-and-conditions'; ?>">Terms & Conditions</a></li>
             <li><a href="<?php echo $url . '/privacy-policy'; ?>">Privacy Policy</a></li>
-            <!-- <li><a href="<?php echo $url . '/cookie-policy'; ?>">Cookie Policy</a></li> -->
             <li><a href="<?php echo $url . '/shipping-policy'; ?>">Shipping Policy</a></li>
-            <!-- <li><a href="#0">International</a></li> -->
           </ul>
         </div>
         </ul>
