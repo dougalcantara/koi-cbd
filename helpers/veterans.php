@@ -31,15 +31,15 @@ class Veterans {
   public function process($request) {
     $payload = json_decode($request->get_body(), true);
     $response = new WP_REST_Response();
-    $response->set_data($payload['objectId']);
-    $this->log(json_encode($payload['propertyName'], true));
-    if($request['propertyName'] == 'military_id') {
-      if($this->create($request['id'])) {
+    $response->set_data($payload[0]['objectId']);
+    if($payload[0]['propertyValue'] == 'veteran_applied') {
+      if($this->create($payload[0]['objectId'])) {
         $response->set_status(200);
       } else {
         $response->set_status(418);
       }
-    } else {
+    }
+    if($payload[0]['propertyValue'] == 'veteran_approved'){
       if($this->approve($request)) {
         $response->set_status(200);
       } else {
@@ -66,7 +66,7 @@ class Veterans {
   }
 
   public function approve($request) {
-    $contactData = json_decode($this->get_hubspot_user($request['objectId']), true);
+    $contactData = json_decode($this->get_hubspot_user($request[0]['objectId']), true);
     $wp_user = get_user_by('email', $contactData['properties']['email']['value']);
     update_field('veteran_status', 'Veteran Approved', 'user_'.$wp_user->ID);
     return $wp_user;
