@@ -312,6 +312,7 @@ include_once('partials/macros/hero.php');
 include_once('partials/macros/product-card.php');
 include_once('partials/macros/product-video.php');
 include_once('partials/macros/article-card.php');
+include_once('partials/macros/product-review.php');
 // == end macros == //
 
 
