@@ -11,43 +11,43 @@
       <ul>
         <li>
           <a href="<?php echo home_url(); ?>/account">
-            <?php get_template_part('partials/svg/icon-account'); ?>
+            <?php include(locate_template('partials/svg/icon-account.php')); ?>
             Account
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/account/lost-password">
-            <?php get_template_part('partials/svg/icon-password'); ?>
+            <?php include(locate_template('partials/svg/icon-password.php')); ?>
             Change Password
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/account/billing">
-            <?php get_template_part('partials/svg/icon-billing'); ?>
+            <?php include(locate_template('partials/svg/icon-billing.php')); ?>
             Billing Address
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/account/shipping">
-            <?php get_template_part('partials/svg/icon-shipping'); ?>
+            <?php include(locate_template('partials/svg/icon-shipping.php')); ?>
             Shipping Address
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/account/past-orders">
-            <?php get_template_part('partials/svg/icon-order'); ?>
+            <?php include(locate_template('partials/svg/icon-order.php')); ?>
             My Orders
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/veteran-program">
-            <?php get_template_part('partials/svg/icon-discount'); ?>
+            <?php include(locate_template('partials/svg/icon-discount.php')); ?>
             Apply For Military Discount
           </a>
         </li>
         <li>
           <a href="<?php echo home_url(); ?>/account/delete">
-            <?php get_template_part('partials/svg/icon-delete'); ?>
+            <?php include(locate_template('partials/svg/icon-delete.php')); ?>
             Delete Account
           </a>
         </li>
@@ -67,19 +67,12 @@
           Shipping Address
         </div>
         <div class="field-value">
-          <?php
-          $user = get_current_user_id();
-          $order = wc_get_orders( array(
-            'meta_key' => '_customer_user',
-            'meta_value' => $user,
-            'numberposts' => 1
-          ))[0]; ?>
-          <?php echo $order->get_data()['shipping']['address_1']; ?><br>
-          <?php echo $order->get_data()['shipping']['address_2']; ?><br>
-          <?php echo $order->get_data()['shipping']['city']; ?><br>
-          <?php echo $order->get_data()['shipping']['state']; ?><br>
-          <?php echo $order->get_data()['shipping']['postcode']; ?><br>
-          <?php echo $order->get_data()['shipping']['country']; ?><br>
+          <?php $customer = new WC_Customer(get_current_user_id()); ?>
+          <?php echo $customer->get_billing_company(); ?><br>
+          <?php echo $customer->get_billing_address_1(); ?><br>
+          <?php echo $customer->get_billing_address_2(); ?><br>
+          <?php echo $customer->get_billing_city(); ?><br>
+          <?php echo $customer->get_billing_postcode(); ?><br>
         </div>
       </div>
     </div>

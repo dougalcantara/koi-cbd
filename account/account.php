@@ -56,7 +56,7 @@
 
       </form>
     </main>
-    <?php get_template_part('account/partials/sidebar'); ?>
+    <?php include(locate_template('account/partials/sidebar.php')); ?>
   </div>
 </div>
 <?php get_footer(); ?>

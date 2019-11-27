@@ -1,9 +1,10 @@
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 const api = new WooCommerceRestApi({
-  url: 'http://localhost:8888/koicbd',
+  url: 'https://koicbddev.wpengine.com',
   consumerKey: 'ck_fe76fcf31fe262cd7c36f78fcb98c1f280313aef',
   consumerSecret: 'cs_a9a9c5a41bef061cf30599dd4390bc31d786494c',
-  version: 'wc/v3'
+  version: 'wc/v3',
+  queryStringAuth: true
 });
 
 (() => {
