@@ -22,7 +22,6 @@
       <h1>Account Overview</h1>
       <form class="form" id="update-account" data-customer="<?php echo get_current_user_id(); ?>">
         <?php global $current_user; ?>
-
         <div class="field">
           <label for="account_display_name" class="field-label">
             <?php esc_html_e( 'Display name', 'woocommerce' ); ?>
@@ -51,9 +50,10 @@
           <input id="email" name="email" type="text" class="field-input" value="<?php echo $current_user->user_email; ?>">
         </div>
 
-        <div class="field">
+        <div class="field field-buttons">
           <button class="btn btn-submit" type="submit">Update</button>
         </div>
+
       </form>
     </main>
     <?php get_template_part('account/partials/sidebar'); ?>

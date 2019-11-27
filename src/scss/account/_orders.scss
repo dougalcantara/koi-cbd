@@ -52,20 +52,26 @@
 }
 
 .order {
-  &-table {
-
+  max-width: 20em;
+  td {
+    padding: .5em 0;
   }
-  &-row {
-    display: flex;
-    max-width: 20em;
-  }
-  &-label, &-value {
-    flex: 1;
-  }
-  &-label {
-    margin-right: 1em;
-  }
-  &-value {
+  span {
     color: $primary-dark;
   }
+  &-items {
+    border-collapse: collapse;
+    border: 1px solid hsl(0,0%, 80%);
+    td {
+      border: 1px solid hsl(0,0%, 80%);
+      padding: .75em;
+    }
+  }
+}
+
+.back-link {
+  margin-top: 2em;
+  display: inline-block;
+  text-decoration: underline;
+  color: hsl(0,0%,20%) !important;
 }

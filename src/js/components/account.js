@@ -25,17 +25,12 @@ const api = new WooCommerceRestApi({
     }
   };
 
-  function update_account() {
-    const form = document.querySelector('#update-account'),
-          btn = form.querySelector('.btn-submit');
+  function update_account(fields, form) {
+    const btn = form.querySelector('.btn-submit');
 
     btn.innerHTML = 'Saving';
     btn.classList.add('btn-loading');
-    api.put(`customers/${form.getAttribute('data-customer')}`, {
-      first_name: form.querySelector('#firstname').value,
-      last_name: form.querySelector('#lastname').value,
-      email: form.querySelector('#email').value
-    })
+    api.put(`customers/${form.getAttribute('data-customer')}`, fields)
       .then(() => {
         button.update(btn);
         setTimeout(() => {
@@ -47,23 +42,62 @@ const api = new WooCommerceRestApi({
       });
   }
 
-  function update_password() {
-
-  }
-
   if(document.querySelector('#update-account')) {
     document.querySelector('#update-account').addEventListener('submit', e => {
       e.preventDefault();
-      update_account();
+      update_account({
+        first_name: document.querySelector('#firstname').value,
+        last_name: document.querySelector('#lastname').value,
+        email: document.querySelector('#email').value
+      }, document.querySelector('#update-account'));
     });
   }
 
-  if(document.querySelector('#update-password')) {
-    document.querySelector('#update-password').addEventListener('submit', e => {
+  if(document.querySelector('#delete-account')) {
+    document.querySelector('#delete-account').addEventListener('submit', e => {
       e.preventDefault();
-      update_password();
+      if(confirm('This will delete your account permanently. Are you sure?')) {
+        document.querySelector('#delete-account').submit();
+      }
     });
   }
 
+  if(document.querySelector('#update-billing')) {
+    document.querySelector('#update-billing').addEventListener('submit', e => {
+      e.preventDefault();
+      update_account({
+        billing: {
+          first_name: document.querySelector('#first_name').value,
+          last_name: document.querySelector('#last_name').value,
+          company: document.querySelector('#company').value,
+          address_1: document.querySelector('#address_1').value,
+          address_2: document.querySelector('#address_2').value,
+          city: document.querySelector('#city').value,
+          state: document.querySelector('#state').value,
+          postcode: document.querySelector('#postcode').value,
+          country: document.querySelector('#country').value,
+        }
+      }, document.querySelector('#update-billing'));
+    });
+  }
+
+  if(document.querySelector('#update-shipping')) {
+    document.querySelector('#update-shipping').addEventListener('submit', e => {
+      e.preventDefault();
+      update_account({
+        shipping: {
+          first_name: document.querySelector('#first_name').value,
+          last_name: document.querySelector('#last_name').value,
+          company: document.querySelector('#company').value,
+          address_1: document.querySelector('#address_1').value,
+          address_2: document.querySelector('#address_2').value,
+          city: document.querySelector('#city').value,
+          state: document.querySelector('#state').value,
+          postcode: document.querySelector('#postcode').value,
+          country: document.querySelector('#country').value,
+        }
+      }, document.querySelector('#update-shipping'));
+    });
+  }
 
 })();

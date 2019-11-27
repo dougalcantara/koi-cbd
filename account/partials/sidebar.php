@@ -16,7 +16,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo home_url(); ?>/account/password">
+          <a href="<?php echo home_url(); ?>/account/lost-password">
             <?php get_template_part('partials/svg/icon-password'); ?>
             Change Password
           </a>

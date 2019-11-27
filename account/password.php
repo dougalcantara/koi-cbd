@@ -1,8 +1,8 @@
 <?php check_login();
 /**
- * Template Name: Account - Delete
+ * Template Name: Account - Password
  */ get_header(); ?>
-<div class="account account-delete">
+<div class="account account-password">
   <nav class="account-breadcrumbs">
     <ul class="account-breadcrumbs-inside">
       <li>
@@ -17,26 +17,28 @@
       </li>
       <li>
         <span>
-          Delete
+          Password
         </span>
       </li>
     </ul>
   </nav>
   <div class="account-inside">
     <main class="account-content">
-      <h1>Delete</h1>
-      <form class="form" id="delete-account" method="post">
-        <?php $user = new WC_Customer(get_current_user_id()); ?>
+      <h1>Change Password</h1>
+      <form class="form" id="update-password" data-customer="<?php echo get_current_user_id(); ?>">
+        <?php global $current_user; ?>
+
         <div class="field">
           <label for="password" class="field-label">
-            Confirm Password
+            Password
           </label>
-          <input id="password" name="password" type="password" class="field-input" required>
+          <input id="password" name="password" type="password" class="field-input" value="">
         </div>
+
         <div class="field">
-          <button class="btn btn-delete" type="submit">Delete</button>
-          <?php Member::delete(); ?>
+          <button class="btn btn-submit" type="submit">Change</button>
         </div>
+
       </form>
     </main>
     <?php get_template_part('account/partials/sidebar'); ?>

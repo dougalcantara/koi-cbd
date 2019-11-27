@@ -37,6 +37,9 @@ $alto: #F2F2F2;
     max-width: 10em;
     cursor: pointer;
     transition: all .25s ease;
+    &-delete {
+      background: indianred;
+    }
     &:hover {
       background: hsl(0,0%, 40%);
     }
