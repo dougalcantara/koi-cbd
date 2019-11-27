@@ -20,6 +20,20 @@
     }
     a {
       color: hsl(0,0%, 20%) !important;
+      display: flex;
+      align-items: center;
+      svg {
+        width: 1em;
+        height: 2em;
+        margin-right: 1em;
+        transition: all .25s ease;
+      }
+      &:hover {
+        color: $primary-dark !important;
+        svg {
+          transform: translateX(.25em);
+        }
+      }
     }
   }
   &-content {
@@ -35,7 +49,7 @@
     @media (min-width: $bp-md) {
       position: absolute;
       top: -.25em;
-      left: 1em;
+      right: 2em;
       background: $alto;
       padding: 0 .75em;
     }

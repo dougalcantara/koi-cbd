@@ -1,5 +1,7 @@
 <?php
-require_once( __DIR__ . '/helpers/members.php');
+
+require_once( __DIR__ . '/helpers/veterans.php');
+require_once( __DIR__ . '/helpers/member.php');
 
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
@@ -502,8 +504,8 @@ function zero_discount_for_excluded_products($discount, $discounting_amount, $ca
     return $discount;
 }
 
-if(class_exists('Members')) {
-  $members = new Members();
+if(class_exists('Veterans')) {
+  $veterans = new Veterans();
 }
 
 function admin_styles() {
