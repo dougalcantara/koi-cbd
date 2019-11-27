@@ -16,6 +16,12 @@
           </a>
         </li>
         <li>
+          <a href="<?php echo home_url(); ?>/account">
+            <?php include(locate_template('partials/svg/icon-logout.php')); ?>
+            Logout
+          </a>
+        </li>
+        <li>
           <a href="<?php echo home_url(); ?>/account/lost-password">
             <?php include(locate_template('partials/svg/icon-password.php')); ?>
             Change Password
