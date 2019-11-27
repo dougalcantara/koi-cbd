@@ -126,7 +126,11 @@ AjaxCart.updateItemQuantity = async function(key, newQuantity) {
         cart_item_key: key,
       },
       onComplete: () => {
-        window.location = window.location += `?open_cart=true`;
+        if (!window.location.href.includes('open_cart')) {
+          window.location = window.location += `?open_cart=true`;
+        } else {
+          window.location = window.location;
+        }
       },
     });
   } catch (error) {
@@ -143,8 +147,12 @@ AjaxCart.updateAllItemQuantities = async function(keys, newQuantities) {
         cart_item_keys: keys,
         cart_item_quantities: newQuantities,
       },
-      onComplete: () => {
-        window.location += `?open_cart=true`;
+      onComplete: res => {
+        if (!window.location.href.includes('open_cart')) {
+          window.location += `?open_cart=true`;
+        } else {
+          window.location = window.location;
+        }
       },
     });
   } catch (error) {

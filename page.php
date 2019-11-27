@@ -1,9 +1,7 @@
 <?php
-defined('ABSPATH') || exit;
-
 get_header();
 
-echo do_shortcode('[update-veteran]');
+the_content();
 
 get_footer();
 ?>

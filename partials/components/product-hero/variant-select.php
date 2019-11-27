@@ -1,6 +1,8 @@
 <p class="k-productform--item k-productform--heading">Select One:</p>
 <div class="k-productform--item k-productform--variants">
 <?php
+$first_available = 0;
+
 foreach($product->get_available_variations() as $i => $variant) {
   $_variant = wc_get_product($variant['variation_id']);
   $price = $_variant->get_price();
@@ -11,6 +13,7 @@ foreach($product->get_available_variations() as $i => $variant) {
   $has_quantity_attributes = $attributes['attribute_quantity'] != NULL;
   $has_flavor_attribute = $attributes['attribute_flavor'] != NULL;
 ?>
+  <?php if ($first_available == 0 && $out_of_stock == false) {$first_available = $variant;};?>
   <div 
     class="
       k-productform--variantselect
@@ -19,6 +22,9 @@ foreach($product->get_available_variations() as $i => $variant) {
         echo $has_quantity_attributes ? ' has-quantity' : NULL;
       ?>
     "
+    <?php if ($out_of_stock): ?>
+    data-out-of-stock="true"
+    <?php endif; ?>
     tabindex="0"
   >
   <?php
@@ -47,6 +53,7 @@ foreach($product->get_available_variations() as $i => $variant) {
       name="variant-select"
       id="<?php echo $this_attribute.$i; ?>"
       value="<?php echo $this_attribute; ?>"
+      <?php echo $variant == $first_available ? 'checked' : '' ?>
     />
     <label
       for="<?php echo $this_attribute.$i; ?>"

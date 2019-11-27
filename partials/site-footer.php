@@ -18,8 +18,30 @@
           </div>
         </figure>
         <div class="k-footer--social k-rte-content">
-          <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">Instagram</a>
+          <div class="social-icons">
+            <div class="social-icons-row">
+              <a href="https://www.facebook.com/KOICBD" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/facebook'); ?>
+              </a>
+              <a href="https://twitter.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/twitter'); ?>
+              </a>
+              <a href="https://www.instagram.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/instagram'); ?>
+              </a>
+            </div>
+            <div class="social-icons-row">
+              <a href="https://www.youtube.com/channel/UCe8IzqpmK6p-kpeHndvXGuQ/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/youtube'); ?>
+              </a>
+              <a href="https://www.pinterest.com/koicbdlife/" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/pinterest'); ?>
+              </a>
+              <a href="https://www.linkedin.com/company/koi-cbd" target="_blank" rel="noopener, noreferrer">
+                <?php get_template_part('partials/svg/linkedin'); ?>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="k-footer--item k-footer--links k-rte-content">
@@ -41,8 +63,8 @@
           <ul>
             <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
             <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
+            <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
             <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
-            <!-- <li><a href="#0">Ambassadors</a></li> -->
             <li><a href="<?php echo $url . '/veteran-program'; ?>">Veterans</a></li>
             <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
@@ -52,17 +74,15 @@
           <ul>
             <li><a href="<?php echo $url . '/terms-and-conditions'; ?>">Terms & Conditions</a></li>
             <li><a href="<?php echo $url . '/privacy-policy'; ?>">Privacy Policy</a></li>
-            <!-- <li><a href="<?php echo $url . '/cookie-policy'; ?>">Cookie Policy</a></li> -->
             <li><a href="<?php echo $url . '/shipping-policy'; ?>">Shipping Policy</a></li>
-            <!-- <li><a href="#0">International</a></li> -->
           </ul>
         </div>
         </ul>
       </div>
       <div class="k-footer--item k-footer--badges">
-        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-badge@2x.png'; ?>" alt="">
-        <img src="<?php echo $root.'/dist/img/hia-member-badge@2x.png'; ?>" alt="">
-        <img src="<?php echo $root.'/dist/img/chc-badge@2x.png'; ?>" alt="">
+        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
+        <img src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
+        <img src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
       </div>
     </div>
   </div>

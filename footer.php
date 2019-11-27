@@ -44,15 +44,15 @@ $root = get_template_directory_uri();
       >
         <div class="k-form__liner">
           <div class="k-form__group">
-            <input class="k-input" type="email" name="email" id="k-review-email" />
+            <input class="k-input" type="email" name="email" id="k-review-email" required/>
             <label for="k-reviewemail">Email Address</label>
           </div>
           <div class="k-form__group">
-            <input type="text" class="k-input" name="displayname" id="k-review-displayname" />
+            <input type="text" class="k-input" name="displayname" id="k-review-displayname" required/>
             <label for="k-review-displayname">Display Name</label>
           </div>
           <div class="k-form__group">
-            <input type="text" name="reviewtitle" id="k-review-title" class="k-input" />
+            <input type="text" name="reviewtitle" id="k-review-title" class="k-input" required/>
             <label for="k-review-title">Review Title</label>
           </div>
 
@@ -101,10 +101,23 @@ $root = get_template_directory_uri();
   </div>
 
   <?php
-    get_template_part('partials/cart-sidebar');
+    if (is_page_template('templates/cart.php') == false) {
+      get_template_part('partials/cart-sidebar');
+    }
     global $wp;
   ?>
   
+  <!-- Start of LiveChat (www.livechatinc.com) code -->
+  <script type="text/javascript">
+  window.__lc = window.__lc || {};
+  window.__lc.license = 9499945;
+  (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+  </script>
+  <!-- End of LiveChat code -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -130,5 +143,22 @@ $root = get_template_directory_uri();
   jQuery(function(o){tvc_lc="USD",jQuery("div").on("click",".apply_coupons_credits",function(){if(coupon_code=jQuery(this).find("div.code").text(),""!=coupon_code&&null!=coupon_code){jQuery(this).css("opacity","0.5");var o="https://koicbd.com/?sc-page=checkout&coupon-code="+coupon_code;jQuery(location).attr("href",o)}});var e=function(){jQuery("div#coupons_list").find("div.coupon-container").length>0?jQuery("div#coupons_list").slideDown(800):jQuery("div#coupons_list").hide()};jQuery("#all_coupon_container").height()>400?(jQuery("#all_coupon_container").css("height","400px"),jQuery("#all_coupon_container").css("overflow-y","scroll")):(jQuery("#all_coupon_container").css("height",""),jQuery("#all_coupon_container").css("overflow-y","")),jQuery(".checkout_coupon").next("#coupons_list").hide(),jQuery("a.showcoupon").on("click",function(){e()}),jQuery(document).on("ready",function(){jQuery("div#invalid_coupons_list div#all_coupon_container .coupon-container").removeClass("apply_coupons_credits")}),jQuery(document.body).on("updated_checkout",function(o,c){c.fragments.wc_sc_available_coupons&&jQuery("div#coupons_list").replaceWith(c.fragments.wc_sc_available_coupons),e()}),jQuery(document.body).on("updated_cart_totals update_checkout",function(){jQuery("div#coupons_list").css("opacity","0.5"),jQuery.ajax({url:"https://koicbd.com/wp-admin/admin-ajax.php",type:"post",dataType:"html",data:{action:"sc_get_available_coupons",security:"d4cc3fa80e"},success:function(o){null!=o&&""!=o&&jQuery("div#coupons_list").replaceWith(o),e(),jQuery("div#coupons_list").css("opacity","1")}})}),jQuery("body").on("applied_coupon removed_coupon update_checkout",function(){jQuery.ajax({url:"https://koicbd.com/wp-admin/admin-ajax.php",type:"POST",dataType:"html",data:{action:"get_wc_coupon_message",security:"847daaf786"},success:function(o){jQuery(".wc_coupon_message_wrap").html(""),null!=o&&""!=o&&jQuery(".wc_coupon_message_wrap").html(o)}})}),window.wc_authorize_net_cim_credit_card_payment_form_handler=new WC_Authorize_Net_Payment_Form_Handler({plugin_id:"authorize_net_cim",id:"authorize_net_cim_credit_card",id_dasherized:"authorize-net-cim-credit-card",type:"credit-card",csc_required:!0,csc_required_for_tokens:!1,logging_enabled:!1,lightbox_enabled:!1,login_id:"8Q98gCqJ",client_key:"2KwRL5ATs76sRasQkv625958x6K8fS6R84Rb8UJAVs9WZ2s76tqUmQQegphvywcZ",general_error:"An error occurred, please try again or try an alternate form of payment.",ajax_url:"https://koicbd.com/wp-admin/admin-ajax.php",ajax_log_nonce:"7168f93909",enabled_card_types:["visa","mastercard","amex"]})});
   </script>
   <?php endif; ?>
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+
+<!--<script type="text/javascript">-->
+<!--  window.__lc = window.__lc || {};-->
+<!--  window.__lc.license = 9499945;-->
+<!--  (function() {-->
+<!--    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;-->
+<!--    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';-->
+<!--    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);-->
+<!--  })();-->
+<!--</script>-->
+<!--<noscript>-->
+<!--  <a href="https://www.livechatinc.com/chat-with/9499945/" rel="nofollow">Chat with us</a>,-->
+<!--  powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>-->
+<!--</noscript>-->
+
+<!-- End of LiveChat code -->
 </body>
 </html>

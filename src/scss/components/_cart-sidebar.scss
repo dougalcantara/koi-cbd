@@ -79,7 +79,7 @@
     }
 
     input[type='number'] {
-      padding: 0.5em 1em;
+      padding: 0.5em;
       max-width: 8ch;
     }
 
@@ -104,11 +104,17 @@
     margin-right: 1em !important;
   }
 
+  .k-cart-sidebar__item-update {
+    // this selector is because I want the buttons
+    // to maintain default button styling outside of
+    // the cart.
+    padding: 0.5em;
+  }
+
   &__item-update {
     position: absolute;
     top: 0%;
     right: 0%;
-    padding: 0.5em;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.65s $ease-out-circ;
@@ -136,16 +142,16 @@
   }
 
   &__close {
-    right: 1em;
+    right: 0;
     top: 0;
     transition: all 0.4s $ease-in-out-quint;
-    transform: rotate(45deg);
+    transform: translateX(-1em) rotate(45deg);
     transform-origin: center;
     color: $primary;
     font-size: 2em;
 
     &:hover {
-      transform: rotate(-45deg);
+      transform: translateX(-1em) rotate(-45deg);
     }
   }
 
@@ -164,7 +170,7 @@
 
   &__item {
     font-size: 80%;
-    padding: 1em 0;
+    padding: 1em 0.33em;
     border-bottom: 1px solid #ddd;
 
     &:last-child {
@@ -238,13 +244,17 @@
     }
 
     &__item {
-      padding: 2em 0;
+      padding: 2em 0.33em;
     }
 
     &__actions {
       .k-liner {
         padding-bottom: 1em;
       }
+    }
+
+    input[type='number'] {
+      font-size: 100%;
     }
   }
 }
@@ -293,7 +303,7 @@
     }
 
     &__close {
-      right: 1em;
+      right: 0em;
     }
 
     &__title {

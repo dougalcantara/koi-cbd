@@ -5,6 +5,7 @@
 Before launch, perform the following:
 1. Create a restore point for the Production env inside of WPEngine
 1. Check to make sure all ACF declarations match between Production & Staging envs
+1. `rm -rf node_modules` in theme
 1. Check to make sure all latest KOI2019 theme files are present in the Production env
    - Can get the latest from the `master` branch on GitHub is this is not the case
 1. Sync up the uploads directory to the live site

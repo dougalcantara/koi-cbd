@@ -1,5 +1,5 @@
 <?php /**
- * Class Members
+ * Class Veterans
  * Creates a WP Endpoint for HS webhook.
  * When fired, inserts/updates WP user with role of veteran.
  * Then sends back to HS with password and reset link.
@@ -7,7 +7,7 @@
 
 defined('ABSPATH') || exit;
 
-class Members {
+class Veterans {
 
   private $api_key = '9f7da0c8-2d44-40e9-86da-125a458151ce';
 

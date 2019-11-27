@@ -1,128 +1,114 @@
 import axios from 'axios';
-import { format } from 'date-fns';
 import { $doc, $reviewModal, $backdrop } from '../global/selectors';
+import ProductReview from '../helpers/ProductReview';
 
 $doc.ready(() => {
   const renderTarget = document.querySelector(
     '.k-productreviews__render-target'
   );
+  const productStore = document.querySelector('.k-producthero');
+
+  if (!productStore) return;
+
+  const sku = productStore.dataset.productSku;
+  const productTitle = productStore.dataset.productTitle;
+
+  let reviews;
+  const baseUrl = `https://api.yotpo.com`;
+  const appId = `MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG`; // prod
+  // const appId = `AXADc1rXubJYln9af9KlCO2iSAZehe2FIPjdwoVS`; // dev
 
   if (renderTarget) {
-    const reviews = new ProductReview(
-      renderTarget.dataset.productId,
-      renderTarget
+    const productId = renderTarget.dataset.productId;
+
+    getReviews(productId).then(res => {
+      reviews = res.data.response.reviews;
+
+      // console.log(reviews);
+
+      if (reviews.length > 0) {
+        const opts = {
+          baseUrl,
+          appId,
+          renderTarget,
+          reviews,
+          sku,
+          productTitle,
+        };
+
+        renderReviews(opts);
+      } else {
+        renderTarget.innerHTML = noReviews(sku, productTitle);
+        appendModalListeners();
+      }
+    });
+  }
+
+  async function getReviews(id) {
+    return axios.get(
+      `${baseUrl}/v1/widget/${appId}/products/${id}/reviews.json`
     );
   }
 });
 
-class ProductReview {
-  constructor(productId, renderTarget) {
-    this.id = productId;
-    this.baseUrl = `https://api.yotpo.com`;
-    this.appId = `MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG`;
-    this.reviews = null;
-    this.ready = false;
-    this.renderTarget = renderTarget;
-
-    this.getReviews().then(res => {
-      this.reviews = res.data.response.reviews;
-      this.renderReviews();
-    });
-  }
-
-  async getReviews() {
-    return axios.get(
-      `${this.baseUrl}/v1/widget/${this.appId}/products/${this.id}/reviews.json`
-    );
-  }
-
-  noReviews() {
-    const markup = /*html*/ `
+function noReviews(sku, title) {
+  const markup = /*html*/ `
       <p>None yet! Be the first to <a href="#0" class="k-createreview">leave a review.</a></p>    
     `;
-    return markup;
-  }
+  return markup;
+}
 
-  appendListener() {
-    const $titleTarget = $reviewModal.find('.k-review__producttitle span');
-    const $reviewModalForm = $reviewModal.find('.k-form--review');
-    const $createReviewTriggers = $('.k-createreview');
+function appendModalListeners(sku, title) {
+  const $titleTarget = $reviewModal.find('.k-review__producttitle span');
+  const $reviewModalForm = $reviewModal.find('.k-form--review');
+  const $createReviewTriggers = $('.k-createreview');
 
-    $createReviewTriggers.click(async function() {
-      const $t = $(this);
+  $createReviewTriggers.click(async function() {
+    const $t = $(this);
 
-      const productSku = $t.data('product-sku');
-      const productTitle = $t.data('product-title');
+    const productSku = sku;
+    const productTitle = title;
 
-      $titleTarget.text(productTitle);
+    $titleTarget.text(productTitle);
 
-      $backdrop.addClass('active');
-      $reviewModal.addClass('k-modal--open');
+    $backdrop.addClass('active');
+    $reviewModal.addClass('k-modal--open');
 
-      $reviewModalForm.attr('data-product-sku', productSku);
-      $reviewModalForm.attr('data-product-title', productTitle);
-    });
-  }
+    $reviewModalForm.attr('data-product-sku', productSku);
+    $reviewModalForm.attr('data-product-title', productTitle);
+  });
+}
 
-  renderReviews() {
-    if (this.reviews.length > 0) {
-      this.reviews.forEach(review => {
-        this.renderTarget.innerHTML += this.renderReview(review);
+function renderReviews(opts) {
+  const { reviews, baseUrl, appId, renderTarget, sku, productTitle } = opts;
+
+  reviews.forEach((review, index) => {
+    /*
+      Some products have hundreds of reviews. For now, only render the 10 most recent.
+    */
+    if (index <= 10) {
+      const productReview = new ProductReview({
+        baseUrl: baseUrl,
+        appId: appId,
+        review: review,
+        renderTarget: renderTarget,
+        voting: true,
+        showRating: true,
       });
-    } else {
-      this.renderTarget.innerHTML = this.noReviews();
-      this.appendListener();
     }
-  }
+  });
 
-  renderReview(review) {
-    const { title, content, user, votes_up, votes_down } = review;
-    let { created_at } = review;
+  appendReviewPrompt(sku, productTitle);
+}
 
-    created_at = format(new Date(created_at), 'MMMM dd, yyyy');
+function appendReviewPrompt(sku, title) {
+  const $reviewContainerLeft = $('.k-productreviews--title');
 
-    const markup = /*html*/ `
-      <article class="k-review">
-        <div class="k-review--liner">
-          <div class="k-review--title">
-            <h3 class="k-weight--lg">${title}</h3>
-          </div>
-          <div class="k-review--body">
-            <p>${content}</p>
-          </div>
-          <div class="k-review--meta">
-            <p>${created_at} - ${user.display_name}</p>
-          </div>
-          <div class="k-review--actions">
-            <div class="k-review--actions__item">
-              <div class="k-arrow k-arrow--up">
-                <div class="k-arrow--liner">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-circle">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="16 12 12 8 8 12"></polyline>
-                    <line x1="12" y1="16" x2="12" y2="8"></line>
-                  </svg>
-                </div>
-              </div>
-              <p>${votes_up}</p>
-            </div>
-            <div class="k-review--actions__item">
-              <div class="k-arrow k-arrow--down">
-                <div class="k-arrow--liner">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="8 12 12 16 16 12"></polyline>
-                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                  </svg>
-                </div>
-              </div>
-              <p>${votes_down}</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    `;
+  const reviewPromptMarkup = /*html*/ `
+    <p><a href="#0" class="k-createreview k-upcase" data-product-sku="" data-product-title="">Write a review</a></p>
+  `;
 
-    return markup;
-  }
+  $reviewContainerLeft.append(reviewPromptMarkup);
+
+  appendModalListeners(sku, title);
 }

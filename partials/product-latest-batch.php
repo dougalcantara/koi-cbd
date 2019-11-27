@@ -82,14 +82,20 @@
             </div>
           </div>
           <div class="k-latestbatch--results__column">
-            <div>
-              <p class="k-upcase">8.5<?php the_field('unit', get_the_ID()); ?></p>
-              <p class="k-upcase k-latestbatch--strength">(Full dropper / Serving Size)</p>
-            </div>
-            <div>
-              <p class="k-upcase">Approx. 0.42<?php the_field('units_per_item', get_the_ID()); ?></p>
-              <p class="k-upcase k-latestbatch--strength">(Depending on drop size)</p>
-            </div>
+              <div>
+                <?php if (the_field('unit', get_the_ID())): ?>
+                  <p class="k-upcase">Unit:</p>
+                  <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
+                <?php else: ?>
+                  <p class="k-upcase">Unit:</p>
+                  <p class="k-upcase" style="color: red;">This item does not have a unit value set.</p>
+                <?php endif; ?>
+              </div>
+            <?php if (the_field('units_per_item', get_the_ID())): ?>
+              <div>
+                <p class="k-upcase">Approx. <?php the_field('units_per_item', get_the_ID()); ?> / Item</p>
+              </div>
+            <?php endif; ?>
           </div>
           <div class="k-latestbatch--results__column">
             <p id="k-totalthc" class="k-bigtext"> <span class="k-totalthc__render-target">0.0000</span>% <span class="k-measurement">Total THC</span></p>

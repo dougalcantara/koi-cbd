@@ -39,6 +39,10 @@
     }
   }
 
+  &__gold-star {
+    padding: 0.5em 0;
+  }
+
   &--body {
     margin-bottom: 2em;
   }
@@ -59,13 +63,26 @@
       display: inline-block;
 
       .k-arrow {
+        circle,
+        polyline,
+        line {
+          stroke: #cccccc;
+        }
         &:hover {
-          cursor: default;
+          cursor: pointer;
 
           circle,
           polyline,
           line {
-            stroke: #cccccc;
+            stroke: $primary;
+          }
+        }
+
+        &--voted {
+          circle,
+          polyline,
+          line {
+            stroke: $primary;
           }
         }
       }

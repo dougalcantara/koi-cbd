@@ -58,6 +58,16 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-flow: row wrap;
+
+      &--error {
+        h1 {
+          flex-basis: 100%;
+        }
+
+        p {
+          flex-basis: 100%;
+        }
+      }
     }
 
     &__column {
@@ -174,6 +184,10 @@
         justify-content: flex-start;
         align-items: stretch;
         padding: 3.75em;
+
+        &--error {
+          flex-flow: row wrap;
+        }
       }
 
       &__column {

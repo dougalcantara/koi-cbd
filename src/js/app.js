@@ -27,6 +27,8 @@ import './components/video-players';
 import './components/newsletter-signup';
 import './components/newsletter-cta';
 import './components/location-finder';
+import './components/checkout-validation';
+import './components/prod-qty';
+import './components/cart-template';
 
 import 'promise-polyfill/src/polyfill';
-import './dirty';

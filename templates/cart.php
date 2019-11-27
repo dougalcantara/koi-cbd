@@ -3,8 +3,6 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-
-global $ultimatemember;
   
 $cart = WC()->cart;
 $cart_acf = get_fields();
@@ -13,33 +11,25 @@ $url = site_url();
 
 /**
  * Veterans get a 25% discount automatically applied in the form of a special coupon.
- * 
- * Only users with the "veteran" role are eligible for the coupon, so we chack for that
- * as well.
  */
-
-$user_is_veteran = in_array('veteran', get_userdata(get_current_user_id())->roles);
-/**
- * Important! Also need to check if user was previously qualified as vet via Ultimate Member.
- * I believe it can be a check for get_user_metadata() or something like that.
- */
+$user_is_veteran_role = in_array('veteran', get_userdata(get_current_user_id())->roles);
 $user_veteran_status = get_fields('user_' . get_current_user_id())['veteran_status'];
-$is_approved_veteran = $user_is_veteran && $user_veteran_status == 'Veteran Approved';
+$is_approved_veteran = $user_is_veteran_role && $user_veteran_status == 'Veteran Approved';
 $veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
 $should_apply_coupon = $is_approved_veteran && !$veteran_coupon_already_applied;
-
 /**
- * If the veteran coupon is not applied, and the user is an approved veteran
+ * If the veteran coupon is not applied,
+ * and the user is an approved veteran:
  */
 if ($should_apply_coupon) {
   $cart->apply_coupon('veteran coupon');
 }
-
 /**
- * If a non-veteran tries to use the veteran coupon, or if a valid veteran decides to remove the coupon for some reason
+ * If a non-veteran tries to use the veteran coupon, 
+ * or if a valid veteran decides to remove the coupon:
  */
 $valid_veteran_remove_coupon = $_GET['remove_coupon'] == 'veteran coupon';
-if (!$user_is_veteran && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
+if (!$user_is_veteran_role && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
 	$cart->remove_coupon('veteran coupon');
 }
 
@@ -97,7 +87,7 @@ if (sizeof($items_in_cart) == 0) { ?>
             if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
               $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key); ?>
 
-              <div class="k-cart--item woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+              <div class="k-cart--item woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>" data-product-id="<?php echo $_product->get_id(); ?>">
                 <div class="k-cart--item__liner">
 
                   <div class="k-cart--item__thumbnail">
@@ -156,16 +146,13 @@ if (sizeof($items_in_cart) == 0) { ?>
                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                   } else { ?>
                     <div class="k-cart--quantity">
-                      <button type="button" class="k-reduce" data-cart-item-key="<?php echo $cart_item_key; ?>">-</button>
                       <input
                         id="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         type="number"
                         name="<?php echo 'cart[' . $cart_item_key . '][qty]'; ?>"
                         value="<?php echo $cart_item['quantity'] ?>"
                         min="0"
-                        max="10"
                         />
-                      <button type="button" class="k-increase" data-cart-item-key="<?php echo $cart_item_key; ?>">+</button>
                     </div>
                   <?php
                   }
@@ -174,11 +161,13 @@ if (sizeof($items_in_cart) == 0) { ?>
 
                   <div class="k-cart--item__price">
                     <?php
-                    if ($_product->get_type() != 'bundle') { ?>
-                      <p class="k-bigtext"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
-                    <?php
-                    }
-                    ?>
+                    if ($_product->get_type() != 'bundle') : ?>
+                      <p class="k-bigtext k-cartItem--price-target"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
+                      <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
+                    <?php else: ?>
+                      <p class="k-bigtext">&nbsp;</p>
+                      <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
+                    <?php endif; ?>
                   </div>
 
                 </div>
