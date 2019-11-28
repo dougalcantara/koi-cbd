@@ -1,5 +1,4 @@
-
-<h1>Account Overview</h1>
+<h1>Orders</h1>
 <div class="order-list list">
   <div class="list-head">
     <div class="list-head-item">
@@ -40,12 +39,8 @@
           </div>
         </div>
       <?php endforeach; ?>
-      <div class="list-link">
-        <a href="#">All Orders</a>
-      </div>
     <?php else: ?>
       <p>You have no orders yet</p>
     <?php endif; ?>
   </div>
 </div>
-    

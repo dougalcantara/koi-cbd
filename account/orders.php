@@ -11,20 +11,25 @@
         </a>
       </li>
       <li>
-        <span>
+        <a href="<?php echo home_url(); ?>/account">
           Account
+        </a>
+      </li>
+      <li>
+        <span>
+          Orders
         </span>
       </li>
     </ul>
   </nav>
   <div class="account-inside">
     <main class="account-content">
-      <h1>Orders</h1>
-      <pre>
-        <?php
-        //$url = explode('/', $_SERVER['REQUEST_URI']);
-        ?>
-      </pre>
+      <?php $url = explode('/', $_SERVER['REQUEST_URI']); ?>
+      <?php if(count($url) === 6): ?>
+        <?php include(locate_template('account/partials/order.php')); ?>
+      <?php else: ?>
+        <?php include(locate_template('account/partials/orders.php')); ?>
+      <?php endif; ?>
     </main>
     <?php get_template_part('account/partials/sidebar'); ?>
   </div>

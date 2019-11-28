@@ -1,5 +1,5 @@
 <?php /**
- * Class Members
+ * Class Veterans
  * Creates a WP Endpoint for HS webhook.
  * When fired, inserts/updates WP user with role of veteran.
  * Then sends back to HS with password and reset link.
@@ -7,7 +7,7 @@
 
 defined('ABSPATH') || exit;
 
-class Members {
+class Veterans {
 
   private $api_key = '9f7da0c8-2d44-40e9-86da-125a458151ce';
 
@@ -22,22 +22,29 @@ class Members {
     ));
   }
 
+  private function log($string) {
+    $open = fopen( get_template_directory().'/rest.log', "w" );
+    $write = fwrite( $open, $string);
+    fclose( $open );
+  }
+
   public function process($request) {
+    $payload = json_decode($request->get_body(), true);
     $response = new WP_REST_Response();
-    if($request['propertyName'] == 'military_id') {
-      if($msg = $this->create($request['objectId'])) {
+    $response->set_data($payload[0]['objectId']);
+    if($payload[0]['propertyValue'] == 'veteran_applied') {
+      if($this->create($payload[0]['objectId'])) {
         $response->set_status(200);
       } else {
-        $response->set_status(501);
+        $response->set_status(418);
       }
-      $response->set_data($msg);
-    } else {
-      if($msg = $this->approve($request)) {
+    }
+    if($payload[0]['propertyValue'] == 'veteran_approved'){
+      if($this->approve($request)) {
         $response->set_status(200);
       } else {
-        $response->set_status(501);
+        $response->set_status(450);
       }
-      $response->set_data($msg);
     }
     return $response;
   }
@@ -59,7 +66,7 @@ class Members {
   }
 
   public function approve($request) {
-    $contactData = json_decode($this->get_hubspot_user($request['objectId']), true);
+    $contactData = json_decode($this->get_hubspot_user($request[0]['objectId']), true);
     $wp_user = get_user_by('email', $contactData['properties']['email']['value']);
     update_field('veteran_status', 'Veteran Approved', 'user_'.$wp_user->ID);
     return $wp_user;
