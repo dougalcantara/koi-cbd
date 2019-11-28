@@ -14,7 +14,7 @@
       <div class="k-footer--item k-footer--logo">
         <figure class="k-figure">
           <div class="k-figure--liner">
-            <img src="<?php echo $root . '/dist/img/koi-logo-main@2x.png'; ?>" alt="" class="k-figure--img" />
+            <img src="<?php echo $root . '/dist/img/koi-logo-main@2x.png'; ?>" alt="Koi CBD Logo" class="k-figure--img" />
           </div>
         </figure>
         <div class="k-footer--social k-rte-content">
