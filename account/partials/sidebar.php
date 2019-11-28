@@ -16,7 +16,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo home_url(); ?>/account">
+          <a href="<?php echo home_url(); ?>/account" class="highlight">
             <?php include(locate_template('partials/svg/icon-logout.php')); ?>
             Logout
           </a>
