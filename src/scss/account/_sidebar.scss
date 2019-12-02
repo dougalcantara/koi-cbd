@@ -29,7 +29,7 @@
         transition: all .25s ease;
       }
       &.highlight {
-        color: $primary-dark;
+        color: $primary-dark !important;
       }
       &:hover {
         color: $primary-dark !important;

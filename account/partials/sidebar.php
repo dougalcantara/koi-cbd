@@ -10,15 +10,15 @@
       </div>
       <ul>
         <li>
-          <a href="<?php echo home_url(); ?>/account">
-            <?php include(locate_template('partials/svg/icon-account.php')); ?>
-            Account
+          <a href="<?php echo wc_logout_url(); ?>" class="highlight">
+            <?php include(locate_template('partials/svg/icon-logout.php')); ?>
+            Logout
           </a>
         </li>
         <li>
-          <a href="<?php echo home_url(); ?>/account" class="highlight">
-            <?php include(locate_template('partials/svg/icon-logout.php')); ?>
-            Logout
+          <a href="<?php echo home_url(); ?>/account">
+            <?php include(locate_template('partials/svg/icon-account.php')); ?>
+            Account
           </a>
         </li>
         <li>
