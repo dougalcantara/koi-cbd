@@ -90,7 +90,7 @@
     <div class="k-inner k-inner--md k-block k-block--md">
       <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
-          <img src="<?php echo $root . '/dist/img/koi-man-running.jpg' ?>" alt="" class="k-figure--img">
+          <img src="<?php echo $root . '/dist/img/koi-man-running.jpg' ?>" alt="Man running" class="k-figure--img">
         </div>
       </figure>
 

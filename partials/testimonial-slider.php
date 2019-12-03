@@ -12,7 +12,7 @@
             <div class="k-figure--liner">
               <img
                 src="<?php echo $testimonial['author_image']['url']; ?>"
-                alt=""
+                alt="Testimonial Author Profile Image"
                 class="k-figure--img"
               />
             </div>

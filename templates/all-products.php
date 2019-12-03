@@ -51,7 +51,7 @@ $all_categories = get_categories($args);
         <a href="<?php echo site_url() . '/' . $links[$i]; ?>">
           <figure class="k-figure">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $cat_fields['category_featured_image']['url']; ?>" alt="">
+              <img class="k-figure--img" data-src="<?php echo $cat_fields['category_featured_image']['url']; ?>" alt="<?php echo $product_cat->name; ?>">
             </div>
           </figure>
         </a>

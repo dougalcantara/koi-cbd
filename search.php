@@ -43,7 +43,7 @@ do_action('k_before_first_section');
               <a href="<?php echo $link_to_product; ?>">
                 <figure class="k-figure">
                   <div class="k-figure--liner" style="padding-bottom: 100%;">
-                    <img src="<?php echo $image; ?>" alt="" class="k-figure--img">
+                    <img src="<?php echo $image; ?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img">
                   </div>
                 </figure>
               </a>

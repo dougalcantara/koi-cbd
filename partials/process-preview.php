@@ -13,7 +13,7 @@
     <div class="k-videogallery--item k-videogallery--video has-play-button">
       <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
-          <img data-src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="" class="k-figure--img">
+          <img data-src="<?php echo $root.'/dist/img/koi-video-placeholder.jpg'; ?>" alt="Seedlings video placeholder" class="k-figure--img">
         </div>
       </figure>
       <div class="k-player" data-plyr-provider="youtube" data-plyr-embed-id="<?php the_field('homepage_video_gallery_video_link','option'); ?>"></div>

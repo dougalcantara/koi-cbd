@@ -18,7 +18,7 @@
               $ls_img_url = $lifestyle_img ? $lifestyle_img['url'] : $root . '/dist/img/koi-leaves-placeholder.jpg';
               
             ?>
-            <img src="<?php echo $ls_img_url ?>" alt="" class="k-figure--img">
+            <img src="<?php echo $ls_img_url ?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img">
           </div>
         </figure>
       </div>
