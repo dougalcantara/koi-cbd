@@ -37,7 +37,7 @@ do_action('k_before_first_section');
 				<div class="k-login__form__liner">
 			<?php endif; ?>
 
-					<h2><?php esc_html_e('Reset Password', 'woocommerce'); ?></h2>
+					<h2><?php esc_html_e('Login', 'woocommerce'); ?></h2>
 
 					<form class="woocommerce-form woocommerce-form-login login" method="post">
 
