@@ -22,7 +22,7 @@ do_action('k_before_first_section');
 	<div class="k-login__midimg">
 		<figure class="k-figure">
 			<div class="k-figure--liner">
-				<img data-src="<?php echo $root . '/dist/img/Combo-Strawberry-2000.png'; ?>" alt="" class="k-figure--img">
+				<img data-src="<?php echo $root . '/dist/img/Combo-Strawberry-2000.png'; ?>" alt="Koi Naturals Strawberry 2000mg" class="k-figure--img">
 			</div>
 		</figure>
 	</div>

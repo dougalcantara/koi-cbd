@@ -67,7 +67,7 @@
 
   &--pets {
     .k-figure {
-      width: 80%;
+      width: 90%;
       overflow: hidden;
 
       &--liner {
@@ -199,6 +199,11 @@
     &--pets {
       margin: 0 0 0 auto;
       max-width: 21.66em;
+
+      .k-figure {
+        width: 125%;
+        transform: translateX(-12.5%);
+      }
     }
 
     &--edibles {

@@ -16,6 +16,7 @@ const flktyOpts = {
   contain: true,
   dragThreshold: 10,
   imagesLoaded: true,
+  accessibility: false,
 };
 
 document.addEventListener('DOMContentLoaded', () => {

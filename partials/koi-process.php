@@ -111,7 +111,7 @@ $root = get_template_directory_uri();
         <div class="k-process__carousel__image">
           <figure class="k-figure">
             <div class="k-figure--liner">
-              <img data-src="<?php echo $slide['placeholder_image']['url']; ?>" alt="" class="k-figure--img">
+              <img data-src="<?php echo $slide['placeholder_image']['url']; ?>" alt="<?php echo $slide['placeholder_image']['alt'];?>" class="k-figure--img">
             </div>
           </figure>
         </div>
