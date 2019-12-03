@@ -37,7 +37,7 @@ do_action('k_before_first_section');
 				<div class="k-login__form__liner">
 			<?php endif; ?>
 
-					<h2><?php esc_html_e('Customer Login', 'woocommerce'); ?></h2>
+					<h2><?php esc_html_e('Login', 'woocommerce'); ?></h2>
 
 					<form class="woocommerce-form woocommerce-form-login login" method="post">
 
@@ -67,7 +67,7 @@ do_action('k_before_first_section');
 						<p class="woocommerce-LostPassword lost_password">
 							<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 						</p>
-						<p><a href="<?php echo site_url() . '/veteran-signup'; ?>">Veteran? Apply for Veteran Discount &rarr;</a></p>
+						<p><a href="<?php echo site_url() . '/veteran-program'; ?>">Veteran? Apply for Veteran Discount &rarr;</a></p>
 
 						<?php do_action('woocommerce_login_form_end'); ?>
 

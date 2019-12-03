@@ -27,12 +27,25 @@
       <h1>Change Password</h1>
       <form class="form" id="update-password" data-customer="<?php echo get_current_user_id(); ?>">
         <?php global $current_user; ?>
+        <div class="field">
+          <label for="current-password" class="field-label">
+            Current Password
+          </label>
+          <input id="current-password" name="password" type="password" class="field-input">
+        </div>
 
         <div class="field">
-          <label for="password" class="field-label">
-            Password
+          <label for="new-password" class="field-label">
+            New Password
           </label>
-          <input id="password" name="password" type="password" class="field-input" value="">
+          <input id="new-password" name="password" type="password" class="field-input field-match">
+        </div>
+
+        <div class="field">
+          <label for="confirm-password" class="field-label">
+            Confirm New Password
+          </label>
+          <input id="confirm-password" name="password" type="password" class="field-input field-match">
         </div>
 
         <div class="field">

@@ -15,6 +15,9 @@
         color: hsl(0, 0%, 30%);
         background: white;
         transition: all .25s ease;
+        &.error {
+          border-color: lightpink !important;
+        }
         &[disabled] {
           color: hsl(0, 0%, 50%);
           background: hsl(0,0%,95.5%);
