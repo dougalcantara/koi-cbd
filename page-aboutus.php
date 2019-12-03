@@ -59,7 +59,7 @@ get_header();
     <div class="k-presspromo--image">
       <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
-          <img data-src="<?php echo $root . '/dist/img/koi-man-running.jpg' ?>" alt="" class="k-figure--img">
+          <img data-src="<?php echo $root . '/dist/img/koi-man-running.jpg' ?>" alt="Man running" class="k-figure--img">
         </div>
       </figure>
     </div>

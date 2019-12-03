@@ -78,13 +78,13 @@ $url = site_url();
           <li><a class="k-upcase" href="<?php echo $url; ?>/account/">Account</a></li>
 
           <li class="k-header--cart">
-            <a id="k-carttoggle">
+            <a id="k-carttoggle" tabindex="0" aria-label="cart">
               <i class="icon-bag"></i>
               <span id="k-cartnum" class="">0</span>
             </a>
           </li>
 
-          <li class="k-searchtrigger">
+          <li class="k-searchtrigger" aria-label="search">
             <!-- <a href="<?php echo $url; ?>/search"> -->
               <i class="icon-magnifier"></i>
             <!-- </a> -->
@@ -95,7 +95,7 @@ $url = site_url();
     <div class="k-inner k-inner--xl">
       <div class="k-header--logo">
         <a href="<?php echo site_url(); ?>">
-          <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="">
+          <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="Koi CBD Logo">
         </a>
       </div>
       <div class="k-header--navtoggle" id="k-nav-trigger">

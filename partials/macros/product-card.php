@@ -11,7 +11,7 @@ function k_product_card($args) {
       <a href="<?php echo $args['product_link']; ?>">
         <figure class="k-figure">
           <div class="k-figure--liner">
-            <img class="k-figure--img" data-src="<?php echo $args['product_image_url']; ?>" alt="">
+            <img class="k-figure--img" data-src="<?php echo $args['product_image_url']; ?>" alt="<?php echo $args['product_title']; ?>">
           </div>
         </figure>
       </a>

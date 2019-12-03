@@ -1,6 +1,5 @@
 import AjaxCart from './ajax-cart';
 import wasEnter from '../helpers/wasEnter';
-import AjaxCartItem from '../components/ajax-cart-item';
 import {
   $win,
   $doc,
@@ -99,7 +98,7 @@ function handleCartSidebar(cartItems, expandedProducts) {
     $cartItemsTarget.append(/*html*/ `
       <div class="k-cart-sidebar__item" data-item-key="${product.key}">
         <div class="k-cart-sidebar__item__liner">
-          <img src="${product.thumbnail_url}" alt="" />
+          <img src="${product.thumbnail_url}" alt="${product.name}" />
           <h3>
             <a href="${product.permalink}">${product.name}</a>
           </h3>
@@ -111,7 +110,7 @@ function handleCartSidebar(cartItems, expandedProducts) {
               }" min="0" step="1" />
             </div>
             <p class="k-bigtext">
-            <span class="k-cart-sidebar__item-price k-cartItem--price-target">${
+            <span class="k-cart-sidebar__item-price k-cartItem--price-target" tabindex="0" aria-label="price">${
               product.is_bundle ? bundledPrice : totalPrice
             }</span>
             <button class="k-cart-sidebar__item-update k-button k-button--primary">Update</button>
@@ -348,6 +347,15 @@ $cartSidebarClose.keypress(function(e) {
   }
 });
 $cartSidebarToggle.click(function(e) {
+  toggleCartSidebar(e);
+});
+$cartSidebarToggle.keypress(function(e) {
+  if (wasEnter(e)) {
+    toggleCartSidebar(e);
+  }
+});
+
+function toggleCartSidebar(e) {
   e.preventDefault();
 
   if ($header.hasClass('is-open')) {
@@ -365,4 +373,4 @@ $cartSidebarToggle.click(function(e) {
     $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
     $cartSidebar.focus();
   }
-});
+}
