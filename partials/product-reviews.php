@@ -19,8 +19,19 @@
     
       foreach($first_page_reviews as $review) :
         echo k_product_review($review);
-      endforeach;
-    else : ?>
+      endforeach; ?>
+
+      <ul class="k-productreviews__pagination">
+      <?php
+      for ($i = 0; $i < $total_reviews; $i += 10) :
+        $page_num = substr($i, 0, 1) + 1; ?>
+
+        <li class="<?php echo $i == 0 ? 'active' : NULL; ?>">
+          <a href="#reviews_page=<?php echo $page_num; ?>"><?php echo $page_num; ?></a>
+        </li>
+      <?php endfor; ?>
+      </ul>
+    <?php else : ?>
       <p>None yet! Be the first to <a href="#0" class="k-createreview">leave a review.</a></p>
     <?php
     endif; ?>
