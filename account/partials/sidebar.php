@@ -10,7 +10,7 @@
       </div>
       <ul>
         <li>
-          <a href="<?php echo wc_logout_url(); ?>" class="highlight">
+          <a href="<?php echo wc_logout_url(home_url() . '/login'); ?>" class="highlight">
             <?php include(locate_template('partials/svg/icon-logout.php')); ?>
             Logout
           </a>
@@ -22,7 +22,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo home_url(); ?>/account/lost-password">
+          <a href="<?php echo home_url(); ?>/account/password">
             <?php include(locate_template('partials/svg/icon-password.php')); ?>
             Change Password
           </a>
