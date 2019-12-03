@@ -60,6 +60,7 @@ foreach($product->get_available_variations() as $i => $variant) {
       class="k-productform--varianttoggle <?php echo $out_of_stock ? 'k-out-of-stock' : NULL; ?>"
       data-variant-id="<?php echo $variant_id; ?>"
       data-variant-price="<?php echo $variant['display_price']; ?>"  
+      data-flickityselector="<?php echo $variant['attributes']['attribute_flavor'],$variant['attributes']['attribute_choose'],$variant['attributes']['attribute_strength'],$variant['attributes']['attribute_pa_strength'],$variant['attributes']['attribute_pa_flavor'] ?>"
     >
       <span>
         <?php if ($has_flavor_attribute) : echo $attributes['attribute_flavor']; endif; ?>

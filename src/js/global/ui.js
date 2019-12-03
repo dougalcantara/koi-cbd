@@ -6,6 +6,13 @@ import {
   $searchModal,
   $backdrop,
   $reviewModal,
+  //Imported
+  $myDrop,
+  $myNews,
+  $myOpenCart,
+  $myOpenSearch,
+  $myOpenMenu,
+  $myOpenNews,
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
@@ -109,4 +116,33 @@ $logoutTrigger.click(function(e) {
     data: { action: 'customer_logout' },
     complete: () => (window.location.href = `${window.SITE_GLOBALS.root}`),
   });
+});
+
+$myOpenCart.click(function(){
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display','none');
+  $searchModal.removeClass('k-modal--open');
+  $backdrop.removeClass('active');
+  $myDrop.removeClass('k-dropdown--open');
+});
+
+$myOpenSearch.click(function(){
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display','none');
+  $myDrop.removeClass('k-dropdown--open');
+  $myDrop.css('height', 0);
+});
+
+$myOpenMenu.click(function(){
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display','none');
+  $searchModal.removeClass('k-modal--open');
+  $cartSidebar.removeClass('k-cart-sidebar--open');
+});
+
+$myOpenNews.click(function(){
+  $searchModal.removeClass('k-modal--open');
+  $backdrop.removeClass('active');
+  $cartSidebar.removeClass('k-cart-sidebar--open');
+  $myDrop.removeClass('k-dropdown--open');
 });

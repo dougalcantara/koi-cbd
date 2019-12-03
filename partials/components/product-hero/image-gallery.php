@@ -2,10 +2,12 @@
 <?php
 if ($product_wc_type == 'variable') {
   foreach($product->get_available_variations() as $variant) { ?>
-    <div class="k-producthero--slide">
+    <div 
+      class="k-producthero--slide"
+      data-flickityselector="<?php echo $variant['attributes']['attribute_flavor'],$variant['attributes']['attribute_choose'], $variant['attributes']['attribute_strength'], $variant['attributes']['attribute_pa_strength'],$variant['attributes']['attribute_pa_flavor']?>">
       <div class="k-figure">
         <div class="k-figure--liner">
-          <img src="<?php echo $variant['image']['url'] ?>" alt="" class="k-figure--img" />
+          <img src="<?php echo $variant['image']['url'] ?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img" />
         </div>
       </div>
     </div>
@@ -18,7 +20,7 @@ if ($product_wc_type == 'variable') {
     <div class="k-producthero--slide">
       <div class="k-figure">
         <div class="k-figure--liner">
-          <img src="<?php echo wp_get_attachment_image_url($product->get_image_id(), 'large'); ?>" alt="" class="k-figure--img"/>
+          <img src="<?php echo wp_get_attachment_image_url($product->get_image_id(), 'large'); ?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img"/>
         </div>
       </div>
     </div>
@@ -28,7 +30,7 @@ if ($product_wc_type == 'variable') {
   <div class="k-producthero--slide">
     <div class="k-figure">
       <div class="k-figure--liner">
-        <img src="<?php echo get_the_post_thumbnail_url($product_id)?>" alt="" class="k-figure--img" />
+        <img src="<?php echo get_the_post_thumbnail_url($product_id)?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img" />
       </div>
     </div>
   </div>
