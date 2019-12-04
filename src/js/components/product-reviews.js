@@ -19,29 +19,25 @@ $doc.ready(() => {
   // const appId = `AXADc1rXubJYln9af9KlCO2iSAZehe2FIPjdwoVS`; // dev
 
   if (renderTarget) {
-    const productId = renderTarget.dataset.productId;
-
-    getReviews(productId).then(res => {
-      reviews = res.data.response.reviews;
-
-      // console.log(reviews);
-
-      if (reviews.length > 0) {
-        const opts = {
-          baseUrl,
-          appId,
-          renderTarget,
-          reviews,
-          sku,
-          productTitle,
-        };
-
-        renderReviews(opts);
-      } else {
-        renderTarget.innerHTML = noReviews(sku, productTitle);
-        appendModalListeners();
-      }
-    });
+    // const productId = renderTarget.dataset.productId;
+    // getReviews(productId).then(res => {
+    //   reviews = res.data.response.reviews;
+    //   // console.log(reviews);
+    //   if (reviews.length > 0) {
+    //     const opts = {
+    //       baseUrl,
+    //       appId,
+    //       renderTarget,
+    //       reviews,
+    //       sku,
+    //       productTitle,
+    //     };
+    //     renderReviews(opts);
+    //   } else {
+    //     renderTarget.innerHTML = noReviews(sku, productTitle);
+    //     appendModalListeners();
+    //   }
+    // });
   }
 
   async function getReviews(id) {
