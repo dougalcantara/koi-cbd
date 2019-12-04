@@ -1,7 +1,6 @@
 <?php
   /* Template Name: 2019 Location Finder Page */
   $root = get_template_directory_uri();
-
   get_header();
 ?>
 

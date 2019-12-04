@@ -1,3 +1,11 @@
+#k-carttoggle {
+  margin: 0 1em 0.25em auto;
+
+  i {
+    font-size: 200%;
+  }
+}
+
 .k-header {
   position: sticky;
   top: -2.75em; // actual value gets set by JS based on the height of the promo bar above
@@ -234,6 +242,14 @@
 }
 
 @media (min-width: $bp-md) {
+  #k-carttoggle {
+    margin: auto;
+
+    i {
+      font-size: 100%;
+    }
+  }
+
   .k-header {
     &--traveling {
       .k-header--logo {
