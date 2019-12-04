@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development gulp",
     "build": "NODE_ENV=production gulp",
-    "deploy": "/bin/zsh  /Applications/MAMP/htdocs/koicbd/wp-content/themes/KOI-2019/deploy.sh"
+    "deploy": "/bin/zsh  /Applications/MAMP/htdocs/koicbd/wp-content/themes/koitheme/deploy.sh"
   },
   "keywords": [],
   "author": "",

@@ -14,7 +14,16 @@ echo k_hero(array(
   'background_image' => $fields['hero_background_image']['url'],
 ));
 
-get_template_part('partials/components/randoms/breadcrumb');
+new Breadcrumbs([
+  [
+    'name' => 'Home',
+    'url' => home_url()
+  ],
+  [
+    'name' => 'Shop All',
+    'url' => home_url() . 'cbd-products'
+  ]
+]);
 
 $taxonomy = 'product_cat';
 $orderby = 'name';  
