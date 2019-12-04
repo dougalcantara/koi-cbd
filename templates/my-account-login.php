@@ -65,7 +65,7 @@ do_action('k_before_first_section');
 						
 						<p><a href="#0" class="k-toggle-register">Create an Account</a></p>
 						<p class="woocommerce-LostPassword lost_password">
-							<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
+							<a href="<?php echo home_url(); ?>/wp-login.php?action=lostpassword"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 						</p>
 						<p><a href="<?php echo site_url() . '/veteran-program'; ?>">Veteran? Apply for Veteran Discount &rarr;</a></p>
 
