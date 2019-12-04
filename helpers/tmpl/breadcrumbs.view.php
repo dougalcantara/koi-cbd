@@ -1,5 +1,5 @@
 <nav class="breadcrumbs">
-  <ul class="breadcrumbs-inside">
+  <ul class="breadcrumbs-links">
     <?php foreach($links as $i => $link): ?>
       <li>
         <?php if($i !== count($links) - 1): ?>

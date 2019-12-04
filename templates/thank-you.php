@@ -33,6 +33,17 @@ if ($order) {
     </div>
   </section>
 
+  <?php new Breadcrumbs([
+    [
+      'name' => 'Home',
+      'url' => home_url()
+    ],
+    [
+      'name' => get_the_title(),
+      'url' => get_the_permalink()
+    ]
+  ]); ?>
+
   <section class="woocommerce-order-details k-block k-block--md k-orderreceived">
     <div class="k-inner k-inner--md">
       <?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>

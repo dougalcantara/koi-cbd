@@ -5,15 +5,16 @@
  * @version     1.6.4
  */
 if (!defined('ABSPATH')) {
-	exit;
+  exit;
 }
 
 get_header();
 
-function formatAttrName($string) {
+function formatAttrName($string)
+{
   $arr = explode('-', $string);
 
-  foreach($arr as $idx => $str) {
+  foreach ($arr as $idx => $str) {
     $arr[$idx] = ucfirst($str);
   }
 
@@ -34,19 +35,37 @@ while (have_posts()) : the_post();
   do_action('k_before_first_section');
 
   include(locate_template('partials/product-hero.php'));
-  get_template_part('partials/components/randoms/breadcrumb');
+  new Breadcrumbs([
+    [
+      'name' => 'Home',
+      'url' => home_url()
+    ],
+    [
+      'name' => 'Shop All',
+      'url' => home_url() . '/cbd-products'
+    ],
+    [
+      'name' => $product_category = reset($cat_name)->name,
+      'url' => home_url() . '/' . $product_category = reset($cat_name)->slug
+    ],
+    [
+      'name' => $product->name,
+      'url' => home_url() . '/product/' . $product->slug
+    ]
+  ]);
   include(locate_template('partials/product-details.php'));
 
   if ($product_category != 'Merchandise' && $product_category != 'CBD Vape Devices') : // these categories don't have lab results associated with them
     include(locate_template('partials/product-latest-batch.php'));
-  else : // need something here to keep spacing consistent w/o the "latest batch" section. This is the quickest way for now ?>
+  else : // need something here to keep spacing consistent w/o the "latest batch" section. This is the quickest way for now
+    ?>
     <section class="k-block k-block--md k-no-padding--top"></section>
   <?php endif;
 
   if ($product_acf['frequently_asked_questions']) {
     include(locate_template('partials/product-faq-accordion.php'));
   }
-  
+
   include(locate_template('partials/product-reviews.php'));
 
   /**
