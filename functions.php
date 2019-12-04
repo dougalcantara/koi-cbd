@@ -509,6 +509,10 @@ if(class_exists('Veterans')) {
   $veterans = new Veterans();
 }
 
+if(class_exists('Member')) {
+  $member = new Member();
+}
+
 function admin_styles() {
   wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/admin.css' );
 }

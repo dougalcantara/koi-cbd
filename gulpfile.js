@@ -24,6 +24,8 @@ function server(done) {
   browserSync.init({
     files: PATHS.css.output,
     notify: false,
+    open: false,
+    ghostMode: false,
     proxy: 'http://localhost:8888/koicbd/',
   });
 
