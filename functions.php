@@ -2,6 +2,7 @@
 
 require_once( __DIR__ . '/helpers/veterans.php');
 require_once( __DIR__ . '/helpers/member.php');
+require_once( __DIR__ . '/helpers/breadcrumbs.php');
 
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
