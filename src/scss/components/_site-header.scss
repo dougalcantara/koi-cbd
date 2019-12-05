@@ -1,9 +1,15 @@
 #k-carttoggle {
   margin: 0 1em 0.25em auto;
+  position: relative;
 
   i {
     font-size: 200%;
   }
+}
+
+#k-searchicon {
+  margin: 0 0.5em 0 0;
+  font-size: 200%;
 }
 
 .k-header {
@@ -248,6 +254,11 @@
     i {
       font-size: 100%;
     }
+  }
+
+  #k-searchicon {
+    margin: auto;
+    font-size: 100%;
   }
 
   .k-header {

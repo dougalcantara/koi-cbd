@@ -18,7 +18,8 @@ const $accessibleSkip = $('.k-header__skip-to-main');
 const $cartTrigger = $('#k-carttoggle');
 const $cartParent = $('.k-header--cart');
 const $logo = $header.find('.k-header--logo');
-const $searchTrigger = $header.find('.k-searchtrigger');
+const $searchParent = $header.find('.k-searchparent');
+const $searchIcon = $header.find('#k-searchicon');
 const $main = $('main');
 
 let didScroll = false;
@@ -93,10 +94,14 @@ export function closeAllDropdowns() {
 function handleMobileNav() {
   if ($win.width() < breakpoints.md) {
     $cartTrigger.detach();
+    $searchIcon.detach();
     $cartTrigger.insertAfter($logo);
+    $searchIcon.insertAfter($cartTrigger);
   } else {
     $cartTrigger.detach();
     $cartParent.append($cartTrigger);
+    $searchIcon.detach();
+    $searchParent.append($searchIcon);
   }
 }
 

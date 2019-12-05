@@ -84,9 +84,9 @@ $url = site_url();
             </a>
           </li>
 
-          <li class="k-searchtrigger" aria-label="search">
+          <li class="k-searchparent" aria-label="search">
             <!-- <a href="<?php echo $url; ?>/search"> -->
-              <i class="icon-magnifier"></i>
+              <i id="k-searchicon" class="icon-magnifier k-searchtrigger"></i>
             <!-- </a> -->
           </li>
         </ul>
