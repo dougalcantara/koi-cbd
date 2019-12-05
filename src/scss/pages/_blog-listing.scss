@@ -14,10 +14,11 @@
     left: 5%;
     text-align: right;
   }
-  @media all and (min-width: 600px){
+
+  @media all and (min-width: 600px) {
     &--filterby {
       position: absolute;
-      top: 3em;
+      top: 1em;
       right: 5%;
       left: unset;
       text-align: right;

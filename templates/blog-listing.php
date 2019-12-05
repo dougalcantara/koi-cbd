@@ -70,7 +70,7 @@ $all_posts = get_posts($query_args);
   </div>
 </section>
 
-<section class="k-bloglist k-block k-block--md k-no-padding--top">
+<section class="k-bloglist k-block k-block--md">
   <div class="k-inner k-inner--md">
   <?php
 
