@@ -43,6 +43,7 @@ For actual launch:
 1. Remove the following redirects (may need to do this in both Redirection and Yoast settings):
    - /about-koi-cbd
    - /cbd-vape
+   - /blog/
 1. Remove meta no-index tag from `header.php`
 1. Run legacy-veterans migrate script
 
