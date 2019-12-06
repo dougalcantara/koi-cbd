@@ -1,12 +1,12 @@
 <?php
 
-function k_product_review($review) {
+function k_product_review($review, $index) {
   $created_at = date_format(date_create($review->created_at), 'M j, Y');
   $username = $review->user->display_name;
 
   ob_start();
   ?>
-  <article class="k-review" data-review-id="<?php echo $review->id; ?>">
+  <article class="k-review" data-review-id="<?php echo $review->id; ?>" data-votes-up="<?php echo $review->votes_up; ?>" data-votes-down="<?php echo $review->votes_down; ?>" data-score="<?php echo $review->score; ?>">
     <div class="k-review--liner">
       <div class="k-review--title">
         <h3 class="k-weight--lg"><?php echo $review->title; ?></h3>
