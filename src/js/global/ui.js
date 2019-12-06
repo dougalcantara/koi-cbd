@@ -62,9 +62,22 @@ function setInitialBlogCategory() {
 
 $blogFilterBy.change(goToCategoryListing);
 
-$doc.ready(() => {
+$doc.ready(function() {
   initializeTilt();
   setInitialBlogCategory();
+
+  let $liveChat;
+  let interval;
+
+  // wait for the thing to actually get embedded first
+  interval = setInterval(function() {
+    $liveChat = $('#livechat-compact-container');
+
+    if ($liveChat.length) {
+      $liveChat.css({ 'z-index': 100 });
+      clearInterval(interval);
+    }
+  }, 1000);
 });
 
 $backdrop.click(function() {

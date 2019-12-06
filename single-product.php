@@ -32,7 +32,7 @@ while (have_posts()) : the_post();
   $max_items = $product_acf['max_items'];
 
   do_action('k_before_first_section');
-
+  include(locate_template('partials/product-rich-snippets.php'));
   include(locate_template('partials/product-hero.php'));
   get_template_part('partials/components/randoms/breadcrumb');
   include(locate_template('partials/product-details.php'));

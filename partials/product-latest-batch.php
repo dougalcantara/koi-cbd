@@ -1,4 +1,4 @@
-<section class="k-latestbatch k-block k-block--md">
+<section class="k-latestbatch k-block k-block--md <?php echo $product_acf['frequently_asked_questions'] ? NULL : 'k-no-padding--bottom' ?>">
   <div class="k-inner k-inner--md">
 
     <div class="k-latestbatch--intro">

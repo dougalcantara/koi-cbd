@@ -8,6 +8,17 @@
     }
   }
 
+  .k-productcard__review-target {
+    /*
+      this selector exists because it's only for the __review-target selector
+      inside of the productcard. there are .k-productcard__review targets elsewhere,
+      but they don't need the props defined here.
+     */
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  }
+
   &--liner {
     position: relative;
   }

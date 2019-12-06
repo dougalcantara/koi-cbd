@@ -1,4 +1,36 @@
 .k-productreviews {
+  .k-review-container {
+    width: 100%;
+    margin-right: 10%;
+  }
+
+  &__controls {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      transition: color 0.4s $ease-out-circ;
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    .inactive {
+      color: $accent-text;
+      pointer-events: none;
+    }
+  }
+
+  &__create {
+    margin-right: auto;
+  }
+
+  &__prev {
+    margin-right: 0.5em;
+  }
+
   &--title {
     .k-headline {
       margin: 0;
@@ -14,14 +46,44 @@
       }
     }
   }
+
+  &__pagination {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+    margin: auto;
+    padding: 1em 0;
+
+    li.active {
+      position: relative;
+
+      &:before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2em;
+        height: 2em;
+        background: $bg-gray;
+        border-radius: 50%;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    a:hover {
+      color: $primary-dark !important;
+      text-decoration: underline;
+    }
+  }
 }
 
 .k-review {
   border-bottom: 1px solid #ccc;
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   * {
     margin: 0;
@@ -108,7 +170,7 @@
     .k-inner {
       display: flex;
       justify-content: space-between;
-      flex-flow: row nowrap;
+      flex-flow: row wrap;
     }
 
     .k-review {
@@ -119,12 +181,6 @@
           padding-top: 0;
         }
       }
-
-      &:last-child {
-        .k-review--liner {
-          padding-bottom: 0;
-        }
-      }
     }
 
     &--title {
@@ -133,6 +189,12 @@
 
     &--main {
       flex-basis: 62.5%;
+    }
+
+    &__controls {
+      flex-basis: 62.5%;
+      margin-top: 1em;
+      margin-left: auto;
     }
   }
 }

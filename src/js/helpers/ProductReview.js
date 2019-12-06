@@ -2,30 +2,16 @@ import { format } from 'date-fns';
 
 export default class ProductReview {
   constructor(opts) {
-    this.id = opts.review.id;
     this.baseUrl = opts.baseUrl;
     this.appId = opts.appId;
-    this.renderTarget = opts.renderTarget;
-    this.markup = this.getMarkup(opts.review);
-    this.reviewId = opts.review.id;
+    this.reviewId = opts.id;
     this.voting = opts.voting;
     this.showRating = opts.showRating;
-    this.renderTarget.insertAdjacentHTML('beforeend', this.markup);
-    this.upvotes = opts.review.votes_up;
-    this.downvotes = opts.review.votes_down;
-    this.score = opts.review.score;
+    this.upvotes = opts.votesUp;
+    this.downvotes = opts.votesDown;
+    this.score = opts.score;
     this.alreadyVoted = false;
-
-    /*
-      At this point, the review is in the DOM.
-    */
-
-    this.allReviews = document.querySelectorAll('.k-review');
-    this.$review = $(
-      [...this.allReviews].filter(
-        review => parseInt(review.dataset.reviewId) === this.reviewId
-      )[0]
-    );
+    this.$review = $(opts.review);
 
     if (this.voting) {
       // detectVotes() needs $upvote/$downvote
@@ -63,6 +49,10 @@ export default class ProductReview {
         </div>
       `);
     }
+    /*
+      We need to know when all the reviews have 
+    */
+    window.__reviewsLoaded.push(this);
   }
 
   detectVotes() {
@@ -84,16 +74,16 @@ export default class ProductReview {
   appendVoteListeners() {
     this.$upvote.click(() => {
       this.handleVote(this.$upvote);
-      this.$upvote.addClass('k-arrow--voted');
       if (!this.alreadyVoted) {
+        this.$upvote.addClass('k-arrow--voted');
         this.$upvoteCount.text(`${this.upvotes + 1}`);
       }
     });
 
     this.$downvote.click(() => {
       this.handleVote(this.$downvote);
-      this.$downvote.addClass('k-arrow--voted');
       if (!this.alreadyVoted) {
+        this.$downvote.addClass('k-arrow--voted');
         this.$downvoteCount.text(`${this.downvotes + 1}`);
       }
     });
