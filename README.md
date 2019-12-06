@@ -36,11 +36,14 @@ For actual launch:
 1. Deactivate both Divi plugins ("Divi Blog Extras" & "Divi Ultimate Blog Plugin")
 1. Deactivate "WooCommerce Product Bundles - Min/Max Items" plugin
 1. Update site "Reading" settings (Settings -> Reading) to point the the "Homepage" option at the Homepage template that we made
+1. Create the new Account pages with their respective templates(Remember parenting to Account)
+1. Create the Location Finder page with it's respective template
 1. Add embed code so Live Chat works on new site
 1. Update "Merchandise" category `slug` from "hats" to "merchandise" (lowercase)
 1. Remove the following redirects (may need to do this in both Redirection and Yoast settings):
    - /about-koi-cbd
    - /cbd-vape
+   - /blog/
 1. Remove meta no-index tag from `header.php`
 1. Run legacy-veterans migrate script
 
