@@ -16,6 +16,13 @@
       $first_page_reviews = $to_json->reviews;
       $pagination_meta = $to_json->pagination;
       $total_reviews = $pagination_meta->total;
+      $no_reviews = true;
+
+      if (count($first_page_reviews) === 0) {
+        echo '<article class="k-review"><div class="k-review--liner"><p>None yet! Be the first to <a href="#0" class="k-createreview">leave a review.</a></p></div></article>';
+      } else {
+        $no_reviews = false;
+      }
 
       foreach($first_page_reviews as $index=>$review) :
         if ($index % 10 == 0) {
@@ -30,15 +37,16 @@
           echo k_product_review($review, $index);          
         }
       endforeach; ?>
+
     <?php else : ?>
       <p>None yet! Be the first to <a href="#0" class="k-createreview">leave a review.</a></p>
     <?php
     endif; ?>
     </div>
     <div class="k-productreviews__controls">
-      <div class="k-productreviews__create"><span class="k-upcase k-createreview">Write A Review</span></div>
-      <div><span class="k-productreviews__prev k-upcase">Previous</span></div>
-      <div><span class="k-productreviews__next k-upcase">Next</span></div>
+      <div class="k-productreviews__create"><span class="k-upcase k-createreview <?php echo $no_reviews == true ? 'inactive' : 'active'; ?>">Write A Review</span></div>
+      <div><span class="k-productreviews__prev k-upcase <?php echo $no_reviews == true ? 'inactive' : 'active'; ?>">Previous</span></div>
+      <div><span class="k-productreviews__next k-upcase <?php echo $no_reviews == true ? 'inactive' : 'active'; ?>">Next</span></div>
     </div>
   </div>
 </section>
