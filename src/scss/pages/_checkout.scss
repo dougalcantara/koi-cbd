@@ -331,7 +331,8 @@
 }
 
 body.page-template-page-checkout {
-  .k-header--nav, .k-header--top {
+  .k-header--nav,
+  .k-header--top {
     display: none !important;
   }
   .k-header--logo {

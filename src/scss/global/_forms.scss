@@ -70,6 +70,7 @@ form {
   input[type='radio'] {
     position: absolute;
     opacity: 0;
+    display: none;
 
     &:hover {
       cursor: pointer !important;
