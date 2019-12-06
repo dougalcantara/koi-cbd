@@ -44,7 +44,7 @@ do_action('k_before_first_section');
 			<h1 class="k-headline k-headline--md">Checkout</h1>
 			<?php if (!is_user_logged_in()) : ?>
 			<div class="woocommerce-form-login-toggle">
-				Returning customer? <a href="<?php echo site_url() . '/account/login'; ?>">Click here to log in.</a>
+				Returning customer? <a href="<?php echo site_url() . '/login'; ?>">Click here to log in.</a>
 				<!-- <?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', __( 'Returning customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . __( 'Click here to login', 'woocommerce' ) . '</a>', 'notice' ); ?> -->
 			</div>
 			<?php endif; ?>
