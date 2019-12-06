@@ -11,9 +11,18 @@ echo k_hero(array(
   'headline' => get_fields()['wholesale_hero_title'],
   'body' => get_fields()['wholesale_hero_subtitle'],
   'background_image' => get_fields()['wholesale_hero']['url'],
-));
-get_template_part('partials/components/randoms/breadcrumb');
-?>
+));?>
+
+<?php new Breadcrumbs([
+  [
+    'name' => 'Home',
+    'url' => home_url()
+  ],
+  [
+    'name' => get_the_title(),
+    'url' => get_the_permalink()
+  ]
+]); ?>
 
   <section class="k-introtext k-block k-block--md">
     <div class="k-inner k-inner--sm k-rte-content">

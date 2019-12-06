@@ -108,7 +108,7 @@ class Veterans {
       'properties' => array(
         array(
           'property' => 'veteran_password_link',
-          'value' => get_home_url() . '/password-reset'
+          'value' => get_home_url() . '/account/password'
         ),
         array(
           'property' => 'veteran_temp_password',

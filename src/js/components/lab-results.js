@@ -119,7 +119,7 @@ function appendMarkup(test) {
           }
         </div>
         <div class="k-latestbatch--results__column">
-          <a href="${test.results.coaurl}"></a>
+          <a href="${test.results.coaurl}" target="_blank"></a>
           <span>.PDF &darr;</span>
         </div>
       </div>

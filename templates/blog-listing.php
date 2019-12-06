@@ -44,7 +44,16 @@ $all_posts = get_posts($query_args);
 ?>
 
 <section class="k-blognav">
-<?php get_template_part('partials/components/randoms/breadcrumb'); ?>
+  <?php new Breadcrumbs([
+    [
+      'name' => 'Home',
+      'url' => home_url()
+    ],
+    [
+      'name' => 'CBD Blog',
+      'url' => home_url() . '/blog'
+    ]
+  ]); ?>
   <div class="k-blognav--filterby">
     <label for="select-blog-category">Filter By&nbsp;&rsaquo;&nbsp;</label>
     <select name="select-blog-category" id="select-blog-category">
@@ -61,7 +70,7 @@ $all_posts = get_posts($query_args);
   </div>
 </section>
 
-<section class="k-bloglist k-block k-block--md k-no-padding--top">
+<section class="k-bloglist k-block k-block--md">
   <div class="k-inner k-inner--md">
   <?php
 

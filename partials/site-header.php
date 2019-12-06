@@ -58,10 +58,14 @@ $url = site_url();
             <a class="k-upcase"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
+                <li><a href="<?php echo $url . '/blog'; ?>">Koi Blog</a></li>
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
                 <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
               </div>
             </ul>
+          </li>
+          <li>
+            <a class="k-upcase" href="<?php echo $url . '/cbd-101' ?>">CBD 101</a>
           </li>
         </ul>
         <ul>
@@ -84,9 +88,9 @@ $url = site_url();
             </a>
           </li>
 
-          <li class="k-searchtrigger" aria-label="search">
+          <li class="k-searchparent" aria-label="search">
             <!-- <a href="<?php echo $url; ?>/search"> -->
-              <i class="icon-magnifier"></i>
+              <i id="k-searchicon" class="icon-magnifier k-searchtrigger"></i>
             <!-- </a> -->
           </li>
         </ul>

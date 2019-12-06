@@ -1,3 +1,17 @@
+#k-carttoggle {
+  margin: 0 1em 0.25em auto;
+  position: relative;
+
+  i {
+    font-size: 200%;
+  }
+}
+
+#k-searchicon {
+  margin: 0 0.5em 0 0;
+  font-size: 200%;
+}
+
 .k-header {
   position: sticky;
   top: -2.75em; // actual value gets set by JS based on the height of the promo bar above
@@ -234,6 +248,19 @@
 }
 
 @media (min-width: $bp-md) {
+  #k-carttoggle {
+    margin: auto;
+
+    i {
+      font-size: 100%;
+    }
+  }
+
+  #k-searchicon {
+    margin: auto;
+    font-size: 100%;
+  }
+
   .k-header {
     &--traveling {
       .k-header--logo {

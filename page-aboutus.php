@@ -1,5 +1,5 @@
 <?php
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 /* Template Name: 2019 About Us Page */
 
 $root = get_template_directory_uri();
@@ -25,13 +25,16 @@ get_header();
   </div>
 </section>
 
-<nav class="k-blog-breadcrumb">
-  <div class="k-inner k-inner--xl">
-    <div class="k-blog-breadcrumb--content">
-      <?php yoast_breadcrumb( '<p id="breadcrumbs">','</p>' ); ?>
-    </div>
-  </div>
-</nav>
+<?php new Breadcrumbs([
+  [
+    'name' => 'Home',
+    'url' => home_url()
+  ],
+  [
+    'name' => get_the_title(),
+    'url' => get_the_permalink()
+  ]
+]); ?>
 
 <section class="k-twoup-text k-block k-block--md k-half-padding--bottom">
   <div class="k-inner k-inner--md">
@@ -40,9 +43,9 @@ get_header();
       <h2 class="k-headline k-headline--md"><?php echo $site_content['trust_section_heading']; ?></h2>
       <p class="k-bigtext"><?php echo $site_content['trust_section_subheading']; ?></p>
       <div class="k-twoup-imagerow">
-        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
-        <img src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
-        <img src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
+        <img src="<?php echo $root . '/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
+        <img src="<?php echo $root . '/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
+        <img src="<?php echo $root . '/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
       </div>
     </div>
 
@@ -55,7 +58,7 @@ get_header();
 
 <section class="k-presspromo k-block k-block--md">
   <div class="k-inner k-inner--md">
-  
+
     <div class="k-presspromo--image">
       <figure class="k-figure k-figure--rounded">
         <div class="k-figure--liner">
@@ -71,31 +74,32 @@ get_header();
       </div>
 
       <div class="k-presspromo--cards">
-        <?php foreach($site_content['press_section_featured_posts'] as $idx => $featured_post) :
+        <?php foreach ($site_content['press_section_featured_posts'] as $idx => $featured_post) :
           $_p = reset($featured_post);
-          $_id = $_p->ID; 
-        ?>
-        <div class="k-presspromo--card">
-          <div class="k-presspromo--card__liner">
-            <span class="k-preheading">0<?php echo $idx + 1; ?></span>
-            <h3 class="k-headline k-headline--body">
-              <a href="<?php echo get_the_permalink($_id); ?>">
-                <?php echo get_the_title($_id); ?>
-              </a>
-            </h3>
-            <div class="k-presspromo--card__body k-rte-content">
-              <p><?php echo substr(get_the_excerpt($_id), 0, 120).'...'; ?></p>
-            </div>
-            <div class="k-presspromo--card__action">
-              <a href="<?php echo get_the_permalink($_id); ?>">&rarr;</a>
+          $_id = $_p->ID;
+          ?>
+          <div class="k-presspromo--card">
+            <div class="k-presspromo--card__liner">
+              <span class="k-preheading">0<?php echo $idx + 1; ?></span>
+              <h3 class="k-headline k-headline--body">
+                <a href="<?php echo get_the_permalink($_id); ?>">
+                  <?php echo get_the_title($_id); ?>
+                </a>
+              </h3>
+              <div class="k-presspromo--card__body k-rte-content">
+                <p><?php echo substr(get_the_excerpt($_id), 0, 120) . '...'; ?></p>
+              </div>
+              <div class="k-presspromo--card__action">
+                <a href="<?php echo get_the_permalink($_id); ?>">&rarr;</a>
+              </div>
             </div>
           </div>
-        </div>
         <?php endforeach; ?>
       </div>
 
       <div class="k-presspromo--action">
-        <a href="<?php echo site_url() . '/blog?category=hot-off-the-press'; ?>" class="k-button k-button--dark">View All &rarr;</a>
+        <a href="<?php echo site_url() . '/blog?category=hot-off-the-press'; ?>" class="k-button k-button--dark">View
+          All &rarr;</a>
       </div>
     </div>
 

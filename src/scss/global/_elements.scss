@@ -79,15 +79,13 @@ img[data-src] {
 
 #k-cartnum {
   position: absolute;
-  // top: -1.15em;
-  // left: 50%;
-  top: 33%;
-  left: 3em;
+  top: 62.5%;
+  left: 50%;
   line-height: 0;
   font-size: 75%;
   color: $true-white;
   opacity: 0;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, -50%);
   transition: opacity 1s $ease-out-circ, transform 1s $ease-out-circ;
 
   &.k-has-value {

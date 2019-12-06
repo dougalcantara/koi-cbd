@@ -139,3 +139,92 @@
   .page-template-veteran-signup {
   }
 }
+
+#hsForm_98d14bc4-a93c-499b-bc41-fd56e2c631ef {
+  margin-top: 2em;
+  .hs-form-field {
+    label {
+      span {
+        font-weight: normal;
+      }
+    }
+    .input {
+      .hs-input {
+        padding-top: 0.75em;
+        font-family: "Recoleta Regular", Serif;
+        font-size: 140%;
+        font-weight: 500;
+      }
+      .inputs-list {
+        margin: .4em 0 1em 0;
+        padding: 0;
+        li {
+          list-style: none;
+          position: relative;
+          label {
+            input[type='radio'] {
+              opacity: 1;
+              min-width: unset;
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translate(0,-50%);
+            }
+            span {
+              margin: 0 0 0 1.2em;
+            }
+          }
+        }
+      }
+    }
+    #label-military_id-98d14bc4-a93c-499b-bc41-fd56e2c631ef {
+      margin: 1em 0 0 0;
+      font-family: "Recoleta Regular", Serif;
+      font-size: 140%;
+    }
+  }
+
+  .hs_submit {
+    margin: 1.5em 0 0 0;
+    .actions {
+      input {
+        background: #000;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: .15em;
+        padding: 1.2em 0;
+        border-radius: 7px;
+        border: 1px solid transparent;
+      }
+    }
+    .actions:hover {
+      input {
+        color: #f4b13e;
+        border: 1px solid #f4b13e;
+      }
+    }
+  }
+  .hs-fieldtype-file {
+    .input {
+      #military_id-98d14bc4-a93c-499b-bc41-fd56e2c631ef {
+        font-size: 100%;
+      }
+    }
+  }
+}
+.hs_error_rollup {
+  .hs-error-msgs {
+    color: red;
+  }
+}
+@media all and (min-width: 500px){
+  #hsForm_98d14bc4-a93c-499b-bc41-fd56e2c631ef {
+    .hs_submit {
+      .actions {
+        width: 200px;
+      }
+    }
+  }
+}
+
+
