@@ -1,3 +1,19 @@
+.page-template-page-checkout {
+  .k-header {
+    #k-carttoggle,
+    #k-searchicon,
+    .k-header--navtoggle {
+      display: none;
+    }
+
+    .k-header--main {
+      .k-inner {
+        justify-content: center;
+      }
+    }
+  }
+}
+
 #k-carttoggle {
   margin: 0 1em 0.25em auto;
   position: relative;
