@@ -31,7 +31,7 @@ $categories = get_categories([
 ]);
 ?>
 
-<section class="k-block k-block--md k-all-products k-no-padding--top">
+<section class="k-block k-block--md k-all-products">
   <div class="k-inner k-inner--md">
     <?php
     foreach($categories as $i => $product_cat) :

@@ -60,6 +60,7 @@ $url = site_url();
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/blog'; ?>">Koi Blog</a></li>
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
+                <li><a href="<?php echo $url . '/product-finder'; ?>">Product Finder</a></li>
                 <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
               </div>
             </ul>
