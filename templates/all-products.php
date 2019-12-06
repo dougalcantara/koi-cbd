@@ -29,6 +29,18 @@ new Breadcrumbs([
 $categories = get_categories([
   'taxonomy' => 'product_cat',
 ]);
+
+$links = array(
+  'cbd-tinctures', 
+  'cbd-edibles', 
+  'cbd-for-pets', 
+  'cbd-topicals', 
+  'cbd-vape', 
+  'cbd-vape-devices-cartridges', 
+  'cbd-merchandise', 
+  'cbd-gummies', 
+  'cbd-wellness-shots'
+);
 ?>
 
 <section class="k-block k-block--md k-all-products">
