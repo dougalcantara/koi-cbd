@@ -54,6 +54,13 @@
     }
   }
 }
+.k-article {
+  &--content {
+    img {
+      object-fit: contain;
+    }
+  }
+}
 
 @media (min-width: $bp-md) {
   .k-blogcontent {
