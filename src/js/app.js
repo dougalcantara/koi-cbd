@@ -7,6 +7,7 @@ import './global/ajax-cart';
 import './global/form-submissions';
 import './global/lazyloading';
 import './global/yotpo';
+import './global/anchors';
 
 import './components/site-header';
 import './components/promo-slider';
@@ -31,5 +32,6 @@ import './components/checkout-validation';
 import './components/prod-qty';
 import './components/cart-template';
 import './components/account';
+import './components/hero-video';
 
 import 'promise-polyfill/src/polyfill';

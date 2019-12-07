@@ -2,7 +2,14 @@
   $root = get_template_directory_uri();
 ?>
 <section class="k-hero k-hero--default k-hero--center k-hero--on-dark">
-  <div class="k-hero--bgimg" data-src="<?php echo $hero_fields['bgImg']['url']; ?>"></div>
+  <div class="hero-media">
+    <div class="hero-media-img">
+      <img data-src="<?php the_field('hero_background_image', 'option'); ?>" alt="KoiCBD">
+    </div>
+    <div class="hero-media-video">
+      <video src="<?php the_field('hero_background_video', 'option'); ?>" loop muted playsinline></video>
+    </div>
+  </div>
   <div class="k-inner k-inner--md">
     <div class="k-hero--text">
       <h2 class="k-headline k-headline--lg"><?php echo $hero_fields['headline']; ?></h2>
