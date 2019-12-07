@@ -2,7 +2,9 @@
   $root = get_template_directory_uri();
   $url = site_url();
 
-  get_template_part('partials/cta-takeover');
+  if (!is_page($page = 'cbd-101')){
+    get_template_part('partials/cta-takeover');
+  }
 ?>
 
 <footer class="k-footer" role="contentinfo">
