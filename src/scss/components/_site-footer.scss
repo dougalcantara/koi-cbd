@@ -1,6 +1,5 @@
 .k-footer {
   position: relative;
-
   &--top .k-inner {
     display: flex;
     flex-flow: row wrap;
@@ -17,6 +16,7 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    background-color: white;
     z-index: -1;
   }
 
