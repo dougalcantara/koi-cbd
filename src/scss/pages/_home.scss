@@ -95,6 +95,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 360px;
     }
 
     .k-figure {
@@ -215,6 +216,9 @@
       margin-left: 33.33em;
       margin-top: 0em;
       max-width: 44.16em;
+      &__card {
+        min-height: 420px;
+      }
     }
   }
 }

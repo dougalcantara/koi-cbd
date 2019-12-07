@@ -91,7 +91,7 @@
         <a href="<?php echo site_url().'/cbd-edibles'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-edibles-mainimg.jpg' ?>" alt="CBD Edibles" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/edibles-new.jpg' ?>" alt="CBD Edibles" />
             </div>
             <img data-src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="CBD Edibles" class="k-cornerimg">
           </figure>
@@ -116,7 +116,7 @@
             <div class="k-figure--liner">
               <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="CBD Vape" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/koi-vape-cornerimg@2x.png' ?>" alt="CBD Vape" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/vape-cbd-new.jpg' ?>" alt="CBD Vape" class="k-cornerimg">
           </a>
         </figure>
         
