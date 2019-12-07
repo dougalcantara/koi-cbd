@@ -28,7 +28,7 @@
     'actions' => $site_content['hero_actions'],
   );
   include(locate_template('partials/home-hero.php'));
-
+  echo "<section class='home-sections'>";
   $slider_fields = array(
     'headline' => $site_content['product_slider_headline'],
     'products' => $site_content['product_slider_products'],
@@ -61,6 +61,7 @@
   include(locate_template('partials/cta-banner.php'));
   
   get_template_part('partials/process-preview');
+  echo "</section>";
 
   get_footer();
 ?>
