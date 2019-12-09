@@ -3,9 +3,12 @@
     <div class="k-inner k-inner--md">
 
       <div class="k-productfaq--title">
+        <?php if (get_field('faq_headline')) : ?>
+        <h2 class="k-headline k-headline--sm"><?php the_field('faq_headline');?></h2>
+        <?php else : ?>
         <h2 class="k-headline k-headline--sm"><?php echo $product_category; ?> FAQ</h2>
+        <?php endif; ?>
       </div>
-
       <div class="k-productfaq--accordion">
         <ul>
         <?php
