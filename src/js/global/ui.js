@@ -18,6 +18,15 @@ import {
 import { closeAllDropdowns } from '../components/site-header';
 import { closeSidebar } from './cart-actions';
 
+const IS_SAFARI =
+  /constructor/i.test(window.HTMLElement) ||
+  (function(p) {
+    return p.toString() === '[object SafariRemoteNotification]';
+  })(
+    !window['safari'] ||
+      (typeof safari !== 'undefined' && safari.pushNotification)
+  );
+
 export const breakpoints = {
   sm: 580,
   md: 767,
@@ -34,7 +43,8 @@ function slugify(string) {
 }
 
 function initializeTilt() {
-  if ($win.width() < breakpoints.md || !$tiltTargets.length) return;
+  if ($win.width() < breakpoints.md || !$tiltTargets.length || IS_SAFARI)
+    return;
 
   const tiltProps = {
     maxTilt: 5,
@@ -118,29 +128,29 @@ $logoutTrigger.click(function(e) {
   });
 });
 
-$myOpenCart.click(function(){
+$myOpenCart.click(function() {
   $myNews.removeClass('k-header__newsletter-signup--open');
-  $myNews.css('display','none');
+  $myNews.css('display', 'none');
   $searchModal.removeClass('k-modal--open');
   $backdrop.removeClass('active');
   $myDrop.removeClass('k-dropdown--open');
 });
 
-$myOpenSearch.click(function(){
+$myOpenSearch.click(function() {
   $myNews.removeClass('k-header__newsletter-signup--open');
-  $myNews.css('display','none');
+  $myNews.css('display', 'none');
   $myDrop.removeClass('k-dropdown--open');
   $myDrop.css('height', 0);
 });
 
-$myOpenMenu.click(function(){
+$myOpenMenu.click(function() {
   $myNews.removeClass('k-header__newsletter-signup--open');
-  $myNews.css('display','none');
+  $myNews.css('display', 'none');
   $searchModal.removeClass('k-modal--open');
   $cartSidebar.removeClass('k-cart-sidebar--open');
 });
 
-$myOpenNews.click(function(){
+$myOpenNews.click(function() {
   $searchModal.removeClass('k-modal--open');
   $backdrop.removeClass('active');
   $cartSidebar.removeClass('k-cart-sidebar--open');
