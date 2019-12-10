@@ -1,6 +1,6 @@
 <?php
    $rs_title = $product->get_title();
-   $rs_description = addslashes(strip_tags($product->get_short_description() ? $product->get_short_description() : $product->get_description()));
+   $rs_description = strip_tags($product->get_short_description() ? $product->get_short_description() : $product->get_description());
    $rs_availability = 'https://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' );
    $rs_price = $product->get_price();
    $rs_currency = get_woocommerce_currency();
