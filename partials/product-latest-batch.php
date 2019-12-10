@@ -83,14 +83,7 @@
           </div>
           <div class="k-latestbatch--results__column">
               <div>
-                <?php if (get_field('unit', get_the_ID())): ?>
-                  <p class="k-upcase">Unit:</p>
-                  <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
-                <?php /* else:
-                  <p class="k-upcase">Unit:</p>
-                  <p class="k-upcase" style="color: red;">This item does not have a unit value set.</p>
-                */?>                  
-                <?php endif; ?>
+                <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
               </div>
             <?php if (get_field('units_per_item', get_the_ID())): ?>
               <div>
