@@ -3,11 +3,11 @@ $root = get_template_directory_uri();
 $fields = get_fields();
 
 get_header();
-
 do_action('k_before_first_section');
 ?>
 
 <section class="k-hero--blogsingle on-dark">
+  <?php include(locate_template('helpers/blog-schema.php')); ?>
   <div class="k-hero--bgimg" data-src="<?php echo get_the_post_thumbnail_url(); ?>"></div>
 
   <div class="k-inner k-inner--xl">
