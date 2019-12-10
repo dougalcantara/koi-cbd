@@ -126,7 +126,10 @@ get_template_part('partials/video-fullwidth');
 
 <?php
 include(locate_template('partials/koi-process.php'));
-get_template_part('partials/testimonial-slider');
+$testimonial_fields = array(
+  'testimonials' => $site_content['homepage_testimonials'],
+);
+include(locate_template('partials/testimonial-slider.php'));
 get_template_part('partials/resources-callout');
 
 $slider_fields = array(
