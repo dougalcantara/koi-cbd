@@ -66,7 +66,7 @@
             <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
             <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
             <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
-            <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
+            <li><a href="<?php echo $url . '/wholesale-cbd'; ?>">Wholesale</a></li>
             <li><a href="<?php echo $url . '/veteran-program'; ?>">Veterans</a></li>
             <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
           </ul>
