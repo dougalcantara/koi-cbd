@@ -7,7 +7,7 @@ do_action('k_before_first_section');
 ?>
 
 <section class="k-hero--blogsingle on-dark">
-  <?php include(locate_template('helpers/blog-schema.php')); ?>
+  <div class="blog-schema" style="opacity: 0; pointer-events: none;"><?php include(locate_template('helpers/blog-schema.php')); ?></div>
   <div class="k-hero--bgimg" data-src="<?php echo get_the_post_thumbnail_url(); ?>"></div>
 
   <div class="k-inner k-inner--xl">
