@@ -67,10 +67,12 @@
   margin: 5em 0 8em 0;
 
   .k-inner {
-    background: $black;
     border-radius: 0.75em;
   }
-
+  .cta-subscribe-bg {
+    background-image: url("../img/lab-results-hero.jpg");
+    background-repeat: no-repeat;
+  }
   .k-cta--preheading {
     color: $highlight;
   }
