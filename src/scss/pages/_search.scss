@@ -3,6 +3,26 @@
     text-align: center;
     border-bottom: 1px solid #ddd;
 
+    &__reviews {
+      .k-goldstar,
+      .k-productcard--reviewavg {
+        vertical-align: middle;
+      }
+
+      .k-goldstar {
+        margin: 0 3px;
+      }
+
+      .k-productcard--reviewavg {
+        margin-left: 1ch;
+      }
+
+      > ul {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
     &__liner {
       padding: 2em 0 4em 0;
     }
@@ -45,10 +65,12 @@
 
       &__title {
         flex-basis: 35%;
+        margin-left: 0.5em;
+        font-size: 80%;
       }
 
       &__reviews {
-        flex-basis: 10%;
+        flex-basis: 25%;
       }
 
       &__price {
@@ -61,7 +83,11 @@
 
       .k-bigtext {
         font-size: 150%;
+        text-align: center;
       }
     }
   }
+}
+
+@media (min-width: $bp-lg) {
 }
