@@ -114,7 +114,7 @@
         <figure class="k-figure k-figure--rounded ">
           <a href="<?php echo site_url().'/cbd-vape'; ?>">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="CBD Vape" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/home-vape-main.jpg' ?>" alt="CBD Vape" />
             </div>
             <img data-src="<?php echo $root.'/dist/img/vape-cbd-new.jpg' ?>" alt="CBD Vape" class="k-cornerimg">
           </a>
