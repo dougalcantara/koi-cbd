@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function createPromoSlider(groupCellCount) {
-  if (!$carousel.length) return;
-
-  if (window.__promoFlkty) {
+  if (!$carousel.length) {
+    return;
+  } else if (window.__promoFlkty) {
     window.__promoFlkty.destroy();
     $prev.off('click');
     $next.off('click');
