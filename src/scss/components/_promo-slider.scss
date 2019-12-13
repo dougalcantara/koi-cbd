@@ -54,7 +54,7 @@
   }
 
   .k-productcard {
-    width: 100%;
+    width: 100%; // DEPENDENCY: promo-slider.js:61, promo-slider.js:65
     padding-bottom: 2em;
     bottom: 0 !important;
 
@@ -99,7 +99,7 @@
 @media (min-width: $bp-md) {
   .k-promoslider {
     .k-productcard {
-      width: 50%;
+      width: 50%; // DEPENDENCY: promo-slider.js:69
     }
 
     &__controls {
@@ -116,7 +116,7 @@
     }
 
     .k-productcard {
-      width: 33.3333%;
+      width: 33.3333%; // DEPENDENCY: promo-slider.js:73
     }
   }
 }
@@ -145,7 +145,7 @@
     }
 
     .k-productcard {
-      width: 25%;
+      width: 25%; // DEPENDENCY: promo-slider.js:77
     }
 
     &__controls {
