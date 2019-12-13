@@ -27,4 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $prev.click(() => flkty.previous());
   $next.click(() => flkty.next());
+
 });
+
+window.onload=function(){
+  document.querySelector(".k-promoslider__prev").click();
+  document.querySelector(".k-promoslider__next").click();
+};
