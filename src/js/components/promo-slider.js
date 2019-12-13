@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   flkty = new Flickity($carousel[0], flktyOpts);
 
   preventScrollOnDrag(flkty);
-});
 
-$prev.click(() => flkty.previous());
-$next.click(() => flkty.next());
+  $prev.click(() => flkty.previous());
+  $next.click(() => flkty.next());
+});
