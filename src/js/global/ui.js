@@ -32,6 +32,8 @@ export const breakpoints = {
   md: 767,
   lg: 992,
   xl: 1199,
+  xxl: 1440,
+  max: 1800,
 };
 
 const $tiltTargets = $('.k-tilt');

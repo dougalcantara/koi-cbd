@@ -107,3 +107,23 @@
     }
   }
 }
+
+@media (min-width: $bp-xl) {
+  .k-productcard {
+    &--reviews ul {
+      left: auto;
+      right: 0;
+      transform: translate(-1.5em, -50%);
+    }
+  }
+}
+
+@media (min-width: $bp-xxl) {
+  .k-productcard {
+    &--reviews ul {
+      left: 50%;
+      right: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
