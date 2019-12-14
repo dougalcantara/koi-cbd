@@ -28,7 +28,7 @@ $url = site_url();
   <div class="k-header--top k-promobanner">
     <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
-        <span class="k-upcase">Free shipping & returns for all US orders</span>
+        <span class="k-upcase">Free shipping on all US orders over $35</span>
       </div>
       <div class="k-promobanner--item">
         <span class="k-upcase k-header__newsletter-trigger">Sign up for our newsletter for 10% off</span>
@@ -54,15 +54,19 @@ $url = site_url();
               </div>
             </ul>
           </li>
-          <li><a class="k-upcase" href="<?php echo $url . '/cbd-101'; ?>">CBD 101</a></li>
           <li class="k-has-dropdown">
             <a class="k-upcase"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
+                <li><a href="<?php echo $url . '/blog'; ?>">Koi Blog</a></li>
                 <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
-                <li><a href="<?php echo $url . '/blog'; ?>">Blog</a></li>
+                <li><a href="<?php echo $url . '/product-finder'; ?>">Product Finder</a></li>
+                <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
               </div>
             </ul>
+          </li>
+          <li>
+            <a class="k-upcase" href="<?php echo $url . '/cbd-101' ?>">CBD 101</a>
           </li>
         </ul>
         <ul>
@@ -72,7 +76,6 @@ $url = site_url();
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/about-us' ?>">Koi Story</a></li>
-                <li><a href="<?php echo $url . '/blog/?category=hot-off-the-press'; ?>">Press</a></li>
                 <li><a href="<?php echo $url . '/contact'; ?>">FAQ / Contact</a></li>
               </div>
             </ul>
@@ -80,15 +83,15 @@ $url = site_url();
           <li><a class="k-upcase" href="<?php echo $url; ?>/account/">Account</a></li>
 
           <li class="k-header--cart">
-            <a id="k-carttoggle">
+            <a id="k-carttoggle" tabindex="0" aria-label="cart">
               <i class="icon-bag"></i>
               <span id="k-cartnum" class="">0</span>
             </a>
           </li>
 
-          <li class="k-searchtrigger">
+          <li class="k-searchparent" aria-label="search">
             <!-- <a href="<?php echo $url; ?>/search"> -->
-              <i class="icon-magnifier"></i>
+              <i id="k-searchicon" class="icon-magnifier k-searchtrigger"></i>
             <!-- </a> -->
           </li>
         </ul>
@@ -97,7 +100,7 @@ $url = site_url();
     <div class="k-inner k-inner--xl">
       <div class="k-header--logo">
         <a href="<?php echo site_url(); ?>">
-          <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="">
+          <img src="<?php echo $root.'/dist/img/koi-logo-main@2x.png'; ?>" alt="Koi CBD Logo">
         </a>
       </div>
       <div class="k-header--navtoggle" id="k-nav-trigger">

@@ -1,6 +1,15 @@
 .k-ctabanner {
   position: relative;
-
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: -10;
+    content: '';
+  }
   .k-inner--xl {
     position: relative;
     border-radius: 0.75em;
@@ -58,10 +67,12 @@
   margin: 5em 0 8em 0;
 
   .k-inner {
-    background: $black;
     border-radius: 0.75em;
   }
-
+  .cta-subscribe-bg {
+    background-image: url("../img/email-signup-cta.jpg");
+    background-repeat: no-repeat;
+  }
   .k-cta--preheading {
     color: $highlight;
   }

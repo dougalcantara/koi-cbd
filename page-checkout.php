@@ -9,35 +9,28 @@ get_header();
 
 $checkout = WC()->checkout();
 $cart = WC()->cart;
+
 /**
  * Veterans get a 25% discount automatically applied in the form of a special coupon.
- * 
- * Only users with the "veteran" role are eligible for the coupon, so we chack for that
- * as well.
  */
-
-$user_is_veteran = in_array('veteran', get_userdata(get_current_user_id())->roles);
-/**
- * Important! Also need to check if user was previously qualified as vet via Ultimate Member.
- * I believe it can be a check for get_user_metadata() or something like that.
- */
+$user_is_veteran_role = in_array('veteran', get_userdata(get_current_user_id())->roles);
 $user_veteran_status = get_fields('user_' . get_current_user_id())['veteran_status'];
-$is_approved_veteran = $user_is_veteran && $user_veteran_status == 'Veteran Approved';
+$is_approved_veteran = $user_is_veteran_role && $user_veteran_status == 'Veteran Approved';
 $veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
 $should_apply_coupon = $is_approved_veteran && !$veteran_coupon_already_applied;
-
 /**
- * If the veteran coupon is not applied, and the user is an approved veteran
+ * If the veteran coupon is not applied,
+ * and the user is an approved veteran:
  */
 if ($should_apply_coupon) {
   $cart->apply_coupon('veteran coupon');
 }
-
 /**
- * If a non-veteran tries to use the veteran coupon, or if a valid veteran decides to remove the coupon for some reason
+ * If a non-veteran tries to use the veteran coupon, 
+ * or if a valid veteran decides to remove the coupon:
  */
 $valid_veteran_remove_coupon = $_GET['remove_coupon'] == 'veteran coupon';
-if (!$user_is_veteran && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
+if (!$user_is_veteran_role && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
 	$cart->remove_coupon('veteran coupon');
 }
 
@@ -51,7 +44,7 @@ do_action('k_before_first_section');
 			<h1 class="k-headline k-headline--md">Checkout</h1>
 			<?php if (!is_user_logged_in()) : ?>
 			<div class="woocommerce-form-login-toggle">
-				Returning customer? <a href="<?php echo site_url() . '/account/login'; ?>">Click here to log in.</a>
+				Returning customer? <a href="<?php echo site_url() . '/login'; ?>">Click here to log in.</a>
 				<!-- <?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', __( 'Returning customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . __( 'Click here to login', 'woocommerce' ) . '</a>', 'notice' ); ?> -->
 			</div>
 			<?php endif; ?>

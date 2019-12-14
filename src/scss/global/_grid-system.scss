@@ -102,3 +102,11 @@ $padding-lg: 15.625em;
     }
   }
 }
+
+*[class$=-inside] {
+  margin: 0 auto;
+  max-width: 90%;
+  @media(min-width: $bp-md) {
+    max-width: 94.44%;
+  }
+}

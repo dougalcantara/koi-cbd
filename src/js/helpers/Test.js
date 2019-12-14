@@ -18,9 +18,9 @@ export default class Test {
   parseStrengthFromName(ordername) {
     try {
       const reg = /\d+/;
-      const containsNumber = ordername.match(reg)[0];
+      const containsNumber = ordername.match(reg);
       if (containsNumber) {
-        return containsNumber + ' MG';
+        return containsNumber[0] + ' MG';
       } else {
         return false;
       }

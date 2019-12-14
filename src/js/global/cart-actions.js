@@ -1,6 +1,5 @@
 import AjaxCart from './ajax-cart';
 import wasEnter from '../helpers/wasEnter';
-import AjaxCartItem from '../components/ajax-cart-item';
 import {
   $win,
   $doc,
@@ -75,7 +74,9 @@ function updateSubtotal() {
 function handleCartSidebar(cartItems, expandedProducts) {
   $cartItemsTarget.empty(); // handles duplicate items being added while still on the same page
 
-  expandedProducts.forEach(product => {
+  const reversedExpandedProducts = expandedProducts.reverse();
+
+  reversedExpandedProducts.forEach(product => {
     const belongsToBundle = product.is_bundled_item;
     let bundledPrice = 0;
 
@@ -97,21 +98,19 @@ function handleCartSidebar(cartItems, expandedProducts) {
     $cartItemsTarget.append(/*html*/ `
       <div class="k-cart-sidebar__item" data-item-key="${product.key}">
         <div class="k-cart-sidebar__item__liner">
-          <img src="${product.thumbnail_url}" alt="" />
+          <img src="${product.thumbnail_url}" alt="${product.name}" />
           <h3>
             <a href="${product.permalink}">${product.name}</a>
           </h3>
           <div class="k-cart-sidebar__item-actions">
-            <span class="k-cart-sidebar__quantity">Quantity:</span>
+            <span class="k-cart-sidebar__quantity k-upcase">QTY:</span>
             <div class="k-productform--quantity">
-              <button class="k-reduce" class="" type="button">-</button>
               <input id="k-num-to-add" type="number" value="${
                 product.quantity
               }" min="0" step="1" />
-              <button class="k-increase" class="" type="button">+</button>
             </div>
             <p class="k-bigtext">
-            <span class="k-cart-sidebar__item-price">${
+            <span class="k-cart-sidebar__item-price k-cartItem--price-target" tabindex="0" aria-label="price">${
               product.is_bundle ? bundledPrice : totalPrice
             }</span>
             <button class="k-cart-sidebar__item-update k-button k-button--primary">Update</button>
@@ -313,6 +312,7 @@ export function closeSidebar() {
 
 // == event listeners == //
 $doc.ready(async function() {
+  if ($body.hasClass('page-template-cart')) return;
   const {
     cart_items: cartItems,
     expanded_products: expandedProducts,
@@ -347,6 +347,15 @@ $cartSidebarClose.keypress(function(e) {
   }
 });
 $cartSidebarToggle.click(function(e) {
+  toggleCartSidebar(e);
+});
+$cartSidebarToggle.keypress(function(e) {
+  if (wasEnter(e)) {
+    toggleCartSidebar(e);
+  }
+});
+
+function toggleCartSidebar(e) {
   e.preventDefault();
 
   if ($header.hasClass('is-open')) {
@@ -364,4 +373,4 @@ $cartSidebarToggle.click(function(e) {
     $cartSidebar.addClass('k-cart-sidebar--open k-cart-sidebar--loaded');
     $cartSidebar.focus();
   }
-});
+}

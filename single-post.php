@@ -3,11 +3,11 @@ $root = get_template_directory_uri();
 $fields = get_fields();
 
 get_header();
-
 do_action('k_before_first_section');
 ?>
 
 <section class="k-hero--blogsingle on-dark">
+  <div class="blog-schema" style="opacity: 0; pointer-events: none;"><?php include(locate_template('helpers/blog-schema.php')); ?></div>
   <div class="k-hero--bgimg" data-src="<?php echo get_the_post_thumbnail_url(); ?>"></div>
 
   <div class="k-inner k-inner--xl">
@@ -33,7 +33,16 @@ do_action('k_before_first_section');
   </div>
 </section>
 
-<?php get_template_part('partials/components/randoms/breadcrumb'); ?>
+<?php new Breadcrumbs([
+  [
+    'name' => 'Home',
+    'url' => home_url()
+  ],
+  [
+    'name' => get_the_title(),
+    'url' => get_the_permalink()
+  ]
+]); ?>
 
 <section class="k-blogcontent k-block k-block--md">
   <div class="k-inner k-inner--xl">

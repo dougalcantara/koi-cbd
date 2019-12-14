@@ -1,8 +1,38 @@
+.page-template-page-checkout {
+  .k-header {
+    #k-carttoggle,
+    #k-searchicon,
+    .k-header--navtoggle {
+      display: none;
+    }
+
+    .k-header--main {
+      .k-inner {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+#k-carttoggle {
+  margin: 0 1em 0.25em auto;
+  position: relative;
+
+  i {
+    font-size: 200%;
+  }
+}
+
+#k-searchicon {
+  margin: 0 0.5em 0 0;
+  font-size: 200%;
+}
+
 .k-header {
   position: sticky;
   top: -2.75em; // actual value gets set by JS based on the height of the promo bar above
   width: 100%;
-  z-index: 101;
+  z-index: 1100;
   background: $true-white;
 
   &__skip-to-main {
@@ -115,16 +145,13 @@
     background: $black;
 
     form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       text-align: right;
       margin-bottom: 0;
       padding-bottom: 1em;
     }
 
     fieldset {
-      flex-basis: 100%;
+      width: 100%;
       padding: 1em 0;
       display: inline-block;
       text-align: left;
@@ -237,6 +264,19 @@
 }
 
 @media (min-width: $bp-md) {
+  #k-carttoggle {
+    margin: auto;
+
+    i {
+      font-size: 100%;
+    }
+  }
+
+  #k-searchicon {
+    margin: auto;
+    font-size: 100%;
+  }
+
   .k-header {
     &--traveling {
       .k-header--logo {
@@ -278,12 +318,14 @@
 
     &__newsletter-signup {
       form {
+        display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-end;
         padding-bottom: 0;
 
         fieldset {
+          width: auto;
           flex-basis: auto;
           padding: 1em 0.5em;
         }

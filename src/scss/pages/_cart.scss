@@ -1,4 +1,10 @@
 .page-template-cart {
+  .k-cart {
+    &--item__price {
+      position: relative;
+    }
+  }
+
   .k-header {
     top: 0 !important;
 

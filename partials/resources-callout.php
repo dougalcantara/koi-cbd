@@ -25,7 +25,7 @@ $resources = array(
 ?>
 
 <section class="k-resourcescallout k-block k-block--md">
-  <div class="k-resourcescallout__bgimg" data-src="<?php echo $root . '/dist/img/generic-countertop.jpg' ?>"></div>
+  <div class="k-resourcescallout__bgimg" data-src="<?php echo $root . '/dist/img/koi-cbd-company.jpg' ?>"></div>
   <div class="k-inner k-inner--md">
     <div class="k-resourcescallout__content">
       <?php

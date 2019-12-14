@@ -1,6 +1,8 @@
 <?php
 
-require_once( __DIR__ . '/helpers/members.php');
+require_once( __DIR__ . '/helpers/veterans.php');
+require_once( __DIR__ . '/helpers/member.php');
+require_once( __DIR__ . '/helpers/breadcrumbs.php');
 
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
@@ -311,6 +313,7 @@ include_once('partials/macros/hero.php');
 include_once('partials/macros/product-card.php');
 include_once('partials/macros/product-video.php');
 include_once('partials/macros/article-card.php');
+include_once('partials/macros/product-review.php');
 // == end macros == //
 
 
@@ -503,8 +506,12 @@ function zero_discount_for_excluded_products($discount, $discounting_amount, $ca
     return $discount;
 }
 
-if(class_exists('Members')) {
-  $members = new Members();
+if(class_exists('Veterans')) {
+  $veterans = new Veterans();
+}
+
+if(class_exists('Member')) {
+  $member = new Member();
 }
 
 function admin_styles() {
@@ -512,3 +519,9 @@ function admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
 add_action( 'login_enqueue_scripts', 'admin_styles' );
+
+function check_login() {
+  if(!is_user_logged_in()) {
+    wp_redirect(home_url() . '/login');
+  }
+}

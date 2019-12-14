@@ -32,9 +32,9 @@
         <a href="<?php echo site_url().'/cbd-tinctures'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="Peppermint CBD Tincture" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="Peppermint CBD Tincture" class="k-cornerimg">
           </figure>
         </a>
         <h3 class="k-headline k-headline--xs">
@@ -52,9 +52,9 @@
         <a href="<?php echo site_url().'/cbd-topicals'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="Topical CBD Balm" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="Topical CBD Balm" class="k-cornerimg">
           </figure>
         </a>
         <h3 class="k-headline k-headline--xs">
@@ -72,7 +72,7 @@
         <a href="<?php echo site_url().'/cbd-for-pets'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-pets-mainimg@2x.png' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/Koi-lifestyleimagecomp-pet-treats.png' ?>" alt="CBD Pet Treats" />
             </div>
           </figure>
         </a>
@@ -91,9 +91,9 @@
         <a href="<?php echo site_url().'/cbd-edibles'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-edibles-mainimg.jpg' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/edibles-new.jpg' ?>" alt="CBD Edibles" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="CBD Edibles" class="k-cornerimg">
           </figure>
         </a>
         <div class="k-overview--edibles__text">
@@ -114,9 +114,9 @@
         <figure class="k-figure k-figure--rounded ">
           <a href="<?php echo site_url().'/cbd-vape'; ?>">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-vape-mainimg.jpg' ?>" alt="" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/home-vape-main.jpg' ?>" alt="CBD Vape" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/koi-vape-cornerimg@2x.png' ?>" alt="" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/vape-cbd-new.jpg' ?>" alt="CBD Vape" class="k-cornerimg">
           </a>
         </figure>
         

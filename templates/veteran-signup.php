@@ -12,8 +12,18 @@ echo k_hero(array(
   'body' => 'Our way of thanking all those who have served.',
   'background_image' => get_fields()['veteran_hero_background_image']['url'],
 ));
-get_template_part('partials/components/randoms/breadcrumb');
 ?>
+
+<?php new Breadcrumbs([
+  [
+    'name' => 'Home',
+    'url' => home_url()
+  ],
+  [
+    'name' => get_the_title(),
+    'url' => get_the_permalink()
+  ]
+]); ?>
 
 <section class="k-introtext k-block k-block--md">
   <div class="k-inner k-inner--sm k-rte-content">

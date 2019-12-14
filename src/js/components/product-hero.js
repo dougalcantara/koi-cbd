@@ -1,6 +1,5 @@
 import { $doc } from '../global/selectors';
 import wasEnter from '../helpers/wasEnter';
-import PreventScrollOnDrag from '../helpers/FlickityEvents';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 const $productHero = $('.k-producthero');
@@ -8,6 +7,7 @@ const $productHeroCarousel = $('.k-producthero--gallery');
 const $variantSelects = $(
   '.k-productform--variants .k-productform--variantselect'
 );
+const $productLabels = $('.k-productform--varianttoggle');
 const $productForm = $('.k-productform');
 const $priceTarget = $('.k-productform--pricetarget');
 const $pricePrefix = $('#k-bundle-price-prefix');
@@ -21,40 +21,43 @@ const $bundledVariants = $(
   '.k-producthero--bundle .k-productform--varianttoggle'
 );
 const $addToCartTrigger = $('.k-productform .k-add-to-cart');
-const $increment = $('#k-increase');
-const $decrement = $('#k-reduce');
 const $quantity = $('#k-num-to-add');
 const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
 
 const minItems = $productHero.data('min-items');
-let flkty;
 
-$increment.click(function increment(e) {
-  e.preventDefault();
+function getFirstAvailableVariant() {
+  let first = null;
 
-  let oldQ = parseInt($quantity.val());
-  const newQ = ++oldQ;
+  $variantSelects.each(function() {
+    // can't return from a jQuery each().
+    if (!$(this).data('outOfStock') && first === null) {
+      first = $(this);
+    }
+  });
 
-  if (newQ > 10) {
-    return alert('Max 10 items.');
-  } else {
-    $quantity.val(newQ);
-  }
+  return first;
+}
+
+$quantity.change(function() {
+  checkQuantityAgainstPrice();
 });
 
-$decrement.click(function(e) {
-  e.preventDefault();
-
-  let oldQ = parseInt($quantity.val());
-  const newQ = --oldQ;
-
-  if (newQ < 1) {
-    return alert('Min 1 item.');
-  } else {
-    $quantity.val(newQ);
-  }
+$productLabels.click(event => {
+  // this propagation path triggered setVariants() an additional time.
+  event.stopPropagation();
 });
+
+function checkQuantityAgainstPrice() {
+  if ($quantity.val() < 0 || $quantity.val() == NaN || !$quantity.val()) {
+    $quantity.val(1);
+  }
+
+  let quantity = parseInt($quantity.val());
+  let price = $quantity.data('variant-price');
+  $priceTarget.text(`$${(quantity * price).toFixed(2)}`);
+}
 
 $variantSelects.click(function(e) {
   setVariant($(this));
@@ -67,18 +70,33 @@ $variantSelects.keypress(function(e) {
 });
 
 function setVariant(context, wasKeypress = false) {
-  let $t;
+  // the div gets the click, but the data we want is on the label.
+  let $t = context.find('.k-productform--varianttoggle');
 
   if (wasKeypress) {
     const $checkbox = context.find('input');
     $checkbox.prop('checked', !$checkbox[0].checked);
   }
 
-  $t = context.find('.k-productform--varianttoggle');
+  // if variant is out of stock, disable the button.
+  if (context.data('outOfStock')) {
+    $addToCartTrigger.attr('disabled', 'disabled');
+  } else if ($addToCartTrigger.attr('disabled')) {
+    $addToCartTrigger.removeAttr('disabled');
+  }
+
+  // select the corresponding gallery image.
+  window.__flkty.selectCell(
+    `${window.__flkty.options.cellSelector}[data-flickityselector*="${$t.data(
+      'flickityselector'
+    )}"]`
+  );
+
   const variantPrice = $t.data('variant-price');
   const variantId = $t.data('variant-id');
-
   $priceTarget.text(`$${variantPrice}`);
+  $quantity.data('variant-price', variantPrice);
+  checkQuantityAgainstPrice();
   $addToCartTrigger.attr('data-product-id', variantId);
 }
 
@@ -161,7 +179,7 @@ $bundledVariants.keypress(function(e) {
  * to be shown in the Product Hero after a user has selected the minimum number of items
  * in a Product Bundle.
  */
-$bundledVariants.click(function() {
+$bundledVariants.click(function(e) {
   const $t = $(this);
   let $selectedBundledVariants;
 
@@ -206,7 +224,7 @@ $bundledVariants.click(function() {
 $doc.ready(function() {
   if (!$productHeroCarousel.length) return;
 
-  flkty = new Flickity($productHeroCarousel[0], {
+  window.__flkty = new Flickity($productHeroCarousel[0], {
     cellSelector: '.k-producthero--slide',
     pageDots: false,
     contain: true,
@@ -215,10 +233,20 @@ $doc.ready(function() {
     prevNextButtons: false,
   });
 
-  preventScrollOnDrag(flkty);
+  preventScrollOnDrag(window.__flkty);
 
-  $prev.click(() => flkty.previous());
-  $next.click(() => flkty.next());
+  $prev.click(() => window.__flkty.previous());
+  $next.click(() => window.__flkty.next());
+  $prev.keypress(function(e) {
+    if (wasEnter(e)) {
+      window.__flkty.previous();
+    }
+  });
+  $next.keypress(function(e) {
+    if (wasEnter(e)) {
+      window.__flkty.next();
+    }
+  });
 
   $variantSelects.each(function() {
     const $t = $(this);
@@ -232,8 +260,25 @@ $doc.ready(function() {
       const variantPrice = $t.data('variant-price');
       const variantId = $t.data('variant-id');
 
+      $quantity.data('variant-price', parseFloat(variantPrice));
       $priceTarget.text(`$${variantPrice}`);
       $addToCartTrigger.attr('data-product-id', variantId);
     }
   });
+
+  /*
+    for simple products: since no variantSelects exist, instead pull the product price for the priceTarget from the dataset.
+  */
+  if ($addToCartTrigger.data('price')) {
+    $quantity.data(
+      'variant-price',
+      parseFloat($addToCartTrigger[0].dataset.price)
+    );
+  }
+
+  if ($variantSelects.length > 0) {
+    const $firstAvailableVariant = getFirstAvailableVariant();
+    // the first available variant gets its input marked as checked from server-side.
+    setVariant($firstAvailableVariant);
+  }
 });

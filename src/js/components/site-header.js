@@ -1,20 +1,25 @@
 import {
   $header,
-  $getsHeaderMargin,
   $backdrop,
   $searchModal,
   $win,
+  $doc,
 } from '../global/selectors';
+import { breakpoints } from '../global/ui';
 import debounce from '../helpers/debounce';
 import wasEnter from '../helpers/wasEnter';
 
 const headerHeight = () => $header.outerHeight();
 const headerOffset = () => $header.find('.k-header--top').outerHeight();
-// const $headerMain = $header.find('.k-header--main');
 const $nav = $header.find('.k-header--nav');
 const $navTrigger = $('#k-nav-trigger');
 const $dropdownTriggers = $('.k-has-dropdown a');
 const $accessibleSkip = $('.k-header__skip-to-main');
+const $cartTrigger = $('#k-carttoggle');
+const $cartParent = $('.k-header--cart');
+const $logo = $header.find('.k-header--logo');
+const $searchParent = $header.find('.k-searchparent');
+const $searchIcon = $header.find('#k-searchicon');
 const $main = $('main');
 
 let didScroll = false;
@@ -37,8 +42,6 @@ function doHeaderOffsets() {
   }
 
   $header.css({ top: -headerOffset() });
-
-  // $getsHeaderMargin.css({ 'margin-top': headerHeight() });
 }
 
 (function handleScroll() {
@@ -88,10 +91,27 @@ export function closeAllDropdowns() {
   });
 }
 
+function handleMobileNav() {
+  if ($win.width() < breakpoints.md) {
+    $cartTrigger.detach();
+    $searchIcon.detach();
+    $cartTrigger.insertAfter($logo);
+    $searchIcon.insertAfter($cartTrigger);
+  } else {
+    $cartTrigger.detach();
+    $cartParent.append($cartTrigger);
+    $searchIcon.detach();
+    $searchParent.append($searchIcon);
+  }
+}
+
 $navTrigger.click(toggleNavDrawer);
 window.addEventListener('resize', () => debounce(doHeaderOffsets, interval));
 window.addEventListener('scroll', () => (didScroll = true));
 document.addEventListener('DOMContentLoaded', doHeaderOffsets);
+
+$doc.ready(handleMobileNav);
+$win.resize(handleMobileNav);
 
 $accessibleSkip.focusin(function() {
   $(this).addClass('k-header__skip-to-main--focused');

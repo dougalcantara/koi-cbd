@@ -1,0 +1,26 @@
+@media screen and (-ms-high-contrast: none) {
+  // .is-ie11 {
+  //   #k-backdrop {
+  //     display: none;
+  //   }
+  // }
+
+  header.k-header {
+    position: fixed;
+    top: 0 !important;
+  }
+
+  .k-cart-sidebar__actions {
+    position: absolute !important;
+  }
+
+  .k-sidebar--newsletter {
+    position: relative !important;
+    top: 0 !important;
+    margin: 0 2em;
+  }
+
+  .k-latestbatch--tabs {
+    flex-flow: row nowrap;
+  }
+}

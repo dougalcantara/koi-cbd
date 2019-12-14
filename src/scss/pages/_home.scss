@@ -67,11 +67,11 @@
 
   &--pets {
     .k-figure {
-      width: 80%;
+      width: 90%;
       overflow: hidden;
 
       &--liner {
-        padding-bottom: 151.18%;
+        padding-bottom: 128.57%;
       }
     }
   }
@@ -95,6 +95,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 360px;
     }
 
     .k-figure {
@@ -199,6 +200,11 @@
     &--pets {
       margin: 0 0 0 auto;
       max-width: 21.66em;
+
+      .k-figure {
+        width: 125%;
+        transform: translateX(-12.5%);
+      }
     }
 
     &--edibles {
@@ -210,6 +216,9 @@
       margin-left: 33.33em;
       margin-top: 0em;
       max-width: 44.16em;
+      &__card {
+        min-height: 420px;
+      }
     }
   }
 }

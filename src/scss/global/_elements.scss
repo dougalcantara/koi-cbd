@@ -1,10 +1,6 @@
-.is-ie11 {
-  #k-backdrop {
-    display: none;
-  }
-}
-* {
+main:focus {
   outline: none;
+  box-shadow: none;
 }
 body {
   &.cart-sidebar-open {
@@ -20,8 +16,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: $black;
   z-index: -100;
+  background: black;
   opacity: 0;
   transition: opacity 0.4s $ease-out-quart;
   pointer-events: none;
@@ -83,15 +79,13 @@ img[data-src] {
 
 #k-cartnum {
   position: absolute;
-  // top: -1.15em;
-  // left: 50%;
-  top: 33%;
-  left: 3em;
+  top: 62.5%;
+  left: 50%;
   line-height: 0;
   font-size: 75%;
   color: $true-white;
   opacity: 0;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, -50%);
   transition: opacity 1s $ease-out-circ, transform 1s $ease-out-circ;
 
   &.k-has-value {
@@ -229,6 +223,11 @@ img[data-src] {
 
   &--liner {
     padding-bottom: 100%;
+    pointer-events: none;
+
+    * {
+      pointer-events: none;
+    }
   }
 
   svg {
@@ -253,6 +252,21 @@ img[data-src] {
         stroke: $bg-dark;
       }
     }
+  }
+}
+
+input[type='number'] {
+  padding: 0.5em 0.25em 0.5em 1ch;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+@media (min-width: $bp-sm) {
+  input[type='number'] {
+    font-size: 175%;
   }
 }
 

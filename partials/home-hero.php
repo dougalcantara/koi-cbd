@@ -2,7 +2,22 @@
   $root = get_template_directory_uri();
 ?>
 <section class="k-hero k-hero--default k-hero--center k-hero--on-dark">
-  <div class="k-hero--bgimg" data-src="<?php echo $hero_fields['bgImg']['url']; ?>"></div>
+  <div class="hero-media">
+    <div class="hero-media-img">
+      <img
+          sizes="(min-width: 30em) 28em, 100vw"
+          srcset="<?php echo get_template_directory_uri(); ?>/dist/hero-img-256.jpg,
+                <?php echo get_template_directory_uri(); ?>/dist/hero-img-512.jpg 512w,
+                <?php echo get_template_directory_uri(); ?>/dist/hero-img-768.jpg 768w,
+                <?php echo get_template_directory_uri(); ?>/dist/hero-img-1024.jpg 1024w,
+                <?php echo get_template_directory_uri(); ?>/dist/hero-img-1920.jpg 1920w"
+          src="<?php echo get_template_directory_uri(); ?>/dist/hero-img-512.jpg"
+          alt />
+    </div>
+    <div class="hero-media-video">
+      <video src="<?php the_field('hero_background_video', 'option'); ?>" loop muted playsinline></video>
+    </div>
+  </div>
   <div class="k-inner k-inner--md">
     <div class="k-hero--text">
       <h2 class="k-headline k-headline--lg"><?php echo $hero_fields['headline']; ?></h2>

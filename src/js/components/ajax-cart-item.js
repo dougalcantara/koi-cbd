@@ -7,9 +7,9 @@ export default class CartItem {
     this.key = key;
     this.$input = $this.find('input');
     this.$updateButton = $this.find('.k-cart-sidebar__item-update');
-    this.$increase = $this.find('.k-increase');
-    this.$decrease = $this.find('.k-reduce');
-    this.$price = $this.find('.k-cart-sidebar__item-price');
+    // this.$increase = $this.find('.k-increase');
+    // this.$decrease = $this.find('.k-reduce');
+    this.$price = $this.find('.k-cartItem--price-target');
     this.originalValue = parseInt(this.$input.val());
     this.appendListeners();
   }
@@ -19,13 +19,13 @@ export default class CartItem {
       this.needsUpdate();
     });
 
-    this.$increase.click(() => {
-      this.increaseInput();
-    });
+    // this.$increase.click(() => {
+    //   this.increaseInput();
+    // });
 
-    this.$decrease.click(() => {
-      this.decreaseInput();
-    });
+    // this.$decrease.click(() => {
+    //   this.decreaseInput();
+    // });
 
     this.$updateButton.click(() => {
       this.updateGlobalQuantities();
@@ -47,7 +47,7 @@ export default class CartItem {
   needsUpdate() {
     const newValue = parseInt(this.$input.val());
 
-    if (newValue < 0) {
+    if (newValue < 0 || !newValue) {
       this.$input.val(0);
     }
 

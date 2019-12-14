@@ -6,16 +6,34 @@ import {
   $searchModal,
   $backdrop,
   $reviewModal,
+  //Imported
+  $myDrop,
+  $myNews,
+  $myOpenCart,
+  $myOpenSearch,
+  $myOpenMenu,
+  $myOpenNews,
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
 import { closeSidebar } from './cart-actions';
+
+const IS_SAFARI =
+  /constructor/i.test(window.HTMLElement) ||
+  (function(p) {
+    return p.toString() === '[object SafariRemoteNotification]';
+  })(
+    !window['safari'] ||
+      (typeof safari !== 'undefined' && safari.pushNotification)
+  );
 
 export const breakpoints = {
   sm: 580,
   md: 767,
   lg: 992,
   xl: 1199,
+  xxl: 1440,
+  max: 1800,
 };
 
 const $tiltTargets = $('.k-tilt');
@@ -27,7 +45,8 @@ function slugify(string) {
 }
 
 function initializeTilt() {
-  if ($win.width() < breakpoints.md || !$tiltTargets.length) return;
+  if ($win.width() < breakpoints.md || !$tiltTargets.length || IS_SAFARI)
+    return;
 
   const tiltProps = {
     maxTilt: 5,
@@ -62,9 +81,22 @@ function setInitialBlogCategory() {
 
 $blogFilterBy.change(goToCategoryListing);
 
-$doc.ready(() => {
+$doc.ready(function() {
   initializeTilt();
   setInitialBlogCategory();
+
+  let $liveChat;
+  let interval;
+
+  // wait for the thing to actually get embedded first
+  interval = setInterval(function() {
+    $liveChat = $('#livechat-compact-container');
+
+    if ($liveChat.length) {
+      $liveChat.css({ 'z-index': 100 });
+      clearInterval(interval);
+    }
+  }, 1000);
 });
 
 $backdrop.click(function() {
@@ -96,4 +128,33 @@ $logoutTrigger.click(function(e) {
     data: { action: 'customer_logout' },
     complete: () => (window.location.href = `${window.SITE_GLOBALS.root}`),
   });
+});
+
+$myOpenCart.click(function() {
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display', 'none');
+  $searchModal.removeClass('k-modal--open');
+  $backdrop.removeClass('active');
+  $myDrop.removeClass('k-dropdown--open');
+});
+
+$myOpenSearch.click(function() {
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display', 'none');
+  $myDrop.removeClass('k-dropdown--open');
+  $myDrop.css('height', 0);
+});
+
+$myOpenMenu.click(function() {
+  $myNews.removeClass('k-header__newsletter-signup--open');
+  $myNews.css('display', 'none');
+  $searchModal.removeClass('k-modal--open');
+  $cartSidebar.removeClass('k-cart-sidebar--open');
+});
+
+$myOpenNews.click(function() {
+  $searchModal.removeClass('k-modal--open');
+  $backdrop.removeClass('active');
+  $cartSidebar.removeClass('k-cart-sidebar--open');
+  $myDrop.removeClass('k-dropdown--open');
 });

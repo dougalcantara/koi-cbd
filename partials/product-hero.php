@@ -3,6 +3,8 @@
   class="k-producthero <?php echo $product_wc_type == 'bundle' ? 'k-producthero--bundle' : NULL; ?>"
   data-yotpo-product-id="<?php echo $product_id ?>"
   data-min-items="<?php echo $min_items; ?>"
+  data-product-sku="<?php echo $product->get_sku(); ?>"
+  data-product-title="<?php echo the_title(); ?>"
 >
   <div class="k-inner k-inner--xl">
     <?php
@@ -51,10 +53,13 @@
           if ($product_wc_type == 'bundle') {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else { ?>
+          <div class="k-productform--item k-productform__desc">
+            <span class="k-upcase">Qty</span><span class="k-upcase">Price</span>
+          </div>
             <div class="k-productform--item k-productform--quantity">
-              <button id="k-reduce" class="" type="button">-</button>
-              <input id="k-num-to-add" type="number" value="1" max="10" min="1" step="1" />
-              <button id="k-increase" class="" type="button">+</button>
+              <!-- <button id="k-reduce" class="" type="button">-</button> -->
+              <input id="k-num-to-add" type="number" value="1" min="1" step="1" />
+              <!-- <button id="k-increase" class="" type="button">+</button> -->
             </div>
           <?php
           }
@@ -78,14 +83,11 @@
                 if ($out_of_stock) : ?> disabled
                 <?php
                 endif;
-                if ($product_wc_type == 'simple') : ?> data-product-id="<?php echo $product_id; ?>"
+                if ($product_wc_type == 'simple') : ?> data-product-id="<?php echo $product_id;?>" data-price="<?php echo $product->get_price(); ?>"
                 <?php
                 endif;
                 if ($product_wc_type == 'bundle') : ?> data-bundle-id="<?php echo $product_id; ?>"
-                <?php else:$variant =$product->get_available_variations()[0]; ?> data-product-id="<?php echo $variant['variation_id']; ?>"
-                <?php
-                endif;
-                ?>
+                <?php endif; ?>
               >
                 <?php
                 if ($out_of_stock) : ?> Out Of Stock
@@ -123,11 +125,11 @@
                   endforeach;
                 ?>
                   <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
-                  <span class="k-productform--pricetarget" data-price="<?php echo $product->get_price(); ?>">$<?php echo $bundle_price; ?></span>
+                  <span class="k-productform--pricetarget">$<?php echo $bundle_price; ?></span>
                   <sup>20% off!</sup>
                 <?php
                 } else { ?>
-                  <span class="k-productform--pricetarget" data-price="<?php echo $product->get_price(); ?>">$<?php echo $product->get_price(); ?></span>
+                  <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>
                 <?php
                 }
                 ?>

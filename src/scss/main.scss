@@ -36,8 +36,8 @@
 @import 'components/koi-process';
 @import 'components/resources-callout';
 @import 'components/newsletter-cta';
-@import "components/breadcrumbs";
-@import "components/social-icons";
+@import 'components/breadcrumbs';
+@import 'components/social-icons';
 
 @import 'pages/home';
 @import 'pages/blog-listing';
@@ -48,9 +48,14 @@
 @import 'pages/contact';
 @import 'pages/about-us';
 @import 'pages/all-products';
+@import 'pages/single-product';
 @import 'pages/lab-results';
 @import 'pages/thank-you';
 @import 'pages/veteran-signup';
 @import 'pages/location-finder';
 @import 'pages/cart';
 @import 'pages/404';
+@import 'pages/product-rec';
+@import 'account/account';
+
+@import 'global/IE';

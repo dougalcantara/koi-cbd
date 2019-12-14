@@ -1,4 +1,4 @@
-<section class="k-latestbatch k-block k-block--md">
+<section class="k-latestbatch k-block k-block--md <?php echo $product_acf['frequently_asked_questions'] ? NULL : 'k-no-padding--bottom' ?>">
   <div class="k-inner k-inner--md">
 
     <div class="k-latestbatch--intro">
@@ -83,17 +83,11 @@
           </div>
           <div class="k-latestbatch--results__column">
               <div>
-                <?php if (the_field('unit', get_the_ID())): ?>
-                  <p class="k-upcase">Unit:</p>
-                  <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
-                <?php else: ?>
-                  <p class="k-upcase">Unit:</p>
-                  <p class="k-upcase" style="color: red;">This item does not have a unit value set.</p>
-                <?php endif; ?>
+                <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
               </div>
-            <?php if (the_field('units_per_item', get_the_ID())): ?>
+            <?php if (get_field('units_per_item', get_the_ID())): ?>
               <div>
-                <p class="k-upcase">Approx. <?php the_field('units_per_item', get_the_ID()); ?> / Item</p>
+                <p class="k-upcase"><?php the_field('units_per_item', get_the_ID()); ?> / Item</p>
               </div>
             <?php endif; ?>
           </div>
