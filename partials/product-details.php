@@ -11,7 +11,6 @@
     <div class="k-productdetails--main">
       <div class="k-productdetails--image">
         <?php if ($product_acf['lifestyle_video']): ?>
-        <script> window.debug = <?php echo json_encode($product_acf); ?></script>
           <?php
             $host = $product_acf['lifestyle_video_host'];
 

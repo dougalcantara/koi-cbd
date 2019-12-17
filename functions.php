@@ -4,6 +4,12 @@ require_once( __DIR__ . '/helpers/veterans.php');
 require_once( __DIR__ . '/helpers/member.php');
 require_once( __DIR__ . '/helpers/breadcrumbs.php');
 
+function redirect_prevent()
+{
+add_action('redirect_canonical','__return_false');
+}
+add_action('template_redirect','redirect_prevent',1);
+
 if (function_exists('acf_add_options_page')) {
 	$parent = acf_add_options_page(array(
 		'page_title' => 'Site Content',

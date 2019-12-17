@@ -8,6 +8,8 @@ import {
   $backdrop,
   $cartSidebar,
 } from './selectors';
+import { closeAllDropdowns } from '../components/site-header';
+
 import CartItem from '../components/ajax-cart-item';
 
 const $addToCart = $('.k-add-to-cart');
@@ -357,6 +359,8 @@ $cartSidebarToggle.keypress(function(e) {
 
 function toggleCartSidebar(e) {
   e.preventDefault();
+
+  closeAllDropdowns();
 
   if ($header.hasClass('is-open')) {
     $header.removeClass('is-open');
