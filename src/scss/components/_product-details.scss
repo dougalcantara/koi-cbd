@@ -7,6 +7,10 @@
         padding-bottom: 128.57%;
       }
     }
+
+    .k-fullwidthvid {
+      background: none;
+    }
   }
 
   &--accordion {
@@ -25,9 +29,9 @@
         font-weight: 300;
         a {
           color: $primary;
-          transition: opacity .25s ease;
+          transition: opacity 0.25s ease;
           &:hover {
-            opacity: .5;
+            opacity: 0.5;
           }
         }
       }

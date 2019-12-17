@@ -9,8 +9,29 @@
 
   <div class="k-inner k-inner--md">
     <div class="k-productdetails--main">
-
       <div class="k-productdetails--image">
+        <?php if ($product_acf['lifestyle_video']): ?>
+        <script> window.debug = <?php echo json_encode($product_acf); ?></script>
+          <?php
+            $host = $product_acf['lifestyle_video_host'];
+
+            if ($host == 'youtube') {
+              $video_id = $product_acf['youtube_id'];
+            } else if ($host == 'vimeo') {
+              $video_id = $product_acf['vimeo_id'];
+            }
+          ?>
+
+          <section class="k-fullwidthvid has-play-button k-bg-dark">
+            <div class="k-inner k-inner--xl">
+              <div class="k-fullwidthvid--liner">
+                <div class="k-fullwidthvid--bgimg" data-src="<?php echo $product_acf['lifestyle_image']['url']; ?>"></div>
+              </div>
+              <div class="k-player" data-plyr-provider="<?php echo $host; ?>" data-plyr-embed-id="<?php echo $video_id; ?>"></div>
+            </div>
+            <?php get_template_part('partials/svg/koi-play-button'); ?>
+          </section>
+        <?php else: ?>
         <figure class="k-figure k-figure--rounded">
           <div class="k-figure--liner">
             <?php
@@ -21,6 +42,7 @@
             <img src="<?php echo $ls_img_url ?>" alt="<?php echo $product->get_title(); ?>" class="k-figure--img">
           </div>
         </figure>
+        <?php endif; ?>
       </div>
     
 
