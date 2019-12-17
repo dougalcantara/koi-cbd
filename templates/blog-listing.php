@@ -18,10 +18,21 @@ echo k_hero($hero_fields);
 
 $all_categories = get_categories();
 $requested_category = $_GET['category'];
-$query_args = array(
-  'paged' => false,
-  'numberposts' => 1000,
-);
+$requested_page = intval($_GET['page']);
+$per_page = 12;
+
+if (is_null($requested_page)) {
+  $query_args = array(
+    'paged' => false,
+    'numberposts' => $per_page,
+  );
+} else {
+  $query_args = array(
+    'paged' => false,
+    'numberposts' => 12,
+    'offset' => $per_page * ($requested_page - 1),
+  );
+}
 
 if ($requested_category && $requested_category != 'all') {
   /**
@@ -73,7 +84,6 @@ $all_posts = get_posts($query_args);
 <section class="k-bloglist k-block k-block--md">
   <div class="k-inner k-inner--md">
   <?php
-
     foreach($all_posts as $index => $post) {
       $id = $post->ID;
       $should_break_for_cta = $index > 0 && $index % 6 == 0;
@@ -148,6 +158,51 @@ $all_posts = get_posts($query_args);
       }
     }
   ?>
+  </div>
+  <div class="k-bloglist__pagination">
+    <?php
+    $num_blog_posts = intval(wp_count_posts()->publish);
+    $total_pages = intval(ceil($num_blog_posts / $per_page));
+    $is_final_page = $requested_page === $total_pages;
+    ?>
+    <div class="k-inner k-inner--md">
+      <ul>
+        <?php
+          if ($requested_page > 1) : ?>
+          <li>
+            <a
+              class="k-upcase"
+              href="<?php echo site_url() . '/blog?page=' . ($requested_page - 1); ?>"
+            >
+              &larr;
+            </a>
+          </li>
+        <?php endif; ?>
+      <?php
+      for ($i = 0; $i < $total_pages; $i++) :
+        $page_num = $i + 1;
+      ?>
+        <li <?php echo $requested_page === $page_num ? 'class="active"' : null; ?>>
+          <a href="<?php echo site_url() . '/blog?page=' . $page_num; ?>">
+            <?php echo $page_num; ?>
+          </a>
+        </li>
+      <?php
+      endfor;
+      if (!$is_final_page) :
+      ?>
+        <li>
+          <a
+            class="k-upcase"
+            href="<?php echo site_url() . '/blog?page=' . ($requested_page + 1); ?>"
+          >
+            &rarr;
+          </a>
+        </li>
+      <?php endif; ?>
+      </ul>
+    </div>
+      
   </div>
 </section>
 
