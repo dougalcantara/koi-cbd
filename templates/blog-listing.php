@@ -163,6 +163,7 @@ $all_posts = get_posts($query_args);
     <?php
     $num_blog_posts = intval(wp_count_posts()->publish);
     $total_pages = intval(ceil($num_blog_posts / $per_page));
+    $is_first_page = $requested_page <= 1;
     $is_final_page = $requested_page === $total_pages;
     ?>
     <div class="k-inner k-inner--md">
@@ -181,8 +182,10 @@ $all_posts = get_posts($query_args);
       <?php
       for ($i = 0; $i < $total_pages; $i++) :
         $page_num = $i + 1;
+        $give_active_to_first = $is_first_page && $i === 0;
+        $give_active_to_other = $page_num === $requested_page;
       ?>
-        <li <?php echo $requested_page === $page_num ? 'class="active"' : null; ?>>
+        <li <?php echo $give_active_to_first || $give_active_to_other ? 'class="active"' : null; ?>>
           <a href="<?php echo site_url() . '/blog?page=' . $page_num; ?>">
             <?php echo $page_num; ?>
           </a>
