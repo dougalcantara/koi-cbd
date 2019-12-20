@@ -52,7 +52,38 @@
 
           if ($product_wc_type == 'bundle') {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
-          } else { ?>
+          } else {
+          if (reset($product->get_category_ids()) == 265) : // CBD Oil/Tincture
+            $other_tinctures = wc_get_products(array(
+              'post_type' => 'product',
+              'product_cat' => $product_category,
+            ));
+          ?>
+          <div class="k-productform--item k-productform__flavorselect">
+            <p>Select another flavor:</p>
+            <div class="k-productform__flavorselect__main">
+              <select>
+                <?php // have the current one be the "current selected" option" ?>
+                <option selected>&#10003; <?php echo $product->get_name(); ?></option>
+                <?php
+                foreach($other_tinctures as $idx => $tincture) :
+                  $is_visible = $tincture->get_status() !== 'draft';
+                  $is_not_bundle = $tincture->get_type() !== 'bundle';
+                  $is_not_current = $tincture->get_id() !== $product_id;
+                  $is_not_weird_one = $tincture->get_id() !== 30239; // the 60ML variant is not be included in this list
+
+                  $show_tincture = $is_visible && $is_not_bundle && $is_not_current && $is_not_weird_one;
+
+                  if ($show_tincture) : ?>
+                    <option data-permalink="<?php echo $tincture->get_permalink(); ?>"><?php echo $tincture->get_name(); ?></option>
+                  <?php 
+                  endif;
+                endforeach; ?>
+                </select>
+              <span>&#9660;</span>
+            </div>
+          </div>
+          <?php endif; ?>
           <div class="k-productform--item k-productform__desc">
             <span class="k-upcase">Qty</span><span class="k-upcase">Price</span>
           </div>
