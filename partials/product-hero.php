@@ -64,7 +64,7 @@
             <div class="k-productform__flavorselect__main">
               <select>
                 <?php // have the current one be the "current selected" option" ?>
-                <option selected><?php echo $product->get_name(); ?> (current)</option>
+                <option selected>&#10003; <?php echo $product->get_name(); ?></option>
                 <?php
                 foreach($other_tinctures as $idx => $tincture) :
                   $is_visible = $tincture->get_status() !== 'draft';
