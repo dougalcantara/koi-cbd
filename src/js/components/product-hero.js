@@ -302,6 +302,7 @@ $doc.ready(function() {
   }
 
   handlePopulatedParams();
+  checkQuantityAgainstPrice();
 });
 
 $selectRelatedItem.change(function(e) {
