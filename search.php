@@ -68,6 +68,11 @@ do_action('k_before_first_section');
 
             <div class="k-searchresults--item__reviews">
               <ul>
+                <?php if ($rating): ?>
+                  <li class="k-productcard--reviewavg k-accent-text"><?php echo $rating ?></li>
+                <?php else: ?>
+                  <li class="k-productcard--reviewavg k-accent-text">No Reviews Available</li>
+                <?php endif; ?>                  
                 <?php for ($i = 0; $i < $rating; $i++): ?>
                   <div class="k-goldstar">
                     <div class="k-goldstar--liner">
@@ -81,11 +86,6 @@ do_action('k_before_first_section');
                     </div>
                   </div>
                 <?php endfor; ?>
-                <?php if ($rating): ?>
-                  <li class="k-productcard--reviewavg k-accent-text"><?php echo $rating ?></li>
-                <?php else: ?>
-                  <li class="k-productcard--reviewavg k-accent-text">No Reviews Available</li>
-                <?php endif; ?>
               </ul>
             </div>
 
