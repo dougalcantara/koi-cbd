@@ -282,6 +282,17 @@ $doc.ready(function() {
     // the first available variant gets its input marked as checked from server-side.
     setVariant($firstAvailableVariant);
   }
+
+  const url = new URL(window.location.href);
+  const selectedVariantIdx = url.searchParams.get('selectedVariant');
+  const selectedQuantity = url.searchParams.get('quantity');
+
+  if (selectedVariantIdx && selectedQuantity) {
+    const $inputToSelect = $($variantSelects[selectedVariantIdx]).find('input');
+
+    $quantity.val(selectedQuantity);
+    $inputToSelect.prop('checked', true);
+  }
 });
 
 $selectRelatedItem.change(function(e) {
@@ -299,7 +310,7 @@ $selectRelatedItem.change(function(e) {
       .is(':checked');
 
     if (isSelected) {
-      selectedVariantIdx = i + 1;
+      selectedVariantIdx = i;
     }
   });
 
