@@ -179,6 +179,13 @@ function handlePopulatedParams() {
   const selectedQuantity = url.searchParams.get('quantity');
 
   if (selectedVariantIdx && selectedQuantity) {
+    $variantSelects.each(function(i, el) {
+      // uncheck all others
+      const $t = $(el);
+
+      $t.find('input').prop('checked', false);
+    });
+
     const $inputToSelect = $($variantSelects[selectedVariantIdx]).find('input');
 
     $quantity.val(selectedQuantity);
@@ -302,6 +309,15 @@ $doc.ready(function() {
   }
 
   handlePopulatedParams();
+  const dynamicQuantity = $quantity.val();
+  const dynamicallySelectedVariantPrice = $('.k-productform--variants')
+    .find('input:checked')
+    .next()
+    .data('variant-price');
+
+  $priceTarget.text(
+    `$${(dynamicQuantity * dynamicallySelectedVariantPrice).toFixed(2)}`
+  );
 });
 
 $selectRelatedItem.change(function(e) {
