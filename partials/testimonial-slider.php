@@ -21,7 +21,7 @@
             "<?php echo $testimonial['quote']; ?>"
           </h3>
           <p class="k-testimonialslider--cite k-upcase">
-            <?php $testimonial['author']; ?>
+            <?php echo $testimonial['author']; ?>
           </p>
         </div>
       <?php } ?>

@@ -14,7 +14,7 @@ const flktyOpts = {
   prevNextButtons: false,
   dragThreshold: 10,
   imagesLoaded: true,
-  autoPlay: true,
+  autoPlay: 4000,
 };
 
 function initializeSlider() {
