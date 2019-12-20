@@ -8,15 +8,8 @@ import { $doc } from './selectors';
  */
 
 $doc.ready(() => {
-  const $banner = $('.k-ctabanner--main');
   const $takeover = $('.k-ctabanner--takeover');
-  let $last;
-
-  if ($banner.length === 1) {
-    $last = getLastSection($banner);
-  } else if ($takeover.length === 1) {
-    $last = getLastSection($takeover);
-  }
+  const $last = getLastSection($takeover);
 
   if ($last) {
     $last.addClass('k-no-padding--bottom');
