@@ -24,6 +24,7 @@ const $addToCartTrigger = $('.k-productform .k-add-to-cart');
 const $quantity = $('#k-num-to-add');
 const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
+const $selectRelatedItem = $productForm.find('select');
 
 const minItems = $productHero.data('min-items');
 
@@ -281,4 +282,37 @@ $doc.ready(function() {
     // the first available variant gets its input marked as checked from server-side.
     setVariant($firstAvailableVariant);
   }
+});
+
+$selectRelatedItem.change(function(e) {
+  const $t = $(this);
+
+  let targetPermalink = '';
+  let selectedVariantIdx = 0;
+  let currentQuantity = 0;
+
+  $variantSelects.each(function(i, item) {
+    const $item = $(item);
+    const isSelected = $item
+      .find('input')
+      .first()
+      .is(':checked');
+
+    if (isSelected) {
+      selectedVariantIdx = i + 1;
+    }
+  });
+
+  $t.children().each(function(i, option) {
+    const $opt = $(option);
+    const permalink = $opt.data('permalink');
+
+    if ($opt.is(':selected')) {
+      targetPermalink = permalink;
+    }
+  });
+
+  currentQuantity = $quantity.val();
+
+  window.location.href = `${targetPermalink}?selectedVariant=${selectedVariantIdx}&quantity=${currentQuantity}`;
 });

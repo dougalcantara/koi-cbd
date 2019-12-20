@@ -251,6 +251,40 @@
     }
   }
 
+  &__flavorselect {
+    flex-basis: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+
+    &__main {
+      position: relative;
+    }
+
+    select {
+      padding: 1.0125em 1.15em;
+      border: 1px solid #dedede;
+      border-radius: 0.25em !important;
+      margin-top: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      right: 1.0125em;
+      transform: translateY(-50%);
+      color: #ccc;
+    }
+  }
+
   &--quantity,
   &--price {
     display: inline-block;
