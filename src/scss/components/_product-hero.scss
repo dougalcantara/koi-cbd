@@ -270,6 +270,8 @@
       border: 1px solid #dedede;
       border-radius: 0.25em !important;
       margin-top: 0;
+      width: 100%;
+      text-overflow: ellipsis;
 
       &:hover {
         cursor: pointer;
