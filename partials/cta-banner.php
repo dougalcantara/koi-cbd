@@ -2,7 +2,7 @@
   $root = get_template_directory_uri();
 ?>
 
-<section class="k-ctabanner">
+<section class="k-ctabanner k-cta-banner--main">
   <div class="k-inner k-inner--xl">
     <div class="k-ctabanner--bgimg" data-src="<?php echo $root.'/dist/img/koi-cta-bg.jpg'; ?>"></div>
     

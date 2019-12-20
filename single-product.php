@@ -62,9 +62,9 @@ while (have_posts()) : the_post();
     <section class="k-block k-block--md k-no-padding--top"></section>
   <?php endif;
 
-  if ($product_acf['frequently_asked_questions']) {
-    include(locate_template('partials/product-faq-accordion.php'));
-  }
+  // if ($product_acf['frequently_asked_questions']) {
+  //   include(locate_template('partials/product-faq-accordion.php'));
+  // }
 
   include(locate_template('partials/product-reviews.php'));
 
