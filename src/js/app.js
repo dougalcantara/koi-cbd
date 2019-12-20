@@ -8,6 +8,7 @@ import './global/form-submissions';
 import './global/lazyloading';
 import './global/yotpo';
 import './global/anchors';
+import './global/banner-whitespace';
 
 import './components/site-header';
 import './components/promo-slider';
