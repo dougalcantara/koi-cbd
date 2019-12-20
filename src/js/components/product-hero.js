@@ -168,6 +168,24 @@ function handleBundleOption(contextElement) {
   }
 }
 
+/**
+ * It's possible for users to select another flavor of tinctures from a
+ * tincture's detail page. When the user is sent to the new page, use
+ * their existing quantity/flavor selections from the previous product.
+ */
+function handlePopulatedParams() {
+  const url = new URL(window.location.href);
+  const selectedVariantIdx = url.searchParams.get('selectedVariant');
+  const selectedQuantity = url.searchParams.get('quantity');
+
+  if (selectedVariantIdx && selectedQuantity) {
+    const $inputToSelect = $($variantSelects[selectedVariantIdx]).find('input');
+
+    $quantity.val(selectedQuantity);
+    $inputToSelect.prop('checked', true);
+  }
+}
+
 $bundledVariants.keypress(function(e) {
   if (wasEnter(e)) {
     const $checkbox = $(this).siblings('input');
@@ -283,16 +301,7 @@ $doc.ready(function() {
     setVariant($firstAvailableVariant);
   }
 
-  const url = new URL(window.location.href);
-  const selectedVariantIdx = url.searchParams.get('selectedVariant');
-  const selectedQuantity = url.searchParams.get('quantity');
-
-  if (selectedVariantIdx && selectedQuantity) {
-    const $inputToSelect = $($variantSelects[selectedVariantIdx]).find('input');
-
-    $quantity.val(selectedQuantity);
-    $inputToSelect.prop('checked', true);
-  }
+  handlePopulatedParams();
 });
 
 $selectRelatedItem.change(function(e) {
