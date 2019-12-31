@@ -65,7 +65,7 @@ $url = site_url();
             </ul>
           </li>
           <li>
-            <a class="k-upcase" href="<?php echo $url . '/cbd-101' ?>">Lab Results</a>
+            <a class="k-upcase" href="<?php echo $url . '/lab-results' ?>">Lab Results</a>
           </li>
         </ul>
         <ul>
