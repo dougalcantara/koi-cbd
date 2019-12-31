@@ -111,7 +111,7 @@
     </div>
     <div class="k-videogallery--item k-videogallery--description k-rte-content">
       <p class="k-headline k-headline--xs"><?php the_field('homepage_video_gallery_description','option'); ?></p>
-      <a class="k-underline k-weight--lg" href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>">Get The Full Story</a>
+      <?php /*<a class="k-underline k-weight--lg" href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>">Get The Full Story</a> */ ?>
     </div>
   </div>
 </section>

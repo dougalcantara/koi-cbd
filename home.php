@@ -45,6 +45,7 @@
     'pets_copy' => $site_content['product_overview_pets_supporting_copy'],
     'edibles_copy' => $site_content['product_overview_edibles_supporting_copy'],
     'vape_copy' => $site_content['product_overview_vape_supporting_copy'],
+    'merch_copy' => $site_content['product_overview_merch_supporting_copy'],
   );
   include(locate_template('partials/home-overview.php'));
 
