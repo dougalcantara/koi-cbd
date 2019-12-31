@@ -59,14 +59,13 @@ $url = site_url();
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
                 <li><a href="<?php echo $url . '/blog'; ?>">Koi Blog</a></li>
-                <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
-                <li><a href="<?php echo $url . '/product-finder'; ?>">Product Finder</a></li>
+                <!-- <li><a href="<?php echo $url . '/product-finder'; ?>">Product Finder</a></li> -->
                 <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
               </div>
             </ul>
           </li>
           <li>
-            <a class="k-upcase" href="<?php echo $url . '/cbd-101' ?>">CBD 101</a>
+            <a class="k-upcase" href="<?php echo $url . '/cbd-101' ?>">Lab Results</a>
           </li>
         </ul>
         <ul>

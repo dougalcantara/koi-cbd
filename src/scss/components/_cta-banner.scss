@@ -53,6 +53,8 @@
   }
 
   &--takeover {
+    margin-top: -2em;
+
     .k-button {
       margin-bottom: 1em;
 
@@ -70,7 +72,7 @@
     border-radius: 0.75em;
   }
   .cta-subscribe-bg {
-    background-image: url("../img/email-signup-cta.jpg");
+    background-image: url('../img/email-signup-cta.jpg');
     background-repeat: no-repeat;
   }
   .k-cta--preheading {
@@ -95,6 +97,7 @@
     }
 
     &--takeover {
+      margin-top: -4em;
       text-align: center;
 
       .k-ctabanner--bgimg {

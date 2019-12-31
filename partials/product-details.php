@@ -1,6 +1,6 @@
 <?php $root = get_template_directory_uri(); ?>
 
-<section class="k-productdetails k-block k-block--md k-no-padding--bottom">
+<section class="k-productdetails k-block k-block--md k-no-padding--bottom k-no-padding--top">
   <div class="k-inner k-inner--sm">
     <div class="k-productdetails--headline">
       <h2 class="k-headline k-headline--sm"><?php echo $product_acf['product_details_headline']; ?></h2>
