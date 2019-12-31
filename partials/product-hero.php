@@ -13,7 +13,10 @@
     <div class="k-producthero--details">
       <div class="k-producthero--details__content">
         <div class="k-producthero--titlerow">
+          <?php 
+          if ($product_category !== 'CBD Oil') : ?>
           <span class="k-producthero--preheading"><?php echo $product_category; ?></span>
+          <?php endif; ?>
           
           <h1 class="k-headline k-headline--sm"><?php the_title(); ?></h1>
           
@@ -53,7 +56,7 @@
           if ($product_wc_type == 'bundle') {
             include(locate_template('partials/components/product-hero/bundled-items.php'));
           } else {
-          if (reset($product->get_category_ids()) == 265) : // CBD Oil/Tincture
+          if (reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
             $other_tinctures = wc_get_products(array(
               'post_type' => 'product',
               'product_cat' => $product_category,

@@ -3,7 +3,7 @@
 
     <div class="k-latestbatch--intro">
       <div class="k-latestbatch--title">
-        <h2 class="k-headline k-headline--sm">Every Batch of Koi CBD is Thoroughly Tested by Green Scientific Labs&trade;</h2>
+        <h2 class="k-headline k-headline--sm">Every batch of Koi CBD is tested multiple times during production to ensure quality.</h2>
       </div>
 
       <div class="k-latestbatch--description k-rte-content">
