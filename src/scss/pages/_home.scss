@@ -1,13 +1,68 @@
+// 73.80%
 .k-overview {
   position: relative;
   overflow: hidden;
 
+  &--intro {
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+    padding-bottom: 2.92975em;
+
+    &__image {
+      flex-basis: 100%;
+
+      .k-figure {
+        padding-bottom: 73.8%;
+      }
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+
+      .k-textbody {
+        p {
+          margin-top: 0;
+        }
+      }
+
+      .k-action {
+        margin-top: auto;
+      }
+    }
+  }
+
   &--item {
     margin-bottom: 2em;
 
-    .k-figure {
-      width: 90%;
-      overflow: visible;
+    &__card {
+      position: relative;
+      padding-bottom: 2.92975em;
+      display: flex;
+      flex-direction: column;
+
+      .k-preheading {
+        span {
+          color: $highlight;
+        }
+      }
+
+      .k-figure {
+        width: 90%;
+        overflow: visible;
+        &--liner {
+          padding-bottom: 61%;
+        }
+      }
+
+      .k-cornerimg {
+        position: absolute;
+        bottom: -2.5em;
+        right: -10%;
+        width: 40%;
+      }
     }
 
     .k-headline a {
@@ -17,133 +72,71 @@
         color: $primary !important;
       }
     }
-  }
-
-  &--intro {
-    .k-preheading {
-      span {
-        color: $highlight;
-      }
-    }
 
     &__text {
       margin-bottom: 1.5em;
     }
 
-    &__card {
-      position: relative;
-
-      .k-figure {
-        &--liner {
-          padding-bottom: 144.23%;
-        }
-      }
-
-      .k-cornerimg {
-        bottom: -2.5em;
-        right: -10%;
-        width: 40%;
-      }
-    }
-  }
-
-  .k-cornerimg {
-    position: absolute;
-  }
-
-  &--topicals {
-    .k-figure {
-      &--liner {
-        padding-bottom: 62.96%;
-      }
-    }
-
-    .k-cornerimg {
-      bottom: -2.5em;
-      right: -10%;
-      width: 50%;
-    }
-  }
-
-  &--pets {
-    .k-figure {
-      width: 90%;
-      overflow: hidden;
-
-      &--liner {
-        padding-bottom: 128.57%;
-      }
-    }
-  }
-
-  &--edibles {
-    .k-figure {
-      &--liner {
-        padding-bottom: 58.82%;
-      }
-    }
-
-    .k-cornerimg {
-      bottom: -2.5em;
-      right: -25%;
-      width: 50%;
-    }
-  }
-
-  &--vape {
-    &__card {
+    .k-rte-content {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 360px;
-    }
+      flex-direction: column;
+      flex-grow: 2;
 
-    .k-figure {
-      overflow: visible;
-      flex-basis: 40%;
-
-      &--liner {
-        padding-bottom: 144.64%;
+      a {
+        color: $true-white;
+        display: block;
+        margin-top: auto;
       }
-    }
-
-    &__text {
-      flex-basis: 50%;
-
-      .k-headline {
-        margin-top: 0;
-      }
-    }
-
-    .k-cornerimg {
-      bottom: -2.5em;
-      right: -10%;
-      width: 40%;
     }
   }
 }
 
 @media (min-width: $bp-md) {
   .k-overview {
+    &--intro {
+      flex-flow: row nowrap;
+      padding-bottom: 5.8595em;
+
+      &__image {
+        flex-basis: 50%;
+      }
+
+      &__text {
+        flex-basis: 43%;
+        .k-textbody {
+          p {
+            font-size: 125%;
+          }
+        }
+      }
+    }
+
+    &__card-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+
     &--item {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
+      flex-basis: 43%;
       margin-bottom: 0;
 
       .k-figure {
         width: 100%;
       }
-    }
-
-    &--intro {
-      display: flex;
-      justify-content: space-between;
 
       &__text {
-        flex-basis: 55%;
+        flex-basis: 100%;
         margin-bottom: 0;
       }
 
       &__card {
-        flex-basis: 40%;
+        position: relative;
+        flex-basis: 100%;
+        padding-bottom: 5.8595em;
 
         .k-cornerimg {
           right: -16.5%;
@@ -152,82 +145,10 @@
 
       .k-textbody {
         margin-bottom: 2em;
-      }
-    }
 
-    &--topicals {
-      width: 55%;
-      margin-top: -8em;
-    }
-
-    &--pets {
-      margin: 0 0 2em 65%;
-    }
-
-    &--edibles {
-      width: 55%;
-      margin-top: -15em;
-
-      &__text {
-        max-width: 24.72em;
-      }
-    }
-
-    &--vape {
-      margin: 2em 0 0 33.33%;
-      width: auto;
-    }
-  }
-}
-
-@media (min-width: $bp-xl) {
-  .k-overview {
-    &--intro {
-      &__text {
-        max-width: 38em;
-      }
-
-      &__card {
-        max-width: 28em;
-      }
-    }
-
-    &--topicals {
-      margin-top: -12em;
-      max-width: 30em;
-    }
-
-    &--pets {
-      margin: 0 0 0 auto;
-      max-width: 21.66em;
-
-      .k-figure {
-        width: 125%;
-        transform: translateX(-12.5%);
-      }
-    }
-
-    &--edibles {
-      max-width: 42em;
-      margin-top: -25em;
-    }
-
-    &--vape {
-      margin-left: 33.33em;
-      margin-top: 0em;
-      max-width: 44.16em;
-      &__card {
-        min-height: 420px;
-      }
-    }
-  }
-}
-
-@media (min-width: $bp-max) {
-  .k-overview {
-    &--intro {
-      &__text {
-        max-width: 45em;
+        p {
+          font-size: 125%;
+        }
       }
     }
   }
