@@ -49,6 +49,12 @@
         }
       }
 
+      &--merch {
+        .k-cornerimg {
+          bottom: -5em !important;
+        }
+      }
+
       .k-preheading {
         span {
           color: $highlight;
