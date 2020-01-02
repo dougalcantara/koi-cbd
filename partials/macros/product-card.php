@@ -6,7 +6,7 @@ function k_product_card($args) {
   <div 
     class="k-productcard <?php echo $args['debug_param']; ?>"
     data-review-url="<?php echo $args['product_link']; ?>/#product-reviews"
-    <?php /*echo $args['product_id'] ? 'data-yotpo-product-id="' . $args['product_id'] . '"' : null; */ ?>>
+    <?php echo $args['is_archive'] === true ? null : 'data-yotpo-product-id="' . $args['product_id'] . '"' ?>>
     <div class="k-productcard--liner">
 
       <a href="<?php echo $args['product_link']; ?>">

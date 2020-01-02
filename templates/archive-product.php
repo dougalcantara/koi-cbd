@@ -112,6 +112,7 @@ $unflavored_products = array(205502, 30207);
         $name = $product->get_name();
         $id = $product->get_id();
         $image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large')[0];
+        $link = get_the_permalink($id);
         /**
          * Return the rating into the float value, since it was turned to a usable Int for usort.
          */
@@ -130,11 +131,12 @@ $unflavored_products = array(205502, 30207);
         $card_fields = array(
           'product_image_url' => $image,
           'product_title' => $name,
-          'product_link' => get_the_permalink($id),
-          'product_review_link' => get_the_permalink($id) + '/#product-reviews',
+          'product_link' => $link,
+          'product_review_link' => $link + '/#product-reviews',
           'product_id' => $id,
           'product_rating' => $product->visible_rating,
           'product_total_reviews' => $product->total_reviews,
+          'is_archive' => true,
         );
 
         echo k_product_card($card_fields);

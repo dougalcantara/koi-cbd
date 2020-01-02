@@ -7,7 +7,7 @@
   <div class="k-inner k-inner--md k-overview--intro">
     <div class="k-overview--intro__image">
       <figure class="k-figure">
-        <img class="k-figure--img" data-src="https://via.placeholder.com/696x513" alt="Overview Lifestyle Image">
+        <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi_products_group.png'; ?>" alt="Overview Lifestyle Image">
       </figure>
     </div>
     <div class="k-overview--intro__text">
@@ -34,11 +34,11 @@
   </div>
   <div class="k-inner k-inner--md k-overview__card-container">
     <div class="k-overview--item k-overview--item">
-      <div class="k-overview--item__card">
+      <div class="k-overview--item__card k-overview--item__card--tinctures">
         <a href="<?php echo site_url().'/cbd-tinctures'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-peppermint-mainimg.jpg' ?>" alt="Peppermint CBD Tincture" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/cbd-tinctures-cat.jpg' ?>" alt="Peppermint CBD Tincture" />
             </div>
             <img data-src="<?php echo $root.'/dist/img/koi-peppermint-cornerimg@2x.png' ?>" alt="Peppermint CBD Tincture" class="k-cornerimg">
           </figure>
@@ -58,7 +58,7 @@
         <a href="<?php echo site_url().'/cbd-topicals'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi-topicals-mainimg.jpg' ?>" alt="Topical CBD Balm" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/cbd-topicals-cat.jpg' ?>" alt="Topical CBD Balm" />
             </div>
             <img data-src="<?php echo $root.'/dist/img/koi-topicals-cornerimg@2x.png' ?>" alt="Topical CBD Balm" class="k-cornerimg">
           </figure>
@@ -78,7 +78,7 @@
         <a href="<?php echo site_url().'/cbd-edibles'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/edibles-new.jpg' ?>" alt="CBD Edibles" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/cbd-edibles-cat.jpg' ?>" alt="CBD Edibles" />
             </div>
             <img data-src="<?php echo $root.'/dist/img/koi-edibles-cornerimg@2x.png' ?>" alt="CBD Edibles" class="k-cornerimg">
           </figure>
@@ -100,7 +100,7 @@
         <a href="<?php echo site_url().'/cbd-for-pets'; ?>">
           <figure class="k-figure k-figure--rounded ">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/Koi-lifestyleimagecomp-pet-treats.png' ?>" alt="CBD Pet Treats" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/cbd-for-pets-cat.jpg' ?>" alt="CBD Pet Treats" />
             </div>
           </figure>
         </a>
@@ -120,9 +120,9 @@
         <figure class="k-figure k-figure--rounded ">
           <a href="<?php echo site_url().'/cbd-vape'; ?>">
             <div class="k-figure--liner">
-              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/home-vape-main.jpg' ?>" alt="CBD Vape" />
+              <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/cbd-vape-cat.jpg' ?>" alt="CBD Vape" />
             </div>
-            <img data-src="<?php echo $root.'/dist/img/vape-cbd-new.jpg' ?>" alt="CBD Vape" class="k-cornerimg">
+            <img data-src="<?php echo $root.'/dist/img/cbd-vape-cat-overlay.png' ?>" alt="CBD Vape" class="k-cornerimg">
           </a>
         </figure>
         
@@ -156,7 +156,7 @@
           </h3>
           <div class="k-rte-content">
             <p><?php echo $overview_fields['merch_copy']; ?></p>
-            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-merchandise'; ?>">Shop Now &rarr;</a>
+            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-merchandise'; ?>">Shop Merchandise &rarr;</a>
           </div>
         </div>
       </div>

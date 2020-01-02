@@ -43,6 +43,12 @@
       display: flex;
       flex-direction: column;
 
+      &--tinctures {
+        .k-cornerimg {
+          transform: scale(0.8) translateY(20%) !important;
+        }
+      }
+
       .k-preheading {
         span {
           color: $highlight;
