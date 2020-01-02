@@ -6,7 +6,7 @@ function k_product_card($args) {
   <div 
     class="k-productcard <?php echo $args['debug_param']; ?>"
     data-review-url="<?php echo $args['product_link']; ?>/#product-reviews"
-    <?php echo $args['product_id'] ? 'data-yotpo-product-id="' . $args['product_id'] . '"' : null; ?>>
+    <?php /*echo $args['product_id'] ? 'data-yotpo-product-id="' . $args['product_id'] . '"' : null; */ ?>>
     <div class="k-productcard--liner">
 
       <a href="<?php echo $args['product_link']; ?>">
@@ -27,9 +27,41 @@ function k_product_card($args) {
       </div>
 
       <div class="k-productcard--reviews k-reviewembed">
+
+      <?php if ($args['product_total_reviews'] <= 0): ?>
         <p>
           <a href="#0" class="k-accent-text k-createreview">Be the first to review!</a>
         </p>
+      <?php else: ?>
+        <?php
+          $score = $args['product_rating'];
+          $decimal_value =  fmod($score, 1);
+          $difference = 1 - $decimal_value;
+          $translate_value = $difference * 100;
+        ?>
+        <p class="k-accent-text k-productcard__review-target">
+          Reviews(<span class="k-productcard--numreviews"><?php echo $args['product_total_reviews']; ?></span>)
+          <a href="<?php echo $args['product_review_link']; ?>" class="k-wraparound-link"></a>
+        </p>
+        <ul>
+          <li class="k-productcard--reviewavg k-accent-text"><?php echo number_format($args['product_rating'], 2, '.', ''); ?></li>
+          <li>
+            <?php for ($i = 0; $i < $score; $i++): ?>
+              <div class="k-goldstar">
+                <div class="k-goldstar--liner">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.57 47.14" style="transform: translate3d(<?php echo $i + 1 > $score ? -$translate_value : 0; ?>%, 0, 0);">
+                    <g id="Layer_2" data-name="Layer 2">
+                      <g id="Layer_1-2" data-name="Layer 1">
+                        <polygon style="fill: #f4b13e; transform: translate3d(<?php echo $i + 1 > $score ? $translate_value : 0; ?>%, 0, 0);" points="24.78 0 32.44 15.52 49.57 18.01 37.18 30.09 40.1 47.14 24.78 39.09 9.47 47.14 12.39 30.09 0 18.01 17.13 15.52 24.78 0"/>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>               
+              <?php endfor; ?>
+            </li>
+        </ul>
+      <?php endif; ?>
       </div>
 
     </div>

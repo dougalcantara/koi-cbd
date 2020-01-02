@@ -66,12 +66,56 @@ $unflavored_products = array(205502, 30207);
       $products = wc_get_products($args);
 
       foreach ($products as $idx => $product) {
+        $id = $product->get_id();
+        $name = $product->get_name();
+        $bottomline_url = 'https://api.yotpo.com/v1/widget/MS3VY5Cc4TFD6zbI2zGhMsb9gvkPpQDKwUcPhaSG/products/' . $id . '/bottomline';
+        $bottomline_response = wp_remote_get($bottomline_url);
+        $rating = 0;
+        
+        if (!is_wp_error($bottomline_response)) :
+          $to_json = json_decode($bottomline_response['body'])->response;
+          /**
+           * Turn the Float rating into a usable Int, since usort will cast it to int anyway.
+           */
+          $product->total_reviews = $to_json->bottomline->total_review;
+          $product->visible_rating = $to_json->bottomline->average_score * 1000;
+          $product->sort_rating = $product->visible_rating;
+
+          /**
+           * If the product is a Variety Pack, make it the last product shown in the archive.
+           */
+          if (strpos($name, 'Variety Pack') !== false) {
+            $product->sort_rating = -1;
+          }
+
+        endif;
+      }
+
+      /**
+       * Sort by value of key
+       * https://stackoverflow.com/questions/2852621/strcmp-equivelant-for-integers-intcmp-in-php
+      */
+      function sortByRating ($a, $b) {
+        return $b->sort_rating - $a->sort_rating;
+      }
+
+      /**
+       * Sort array of objects by value of key
+       * https://stackoverflow.com/questions/4282413/sort-array-of-objects-by-object-fields
+       */
+      usort($products, "sortByRating");
+
+      foreach ($products as $idx => $product) {
         $product_is_hidden = $product->get_status() === 'draft' || $product->get_catalog_visibility() === 'hidden';
         if ($product_is_hidden) : continue; endif;
 
         $name = $product->get_name();
         $id = $product->get_id();
         $image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large')[0];
+        /**
+         * Return the rating into the float value, since it was turned to a usable Int for usort.
+         */
+        $product->visible_rating = $product->visible_rating / 1000;
 
         /**
          * If the user was recommended a flavored item from the Product Rec Tool,
@@ -87,7 +131,10 @@ $unflavored_products = array(205502, 30207);
           'product_image_url' => $image,
           'product_title' => $name,
           'product_link' => get_the_permalink($id),
+          'product_review_link' => get_the_permalink($id) + '/#product-reviews',
           'product_id' => $id,
+          'product_rating' => $product->visible_rating,
+          'product_total_reviews' => $product->total_reviews,
         );
 
         echo k_product_card($card_fields);
