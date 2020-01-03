@@ -21,6 +21,10 @@ const flktyOpts = {
 document.addEventListener('DOMContentLoaded', () => {
   const cellCount = getGroupCells();
   createPromoSlider(cellCount);
+
+  if ($carousel.length) {
+    window.addEventListener('resize', debounce(watchFlickity, 10));
+  }
 });
 
 function createPromoSlider(groupCellCount) {
@@ -39,8 +43,6 @@ function createPromoSlider(groupCellCount) {
   $prev.click(() => window.__promoFlkty.previous());
   $next.click(() => window.__promoFlkty.next());
 }
-
-window.addEventListener('resize', debounce(watchFlickity, 10));
 
 function watchFlickity() {
   const currentCells = window.__promoFlkty.options.groupCells;

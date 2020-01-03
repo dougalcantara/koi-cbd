@@ -2,7 +2,6 @@
 
 function k_product_card($args) {
   ob_start(); ?>
-
   <div 
     class="k-productcard <?php echo $args['debug_param']; ?>"
     data-review-url="<?php echo $args['product_link']; ?>/#product-reviews"
