@@ -5,8 +5,63 @@
     }
   }
 
-  &--intro {
+  &__intro {
     margin-bottom: 2em;
+  }
+
+  &__intro-left {
+    flex-basis: 46%;
+    margin-bottom: 2em;
+    .k-figure--liner {
+      padding-bottom: 92.85%;
+    }
+  }
+
+  &__intro-right {
+    flex-basis: 48%;
+  }
+
+  &__description {
+    margin-bottom: 2em;
+  }
+
+  &__icon-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1em;
+    width: 100%;
+
+    .k-figure--liner {
+      padding-bottom: 100%;
+    }
+  }
+
+  &__icon-title,
+  &__icon-text {
+    p {
+      margin: 0;
+    }
+  }
+
+  &__icon-image {
+    width: 50%;
+  }
+
+  &__icon-description sup {
+    top: -0.45em;
+  }
+
+  &__icon-text p {
+    font-size: 80%;
   }
 
   &--tabs {
@@ -50,86 +105,89 @@
     }
   }
 
-  &--results {
-    &__liner {
-      background: $bg-gray-light;
-      padding: 1em;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-flow: row wrap;
+  &__results-column {
+    flex-basis: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 1em 0;
 
-      &--error {
-        h1 {
-          flex-basis: 100%;
-        }
+    &:first-child {
+      padding-top: 0;
+    }
 
-        p {
-          flex-basis: 100%;
+    &:nth-child(3) {
+      p {
+        font-size: 200%;
+        font-weight: 300;
+
+        .k-measurement {
+          font-size: 0.5em;
+          vertical-align: text-top;
         }
       }
     }
 
-    &__column {
-      flex-basis: 100%;
-      border-bottom: 1px solid #ccc;
-      padding: 1em 0;
-
-      &:first-child {
-        padding-top: 0;
-      }
-
-      &:nth-child(3) {
-        p {
-          font-size: 200%;
-          font-weight: 300;
-
-          .k-measurement {
-            font-size: 0.5em;
-            vertical-align: text-top;
-          }
-        }
-      }
-
-      &:last-child {
-        margin-top: 1em;
-        padding: 2em 0;
+    &:last-child {
+      #k-coaurl {
+        display: block;
+        padding: 1.25em 0;
         border-bottom: 0;
-        position: relative;
+        text-align: center;
         background: red;
+        color: $true-white;
         transition: background 0.4s $ease-out-circ;
         border-radius: 0.33em;
-
-        a {
-          @include fill-parent();
-        }
-
-        span {
-          color: $true-white;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 100%;
-          text-align: center;
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-        }
-
         &:hover {
+          color: $true-white !important;
           background: darken(red, 5%);
         }
       }
 
-      div {
-        &:first-child {
-          margin-bottom: 1em;
+      .k-accent-text {
+        display: block;
+        text-align: center;
+        font-size: 90%;
+        margin-top: 1em;
+        &:hover {
+          text-decoration: underline;
+          color: $black !important;
         }
+      }
+    }
+
+    div {
+      &:first-child {
+        margin-bottom: 1em;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__results-liner {
+    background: $bg-gray-light;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-flow: row wrap;
+
+    &--error {
+      h1 {
+        flex-basis: 100%;
       }
 
       p {
-        margin: 0;
+        flex-basis: 100%;
       }
     }
+  }
+
+  &--strength,
+  &--size,
+  &--batch {
+    line-height: 1.75;
   }
 }
 
@@ -149,18 +207,30 @@
 
 @media (min-width: $bp-lg) {
   .k-latestbatch {
-    &--intro {
+    &__intro {
       display: flex;
       justify-content: space-between;
       flex-flow: row nowrap;
     }
 
-    &--title,
-    &--description {
-      flex-basis: 48.5%;
+    &__intro-left {
+      margin-bottom: 0;
     }
 
-    &--description {
+    &__icon-row {
+      flex-flow: row nowrap;
+    }
+    &__icon {
+      width: 30%;
+      flex-basis: 30%;
+      margin-bottom: 0;
+    }
+
+    &__icon-image {
+      width: 100%;
+    }
+
+    &__description {
       p:first-child {
         margin-top: 0;
       }
@@ -170,55 +240,41 @@
 
 @media (min-width: $bp-xl) {
   .k-latestbatch {
-    &--intro {
-      margin-bottom: 4em;
-    }
-
     &--tabs {
       border-bottom: none;
     }
 
-    &--results {
-      &__liner {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: stretch;
-        padding: 3.75em;
+    &__results-column {
+      border: none;
+      padding: 0;
 
-        &--error {
-          flex-flow: row wrap;
-        }
+      &:first-child {
+        flex-basis: 36.5%;
       }
 
-      &__column {
-        border: none;
-        padding: 0;
-        margin-right: 5%;
+      &:nth-child(2) {
+        flex-basis: 16.5%;
+        margin: 0 auto;
+        padding-left: 2em;
+      }
 
-        p {
-          line-height: 1.1;
+      &:nth-child(3) {
+        flex-basis: 26.15%;
+
+        p:first-child {
+          margin-bottom: 0.5em;
         }
+      }
+    }
 
-        &:first-child {
-          flex-basis: 10%;
-        }
+    &__results-liner {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 3.75em;
 
-        &:nth-child(2) {
-          flex-basis: 30%;
-        }
-
-        &:nth-child(3) {
-          flex-basis: 25%;
-
-          p:first-child {
-            margin-bottom: 0.5em;
-          }
-        }
-
-        &:last-child {
-          margin: 0 0 0 auto;
-          flex-basis: 20%;
-        }
+      &--error {
+        flex-flow: row wrap;
       }
     }
   }
@@ -226,49 +282,8 @@
 
 @media (min-width: $bp-xxl) {
   .k-latestbatch {
-    &--intro {
-      justify-content: flex-start;
-      margin-bottom: 6em;
-    }
-
-    &--title {
-      margin-right: 1.5%;
-    }
-
-    &--description {
-      flex-basis: 35%;
-    }
-
-    &--results {
-      &__liner {
-        padding: 4em;
-      }
-
-      &__column {
-        div:first-child {
-          margin-bottom: 2.33em;
-        }
-
-        &:nth-child(2) {
-          flex-basis: 25%;
-        }
-
-        &:nth-child(3) {
-          flex-basis: 35%;
-
-          p {
-            font-size: 250%;
-
-            .k-measurement {
-              font-size: 0.5em;
-            }
-          }
-        }
-
-        &:last-child {
-          flex-basis: 15%;
-        }
-      }
+    &__results-liner {
+      padding: 4em;
     }
   }
 }
