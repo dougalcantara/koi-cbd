@@ -21,6 +21,7 @@ defined('ABSPATH') || exit;
 
 $page_fields = get_fields();
 $product_category = $page_fields['product_type']->name;
+$product_category_slug = $page_fields['product_type']->slug;
 
 get_header();
 
@@ -60,7 +61,7 @@ $unflavored_products = array(205502, 30207);
       <?php
       $args = array(
         'post_type' => 'product',
-        'product_cat' => $product_category,
+        'category' => array($product_category_slug),
       );
 
       $products = wc_get_products($args);

@@ -57,7 +57,10 @@ function checkQuantityAgainstPrice() {
 
   let quantity = parseInt($quantity.val());
   let price = $quantity.data('variant-price');
-  $priceTarget.text(`$${(quantity * price).toFixed(2)}`);
+
+  if (quantity && price) {
+    $priceTarget.text(`$${(quantity * price).toFixed(2)}`);
+  }
 }
 
 $variantSelects.click(function(e) {
@@ -179,6 +182,7 @@ function handlePopulatedParams() {
   const selectedQuantity = url.searchParams.get('quantity');
 
   if (selectedVariantIdx && selectedQuantity) {
+    window.__populatedParams = true;
     $variantSelects.each(function(i, el) {
       // uncheck all others
       const $t = $(el);
@@ -190,6 +194,16 @@ function handlePopulatedParams() {
 
     $quantity.val(selectedQuantity);
     $inputToSelect.prop('checked', true);
+
+    if (window.__flkty) {
+      window.__flkty.selectCell(
+        `${
+          window.__flkty.options.cellSelector
+        }[data-flickityselector*="${$inputToSelect
+          .siblings('label')
+          .data('flickityselector')}"]`
+      );
+    }
   }
 }
 
@@ -309,15 +323,18 @@ $doc.ready(function() {
   }
 
   handlePopulatedParams();
-  const dynamicQuantity = $quantity.val();
-  const dynamicallySelectedVariantPrice = $('.k-productform--variants')
-    .find('input:checked')
-    .next()
-    .data('variant-price');
 
-  $priceTarget.text(
-    `$${(dynamicQuantity * dynamicallySelectedVariantPrice).toFixed(2)}`
-  );
+  if (window.__populatedParams) {
+    const dynamicQuantity = $quantity.val();
+    const dynamicallySelectedVariantPrice = $('.k-productform--variants')
+      .find('input:checked')
+      .next()
+      .data('variant-price');
+
+    $priceTarget.text(
+      `$${(dynamicQuantity * dynamicallySelectedVariantPrice).toFixed(2)}`
+    );
+  }
 });
 
 $selectRelatedItem.change(function(e) {
