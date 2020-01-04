@@ -68,7 +68,7 @@
         </h3>
         <div class="k-rte-content">
           <p><?php echo $overview_fields['topicals_copy']; ?></p>
-          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-topicals'; ?>">Shop CBD Topicals &rarr;</a>
+          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-topicals'; ?>">Shop Topicals &rarr;</a>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@
         </h3>
         <div class="k-rte-content">
           <p><?php echo $overview_fields['pets_copy']; ?></p>
-          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop Now &rarr;</a>
+          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop for Pets &rarr;</a>
         </div>
       </div>
     </div>
