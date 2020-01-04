@@ -1,15 +1,74 @@
 <section class="k-latestbatch k-block k-block--md <?php echo $product_acf['frequently_asked_questions'] ? NULL : 'k-no-padding--bottom' ?>">
   <div class="k-inner k-inner--md">
 
-    <div class="k-latestbatch--intro">
-      <div class="k-latestbatch--title">
-        <h2 class="k-headline k-headline--sm">Every batch of Koi CBD is tested multiple times during production to ensure quality.</h2>
+    <div class="k-latestbatch__intro">
+      <div class="k-latestbatch__intro-left">
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/lab-results-detail.jpg'; ?>" alt="Every batch of Koi CBD is tested multiple times during production to ensure quality.">
+          </div>
+        </figure>
       </div>
-
-      <div class="k-latestbatch--description k-rte-content">
-        <p>Koi CBD is 100% natural, 99%+ pure CBD manufactured in an ISO Certified Lab, and contains 0% THC. We use only the highest quality ingredients available, but we don't stop there.</p>
-        <p>All Koi products are lab-tested for purity, consistency, and safety. Plus, we offer full traceability on every batch of our CBD - from plant to finished product.</p>
-        <a href="<?php echo site_url() . '/lab-results'; ?>" class="k-upcase">View All Lab Results</a>
+      <div class="k-latestbatch__intro-right">
+        <div class="k-latestbatch--title">
+          <h2 class="k-headline k-headline--sm">Every batch of Koi CBD is tested multiple times during production to ensure quality.</h2>
+        </div>
+        <div class="k-latestbatch__description k-rte-content">
+          <p>Knowing that your CBD product meets high quality standards, from potency to purity, is important. At Koi, we use independent, accredited labs to test our USA-grown hemp extracts. These extracts are then infused into our products which are tested multiple times throughout the manufacturing process. We maintain transparency of our product quality by making all test results publicly available.</p>
+        </div>
+        <div class="k-latestbatch__icon-row">
+          <div class="k-latestbatch__icon">
+            <div class="k-latestbatch__icon-image">
+              <figure class="k-figure">
+                <div class="k-figure--liner">
+                  <img class="k-figure--img" data-src="https://via.placeholder.com/350" alt="Tested by a 3rd Party">
+                </div>
+              </figure>
+            </div>
+            <div class="k-latestbatch__icon-description">
+              <div class="k-latestbatch__icon-title">
+                <p class="k-weight--lg">Tested by a 3<sup>rd</sup> Party Lab</p>
+              </div>
+              <div class="k-latestbatch__icon-text">
+                <p class="k-rte-content">Our testing labs are all ISO accredited to assure high quality results of full-panel tests.</p>
+              </div>
+            </div>
+          </div>
+          <div class="k-latestbatch__icon">
+            <div class="k-latestbatch__icon-image">
+              <figure class="k-figure">
+                <div class="k-figure--liner">
+                  <img class="k-figure--img" data-src="https://via.placeholder.com/350" alt="Tested for Potency">
+                </div>
+              </figure>
+            </div>
+            <div class="k-latestbatch__icon-description">
+              <div class="k-latestbatch__icon-title">
+                <p class="k-weight--lg">Tested for Potency</p>
+              </div>
+              <div class="k-latestbatch__icon-text">
+                <p class="k-rte-content">We obtain detailed phytocannabinoid and terpenoid profiles for every product, ensuring no detectable levels of THC (&lt;0.001%).</p>
+              </div>
+            </div>
+          </div>
+          <div class="k-latestbatch__icon">
+            <div class="k-latestbatch__icon-image">
+              <figure class="k-figure">
+                <div class="k-figure--liner">
+                  <img class="k-figure--img" data-src="https://via.placeholder.com/350" alt="Tested for Purity">
+                </div>
+              </figure>
+            </div>
+            <div class="k-latestbatch__icon-description">
+              <div class="k-latestbatch__icon-title">
+                <p class="k-weight--lg">Tested for Purity</p>
+              </div>
+              <div class="k-latestbatch__icon-text">
+                <p class="k-rte-content">Our products pass testing for more than 100 different contaminants including pesticides, solvents, and heavy metals.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -66,38 +125,27 @@
           <?php endforeach; ?>
         </nav>
       <?php endif; ?>
-      <div class="k-latestbatch--results">
-        <div class="k-latestbatch--results__liner">
-
-          <div class="k-latestbatch--results__column">
+      <div class="k-latestbatch__results">
+        <div class="k-latestbatch__results-liner">
+          <div class="k-latestbatch__results-column">
             <?php if ($product_wc_type != 'simple'): ?>
             <div>
-              <p class="k-upcase"><?php echo trim(explode(',', get_the_title())[1]); ?></p>
-              <p class="k-upcase k-latestbatch--strength k-latestbatch__variant-render-target">250 MG</p>
+              <p class="k-headline k-headline--sm"><?php echo get_the_title(); ?></p>
             </div>
             <?php endif; ?>
+          </div>
+
+          <div class="k-latestbatch__results-column">
             <div>
-              <p class="k-upcase">Batch #</p>
-              <p id="k-batchid" class="k-upcase k-latestbatch--strength">8296NLL250</p>
+              <p class="k-latestbatch--strength">Strength: <span class="k-latestbatch__variant-render-target">250 MG</span></p>
+              <p class="k-latestbatch--size">Size: <span><?php the_field('unit', get_the_ID()); ?></span></p>
+              <p class="k-latestbatch--batch">Batch #: <span id="k-batchid" class="k-upcase k-latestbatch--strength">8296NLL250</span></p>
             </div>
           </div>
-          <div class="k-latestbatch--results__column">
-              <div>
-                <p class="k-upcase k-latestbatch--strength"><?php the_field('unit', get_the_ID()); ?></p>
-              </div>
-            <?php if (get_field('units_per_item', get_the_ID())): ?>
-              <div>
-                <p class="k-upcase"><?php the_field('units_per_item', get_the_ID()); ?> / Item</p>
-              </div>
-            <?php endif; ?>
-          </div>
-          <div class="k-latestbatch--results__column">
-            <p id="k-totalthc" class="k-bigtext"> <span class="k-totalthc__render-target">0.0000</span>% <span class="k-measurement">Total THC</span></p>
-            <p id="k-totalcbd" class="k-bigtext"> <span class="k-totalcbd__render-target">249.1979</span>mg/unit <span class="k-measurement">Total CBD</span></p>
-          </div>
-          <div class="k-latestbatch--results__column">
-            <a id="k-coaurl" href="#0" target="_blank" rel="noopener, noreferrer"></a>
-            <span>.PDF &darr;</span>
+          <?php $url = site_url(); ?>
+          <div class="k-latestbatch__results-column">
+            <a id="k-coaurl" class="k-weight--lg" href="#0" target="_blank" rel="noopener noreferrer">View this product's<br>Certificate of Analysis (COA)</a>
+            <a class="k-accent-text" href="<?php echo $url . '/lab-results' ?>">Looking for other product lab results? Click Here.</a>
           </div>
 
         </div>

@@ -1,13 +1,42 @@
 .k-hero--labresults {
-  .k-preheading {
+  h1.k-preheading {
     display: block;
     color: $highlight;
     margin-bottom: 0.5em;
+    font-size: 100%;
+    font-family: 'GT America', sans-serif;
   }
 
   .k-hero {
     &__main {
       padding: $padding-sm 0;
+    }
+  }
+}
+
+.k-recentresults {
+  &__intro {
+    text-align: center;
+    margin-bottom: 2em;
+
+    .k-headline {
+      margin: 0;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  &__category-button {
+    flex-basis: 48%;
+    color: $black;
+    margin-bottom: 2em;
+
+    span {
+      font-size: 90%;
     }
   }
 }
@@ -66,6 +95,12 @@
     }
   }
 
+  .k-recentresults {
+    &__category-button span {
+      font-size: 100%;
+    }
+  }
+
   .k-labresults {
     &__searchform {
       .k-form {
@@ -89,6 +124,14 @@
           margin: 0;
         }
       }
+    }
+  }
+}
+
+@media (min-width: $bp-lg) {
+  .k-recentresults {
+    &__category-button {
+      flex-basis: 23.5%;
     }
   }
 }

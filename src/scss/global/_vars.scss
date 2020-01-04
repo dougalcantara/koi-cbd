@@ -35,6 +35,7 @@ $bg-gray: #f2f2f2;
 $bg-gray-light: #f7f7f7;
 $bg-dark: #222222;
 $highlight: #c0d8be;
+$accent: #949494;
 
 $bp-sm: 580px;
 $bp-md: 767px;
@@ -102,4 +103,3 @@ $bp-max: 1800px;
     @include fill-parent();
   }
 }
-

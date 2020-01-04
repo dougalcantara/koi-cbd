@@ -8,8 +8,8 @@ const $thcTarget = $parent.find('.k-totalthc__render-target');
 let $cbdTarget = $parent.find('.k-totalcbd__render-target');
 const $coaTarget = $parent.find('#k-coaurl');
 const $variantTarget = $parent.find('.k-latestbatch__variant-render-target');
-const $resultsContainer = $('.k-latestbatch--results');
-const $columns = $('.k-latestbatch--results__column');
+const $resultsContainer = $('.k-latestbatch__results');
+const $columns = $('.k-latestbatch__results-column');
 const $totalCbdContainer = $parent.find('#k-totalcbd');
 const originalMarkup = $totalCbdContainer.html();
 
