@@ -2,10 +2,24 @@ import Fuse from 'fuse.js';
 import Test from '../helpers/Test';
 import { $body } from '../global/selectors';
 
-let sampleTests;
+let sampleTests = undefined;
 
 if ($body.hasClass('page-template-lab-results')) {
   getResults();
+
+  let counter = 0;
+  const waiting = setInterval(() => {
+    counter++;
+    if (counter === 100) {
+      // 10 seconds since ajax request
+      alert('Error getting results from test database.');
+      clearInterval(waiting);
+    }
+    if (sampleTests !== undefined) {
+      setDefaultResults();
+      clearInterval(waiting);
+    }
+  }, 100);
 }
 
 const $resultsForm = $('#k-resultssearch');
@@ -22,6 +36,67 @@ const fuseOpts = {
 };
 
 $resultsForm.submit(displayResults);
+
+function setDefaultResults() {
+  const defaults = [
+    {
+      category: 'tinctures',
+      sku: 'NATNAT250',
+      button: $('[data-category="tincture"]'),
+    },
+    {
+      category: 'gummies',
+      sku: 'REGGUM20',
+      button: $('[data-category="gummies"]'),
+    },
+    {
+      category: 'wellnessShots',
+      sku: undefined,
+      button: $('[data-category="wellnessShots"]'),
+    },
+    {
+      category: 'vape',
+      sku: 'WHTKOI100',
+      button: $('[data-category="vape"]'),
+    },
+    {
+      category: 'healingBalm',
+      sku: 'KHB 500 mg',
+      button: $('[data-category="healingBalm"]'),
+    },
+    {
+      category: 'lotion',
+      sku: 'LTNCTBRST',
+      button: $('[data-category="lotion"]'),
+    },
+    {
+      category: 'petChew',
+      sku: 'KPTSCHEWS',
+      button: $('[data-category="petChew"]'),
+    },
+    {
+      category: 'petSpray',
+      sku: 'PETSPRY',
+      button: $('[data-category="petSpray"]'),
+    },
+  ];
+
+  defaults.forEach(category => {
+    const newestMatch = sampleTests.filter(
+      test => test.productsku === category.sku
+    )[0];
+
+    category.button.click(() => {
+      showRecentTest(newestMatch);
+    });
+  });
+}
+
+function showRecentTest(test) {
+  const { productsku, coaurl } = test;
+  alert(`${productsku}, ${coaurl}`);
+  console.log(test);
+}
 
 function getResults() {
   const RESULTS_URL = 'https://koi-test-results-api.herokuapp.com/results';

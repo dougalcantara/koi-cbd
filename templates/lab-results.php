@@ -16,7 +16,7 @@ get_header();
     <div class="k-hero__main">
     
       <div class="k-hero__heading">
-        <span class="k-preheading k-upcase">Lab Results</span>
+        <h1 class="k-preheading k-upcase">Lab Results</h1>
         <h2 class="k-headline k-headline--md">From Plant to Finished Product</h2>
       </div>
     
@@ -41,7 +41,56 @@ get_header();
   ]
 ]); ?>
 
-<section class="k-labresults k-block k-block--md">
+<section class="k-recentresults k-block k-block--md k-no-padding--bottom">
+  <div class="k-inner k-inner--sm">
+    <div class="k-recentresults__intro">
+      <h3 class="k-headline k-headline--md">Recent Lab Results</h3>
+      <p class="k-rte-content">
+        Knowing exactly what is in your CBD product is important, from the potency to the purity. At Koi, we test our USA-grown hemp extracts before we infuse them into our products, and then test every final batch we make with an accredited, independent lab. All the details are made available, providing transparency and trust.      
+      </p>
+    </div>
+  </div>
+  <div class="k-inner k-inner--md">
+    <?php
+      /**
+       * 
+       * Since the categories needed for this section don't directly tie up
+       * to all categories in the store, they need to be hardcoded. This will
+       * mean when category names are changed in the future, a dev will likely
+       * need to update these categories manually.
+       * 
+       */
+    ?>
+    <div class="k-recentresults__categories">
+      <div data-category="tincture" class="k-recentresults__category-button k-button k-button--default">
+        <span>Tincture</span>
+      </div>
+      <div data-category="gummies" class="k-recentresults__category-button k-button k-button--default">
+        <span>Gummies</span>
+      </div>
+      <div data-category="wellnessShots" class="k-recentresults__category-button k-button k-button--default">
+        <span>Wellness Shots</span>
+      </div>
+      <div data-category="vape" class="k-recentresults__category-button k-button k-button--default">
+        <span>Vape</span>
+      </div>
+      <div data-category="healingBalm" class="k-recentresults__category-button k-button k-button--default">
+        <span>Healing Balm</span>
+      </div>
+      <div data-category="lotion" class="k-recentresults__category-button k-button k-button--default">
+        <span>Lotion</span>
+      </div>
+      <div data-category="petChew" class="k-recentresults__category-button k-button k-button--default">
+        <span>Pet Chew</span>
+      </div>
+      <div data-category="petSpray" class="k-recentresults__category-button k-button k-button--default">
+        <span>Pet Spray</span>
+      </div>
+    </div>    
+  </div>
+</section>
+
+<section class="k-labresults k-block k-block--sm">
   <div class="k-inner k-inner--md">
 
     <div class="k-labresults__searchform">
