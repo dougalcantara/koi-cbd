@@ -13,7 +13,7 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>USA Grown Hemp</p>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Maintaining Taste & Terpenes</p>
+          <p>Whole Plant Extraction</p>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Single Vessel Bottling</p>
+          <p>Production & Packaging</p>
         </div>
       </div>
 
@@ -57,18 +57,18 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Whole Plant Extraction</p>
+          <p>Full Panel Analysis</p>
         </div>
       </div>
 
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-bottle');
+          get_template_part('partials/svg/koi-barcode');
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Traceability & Quality Control</p>
+          <p>Batch Level Transparency</p>
         </div>
       </div>
 
