@@ -251,8 +251,6 @@ function appendMarkup(test, $appendTarget, category, event = false) {
       appendVariantTabs(category);
     }
 
-    console.log(test.results);
-
     $appendTarget.append(/*html*/ `
     <div class="k-latestbatch__results">
       <div class="k-latestbatch__results-liner">
