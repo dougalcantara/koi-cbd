@@ -85,11 +85,11 @@
         </a>
         <div class="k-overview--edibles__text">
           <h3 class="k-headline k-headline--xs">
-            <a href="<?php echo site_url().'/cbd-edibles'; ?>">CBD Gummies</a>
+            <a href="<?php echo site_url().'/cbd-gummies'; ?>">CBD Gummies</a>
           </h3>
           <div class="k-rte-content">
             <p><?php echo $overview_fields['edibles_copy']; ?></p>
-            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-edibles'; ?>">Shop Gummies &rarr;</a>
+            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-gummies'; ?>">Shop Gummies &rarr;</a>
           </div>
         </div>
       </div>
