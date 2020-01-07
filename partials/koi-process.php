@@ -20,7 +20,7 @@ $root = get_template_directory_uri();
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-bottle');
+          get_template_part('partials/svg/koi-plant');
           ?>
         </div>
         <div class="k-process__iconrow__title">
@@ -31,7 +31,7 @@ $root = get_template_directory_uri();
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-beaker');
+          get_template_part('partials/svg/koi-microscope');
           ?>
         </div>
         <div class="k-process__iconrow__title">
@@ -53,7 +53,7 @@ $root = get_template_directory_uri();
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-plant');
+          get_template_part('partials/svg/koi-beaker');
           ?>
         </div>
         <div class="k-process__iconrow__title">
@@ -64,33 +64,11 @@ $root = get_template_directory_uri();
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-microscope');
+          get_template_part('partials/svg/koi-bottle');
           ?>
         </div>
         <div class="k-process__iconrow__title">
           <p>Traceability & Quality Control</p>
-        </div>
-      </div>
-
-      <div class="k-process__iconrow__item">
-        <div class="k-process__iconrow__icon">
-          <?php
-          get_template_part('partials/svg/koi-leaf');
-          ?>
-        </div>
-        <div class="k-process__iconrow__title">
-          <p>Final Quality Hold</p>
-        </div>
-      </div>
-
-      <div class="k-process__iconrow__item">
-        <div class="k-process__iconrow__icon">
-          <?php
-          get_template_part('partials/svg/koi-barcode');
-          ?>
-        </div>
-        <div class="k-process__iconrow__title">
-          <p>Tracking With Batch Numbers</p>
         </div>
       </div>
 

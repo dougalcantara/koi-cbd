@@ -1,5 +1,5 @@
 .k-process {
-  .k-inner {
+  > .k-inner {
     border-top: 1px solid #ddd;
     padding-top: $padding-xs;
     position: relative;
@@ -71,13 +71,6 @@
 
       &.is-selected {
         opacity: 1;
-
-        .k-process__carousel {
-          &__text,
-          &__image {
-            // transform: translateY(0);
-          }
-        }
       }
     }
 
@@ -94,7 +87,6 @@
     }
 
     &__image {
-      // transform: translateY(101%);
       transition: transform 0.8s $ease-out-circ;
     }
 
