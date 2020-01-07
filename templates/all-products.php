@@ -31,15 +31,14 @@ $categories = get_categories([
 ]);
 
 $links = array(
-  'cbd-tinctures', 
-  'cbd-edibles', 
   'cbd-for-pets', 
-  'cbd-topicals', 
-  'cbd-vape', 
-  'cbd-vape-devices-cartridges', 
-  'cbd-merchandise', 
   'cbd-gummies', 
-  'cbd-wellness-shots'
+  'cbd-tinctures', 
+  'vape-devices-cartridges', 
+  'cbd-vape-juice', 
+  'cbd-wellness-shots', 
+  'merchandise', 
+  'cbd-topicals',
 );
 ?>
 
@@ -52,7 +51,7 @@ $links = array(
       <div class="k-productcard">
         <div class="k-productcard--liner">
 
-          <a href="<?php echo site_url() . '/' . $links[$i]; ?>">
+          <a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>">
             <figure class="k-figure">
               <div class="k-figure--liner">
                 <img class="k-figure--img" data-src="<?php echo $cat_fields['category_featured_image']['url']; ?>" alt="<?php echo $product_cat->name; ?>">
@@ -61,12 +60,12 @@ $links = array(
           </a>
 
           <div class="k-productcard--title">
-            <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo site_url() . '/' . $links[$i]; ?>"><?php echo $product_cat->name; ?></a></h3>
+            <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>"><?php echo $product_cat->name; ?></a></h3>
             <p class="k-accent-text k-rte-content"><?php echo $product_cat->description; ?></p>
           </div>
 
           <div class="k-productcard--action">
-            <a href="<?php echo site_url() . '/' . $links[$i]; ?>" class="k-button k-button--default">Shop Now</a>
+            <a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>" class="k-button k-button--default">Shop Now</a>
           </div>
 
         </div>
