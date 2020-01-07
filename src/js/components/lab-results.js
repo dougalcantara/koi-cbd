@@ -24,6 +24,10 @@ if ($body.hasClass('page-template-lab-results')) {
 
 const $resultsForm = $('#k-resultssearch');
 const $insertTarget = $('#resultsembedtarget');
+const $tabAppendTarget = $('.k-recentresults__tab-append-target');
+const $recentTestTarget = $('.k-recentresults__test-append-target');
+const $spacer = $('.k-recentresults__spacer');
+
 const fuseOpts = {
   shouldSort: true,
   threshold: 0.0,
@@ -38,64 +42,99 @@ const fuseOpts = {
 $resultsForm.submit(displayResults);
 
 function setDefaultResults() {
-  const defaults = [
+  window.__defaults = [
     {
-      category: 'tinctures',
-      sku: 'NATNAT250',
+      categoryName: 'tinctures',
+      sku: [
+        'NATNAT250',
+        'NATNAT500',
+        'NATNAT1000',
+        // 'NATNAT1500' - exists but isnt listed on PDP
+        'NATNAT2000',
+        // 'NATNAT3000' - exists but isnt listed on PDP
+      ],
       button: $('[data-category="tincture"]'),
+      unit: '30mL bottle',
+      labResults: [],
     },
     {
-      category: 'gummies',
-      sku: 'REGGUM20',
+      categoryName: 'gummies',
+      sku: ['REGGUM20', 'SRGUM20'],
       button: $('[data-category="gummies"]'),
+      unit: '20 gummies',
+      labResults: [],
     },
     {
-      category: 'wellnessShots',
-      sku: undefined,
+      categoryName: 'wellnessShots',
+      sku: [undefined],
       button: $('[data-category="wellnessShots"]'),
+      unit: '2.5-ounce bottle',
+      labResults: [],
     },
     {
-      category: 'vape',
-      sku: 'WHTKOI100',
+      categoryName: 'vape',
+      sku: ['WHTKOI100', 'WHTKOI250', 'WHTKOI500', 'WHTKOI1000'],
       button: $('[data-category="vape"]'),
+      unit: '30mL bottle',
+      labResults: [],
     },
     {
-      category: 'healingBalm',
-      sku: 'KHB 500 mg',
+      categoryName: 'healingBalm',
+      sku: ['KHB 500 mg'],
       button: $('[data-category="healingBalm"]'),
+      unit: '45g container',
+      labResults: [],
     },
     {
-      category: 'lotion',
-      sku: 'LTNCTBRST',
+      categoryName: 'lotion',
+      sku: ['LTNCTBRST', 'LTNLAV', 'LTNPNKGRP'],
       button: $('[data-category="lotion"]'),
+      unit: '4.25oz bottle',
+      labResults: [],
     },
     {
-      category: 'petChew',
-      sku: 'KPTSCHEWS',
+      categoryName: 'petChew',
+      sku: ['KPTSCHEWS'],
       button: $('[data-category="petChew"]'),
+      unit: '25 chews',
+      labResults: [],
     },
     {
-      category: 'petSpray',
-      sku: 'PETSPRY',
+      categoryName: 'petSpray',
+      sku: ['PETSPRY'],
       button: $('[data-category="petSpray"]'),
+      unit: '60mL spray bottle',
+      labResults: [],
     },
   ];
 
-  defaults.forEach(category => {
-    const newestMatch = sampleTests.filter(
-      test => test.productsku === category.sku
-    )[0];
+  window.__defaults.forEach(category => {
+    category.sku.forEach(sku => {
+      // for each sku inside each category
+      if (sku != undefined) {
+        let newestMatch = sampleTests.filter(
+          test => test.productsku === sku
+        )[0];
+        newestMatch.unit = category.unit;
+        category.labResults.push(new Test(newestMatch));
+      }
+    });
 
-    category.button.click(() => {
-      showRecentTest(newestMatch);
+    category.button.click(function(event) {
+      showRecentTest(category.labResults[0], category, event);
+      $body.animate(
+        {
+          scrollTop: $spacer.offset().top - 100,
+        },
+        50
+      );
     });
   });
 }
 
-function showRecentTest(test) {
-  const { productsku, coaurl } = test;
-  alert(`${productsku}, ${coaurl}`);
-  console.log(test);
+function showRecentTest(match, category, event) {
+  $recentTestTarget.html(``);
+  appendMarkup(match, $recentTestTarget, category, event);
 }
 
 function getResults() {
@@ -109,8 +148,8 @@ function getResults() {
         sampleTests = responseJSON.data;
       } catch (error) {
         $insertTarget.append(/*html*/ `
-          <div class="k-latestbatch--results">
-            <div class="k-latestbatch--results__liner k-latestbatch--results__liner--error">
+          <div class="k-latestbatch__results">
+            <div class="k-latestbatch__results-liner k-latestbatch__results-liner--error">
               <h1>Sorry, there appears to be a connection issue.</h1>
               <p>Try refreshing the page.</p>
               <p>If you continue to experience a problem, please <a href="${url}/contact" style="text-decoration: underline;">let us know</a> and we'll be happy to help.</p>
@@ -137,7 +176,7 @@ function displayResults(e) {
   if (results.length > 0) {
     results.forEach(test => {
       test = new Test(test.item, test.score);
-      appendMarkup(test);
+      appendMarkup(test, $insertTarget);
     });
   } else {
     displayTermPrompt();
@@ -146,8 +185,8 @@ function displayResults(e) {
 
 function displayTermPrompt() {
   $insertTarget.append(/*html*/ `
-    <div class="k-latestbatch--results">
-      <div class="k-latestbatch--results__liner k-latestbatch--results__liner--error">
+    <div class="k-latestbatch__results">
+      <div class="k-latestbatch__results-liner k-latestbatch__results-liner--error">
         <h1>Sorry, we can't seem to find that.</h1>
         <!-- <p>Try searching for a product name, batch number, SKU, or strength.</p> -->
         <p>Try searching for a valid batch number.</p>
@@ -156,48 +195,172 @@ function displayTermPrompt() {
   `);
 }
 
-function appendMarkup(test) {
-  $insertTarget.append(/*html*/ `
-    <div class="k-latestbatch--results">
-      <div class="k-latestbatch--results__liner">
-        <div class="k-latestbatch--results__column">
+function getTabMarkup(test, category) {
+  const tab = /*html*/ `
+    <div class="k-latestbatch--tabs__tab" data-product-sku="${
+      test.productsku
+    }" data-category="${category.categoryName}">
+      <span class="k-latestbatch__variant-name">
+        ${test.strength ? test.strength : test.ordername}
+      </span>
+    </div>
+  `;
+
+  return tab;
+}
+
+function appendVariantTabs(category) {
+  // Display the variants as tabs
+  let tabs = '';
+  if (category.categoryName === 'lotion') {
+    // lotion strength is *currently* always 200mg, so use the product name instead
+    // this may change in the future as new products are added
+    category.labResults.forEach(sku => {
+      sku.results.strength = sku.results.ordername
+        .split('Koi Lotion')[1]
+        .split('200')[0];
+      tabs += getTabMarkup(sku.results, category);
+    });
+  } else if (category.categoryName === 'gummies') {
+    // gummies *currently* only have 1 strength, so use the name instead.
+    // this may change in the future as new products are added
+    category.labResults.forEach(sku => {
+      sku.results.strength = sku.results.ordername
+        .split('Koi')[1]
+        .split('Fruit')[0];
+      tabs += getTabMarkup(sku.results, category);
+    });
+  } else if (category) {
+    category.labResults.forEach(sku => {
+      tabs += getTabMarkup(sku.results, category);
+    });
+  }
+  $tabAppendTarget.html(tabs);
+  assignTabListeners();
+}
+
+function appendMarkup(test, $appendTarget, category, event = false) {
+  try {
+    const unitMarkup = /*html*/ `
+      <p class="k-upcase k-latestbatch--unit">${
+        test.results.unit ? test.results.unit : ''
+      }</p>
+    `;
+
+    if (event) {
+      appendVariantTabs(category);
+    }
+
+    $appendTarget.append(/*html*/ `
+    <div class="k-latestbatch__results">
+      <div class="k-latestbatch__results-liner">
+        <div class="k-latestbatch__results-column">
           <div>
             <p class="k-upcase k-latestbatch--strength">
-              ${test.results.strength !== false ? test.results.strength : ''}
+              ${
+                test.results.strength !== false
+                  ? test.results.strength
+                  : 'View strength in PDF'
+              }
             </p>
-          </div>
-          <div>
-            <p class="k-upcase">Batch #</p>
-            <p class="k-upcase k-latestbatch--strength">${
+            ${unitMarkup}
+            <p class="k-upcase k-latestbatch--strength">Batch #${
               test.results.batchid
             }</p>
           </div>
         </div>
-        <div class="k-latestbatch--results__column">
+        <div class="k-latestbatch__results-column">
           <div>
-            <p class="k-upcase">Product Name:</p>
-            <p class="k-upcase">${test.results.ordername}</p>
-          </div>
-          <div>
-            <p class="k-upcase">Product SKU:</p>
-            <p class="k-upcase">${test.results.productsku}</p>
+            <p class="k-upcase">Product Name: ${test.results.ordername}</p>
+            <p class="k-upcase">Product SKU: ${test.results.productsku}</p>
           </div>
         </div>
-        <div class="k-latestbatch--results__column">
-          <p class="k-bigtext">${
-            test.results.totalthc
-          }% <span class="k-measurement">Total THC</span></p>
-          ${
-            test.results.viewCBDinCOA
-              ? /*html*/ `<p class="k-upcase" style="font-size: 100%">${test.results.viewcoa}</p>`
-              : /*html*/ `<p class="k-bigtext">${test.results.totalcbd}mg/unit <span class="k-measurement">Total CBD</span></p>`
-          }
+        <div class="k-latestbatch__results-column">
+          <p class="k-bigtext">
+            <span class="k-weight--md">
+              ${test.results.totalthc}
+              ${test.results.totalthc === 'N/D' ? '' : '%'}
+            </span>
+            <span class="k-measurement">Total THC</span><br>
+            ${
+              test.results.viewCBDinCOA
+                ? /*html*/ `<span class="k-upcase" style="font-size: 75%">${test.results.viewcoa}</span>`
+                : /*html*/ `<span class="k-bigtext">
+                  <span class="k-weight--md">${test.results.totalcbd}mg/unit</span>
+                  <span class="k-measurement">Total CBD</span>
+                </span>`
+            }
+          </p>
         </div>
-        <div class="k-latestbatch--results__column">
-          <a href="${test.results.coaurl}" target="_blank"></a>
-          <span>.PDF &darr;</span>
+        <div class="k-latestbatch__results-column">
+          <a id="k-coaurl" class="k-button" href="${
+            test.results.coaurl
+          }" target="_blank">.PDF &darr;</a>
         </div>
       </div>
     </div>
   `);
+  } catch (error) {
+    console.error(Error(error));
+    $tabAppendTarget.html(``);
+    $appendTarget.append(/*html*/ `
+      <div class="k-latestbatch__results k-result-error">
+        <div class="k-latestbatch__error">
+          <h2>We had trouble loading these Lab Results.</h2>
+          <p>Have your batch number? Search for it below.</p>
+        </div>
+        <div class="k-latestbatch__results-liner" style="filter: blur(2px);">
+          <div class="k-latestbatch__results-column">
+            <div>
+              <p class="k-upcase k-latestbatch--strength">
+                100 MG
+              </p>
+              <p class="k-upcase k-latestbatch--strength">Batch #9075XXXXXX</p>
+            </div>
+          </div>
+          <div class="k-latestbatch__results-column">
+            <div>
+              <p class="k-upcase">Product Name: CBD Vape Juice</p>
+              <p class="k-upcase">Product SKU: XXXXXXXXXX</p>
+            </div>
+          </div>
+          <div class="k-latestbatch__results-column">
+            <p class="k-bigtext">
+              <span class="k-weight--md">
+                N/D
+              </span>
+              <span class="k-measurement">Total THC</span><br>
+              <span class="k-upcase" style="font-size: 75%">View total CBD in PDF</span>
+            </p>
+          </div>
+          <div class="k-latestbatch__results-column">
+            <a id="k-coaurl" class="k-button" href="#" target="_blank">.PDF &darr;</a>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+}
+
+function assignTabListeners() {
+  const $tabs = $('.k-latestbatch--tabs__tab');
+  $tabs.first().addClass('active');
+
+  $tabs.click(function() {
+    const $t = $(this);
+
+    $tabs.removeClass('active');
+    $t.addClass('active');
+
+    const category = window.__defaults.filter(
+      cat => cat.categoryName === $t.data('category')
+    )[0];
+
+    const matchingTest = category.labResults.filter(
+      test => test.results.productsku === $t.data('product-sku')
+    )[0];
+
+    $recentTestTarget.html(``);
+    appendMarkup(matchingTest, $recentTestTarget, category);
+  });
 }

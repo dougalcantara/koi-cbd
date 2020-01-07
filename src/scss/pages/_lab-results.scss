@@ -1,3 +1,31 @@
+.page-template-lab-results {
+  .k-latestbatch {
+    &--tabs {
+      &__tab {
+        padding: 1em 0;
+        cursor: pointer;
+      }
+    }
+
+    &__results-liner {
+      background: lighten($primary, 28%);
+    }
+
+    &__results-column {
+      flex-basis: 100%;
+      width: 100%;
+
+      &:last-child #k-coaurl {
+        width: 80%;
+        border: none;
+        border-radius: 0;
+        background: $primary;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
 .k-hero--labresults {
   h1.k-preheading {
     display: block;
@@ -39,29 +67,66 @@
       font-size: 90%;
     }
   }
+
+  &__spacer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+  }
+
+  &__dot {
+    width: 0.5em;
+    height: 0.5em;
+    margin: 0 1em;
+    background: $accent-text;
+    border-radius: 0.25em;
+  }
+
+  &__tab-append-target {
+    display: flex;
+  }
 }
 
 .k-labresults {
+  &__spacer {
+    max-width: 75%;
+    margin: 0 auto;
+    border-top: 1px solid $accent-text;
+    border-radius: 0.5px;
+  }
+
   &__searchform {
-    .k-preheading {
-      color: $highlight;
-    }
+    max-width: 75%;
+    margin: 0 auto;
+    text-align: center;
 
     .k-form {
+      margin-bottom: 0;
+
       button[type='submit'] {
         margin-top: 0.5em;
         width: 100%;
+        transform: scale(1.025);
       }
 
       input[type='text'] {
         font-size: 200%;
         font-family: $heading-font;
-        padding: 0.5em 0 0;
+        padding: 0.25em;
+        border-bottom: none;
 
         &:focus {
           outline: none;
         }
       }
+    }
+  }
+
+  &__main {
+    padding-top: 4em;
+
+    .k-latestbatch__results {
+      margin-bottom: 2em;
     }
   }
 
@@ -106,21 +171,19 @@
       .k-form {
         &__content {
           position: relative;
+          display: flex;
+          border: 1px solid $accent-text;
+          border-radius: 0.5em;
         }
 
         input[type='text'] {
           max-width: 75%;
           min-width: 75%;
-          font-size: 400%;
-          padding: 0.25em 0;
+          padding: 0 0 0 0.5em;
           border: none;
         }
 
         button[type='submit'] {
-          width: auto;
-          position: absolute;
-          top: 0;
-          right: 0;
           margin: 0;
         }
       }
@@ -137,13 +200,51 @@
 }
 
 @media (min-width: $bp-xl) {
-  .k-labresults {
-    &__searchform {
-      .k-form {
-        button[type='submit'] {
-          right: 3.75em;
+  .page-template-lab-results {
+    .k-latestbatch {
+      &--tabs {
+        &__tab {
+          padding: 1em 0;
         }
       }
+
+      &__results-liner {
+        align-items: center;
+      }
+
+      &__results-column {
+        width: auto;
+        flex-basis: 25%;
+        border-bottom: none;
+
+        &:first-of-type {
+          flex-basis: 14.6%;
+        }
+
+        &:nth-of-type(3) p {
+          font-size: 150%;
+        }
+      }
+    }
+  }
+
+  .k-labresults {
+    &__content {
+      margin-bottom: 2em;
+
+      .k-headline {
+        margin-bottom: 0.5em;
+      }
+
+      .k-rte-content {
+        max-width: 75%;
+        margin: 0 auto;
+      }
+    }
+
+    .k-form {
+      max-width: 75%;
+      margin: 0 auto 2em;
     }
 
     .k-latestbatch--results {
@@ -157,6 +258,16 @@
         &:hover {
           background-color: $bg-gray-light;
         }
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-xxl) {
+  .page-template-lab-results {
+    .k-latestbatch {
+      &__results-column:nth-of-type(3) p {
+        font-size: 200%;
       }
     }
   }
