@@ -23,4 +23,12 @@
   .k-latestbatch--tabs {
     flex-flow: row nowrap;
   }
+
+  .k-latestbatch__icon-description {
+    max-width: 100%;
+  }
+
+  .k-recentresults__category-button {
+    flex-basis: 18.5%;
+  }
 }
