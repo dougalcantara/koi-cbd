@@ -1,5 +1,6 @@
 .k-footer {
   position: relative;
+
   &--top .k-inner {
     display: flex;
     flex-flow: row wrap;
@@ -21,7 +22,7 @@
   }
 
   &--logo {
-    flex-basis: 50%;
+    flex-basis: 100%;
 
     .k-figure {
       margin-bottom: 1em;
@@ -36,26 +37,11 @@
   &--social {
     a {
       display: block;
-
-      // &:first-child {
-      //   position: relative;
-      //   margin-right: 1em;
-
-      //   &:after {
-      //     display: block;
-      //     content: '';
-      //     position: absolute;
-      //     top: 50%; right: -.6em;
-      //     height: 50%; width: 1px;
-      //     background: $black;
-      //     transform: translateY(-50%);
-      //   }
-      // }
     }
   }
 
   &--links {
-    flex-basis: 50%;
+    flex-basis: 100%;
     text-align: right;
 
     &__item {
@@ -77,14 +63,14 @@
       position: relative;
       &:after {
         position: absolute;
-        right: calc(100% + .5em);
+        right: calc(100% + 0.5em);
         top: 50%;
         transform: translateY(-50%);
         width: 2px;
         height: 0;
         content: '';
         background: black;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
       }
       &:hover {
         &:after {
@@ -105,8 +91,14 @@
     }
   }
 
-  &--disclaimer p {
-    font-size: 65%;
+  &--disclaimer {
+    border: 1px solid $black;
+    padding: 1em;
+
+    p {
+      margin: 0;
+      font-size: 80%;
+    }
   }
 }
 
@@ -120,6 +112,23 @@
       flex-basis: 50%;
       margin-top: -5em;
     }
+
+    &--bottom {
+      .k-inner {
+        display: flex;
+        flex-flow: row wrap;
+      }
+    }
+
+    &--copy,
+    &--disclaimer {
+      text-align: center;
+      flex-basis: 100%;
+    }
+
+    &--copy {
+      margin-bottom: 2em;
+    }
   }
 }
 
@@ -128,22 +137,6 @@
     &--top .k-inner {
       flex-flow: row nowrap;
       justify-content: space-between;
-    }
-
-    &--bottom {
-      .k-inner {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-      }
-
-      .k-footer--copy {
-        flex-basis: 25%;
-      }
-
-      .k-footer--disclaimer {
-        flex-basis: 75%;
-      }
     }
 
     &--logo {
