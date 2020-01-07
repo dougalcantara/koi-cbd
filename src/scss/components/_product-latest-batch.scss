@@ -68,7 +68,7 @@
     display: flex;
     justify-content: flex-start;
     flex-flow: row wrap;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $accent-text;
 
     &:hover {
       cursor: pointer;
@@ -77,8 +77,8 @@
     &__tab {
       flex-basis: 25%;
       text-align: center;
-      border-top: 1px solid #ccc;
-      border-right: 1px solid #ccc;
+      border-top: 1px solid $accent-text;
+      border-right: 1px solid $accent-text;
       padding: 0.5em 0;
       transition: background-color 0.4s $ease-out-circ;
 
@@ -100,14 +100,14 @@
       &:nth-child(5),
       &:nth-child(9),
       &:nth-child(13) {
-        border-left: 1px solid #ccc;
+        border-left: 1px solid $accent-text;
       }
     }
   }
 
   &__results-column {
     flex-basis: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $accent-text;
     padding: 1em 0;
 
     &:first-child {

@@ -2,7 +2,7 @@ export default class Test {
   constructor(test, score = false) {
     this.results = test;
 
-    if (this.results.ordername) {
+    if (this.results && this.results.ordername) {
       this.results.strength = this.parseStrengthFromName(
         this.results.ordername
       );
@@ -31,13 +31,8 @@ export default class Test {
   }
 
   checkForBadTotalCBD() {
-    if (this.results.totalcbd === 'N/D') {
+    if (this.results && this.results.totalcbd === 'N/D') {
       try {
-        /*
-          un-comment the following line for further debugging of N/D totalcbd results.
-          if a lab result shows N/D, direct the user to the COA for the true cbd content.
-        */
-        // console.warn(this.results);
         this.results.viewCBDinCOA = true;
 
         this.results.viewcoa = 'View total CBD in PDF';

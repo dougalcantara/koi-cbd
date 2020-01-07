@@ -24,7 +24,6 @@ get_header();
         <p>All Koi products are lab-tested for purity, consistency, and safety. Plus, we offer full traceability on every batch of our CBD.</p>
       </div>
 
-
     </div>
   
   </div>
@@ -86,15 +85,33 @@ get_header();
       <div data-category="petSpray" class="k-recentresults__category-button k-button k-button--default">
         <span>Pet Spray</span>
       </div>
-    </div>    
+    </div>
+
+    <div class="k-recentresults__spacer">
+      <div class="k-recentresults__dot"></div>
+      <div class="k-recentresults__dot"></div>
+      <div class="k-recentresults__dot"></div>
+      <div class="k-recentresults__dot"></div>
+    </div>
+
+    <div class="k-recentresults__append-target">
+      <div class="k-recentresults__tab-append-target"></div>
+      <div class="k-recentresults__test-append-target"></div>
+    </div>
   </div>
 </section>
 
-<section class="k-labresults k-block k-block--sm">
+<section class="k-labresults k-block k-block--sm" style="padding-bottom: 4em !important;">
+  <div class="k-inner k-inner--sm">
+    <div class="k-labresults__spacer"></div>
+  </div>
   <div class="k-inner k-inner--md">
 
     <div class="k-labresults__searchform">
-      <span class="k-preheading k-upcase">Search by Batch #</span>
+      <div class="k-labresults__content">
+        <h4 class="k-headline k-headline--sm">Search by Batch</h4>
+        <p class="k-rte-content">Find the lab results of every Koi product by using its unique batch number. Not sure where to find your product's batch number? Check out <a href="https://koicbddev.wpengine.com/wp-content/uploads/tracking-with-batch-numbers.jpg" target="_blank">this example.</a></p>
+      </div>
       <form class="k-form" id="k-resultssearch">
         <div class="k-form__content">
           <input
@@ -103,7 +120,7 @@ get_header();
             id="k-resultssearchval"
             placeholder="search..."
           />
-          <button type="submit" class="k-button k-button--dark k-upcase">Search Results</button>
+          <button type="submit" class="k-button k-button--primary k-upcase">Search Batches</button>
         </div>
       </form>
     </div>
