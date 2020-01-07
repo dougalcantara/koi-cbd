@@ -21,52 +21,20 @@
       get_template_part('partials/svg/koi-play-button');
       ?>
     </div>
-    <div class="k-videogallery--item k-videogallery--actions">
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery--actions__item">
+  </div>
+  <div class="k-videogallery__iconrow">
+    <div class="k-inner k-inner--md">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-leaf');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>U.S. Organic Hemp Farms</p>
+          <p>USA Grown Hemp</p>
         </div>
       </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=1' ?>" class="k-videogallery--actions__item">
-        <div class="k-videogallery--actions__icon">
-          <?php
-          get_template_part('partials/svg/koi-bottle');
-          ?>
-        </div>
-        <div class="k-videogallery--actions__title">
-          <p>Maintaining Taste & Terpenes</p>
-        </div>
-      </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=2' ?>" class="k-videogallery--actions__item">
-        <div class="k-videogallery--actions__icon">
-          <?php
-          get_template_part('partials/svg/koi-beaker');
-          ?>
-        </div>
-        <div class="k-videogallery--actions__title">
-          <p>Accredited 3rd Party Testing</p>
-        </div>
-      </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=3' ?>" class="k-videogallery--actions__item">
-        <div class="k-videogallery--actions__icon">
-          <?php
-          get_template_part('partials/svg/koi-eyedrop');
-          ?>
-        </div>
-        <div class="k-videogallery--actions__title">
-          <p>Single Vessel Bottling</p>
-        </div>
-      </a>
-      
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=4' ?>" class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=1' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-plant');
@@ -76,42 +44,46 @@
           <p>Whole Plant Extraction</p>
         </div>
       </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=5' ?>" class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=2' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-microscope');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>Traceability & Quality Control</p>
+          <p>Accredited 3rd Party Testing</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=6' ?>" class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=3' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
-          get_template_part('partials/svg/koi-leaf');
+          get_template_part('partials/svg/koi-eyedrop');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>Final Quality Hold</p>
+          <p>Production & Packaging</p>
         </div>
       </a>
-
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=7' ?>" class="k-videogallery--actions__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=4' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
-          get_template_part('partials/svg/koi-bottle');
+          get_template_part('partials/svg/koi-beaker');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
-          <p>Tracking With Batch Numbers</p>
+          <p>Full Panel Analysis</p>
         </div>
       </a>
-    </div>
-    <div class="k-videogallery--item k-videogallery--description k-rte-content">
-      <p class="k-headline k-headline--xs"><?php the_field('homepage_video_gallery_description','option'); ?></p>
-      <?php /*<a class="k-underline k-weight--lg" href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>">Get The Full Story</a> */ ?>
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=5' ?>" class="k-videogallery__iconrow__item">
+        <div class="k-videogallery--actions__icon">
+          <?php
+          get_template_part('partials/svg/koi-barcode');
+          ?>
+        </div>
+        <div class="k-videogallery--actions__title">
+          <p>Batch Level Transparency</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>

@@ -13,40 +13,7 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>U.S. Organic Hemp Farms</p>
-        </div>
-      </div>
-
-      <div class="k-process__iconrow__item">
-        <div class="k-process__iconrow__icon">
-          <?php
-          get_template_part('partials/svg/koi-bottle');
-          ?>
-        </div>
-        <div class="k-process__iconrow__title">
-          <p>Maintaining Taste & Terpenes</p>
-        </div>
-      </div>
-
-      <div class="k-process__iconrow__item">
-        <div class="k-process__iconrow__icon">
-          <?php
-          get_template_part('partials/svg/koi-beaker');
-          ?>
-        </div>
-        <div class="k-process__iconrow__title">
-          <p>Accredited 3rd Party Testing</p>
-        </div>
-      </div>
-
-      <div class="k-process__iconrow__item">
-        <div class="k-process__iconrow__icon">
-          <?php
-          get_template_part('partials/svg/koi-eyedrop');
-          ?>
-        </div>
-        <div class="k-process__iconrow__title">
-          <p>Single Vessel Bottling</p>
+          <p>USA Grown Hemp</p>
         </div>
       </div>
 
@@ -68,18 +35,29 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Traceability & Quality Control</p>
+          <p>Accredited 3rd Party Testing</p>
         </div>
       </div>
 
       <div class="k-process__iconrow__item">
         <div class="k-process__iconrow__icon">
           <?php
-          get_template_part('partials/svg/koi-leaf');
+          get_template_part('partials/svg/koi-eyedrop');
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Final Quality Hold</p>
+          <p>Production & Packaging</p>
+        </div>
+      </div>
+
+      <div class="k-process__iconrow__item">
+        <div class="k-process__iconrow__icon">
+          <?php
+          get_template_part('partials/svg/koi-beaker');
+          ?>
+        </div>
+        <div class="k-process__iconrow__title">
+          <p>Full Panel Analysis</p>
         </div>
       </div>
 
@@ -90,7 +68,7 @@ $root = get_template_directory_uri();
           ?>
         </div>
         <div class="k-process__iconrow__title">
-          <p>Tracking With Batch Numbers</p>
+          <p>Batch Level Transparency</p>
         </div>
       </div>
 
