@@ -244,11 +244,9 @@
       <div class="k-latestbatch__results">
         <div class="k-latestbatch__results-liner">
           <div class="k-latestbatch__results-column">
-            <?php if ($product_wc_type != 'simple'): ?>
             <div>
               <p class="k-headline k-headline--sm"><?php echo get_the_title(); ?></p>
             </div>
-            <?php endif; ?>
           </div>
 
           <div class="k-latestbatch__results-column">

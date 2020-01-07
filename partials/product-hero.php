@@ -64,7 +64,7 @@
           ?>
           <div style="display: none;"><?php var_dump($other_tinctures); ?></div>
           <div class="k-productform--item k-productform__flavorselect">
-            <p>Select another flavor:</p>
+            <p>Choose flavor:</p>
             <div class="k-productform__flavorselect__main">
               <select>
                 <?php // have the current one be the "current selected" option" ?>

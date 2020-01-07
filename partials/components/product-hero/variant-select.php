@@ -1,4 +1,4 @@
-<p class="k-productform--item k-productform--heading">Select One:</p>
+<p class="k-productform--item k-productform--heading">Choose CBD strength:</p>
 <div class="k-productform--item k-productform--variants">
 <?php
 $first_available = 0;
