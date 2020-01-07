@@ -34,7 +34,7 @@
           <p>USA Grown Hemp</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=1' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-plant');
@@ -44,7 +44,7 @@
           <p>Whole Plant Extraction</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=2' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-microscope');
@@ -54,7 +54,7 @@
           <p>Accredited 3rd Party Testing</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=3' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-eyedrop');
@@ -64,7 +64,7 @@
           <p>Production & Packaging</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=4' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
           get_template_part('partials/svg/koi-beaker');
@@ -74,10 +74,10 @@
           <p>Full Panel Analysis</p>
         </div>
       </a>
-      <a href="<?php echo site_url() . '/about-us?scrollToSelected=0' ?>" class="k-videogallery__iconrow__item">
+      <a href="<?php echo site_url() . '/about-us?scrollToSelected=5' ?>" class="k-videogallery__iconrow__item">
         <div class="k-videogallery--actions__icon">
           <?php
-          get_template_part('partials/svg/koi-bottle');
+          get_template_part('partials/svg/koi-barcode');
           ?>
         </div>
         <div class="k-videogallery--actions__title">
