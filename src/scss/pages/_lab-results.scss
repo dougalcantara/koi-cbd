@@ -1,29 +1,29 @@
 .page-template-lab-results {
-  .k-latestbatch {
-    &--tabs {
-      &__tab {
-        padding: 1em 0;
-        cursor: pointer;
-      }
-    }
+  // .k-latestbatch {
+  //   &--tabs {
+  //     &__tab {
+  //       padding: 1em 0;
+  //       cursor: pointer;
+  //     }
+  //   }
 
-    &__results-liner {
-      background: lighten($primary, 28%);
-    }
+  //   &__results-liner {
+  //     background: lighten($primary, 28%);
+  //   }
 
-    &__results-column {
-      flex-basis: 100%;
-      width: 100%;
+  //   &__results-column {
+  //     flex-basis: 100%;
+  //     width: 100%;
 
-      &:last-child #k-coaurl {
-        width: 80%;
-        border: none;
-        border-radius: 0;
-        background: $primary;
-        margin: 0 auto;
-      }
-    }
-  }
+  //     &:last-child #k-coaurl {
+  //       width: 80%;
+  //       border: none;
+  //       border-radius: 0;
+  //       background: $primary;
+  //       margin: 0 auto;
+  //     }
+  //   }
+  // }
 }
 
 .k-hero--labresults {
@@ -201,31 +201,31 @@
 
 @media (min-width: $bp-xl) {
   .page-template-lab-results {
-    .k-latestbatch {
-      &--tabs {
-        &__tab {
-          padding: 1em 0;
-        }
-      }
+    // .k-latestbatch {
+    //   &--tabs {
+    //     &__tab {
+    //       padding: 1em 0;
+    //     }
+    //   }
 
-      &__results-liner {
-        align-items: center;
-      }
+    //   &__results-liner {
+    //     align-items: center;
+    //   }
 
-      &__results-column {
-        width: auto;
-        flex-basis: 25%;
-        border-bottom: none;
+    //   &__results-column {
+    //     width: auto;
+    //     flex-basis: 25%;
+    //     border-bottom: none;
 
-        &:first-of-type {
-          flex-basis: 14.6%;
-        }
+    //     &:first-of-type {
+    //       flex-basis: 14.6%;
+    //     }
 
-        &:nth-of-type(3) p {
-          font-size: 150%;
-        }
-      }
-    }
+    //     &:nth-of-type(3) p {
+    //       font-size: 150%;
+    //     }
+    //   }
+    // }
   }
 
   .k-labresults {
@@ -247,28 +247,28 @@
       margin: 0 auto 2em;
     }
 
-    .k-latestbatch--results {
-      margin-bottom: 0;
+    // .k-latestbatch--results {
+    //   margin-bottom: 0;
 
-      &__liner {
-        background-color: $true-white;
-        transition: background-color 0.4s $ease-out-circ;
-        border-bottom: 1px solid #dedede;
+    //   &__liner {
+    //     background-color: $true-white;
+    //     transition: background-color 0.4s $ease-out-circ;
+    //     border-bottom: 1px solid #dedede;
 
-        &:hover {
-          background-color: $bg-gray-light;
-        }
-      }
-    }
+    //     &:hover {
+    //       background-color: $bg-gray-light;
+    //     }
+    //   }
+    // }
   }
 }
 
 @media (min-width: $bp-xxl) {
   .page-template-lab-results {
-    .k-latestbatch {
-      &__results-column:nth-of-type(3) p {
-        font-size: 200%;
-      }
-    }
+    // .k-latestbatch {
+    //   &__results-column:nth-of-type(3) p {
+    //     font-size: 200%;
+    //   }
+    // }
   }
 }
