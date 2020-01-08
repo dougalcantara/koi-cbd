@@ -44,11 +44,11 @@
           </figure>
         </a>
         <h3 class="k-headline k-headline--xs">
-          <a href="<?php echo site_url().'/cbd-tinctures'; ?>">Tinctures and Sprays</a>
+          <a href="<?php echo site_url().'/cbd-tinctures'; ?>">CBD Tinctures & Sprays</a>
         </h3>
         <div class="k-rte-content">
           <p><?php echo $overview_fields['tinctures_copy']; ?></p>
-          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-tinctures'; ?>">Shop Tinctures and Sprays &rarr;</a>
+          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-tinctures'; ?>">Shop CBD Tinctures & Sprays &rarr;</a>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
         </h3>
         <div class="k-rte-content">
           <p><?php echo $overview_fields['topicals_copy']; ?></p>
-          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-topicals'; ?>">Shop Topicals &rarr;</a>
+          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-topicals'; ?>">Shop CBD Topicals &rarr;</a>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@
           </h3>
           <div class="k-rte-content">
             <p><?php echo $overview_fields['edibles_copy']; ?></p>
-            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-gummies'; ?>">Shop Gummies &rarr;</a>
+            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-gummies'; ?>">Shop CBD Gummies &rarr;</a>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@
         </h3>
         <div class="k-rte-content">
           <p><?php echo $overview_fields['pets_copy']; ?></p>
-          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop for Pets &rarr;</a>
+          <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-for-pets'; ?>">Shop CBD for Pets &rarr;</a>
         </div>
       </div>
     </div>
@@ -129,11 +129,11 @@
         
         <div class="k-overview--vape__text">
           <h3 class="k-headline k-headline--xs">
-            <a href="<?php echo site_url().'/cbd-vape-juice'; ?>">Vape Juice</a>
+            <a href="<?php echo site_url().'/cbd-vape-juice'; ?>">CBD Vape Juice</a>
           </h3>
           <div class="k-rte-content">
             <p><?php echo $overview_fields['vape_copy']; ?></p>
-            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-vape-juice'; ?>">Shop Vape Juice &rarr;</a>
+            <a class="k-button k-button--primary" href="<?php echo site_url().'/cbd-vape-juice'; ?>">Shop CBD Vape Juice &rarr;</a>
           </div>
         </div>
       </div>
