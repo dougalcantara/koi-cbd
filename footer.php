@@ -241,26 +241,18 @@ $root = get_template_directory_uri();
     </script>
     <script src="https://js.squareup.com/payments/data.js"></script>
     <script>
-      // wc_square_credit_card_payment_form_handler.handle_pay_page();
-      console.log(window.wc_square_credit_card_payment_form_handler);
+      (function() {
+        var interval;
+
+        interval = setInterval(function() {
+          if (window.wc_square_credit_card_payment_form_handler) {
+            console.log(window.wc_square_credit_card_payment_form_handler);
+            clearInterval(interval);
+            window.wc_square_credit_card_payment_form_handler.handle_pay_page();
+          }
+        }, 50);
+      })();
     </script>
   <?php endif; ?>
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-
-<!--<script type="text/javascript">-->
-<!--  window.__lc = window.__lc || {};-->
-<!--  window.__lc.license = 9499945;-->
-<!--  (function() {-->
-<!--    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;-->
-<!--    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';-->
-<!--    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);-->
-<!--  })();-->
-<!--</script>-->
-<!--<noscript>-->
-<!--  <a href="https://www.livechatinc.com/chat-with/9499945/" rel="nofollow">Chat with us</a>,-->
-<!--  powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>-->
-<!--</noscript>-->
-
-<!-- End of LiveChat code -->
 </body>
 </html>
