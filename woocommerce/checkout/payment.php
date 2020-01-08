@@ -55,7 +55,7 @@ if ( ! is_ajax() ) {
 
 		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
 
-		<!-- <input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="<?php echo wp_create_nonce('square'); ?>"> -->
+		<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="<?php echo wp_create_nonce('square'); ?>">
 		<!-- <input type="hidden" id="wc-authorize-net-cim-credit-card-payment-nonce" name="wc-authorize-net-cim-credit-card-payment-nonce" value=""> -->
 		<!-- <input type="hidden" id="wc-authorize-net-cim-credit-card-payment-descriptor" name="wc-authorize-net-cim-credit-card-payment-descriptor" value="Koi CBD"> -->
 	</div>
