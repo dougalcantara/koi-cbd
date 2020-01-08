@@ -62,25 +62,25 @@ get_header();
     ?>
     <div class="k-recentresults__categories">
       <div data-category="tincture" class="k-recentresults__category-button k-button k-button--default">
-        <span>Tincture</span>
+        <span>Tinctures</span>
       </div>
       <div data-category="gummies" class="k-recentresults__category-button k-button k-button--default">
         <span>Gummies</span>
       </div>
-      <div data-category="wellnessShots" class="k-recentresults__category-button k-button k-button--default">
-        <span>Wellness Shots</span>
+      <div data-category="sprays" class="k-recentresults__category-button k-button k-button--default">
+        <span>Sprays</span>
       </div>
       <div data-category="vape" class="k-recentresults__category-button k-button k-button--default">
-        <span>Vape</span>
+        <span>Vape Juices</span>
       </div>
-      <div data-category="healingBalm" class="k-recentresults__category-button k-button k-button--default">
-        <span>Healing Balm</span>
+      <div data-category="hempExtractBalm" class="k-recentresults__category-button k-button k-button--default">
+        <span>Hemp Extract Balm</span>
       </div>
       <div data-category="lotion" class="k-recentresults__category-button k-button k-button--default">
-        <span>Lotion</span>
+        <span>Lotions</span>
       </div>
       <div data-category="petChew" class="k-recentresults__category-button k-button k-button--default">
-        <span>Pet Chew</span>
+        <span>Pet Chews</span>
       </div>
       <div data-category="petSpray" class="k-recentresults__category-button k-button k-button--default">
         <span>Pet Spray</span>
@@ -88,10 +88,10 @@ get_header();
     </div>
 
     <div class="k-recentresults__spacer">
+      <!-- <div class="k-recentresults__dot"></div>
       <div class="k-recentresults__dot"></div>
       <div class="k-recentresults__dot"></div>
-      <div class="k-recentresults__dot"></div>
-      <div class="k-recentresults__dot"></div>
+      <div class="k-recentresults__dot"></div> -->
     </div>
 
     <div class="k-recentresults__append-target">
@@ -118,9 +118,9 @@ get_header();
             type="text"
             name="lab-result-search"
             id="k-resultssearchval"
-            placeholder="search..."
+            placeholder="Enter Batch Number"
           />
-          <button type="submit" class="k-button k-button--primary k-upcase">Search Batches</button>
+          <button type="submit" class="k-button k-button--primary k-upcase">Search</button>
         </div>
       </form>
     </div>
