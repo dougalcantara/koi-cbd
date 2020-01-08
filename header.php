@@ -59,7 +59,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
   <!-- <link rel="stylesheet" id="sv-wc-payment-gateway-payment-form-css" href="https://koicbd.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/css/frontend/sv-wc-payment-gateway-payment-form.min.css?ver=5.4.1" type="text/css" media="all"> -->
   
-  <!-- new Square payment gateway instead of Authorize.net -->
+  <!-- new payment gateway instead of Authorize.net -->
   <link rel="stylesheet" id="sv-wc-payment-gateway-payment-form-css" href="https://koicbd.com/wp-content/plugins/woocommerce-square/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/css/frontend/sv-wc-payment-gateway-payment-form.min.css?ver=5.4.0" type="text/css" media="all">
   <link rel="stylesheet" id="wc-square-css" href="https://koicbd.com/wp-content/plugins/woocommerce-square/assets/css/frontend/wc-square.min.css?ver=2.0.8" type="text/css" media="all">
   
