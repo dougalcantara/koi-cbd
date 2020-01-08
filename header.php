@@ -52,12 +52,20 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <meta name="msapplication-TileImage" content="<?php echo $root . '/dist/ms-icon-144x144.png'; ?>">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="dns-prefetch" href="//js.authorize.net">
+  <link rel="dns-prefetch" href="//js.squareup.com">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock:400,700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
-  <link rel="stylesheet" id="sv-wc-payment-gateway-payment-form-css" href="https://koicbd.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/css/frontend/sv-wc-payment-gateway-payment-form.min.css?ver=5.4.1" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="sv-wc-payment-gateway-payment-form-css" href="https://koicbd.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/css/frontend/sv-wc-payment-gateway-payment-form.min.css?ver=5.4.1" type="text/css" media="all"> -->
+  
+  <!-- new payment gateway instead of Authorize.net -->
+  <link rel="stylesheet" id="sv-wc-payment-gateway-payment-form-css" href="https://koicbd.com/wp-content/plugins/woocommerce-square/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/css/frontend/sv-wc-payment-gateway-payment-form.min.css?ver=5.4.0" type="text/css" media="all">
+  <link rel="stylesheet" id="wc-square-css" href="https://koicbd.com/wp-content/plugins/woocommerce-square/assets/css/frontend/wc-square.min.css?ver=2.0.8" type="text/css" media="all">
+  
+  <script type="text/javascript" src="https://js.squareup.com/v2/paymentform?ver=2.0.8"></script>
+  <!-- end payment gateway stuff -->
+
   <!-- <?php 
     if (strpos($current_url, 'cart')) { ?>
       <link rel="stylesheet" href="<?php echo $root.'/dist/css/woocommerce.css' ?>" />
