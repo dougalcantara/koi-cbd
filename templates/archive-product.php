@@ -60,6 +60,7 @@ $unflavored_products = array(205502, 30207);
 
       <?php
       $args = array(
+        'limit' => -1,
         'post_type' => 'product',
         'category' => array($product_category_slug),
       );
