@@ -87,12 +87,7 @@ get_header();
       </div>
     </div>
 
-    <div class="k-recentresults__spacer">
-      <!-- <div class="k-recentresults__dot"></div>
-      <div class="k-recentresults__dot"></div>
-      <div class="k-recentresults__dot"></div>
-      <div class="k-recentresults__dot"></div> -->
-    </div>
+    <div class="k-recentresults__spacer"></div>
 
     <div class="k-recentresults__append-target">
       <div class="k-recentresults__tab-append-target"></div>

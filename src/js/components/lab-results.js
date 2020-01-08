@@ -54,21 +54,21 @@ function setDefaultResults() {
         // 'NATNAT3000' - exists but isnt listed on PDP
       ],
       button: $('[data-category="tincture"]'),
-      unit: '30mL bottle',
+      unit: '30mL Bottle',
       labResults: [],
     },
     {
       categoryName: 'gummies',
       sku: ['REGGUM20', 'SRGUM20'],
       button: $('[data-category="gummies"]'),
-      unit: '20 gummies',
+      unit: '20 Gummies',
       labResults: [],
     },
     {
       categoryName: 'sprays',
       sku: ['NATNAT1500', 'NATNAT3000'],
       button: $('[data-category="sprays"]'),
-      unit: '60mL bottle',
+      unit: '60mL Bottle',
       labResults: [],
     },
     {
@@ -82,28 +82,28 @@ function setDefaultResults() {
       categoryName: 'hempExtractBalm',
       sku: ['KHB 500 mg'],
       button: $('[data-category="hempExtractBalm"]'),
-      unit: '45g container',
+      unit: '45g Container',
       labResults: [],
     },
     {
       categoryName: 'lotion',
       sku: ['LTNCTBRST', 'LTNLAV', 'LTNPNKGRP'],
       button: $('[data-category="lotion"]'),
-      unit: '4.25oz bottle',
+      unit: '4.25oz Bottle',
       labResults: [],
     },
     {
       categoryName: 'petChew',
       sku: ['KPTSCHEWS'],
       button: $('[data-category="petChew"]'),
-      unit: '25 chews',
+      unit: '25 Chews',
       labResults: [],
     },
     {
       categoryName: 'petSpray',
       sku: ['PETSPRY'],
       button: $('[data-category="petSpray"]'),
-      unit: '60mL spray bottle',
+      unit: '60mL Spray Bottle',
       labResults: [],
     },
   ];
@@ -241,12 +241,6 @@ function appendVariantTabs(category) {
 
 function appendMarkup(test, $appendTarget, category, event = false) {
   try {
-    const unitMarkup = /*html*/ `
-      <p class="k-upcase k-latestbatch--unit">${
-        test.results.unit ? test.results.unit : ''
-      }</p>
-    `;
-
     if (event) {
       appendVariantTabs(category);
     }
@@ -256,46 +250,28 @@ function appendMarkup(test, $appendTarget, category, event = false) {
       <div class="k-latestbatch__results-liner">
         <div class="k-latestbatch__results-column">
           <div>
-            <p class="k-upcase k-latestbatch--strength">
-              ${
-                test.results.strength !== false
-                  ? test.results.strength
-                  : 'View strength in PDF'
-              }
-            </p>
-            ${unitMarkup}
-            <p class="k-upcase k-latestbatch--strength">Batch #${
-              test.results.batchid
-            }</p>
+            <p class="k-headline k-headline--sm">${test.results.ordername}</p>
           </div>
         </div>
         <div class="k-latestbatch__results-column">
           <div>
-            <p class="k-upcase">Product Name: ${test.results.ordername}</p>
-            <p class="k-upcase">Product SKU: ${test.results.productsku}</p>
-          </div>
-        </div>
-        <div class="k-latestbatch__results-column">
-          <p class="k-bigtext">
-            <span class="k-weight--md">
-              ${test.results.totalthc}
-              ${test.results.totalthc === 'N/D' ? '' : '%'}
-            </span>
-            <span class="k-measurement">Total THC</span><br>
+            <p class="k-latestbatch--strength">Variant: ${
+              test.results.strength !== false ? test.results.strength : 'N/A'
+            }</p>
             ${
-              test.results.viewCBDinCOA
-                ? /*html*/ `<span class="k-upcase" style="font-size: 75%">${test.results.viewcoa}</span>`
-                : /*html*/ `<span class="k-bigtext">
-                  <span class="k-weight--md">${test.results.totalcbd}mg/unit</span>
-                  <span class="k-measurement">Total CBD</span>
-                </span>`
+              category // if there's a category
+                ? category.unit // and there's a category.unit
+                  ? /*html*/ `<p class="k-latestbatch--size">Size: ${category.unit}</p>`
+                  : ''
+                : ''
             }
-          </p>
+            <p class="k-latestbatch--batch">Batch #: ${test.results.batchid}</p>
+          </div>
         </div>
         <div class="k-latestbatch__results-column">
           <a id="k-coaurl" class="k-button" href="${
             test.results.coaurl
-          }" target="_blank">.PDF &darr;</a>
+          }" target="_blank">View this product's Certificate of Analysis (COA)</a>
         </div>
       </div>
     </div>
