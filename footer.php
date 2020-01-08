@@ -148,12 +148,101 @@ $root = get_template_directory_uri();
 
   <?php if ($wp->request == 'checkout') : ?>
     <script type="text/javascript">
-      jQuery(function(o){tvc_lc="USD",jQuery("div").on("click",".apply_coupons_credits",function(){if(coupon_code=jQuery(this).find("div.code").text(),""!=coupon_code&&null!=coupon_code){jQuery(this).css("opacity","0.5");var o="https://koicbdstaging.wpengine.com/?sc-page=checkout&coupon-code="+coupon_code;jQuery(location).attr("href",o)}});var e=function(){jQuery("div#coupons_list").find("div.coupon-container").length>0?jQuery("div#coupons_list").slideDown(800):jQuery("div#coupons_list").hide()};jQuery("#all_coupon_container").height()>400?(jQuery("#all_coupon_container").css("height","400px"),jQuery("#all_coupon_container").css("overflow-y","scroll")):(jQuery("#all_coupon_container").css("height",""),jQuery("#all_coupon_container").css("overflow-y","")),jQuery(".checkout_coupon").next("#coupons_list").hide(),jQuery("a.showcoupon").on("click",function(){e()}),jQuery(document).on("ready",function(){jQuery("div#invalid_coupons_list div#all_coupon_container .coupon-container").removeClass("apply_coupons_credits")}),jQuery(document.body).on("updated_checkout",function(o,c){c.fragments.wc_sc_available_coupons&&jQuery("div#coupons_list").replaceWith(c.fragments.wc_sc_available_coupons),e()}),jQuery(document.body).on("updated_cart_totals update_checkout",function(){jQuery("div#coupons_list").css("opacity","0.5"),jQuery.ajax({url:"https://koicbdstaging.wpengine.com/wp-admin/admin-ajax.php",type:"post",dataType:"html",data:{action:"sc_get_available_coupons",security:"d9b8523f48"},success:function(o){null!=o&&""!=o&&jQuery("div#coupons_list").replaceWith(o),e(),jQuery("div#coupons_list").css("opacity","1")}})}),jQuery("body").on("applied_coupon removed_coupon update_checkout",function(){jQuery.ajax({url:"https://koicbdstaging.wpengine.com/wp-admin/admin-ajax.php",type:"POST",dataType:"html",data:{action:"get_wc_coupon_message",security:"f3c5c1cc74"},success:function(o){jQuery(".wc_coupon_message_wrap").html(""),null!=o&&""!=o&&jQuery(".wc_coupon_message_wrap").html(o)}})}),window.wc_square_credit_card_payment_form_handler=new WC_Square_Payment_Form_Handler({id:"square_credit_card",id_dasherized:"square-credit-card",csc_required:!0,logging_enabled:!1,general_error:"An error occurred, please try again or try an alternate form of payment.",ajax_url:"https://koicbdstaging.wpengine.com/wp-admin/admin-ajax.php",ajax_log_nonce:"6661d6b414",application_id:"sq0idp-wGVapF8sNt9PLrdj5znuKA",enabled_card_types:["visa","mastercard","amex","discover"],square_card_types:{visa:"visa",masterCard:"mastercard",americanExpress:"amex",discover:"discover",discoverDiners:"dinersclub",JCB:"jcb"},input_styles:[{backgroundColor:"transparent",fontSize:"1.3em"}]})});
+      jQuery(function($) {
+        tvc_lc="USD";
+
+        jQuery('div').on('click', '.apply_coupons_credits', function() {
+          coupon_code = jQuery(this).find('div.code').text();
+
+          if( coupon_code != '' && coupon_code != undefined ) {
+            jQuery(this).css('opacity', '0.5');
+            var url = 'https://koicbdstaging.wpengine.com/?sc-page=checkout&coupon-code='+coupon_code;
+            jQuery(location).attr('href', url);
+          }
+        });
+
+        var show_hide_coupon_list = function() {
+          if ( jQuery('div#coupons_list').find('div.coupon-container').length > 0 ) {
+            jQuery('div#coupons_list').slideDown(800);
+          } else {
+            jQuery('div#coupons_list').hide();
+          }
+        };
+
+        var coupon_container_height = jQuery('#all_coupon_container').height();
+        if ( coupon_container_height > 400 ) {
+          jQuery('#all_coupon_container').css('height', '400px');
+          jQuery('#all_coupon_container').css('overflow-y', 'scroll');
+        } else {
+          jQuery('#all_coupon_container').css('height', '');
+          jQuery('#all_coupon_container').css('overflow-y', '');
+        }
+
+        jQuery('.checkout_coupon').next('#coupons_list').hide();
+
+        jQuery('a.showcoupon').on('click', function() {
+          show_hide_coupon_list();
+        });
+
+        jQuery(document).on('ready', function(){
+          jQuery('div#invalid_coupons_list div#all_coupon_container .coupon-container').removeClass('apply_coupons_credits');
+        });
+
+
+        jQuery(document.body).on('updated_checkout', function( e, data ){
+          if ( data.fragments.wc_sc_available_coupons ) {
+            jQuery('div#coupons_list').replaceWith( data.fragments.wc_sc_available_coupons );
+          }
+          show_hide_coupon_list();
+        });
+
+        jQuery(document.body).on('updated_cart_totals update_checkout', function(){
+          jQuery('div#coupons_list').css('opacity', '0.5');
+          jQuery.ajax({
+            url: 'https://koicbdstaging.wpengine.com/wp-admin/admin-ajax.php',
+            type: 'post',
+            dataType: 'html',
+            data: {
+              action: 'sc_get_available_coupons',
+              security: 'd9b8523f48'
+            },
+            success: function( response ) {
+              if ( response != undefined && response != '' ) {
+                jQuery('div#coupons_list').replaceWith( response );
+              }
+              show_hide_coupon_list();
+              jQuery('div#coupons_list').css('opacity', '1');
+            }
+          });
+        });
+
+
+        jQuery('body').on('applied_coupon removed_coupon update_checkout', function(){
+          jQuery.ajax({
+            url: 'https://koicbdstaging.wpengine.com/wp-admin/admin-ajax.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              action: 'get_wc_coupon_message',
+              security: 'f3c5c1cc74'
+            },
+            success: function( response ) {
+              jQuery('.wc_coupon_message_wrap').html('');
+              if ( response != undefined && response != '' ) {
+                jQuery('.wc_coupon_message_wrap').html( response );										
+              }
+            }
+          });
+        });	
+
+        console.log('Running square init script');
+        window.wc_square_credit_card_payment_form_handler = new WC_Square_Payment_Form_Handler( {"id":"square_credit_card","id_dasherized":"square-credit-card","csc_required":true,"logging_enabled":false,"general_error":"An error occurred, please try again or try an alternate form of payment.","ajax_url":"https:\/\/koicbdstaging.wpengine.com\/wp-admin\/admin-ajax.php","ajax_log_nonce":"6661d6b414","application_id":"sq0idp-wGVapF8sNt9PLrdj5znuKA","enabled_card_types":["visa","mastercard","amex","discover"],"square_card_types":{"visa":"visa","masterCard":"mastercard","americanExpress":"amex","discover":"discover","discoverDiners":"dinersclub","JCB":"jcb"},"input_styles":[{"backgroundColor":"transparent","fontSize":"1.3em"}]} );
+      });
     </script>
     <script src="https://js.squareup.com/payments/data.js"></script>
     <script>
-      wc_square_credit_card_payment_form_handler.handle_pay_page();
-      console.log(wc_square_credit_card_payment_form_handler);
+      // wc_square_credit_card_payment_form_handler.handle_pay_page();
+      console.log(window.wc_square_credit_card_payment_form_handler);
     </script>
   <?php endif; ?>
 <!-- Start of LiveChat (www.livechatinc.com) code -->
