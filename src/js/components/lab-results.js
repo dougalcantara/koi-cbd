@@ -65,10 +65,10 @@ function setDefaultResults() {
       labResults: [],
     },
     {
-      categoryName: 'wellnessShots',
-      sku: [undefined],
-      button: $('[data-category="wellnessShots"]'),
-      unit: '2.5-ounce bottle',
+      categoryName: 'sprays',
+      sku: ['NATNAT1500', 'NATNAT3000'],
+      button: $('[data-category="sprays"]'),
+      unit: '60mL bottle',
       labResults: [],
     },
     {
@@ -79,9 +79,9 @@ function setDefaultResults() {
       labResults: [],
     },
     {
-      categoryName: 'healingBalm',
+      categoryName: 'hempExtractBalm',
       sku: ['KHB 500 mg'],
-      button: $('[data-category="healingBalm"]'),
+      button: $('[data-category="hempExtractBalm"]'),
       unit: '45g container',
       labResults: [],
     },
