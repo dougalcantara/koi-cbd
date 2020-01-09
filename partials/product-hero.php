@@ -59,10 +59,10 @@
           if (reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
             $other_tinctures = wc_get_products(array(
               'post_type' => 'product',
-              'product_cat' => $product_category,
+              'category' => array($product_category),
             ));
           ?>
-          <div style="display: none;"><?php var_dump($product_category); ?></div>
+          <div style="display: none;"><?php var_dump($other_tinctures); ?></div>
           <div class="k-productform--item k-productform__flavorselect">
             <p>Choose flavor:</p>
             <div class="k-productform__flavorselect__main">
