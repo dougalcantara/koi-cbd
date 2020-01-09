@@ -25,7 +25,7 @@ while (have_posts()) : the_post();
   $product_id = $product->get_id();
   $product_acf = get_fields();
   $cat_name = get_the_terms($product_id, 'product_cat');
-  $product_category = reset($cat_name)->name;
+  $product_category = reset($cat_name)->slug;
   $product_wc_type = $product->get_type();
 
   // "Bundle" product types have min/max limitations
