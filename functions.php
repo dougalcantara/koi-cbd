@@ -43,7 +43,7 @@ function go_to_thank_you($order_id) {
 
   die();
 }
-// add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
+add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
 
 // == begin AJAX fn's == //
 /**
