@@ -50,6 +50,9 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     snaptr('track', 'PAGE_VIEW'); 
 	</script> 
   <!-- End Snap Pixel Code -->
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6283239.js"></script>
+  <!-- End of HubSpot Embed Code -->
 
   <script>
     // IntersectionObserver polyfill
