@@ -101,8 +101,6 @@ $root = get_template_directory_uri();
   </div>
 
   <?php
-    wp_footer();
-
     if (is_page_template('templates/cart.php') == false) {
       get_template_part('partials/cart-sidebar');
     }
@@ -125,7 +123,10 @@ $root = get_template_directory_uri();
   <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
 
-  <?php if ($wp->request == 'checkout') : ?>
+  <?php if ($wp->request == 'checkout') :
+    wp_footer();
+  ?>
+    
     <!-- <script type="text/javascript" src="https://koicbdstaging.wpengine.com/wp-content/plugins/woocommerce/assets/js/jquery-payment/jquery.payment.min.js?ver=3.0.0"></script> -->
     
     <!-- <script type="text/javascript" src="https://koicbdstaging.wpengine.com/wp-content/plugins/woocommerce-gateway-authorize-net-cim/vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/assets/js/frontend/sv-wc-payment-gateway-payment-form.min.js?ver=5.4.1"></script>
