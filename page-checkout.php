@@ -44,7 +44,11 @@ do_action('k_before_first_section');
 
 		<div class="k-checkout__headline">
 			<h1 class="k-headline k-headline--md">Checkout</h1>
-			<?php var_dump($wp->request); ?>
+			<?php
+				var_dump($wp->request);
+
+				var_dump(strpos($wp->request, 'order-received'));
+			?>
 			<?php if (!is_user_logged_in()) : ?>
 			<div class="woocommerce-form-login-toggle">
 				Returning customer? <a href="<?php echo site_url() . '/login'; ?>">Click here to log in.</a>
