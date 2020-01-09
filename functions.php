@@ -39,10 +39,6 @@ if (function_exists('acf_add_options_page')) {
 function go_to_thank_you($order_id) {
   WC()->cart->empty_cart(); // otherwise this doesn't happen
 
-  echo json_encode(array(
-    'order_success' => true,
-  ));
-
   wp_redirect(site_url() . '/order-received', 301);
 
   die();
