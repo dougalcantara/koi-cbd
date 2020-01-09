@@ -55,11 +55,9 @@ while (have_posts()) : the_post();
   ]);
   include(locate_template('partials/product-details.php'));
 
-  if ($product_category != 'merchandise' && $product_category != 'cbd-vape-devices') : // these categories don't have lab results associated with them
+  if ($product_category != 'merchandise' && $product_category != 'vape-devices-cartridges') : // these categories don't have lab results associated with them
     include(locate_template('partials/product-latest-batch.php'));
-  else : // need something here to keep spacing consistent w/o the "latest batch" section. This is the quickest way for now
-    ?>
-    <section class="k-block k-block--md k-no-padding--top"></section>
+  ?>
   <?php endif;
 
   // if ($product_acf['frequently_asked_questions']) {
