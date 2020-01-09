@@ -52,11 +52,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <meta name="msapplication-TileImage" content="<?php echo $root . '/dist/ms-icon-144x144.png'; ?>">
   <meta name="theme-color" content="#ffffff">
 
-  <?php if ($wp->request == 'checkout') :
-    wp_head();  
-
-  endif;
-  ?>
+  <?php wp_head(); ?>
 
   <!-- <link rel="dns-prefetch" href="//js.squareup.com"> -->
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
