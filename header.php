@@ -54,6 +54,8 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
 
   <?php if ($wp->request == 'checkout') :
     wp_head();  
+
+  endif;
   ?>
 
   <!-- <link rel="dns-prefetch" href="//js.squareup.com"> -->
