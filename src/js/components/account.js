@@ -1,8 +1,8 @@
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 const api = new WooCommerceRestApi({
-  url: 'https://koicbddev.wpengine.com',
-  consumerKey: 'ck_75c6d7fda38f3ef107c0bbcc934b76b52fd669fd',
-  consumerSecret: 'cs_b13d28870ca40b98a4c00f1576aca548ba90f573',
+  url: 'https://koicbd.com',
+  consumerKey: 'ck_e6deb5336d824dac21f6c30f730453ff764f6822',
+  consumerSecret: 'cs_7716c736ce5e8cd321c45751b18b845a5ed992cb',
   version: 'wc/v3',
   queryStringAuth: true
 });
