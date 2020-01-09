@@ -21,7 +21,7 @@ $requested_category = $_GET['category'];
 $requested_page = intval($_GET['page']);
 $per_page = 12;
 
-if (is_null($requested_page)) {
+if ($requested_page === 0) {
   $query_args = array(
     'paged' => false,
     'numberposts' => $per_page,
