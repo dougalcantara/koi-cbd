@@ -21,7 +21,7 @@ $requested_category = $_GET['category'];
 $requested_page = intval($_GET['page']);
 $per_page = 12;
 
-if (is_null($requested_page)) {
+if ($requested_page === 0) {
   $query_args = array(
     'paged' => false,
     'numberposts' => $per_page,
@@ -52,6 +52,7 @@ if ($requested_category && $requested_category != 'all') {
 }
 
 $all_posts = get_posts($query_args);
+var_dump($requested_page);
 ?>
 
 <section class="k-blognav">
