@@ -91,7 +91,7 @@ $all_posts = get_posts($query_args);
       if ($should_break_for_cta) { ?>
         </div> <!-- close out the flex inner around the cards -->
 
-        <section class="k-cta--subscribe on-dark"> <!-- Insert big ass "inner-breaking" CTA section here -->
+        <section class="k-cta--subscribe on-dark"> <!-- Insert big "inner-breaking" CTA section here -->
           <div class="k-inner k-inner--xl k-block k-block--md cta-subscribe-bg">
             <div class="k-cta--content">
               <div class="k-inner k-inner--md">
