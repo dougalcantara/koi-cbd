@@ -105,7 +105,7 @@ get_header();
     <div class="k-labresults__searchform">
       <div class="k-labresults__content">
         <h4 class="k-headline k-headline--sm">Search by Batch</h4>
-        <p class="k-rte-content">Find the lab results of every Koi product by using its unique batch number. Not sure where to find your product's batch number? Check out <a href="https://koicbddev.wpengine.com/wp-content/uploads/tracking-with-batch-numbers.jpg" target="_blank">this example.</a></p>
+        <p class="k-rte-content">Find the lab results of every Koi product by using its unique batch number. Not sure where to find your product's batch number? Check out <a href="https://koicbd.com/wp-content/uploads/tracking-with-batch-numbers.jpg" target="_blank">this example.</a></p>
       </div>
       <form class="k-form" id="k-resultssearch">
         <div class="k-form__content">
