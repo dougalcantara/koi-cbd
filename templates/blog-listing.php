@@ -18,6 +18,7 @@ echo k_hero($hero_fields);
 
 $all_categories = get_categories();
 $requested_category = $_GET['category'];
+$requested_page = intval($_GET['page']);
 $per_page = 12;
 
 if ($requested_page === 0) {
@@ -51,7 +52,6 @@ if ($requested_category && $requested_category != 'all') {
 }
 
 $all_posts = get_posts($query_args);
-var_dump($requested_page);
 ?>
 
 <section class="k-blognav">
