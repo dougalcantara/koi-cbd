@@ -36,14 +36,14 @@ if (function_exists('acf_add_options_page')) {
  * Tapping into this Woo hook lets us redirect to a custom "thank you" template once the 
  * purchase method has been charged. This should not affect any email & automation workflows.
  */
-function go_to_thank_you($order_id) {
-  WC()->cart->empty_cart(); // otherwise this doesn't happen
+// function go_to_thank_you($order_id) {
+//   WC()->cart->empty_cart(); // otherwise this doesn't happen
 
-  wp_redirect(site_url() . '/order-received', 301);
+//   wp_redirect(site_url() . '/order-received', 301);
 
-  die();
-}
-// add_action('woocommerce_checkout_order_processed', 'go_to_thank_you');
+//   die();
+// }
+// add_action('woocommerce_thankyou', 'go_to_thank_you');
 
 // == begin AJAX fn's == //
 /**

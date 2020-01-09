@@ -52,7 +52,6 @@ if ($requested_category && $requested_category != 'all') {
 }
 
 $all_posts = get_posts($query_args);
-var_dump($requested_page);
 ?>
 
 <section class="k-blognav">

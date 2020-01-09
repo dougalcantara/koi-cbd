@@ -27,7 +27,6 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <!-- Remember to add the live chat script here!! -->
 <!--  <script type="text/javascript" async src="https://cdn.livechatinc.com/tracking.js"></script>-->
 
-  <meta name="robots" content="noindex, nofollow" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -53,8 +52,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <meta name="theme-color" content="#ffffff">
 
   <?php if ($wp->request == 'checkout') :
-    wp_head();  
-
+    wp_head();
   endif;
   ?>
 
