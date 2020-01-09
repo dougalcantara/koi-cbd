@@ -98,7 +98,7 @@ get_header();
       </div>
 
       <div class="k-presspromo--action">
-        <a href="<?php echo site_url() . '/blog?category=hot-off-the-press'; ?>" class="k-button k-button--dark">View
+        <a href="<?php echo site_url() . '/blog'; ?>" class="k-button k-button--dark">View
           All &rarr;</a>
       </div>
     </div>

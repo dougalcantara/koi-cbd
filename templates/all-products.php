@@ -29,17 +29,6 @@ new Breadcrumbs([
 $categories = get_categories([
   'taxonomy' => 'product_cat',
 ]);
-
-$links = array(
-  'cbd-for-pets', 
-  'cbd-gummies', 
-  'cbd-tinctures', 
-  'vape-devices-cartridges', 
-  'cbd-vape-juice', 
-  'cbd-wellness-shots', 
-  'merchandise', 
-  'cbd-topicals',
-);
 ?>
 
 <section class="k-block k-block--md k-all-products">
@@ -50,24 +39,20 @@ $links = array(
       <?php if($product_cat->name != 'Uncategorized'): ?>
       <div class="k-productcard">
         <div class="k-productcard--liner">
-
-          <a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>">
+          <a href="<?php echo $categories[$i]->slug ?>">
             <figure class="k-figure">
               <div class="k-figure--liner">
                 <img class="k-figure--img" data-src="<?php echo $cat_fields['category_featured_image']['url']; ?>" alt="<?php echo $product_cat->name; ?>">
               </div>
             </figure>
           </a>
-
           <div class="k-productcard--title">
-            <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>"><?php echo $product_cat->name; ?></a></h3>
+            <h3 class="k-headline k-headline--fake k-weight--lg"><a href="<?php echo $categories[$i]->slug ?>"><?php echo $product_cat->name; ?></a></h3>
             <p class="k-accent-text k-rte-content"><?php echo $product_cat->description; ?></p>
           </div>
-
           <div class="k-productcard--action">
-            <a href="<?php echo site_url() . '/' . $links[$i - 1]; ?>" class="k-button k-button--default">Shop Now</a>
+            <a href="<?php echo $categories[$i]->slug ?>" class="k-button k-button--default">Shop Now</a>
           </div>
-
         </div>
       </div>
 
