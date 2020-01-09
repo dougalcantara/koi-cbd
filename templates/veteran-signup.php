@@ -28,7 +28,7 @@ echo k_hero(array(
 <section class="k-introtext k-block k-block--md">
   <div class="k-inner k-inner--sm k-rte-content">
     <h2 class="k-headline k-headline--sm">We Honor Those Who Serve & Have Served</h2>
-    <p>At Koi, we are grateful for those who’ve served as members of the United States military. We’d like to extend a special lifelong discount program as our way of thanking you for your service to our country. By signing up below you’ll be given access to a special account that automatically applies a 25% to discount to every order you place.</p>
+    <p>At Koi, we are grateful for those who’ve served as members of the United States military. We’d like to extend a special lifelong discount program as our way of thanking you for your service to our country. By signing up below you’ll be given access to a special account that automatically applies a 25% discount to every order you place.</p>
     <p>Use the form below to upload a copy of your VA card, State issued Drivers license or ID which shows your Veteran designation or your most recent “LES” (Military Pay Stub) for active duty.</p>
   </div>
 </section>
