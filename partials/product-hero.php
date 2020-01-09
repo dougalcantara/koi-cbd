@@ -62,7 +62,7 @@
               'product_cat' => $product_category,
             ));
           ?>
-          <div style="display: none;"><?php var_dump($product->get_category_ids()); ?></div>
+          <div style="display: none;"><?php var_dump($product_category); ?></div>
           <div class="k-productform--item k-productform__flavorselect">
             <p>Choose flavor:</p>
             <div class="k-productform__flavorselect__main">
