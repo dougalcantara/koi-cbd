@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc } from '../global/selectors';
 import wasEnter from '../helpers/wasEnter';
 import preventScrollOnDrag from '../helpers/FlickityEvents';

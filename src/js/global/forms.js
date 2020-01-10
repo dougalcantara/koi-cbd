@@ -1,3 +1,4 @@
+import $ from 'jquery';
 const $registerFormToggle = $('.k-toggle-register');
 const $loginForm = $('.k-login__form--default');
 const $registerForm = $('.k-login__form--register');

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc, $win } from '../global/selectors';
 
 const $parent = $('.k-checkout form');

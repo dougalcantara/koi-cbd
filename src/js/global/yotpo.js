@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 import { $doc, $backdrop, $reviewModal } from './selectors';
 
 const $titleTarget = $reviewModal.find('.k-review__producttitle span');

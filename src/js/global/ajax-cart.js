@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const AjaxCart = {
   url: `${window.SITE_GLOBALS.root}/wp-admin/admin-ajax.php`,
   cart: [],

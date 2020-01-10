@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { breakpoints } from '../global/ui';
 import { $doc, $win } from '../global/selectors';
 

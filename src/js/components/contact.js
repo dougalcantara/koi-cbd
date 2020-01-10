@@ -1,3 +1,4 @@
+import $ from 'jquery';
 const $accordion = $('.k-faq--accordion');
 const $items = $accordion.find('.k-faq--item');
 const $drawerTriggers = $accordion.find('.k-faq--item__heading');

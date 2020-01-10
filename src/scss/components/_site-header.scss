@@ -337,7 +337,7 @@
     }
 
     &--logo {
-      width: 6.25em;
+      width: 4em;
     }
 
     &--nav {
@@ -392,6 +392,7 @@
 
     &--logo {
       margin: auto;
+      width: 6.25em;
       transform: translateY(-1.125em);
     }
 
@@ -412,7 +413,7 @@
       }
 
       a {
-        font-size: 110%;
+        font-size: 100%;
       }
     }
   }
@@ -423,6 +424,10 @@
     &--nav {
       width: 94.44%;
       left: 2.78%;
+
+      a {
+        font-size: 110%;
+      }
     }
   }
 }
