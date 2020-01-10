@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { submitForm } from './newsletter-signup';
 
 const $cta = $('.k-cta--subscribe');

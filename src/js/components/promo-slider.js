@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 import { breakpoints } from '../global/ui';
 import { debounce } from '../components/newsletter-signup';

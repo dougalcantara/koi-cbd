@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const $playButtons = $('.k-play-button');
 const plyr = new Plyr('.k-player');
 

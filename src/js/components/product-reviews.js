@@ -1,4 +1,4 @@
-import axios from 'axios';
+import $ from 'jquery';
 import { $doc, $body, $reviewModal, $backdrop } from '../global/selectors';
 import ProductReview from '../helpers/ProductReview';
 import preventScrollOnDrag from '../helpers/FlickityEvents';

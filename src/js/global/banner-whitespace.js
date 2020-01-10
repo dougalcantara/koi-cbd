@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc } from './selectors';
 
 /**

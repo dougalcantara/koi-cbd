@@ -1,4 +1,5 @@
-import {$backdrop, $header, $searchModal} from './selectors';
+import $ from 'jquery';
+import { $backdrop, $header, $searchModal } from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
 
 const $searchTrigger = $('.k-searchtrigger');
