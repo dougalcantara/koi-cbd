@@ -58,6 +58,7 @@
           } else {
           if (reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
             $other_tinctures = wc_get_products(array(
+              'limit' => -1,
               'post_type' => 'product',
               'product_cat' => $product_category,
               'exclude' => array( $product->id )
@@ -74,10 +75,14 @@
                 foreach($other_tinctures as $idx => $tincture) :
                   $is_visible = $tincture->get_status() !== 'draft';
                   $is_not_bundle = $tincture->get_type() !== 'bundle';
-                  $is_not_current = $tincture->get_id() !== $product_id;
                   $is_not_weird_one = $tincture->get_id() !== 30239; // the 60ML variant is not be included in this list
-
-                  $show_tincture = $is_visible && $is_not_bundle && $is_not_current && $is_not_weird_one;
+                  $show_tincture = $is_visible && $is_not_bundle && $is_not_weird_one;
+                  
+                  if (strpos($product->name, 'Tincture') and strpos($tincture->name, 'Spray')) {
+                    $show_tincture = false;
+                  } else if (strpos($product->name, 'Spray') and strpos($tincture->name, 'Tincture')) {
+                    $show_tincture = false;
+                  }
 
                   if ($show_tincture) : ?>
                     <option data-permalink="<?php echo $tincture->get_permalink(); ?>"><?php echo $tincture->get_name(); ?></option>
