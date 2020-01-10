@@ -60,6 +60,7 @@
             $other_tinctures = wc_get_products(array(
               'post_type' => 'product',
               'product_cat' => $product_category,
+              'exclude' => array( $product->id )
             ));
           ?>
           <div style="display: none;"><?php var_dump($other_tinctures); ?></div>

@@ -39,7 +39,7 @@ function k_product_card($args) {
           $translate_value = $difference * 100;
         ?>
         <p class="k-accent-text k-productcard__review-target">
-          Reviews(<span class="k-productcard--numreviews"><?php echo $args['product_total_reviews']; ?></span>)
+          Reviews (<span class="k-productcard--numreviews"><?php echo $args['product_total_reviews']; ?></span>)
           <a href="<?php echo $args['product_review_link']; ?>" class="k-wraparound-link"></a>
         </p>
         <ul>
