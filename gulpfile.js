@@ -26,7 +26,9 @@ function server(done) {
     notify: false,
     open: false,
     ghostMode: false,
-    proxy: 'http://localhost:8888/koicbd/',
+    proxy: process.env.DOUG_DEV
+      ? 'http://localhost:8888/koicbd-new/'
+      : 'http://localhost:8888/koicbd/',
   });
 
   done();
