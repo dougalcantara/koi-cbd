@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc, $body, $header } from '../global/selectors';
 
 $doc.ready(() => {

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc, $body } from '../global/selectors';
 import AjaxCart from '../global/ajax-cart';
 import CartItem from '../components/ajax-cart-item';

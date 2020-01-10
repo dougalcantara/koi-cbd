@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import AjaxCart from './ajax-cart';
 import wasEnter from '../helpers/wasEnter';
 import {
