@@ -21,6 +21,12 @@ function k_product_card($args) {
         <p class="k-accent-text k-rte-content"><?php echo $args['product_short_description']; ?></p>
       </div>
 
+      <?php if ($args['product_price']) : ?>
+        <div class="k-productcard--price">
+          <p><span>From</span> $<?php echo $args['product_price']; ?></p>
+        </div>
+      <?php endif; ?>
+
       <div class="k-productcard--action">
         <a href="<?php echo $args['product_link']; ?>" class="k-button k-button--default">Shop Now</a>
       </div>
