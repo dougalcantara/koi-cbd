@@ -59,6 +59,7 @@
           if (reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
             $other_tinctures = wc_get_products(array(
               'limit' => -1,
+              'visibility' => 'visible',
               'post_type' => 'product',
               'product_cat' => $product_category,
               'exclude' => array( $product->id )
