@@ -1,4 +1,27 @@
 .k-checkout {
+  .reloading {
+    position: relative;
+
+    &::before {
+      content: 'Updating Shipping Method..';
+      display: block;
+      position: absolute;
+      top: 25%;
+      left: 1em;
+      transform: translate(0, -50%);
+      color: $true-white;
+      z-index: 100;
+      font-size: 150%;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      @include fill-parent();
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 99;
+    }
+  }
   &__headline {
     padding: 4em 0;
 
@@ -269,6 +292,13 @@
 
 @media (min-width: $bp-md) {
   .k-checkout {
+    .reloading {
+      &::before {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
     &__forms {
       & > .k-liner {
         padding: 4em 3em;

@@ -92,7 +92,7 @@
       }
     }
     a {
-      color: $accent-text;
+      color: darken($accent-text, 15%);
 
       &:hover {
         color: $primary;
@@ -114,29 +114,29 @@
     border-radius: 0.33em;
   }
   &--main__liner {
-
     .my-dashboard {
       background: $true-white;
-      box-shadow: 0 0 10px rgba(0,0,0,.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 2em;
       font-size: 1.1em;
       margin: 0 0 1em 0;
       border-radius: 0.33em;
-      transition: box-shadow .5s ease;
-     &:nth-child(2) {
-       display: flex;
-       justify-content: flex-start;
-       align-items: flex-start;
-       flex-direction: column;
-       &:before {
-         content: 'My Account';
-         position: absolute;
-         top: 5%;
-         left: 5%;
-       }
-     }
-      .k-button, .k-button--primary {
-        padding: .3em 2em;
+      transition: box-shadow 0.5s ease;
+      &:nth-child(2) {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        &:before {
+          content: 'My Account';
+          position: absolute;
+          top: 5%;
+          left: 5%;
+        }
+      }
+      .k-button,
+      .k-button--primary {
+        padding: 0.3em 2em;
       }
       span {
         margin: 1em 0;
@@ -149,7 +149,7 @@
         }
       }
       &:hover {
-        box-shadow: 0 0 20px rgba(0,0,0,.2);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       }
     }
   }
@@ -165,18 +165,17 @@
         z-index: 2;
       }
       li {
-        transition: box-shadow .5s ease;
+        transition: box-shadow 0.5s ease;
         a {
-          padding: .5em;
+          padding: 0.5em;
           background: white;
           border-radius: 0.33em;
           display: flex;
           justify-content: center;
-          box-shadow: 0 0 10px rgba(0,0,0,.1);
-
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         &:hover {
-          box-shadow: 0 0 20px rgba(0,0,0,.2);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
           a {
             color: $primary;
           }
@@ -271,7 +270,7 @@
       }
 
       a {
-        color: $accent-text;
+        color: darken($accent-text, 15%);
 
         &:hover {
           color: $primary;
@@ -296,7 +295,6 @@
       flex-basis: 70%;
     }
     &--main__liner {
-
       p {
         &:nth-child(2) {
           &:before {

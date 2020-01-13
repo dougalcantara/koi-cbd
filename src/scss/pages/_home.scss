@@ -101,6 +101,10 @@
       }
     }
   }
+
+  &--topicals .k-cornerimg {
+    right: -14.5%;
+  }
 }
 
 @media (min-width: $bp-md) {
@@ -162,6 +166,10 @@
           font-size: 125%;
         }
       }
+    }
+
+    &--topicals .k-cornerimg {
+      right: -14.5%;
     }
   }
 }

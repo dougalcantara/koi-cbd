@@ -61,6 +61,8 @@ $unflavored_products = array(205502, 30207);
       <?php
       $args = array(
         'limit' => -1,
+        'status' => 'publish',
+        'visibility' => 'visible',
         'post_type' => 'product',
         'category' => array($product_category_slug),
       );
@@ -82,12 +84,32 @@ $unflavored_products = array(205502, 30207);
           $product->total_reviews = $to_json->bottomline->total_review;
           $product->visible_rating = $to_json->bottomline->average_score * 1000;
           $product->sort_rating = $product->visible_rating;
-
           /**
-           * If the product is a Variety Pack, make it the last product shown in the archive.
+           * 
+           * This is where manipulations to the sorting can occur.
+           * 
+           * Since the product review rating is considered the primary sorting method for tinctures & sprays,
+           * it's used as the baseline for products. 
+           * 
+           * However, we'll make sweeping changes to specific product types by manipulating the sort rating
+           * that was based on the review rating.
+           * 
+           * Since reviews go up to 5 (and we're multiplying by 1000), the range of the sort rating
+           * is 0 - 5000 at this point.
+           * 
+           * RANGES
+           * Spray Variety Packs: 0 - 5,000
+           * Singular Sprays: 5,001 - 10,001
+           * Tincture Variety Packs: 10,002 - 15,002
+           * Singular Tinctures: 15,003 - 20,003
+           * 
            */
-          if (strpos($name, 'Variety Pack') !== false) {
-            $product->sort_rating = -1;
+          if (strpos($name, 'Spray') !== false) {
+            $product->sort_rating = ($product->sort_rating + 5001);
+          } else if (strpos($name, 'Variety Pack') !== false && strpos($name, 'Tincture') !== false) {
+            $product->sort_rating = ($product->sort_rating + 10002);
+          } else if (strpos($name, 'Tincture') !== false) {
+            $product->sort_rating = ($product->sort_rating + 15003);
           }
 
         endif;
