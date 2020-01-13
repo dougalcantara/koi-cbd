@@ -99,6 +99,58 @@ $doc.ready(function() {
       clearInterval(interval);
     }
   }, 1000);
+
+  // eliminate woocart garbage
+  let counter = 0;
+  const wooCart = setInterval(function() {
+    const wooCartAppend = document.querySelector('.festi-cart-window-content');
+    counter++;
+    if (wooCartAppend) {
+      wooCartAppend.remove();
+
+      const styles = document.querySelector('#festi-cart-styles-css');
+      const cartDropdowns = document.querySelector(
+        '#festi-cart-cart-customize-style-css'
+      );
+      const dropdowns = document.querySelector(
+        '#festi-cart-dropdown-list-customize-style-css'
+      );
+      const widgetStyles = document.querySelector(
+        '#festi-cart-widget-customize-style-css'
+      );
+      const popup = document.querySelector(
+        '#festi-cart-popup-customize-style-css'
+      );
+      const festiSpinner = document.querySelector(
+        '#festi-jquery-ui-spinner-css'
+      );
+      const storage = document.querySelector('[src*="woocommerce-woocartpro"]');
+      const inline = document.querySelector('.festi-cart-products');
+      const festiSpinnerScript = document.querySelector(
+        '[src*="jquery-ui.spinner"]'
+      );
+
+      const wooCartGarbage = [
+        styles,
+        cartDropdowns,
+        dropdowns,
+        widgetStyles,
+        popup,
+        festiSpinner,
+        storage,
+        inline,
+        festiSpinnerScript,
+      ];
+
+      wooCartGarbage.forEach(trash => {
+        trash.remove();
+      });
+
+      clearInterval(wooCart);
+    } else if (counter >= 100) {
+      clearInterval(wooCart);
+    }
+  }, 80);
 });
 
 $backdrop.click(function() {
