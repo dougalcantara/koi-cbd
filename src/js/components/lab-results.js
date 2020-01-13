@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Fuse from 'fuse.js';
 import Test from '../helpers/Test';
 import { $body } from '../global/selectors';

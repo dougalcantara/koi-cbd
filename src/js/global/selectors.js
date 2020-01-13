@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export const html = $('html');
 export const $body = $('body');
 export const $header = $('header.k-header');

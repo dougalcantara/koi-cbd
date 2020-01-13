@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $doc, $header } from '../global/selectors';
 import getQueryVar from '../helpers/getQueryVar';
 import preventScrollOnDrag from '../helpers/FlickityEvents';

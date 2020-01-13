@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { $win } from '../global/selectors';
 
 const $trigger = $('.k-header__newsletter-trigger');

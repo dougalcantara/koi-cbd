@@ -30,6 +30,12 @@ if (function_exists('acf_add_options_page')) {
 	));
 }
 
+// Disable admin bar and assoc. styles:
+function disable_admin_bar() {
+  return false;
+}
+add_filter('show_admin_bar', 'disable_admin_bar');
+
 /**
  * We need a custom implementation of the "Submit order --> order details page" user flow.
  * 

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 const $hubspotForms = $('[data-hs-form-id]');
 const $veteranSignup = $('#k-veteran-signup');
 

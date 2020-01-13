@@ -65,7 +65,6 @@
               'exclude' => array( $product->id )
             ));
           ?>
-          <div style="display: none;"><?php var_dump($other_tinctures); ?></div>
           <div class="k-productform--item k-productform__flavorselect">
             <p>Choose flavor:</p>
             <div class="k-productform__flavorselect__main">
