@@ -3,6 +3,12 @@
     &--item__price {
       position: relative;
     }
+
+    &__notices {
+      .woocommerce-message {
+        margin: 0;
+      }
+    }
   }
 
   .k-header {
@@ -27,6 +33,7 @@
 
   .k-cart {
     &__headline h1 {
+      padding-top: 1em;
       margin-top: 0;
     }
   }
