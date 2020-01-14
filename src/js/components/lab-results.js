@@ -80,9 +80,9 @@ function setDefaultResults() {
       labResults: [],
     },
     {
-      categoryName: 'hempExtractBalm',
-      sku: ['KHB 500 mg'],
-      button: $('[data-category="hempExtractBalm"]'),
+      categoryName: 'balms',
+      sku: ['KHB 150 mg', 'KHB 500 mg'],
+      button: $('[data-category="balms"]'),
       unit: '45g Container',
       labResults: [],
     },
