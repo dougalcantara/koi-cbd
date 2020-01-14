@@ -50,13 +50,13 @@
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Shop CBD</h4>
           <ul>
-            <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures and Sprays</a></li>
+            <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures & Sprays</a></li>
             <li><a href="<?php echo $url . '/cbd-gummies' ?>">CBD Gummies</a></li>
-            <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juice</a></li>
+            <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juices</a></li>
             <li><a href="<?php echo $url . '/vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
             <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-            <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
-            <li><a href="<?php echo $url . '/merchandise'; ?>">Merchandise</a></li>
+            <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD for Pets</a></li>
+            <li><a href="<?php echo $url . '/merchandise'; ?>">Koi Merchandise</a></li>
             <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
           </ul>
         </div>
