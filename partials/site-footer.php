@@ -92,7 +92,7 @@
   <div class="k-footer--bottom">
     <div class="k-inner k-inner--md">
       <div class="k-footer--copy">
-        <p>&copy; Koi CBD 2019, All Rights Reserved</p>
+        <p>&copy; Koi CBD <?php echo date("Y"); ?>, All Rights Reserved</p>
       </div>
       <div class="k-footer--disclaimer">
         <p>* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
