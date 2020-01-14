@@ -29,9 +29,23 @@ body {
   user-select: none;
 
   &.active {
-    z-index: 100;
-    opacity: 0.9;
-    pointer-events: all;
+    @extend .backdrop-active;
+  }
+
+  &.cart {
+    @extend .backdrop-active;
+  }
+
+  &.menu {
+    @extend .backdrop-active;
+  }
+
+  &.modal {
+    @extend .backdrop-active;
+  }
+
+  &.search {
+    @extend .backdrop-active;
   }
 }
 

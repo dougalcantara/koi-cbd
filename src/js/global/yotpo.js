@@ -15,7 +15,7 @@ $createReviewTriggers.click(async function() {
 
   $titleTarget.text(productTitle);
 
-  $backdrop.addClass('active');
+  $backdrop.addClass('modal');
   $reviewModal.addClass('k-modal--open');
 
   $reviewModalForm.attr('data-product-sku', productSku);
@@ -87,7 +87,7 @@ $reviewModalForm.submit(async function(e) {
         submitToHubspot(payload);
         setTimeout(function() {
           $parentModal.removeClass('k-modal--open');
-          $backdrop.removeClass('active');
+          $backdrop.removeClass('modal');
         }, 2500);
       }
     },
@@ -114,7 +114,7 @@ function submitToHubspot(payload) {
 }
 
 $reviewModalClose.click(function() {
-  $backdrop.removeClass('active');
+  $backdrop.removeClass('modal');
   $reviewModal.removeClass('k-modal--open');
 });
 

@@ -75,21 +75,29 @@ $dropdownTriggers.click(function() {
     $clickedDropdown.removeClass('k-dropdown--open');
 
     if (!$searchModal.hasClass('k-modal--open')) {
-      $backdrop.removeClass('active');
+      $backdrop.removeClass('menu');
     }
   } else {
     $clickedDropdown.height($content.outerHeight());
     $clickedDropdown.addClass('k-dropdown--open');
-    $backdrop.addClass('active');
+    $backdrop.addClass('menu');
   }
 });
 
 export function closeAllDropdowns() {
+  /**
+   * Going forward, this function is resposible for resetting
+   * the header back to the closed state.
+   */
   $dropdownTriggers.each(function() {
     const $t = $(this);
     $t.next().height(0);
     $t.next().removeClass('k-dropdown--open');
   });
+
+  if ($backdrop.hasClass('menu')) {
+    $backdrop.removeClass('menu');
+  }
 }
 
 function handleMobileNav() {

@@ -10,6 +10,7 @@ import {
   $cartSidebar,
 } from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
+import { backdropTriggerClose } from '../global/ui';
 
 import CartItem from '../components/ajax-cart-item';
 
@@ -307,10 +308,11 @@ async function incrementCartItem(e) {
 }
 
 export function closeSidebar() {
-  $backdrop.removeClass('active');
-  $cartSidebar.removeClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+  $cartSidebar.removeClass('k-cart-sidebar--open', 'k-cart-sidebar--loaded');
   $body.removeAttr('style');
   $body.removeClass('cart-sidebar-open');
+
+  backdropTriggerClose();
 }
 
 // == event listeners == //
@@ -367,7 +369,7 @@ function toggleCartSidebar(e) {
     $header.removeClass('is-open');
   }
 
-  $backdrop.addClass('active');
+  $backdrop.addClass('cart');
 
   const isOpen = $cartSidebar.hasClass('.k-cart-sidebar--loaded');
 
