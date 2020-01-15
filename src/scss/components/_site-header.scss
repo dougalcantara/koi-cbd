@@ -171,10 +171,9 @@
 
   &__newsletter-trigger {
     cursor: pointer;
-    transition: color 0.3s $ease-out-circ;
-
-    &:hover {
-      color: $primary;
+    pointer-events: all;
+    &--desktop {
+      pointer-events: none;
     }
   }
 
@@ -313,6 +312,21 @@
         display: flex;
         justify-content: space-between;
         padding: 0.75em 0;
+      }
+    }
+
+    &__newsletter-trigger {
+      &--mobile {
+        cursor: default;
+        pointer-events: none;
+      }
+      &--desktop {
+        pointer-events: all;
+        transition: color 0.3s $ease-out-circ;
+
+        &:hover {
+          color: $primary;
+        }
       }
     }
 

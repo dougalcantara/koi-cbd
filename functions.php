@@ -51,6 +51,12 @@ add_filter('show_admin_bar', 'disable_admin_bar');
 // }
 // add_action('woocommerce_thankyou', 'go_to_thank_you');
 
+function k_on_coupon_removed() {
+  WC()->cart->remove_coupons();
+}
+add_action('wp_ajax_removed_coupon', 'k_on_coupon_removed');
+add_action('wp_ajax_nopriv_removed_coupon', 'k_on_coupon_removed');
+
 // == begin AJAX fn's == //
 /**
  * Create new veteran user
@@ -137,7 +143,11 @@ function k_ajax_add_bundle_to_cart() {
   $product_acf = get_fields($product_id);
   $min_items = intval($product_acf['min_items']);
   $max_items = intval($product_acf['max_items']);
-  $num_selected_items = count($selected_child_items);
+  $num_selected_items = 0;
+
+  foreach ($selected_child_items as $idx => $child_item) {
+    $num_selected_items += intval($child_item['quantity']);
+  }
 
   if ($num_selected_items < $min_items) {
     $err = new WP_Error('num_items_err', __('Expected minimum '.$min_items.' items, received '.$num_selected_items.' items'));

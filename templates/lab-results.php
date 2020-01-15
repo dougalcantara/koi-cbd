@@ -73,8 +73,8 @@ get_header();
       <div data-category="vape" class="k-recentresults__category-button k-button k-button--default">
         <span>Vape Juices</span>
       </div>
-      <div data-category="hempExtractBalm" class="k-recentresults__category-button k-button k-button--default">
-        <span>Hemp Extract Balm</span>
+      <div data-category="balms" class="k-recentresults__category-button k-button k-button--default">
+        <span>Balms</span>
       </div>
       <div data-category="lotion" class="k-recentresults__category-button k-button k-button--default">
         <span>Lotions</span>

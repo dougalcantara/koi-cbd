@@ -66,6 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<li>
 											<a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
 											<p><span>Bundled price: </span><?php echo $price_with_discount . '<sup>' . ($discount_amount * 100) . '% off!</sup>'; ?></p>
+											<p><span>Quantity: </span><span><?php echo $bundled_cart_item['quantity']; ?></span></p>
 										</li>
 									<?php endforeach; ?>
 								</ul>

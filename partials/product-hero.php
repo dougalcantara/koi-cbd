@@ -13,10 +13,10 @@
     <div class="k-producthero--details">
       <div class="k-producthero--details__content">
         <div class="k-producthero--titlerow">
-          <?php 
+          <?php /*  
           if ($product_category !== 'cbd-oil') : ?>
           <span class="k-producthero--preheading"><?php echo reset($cat_name)->name; ?></span>
-          <?php endif; ?>
+          <?php endif; */ ?>
           
           <h1 class="k-headline k-headline--sm"><?php the_title(); ?></h1>
           

@@ -10,6 +10,7 @@ import {
   $cartSidebar,
 } from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
+import { backdropTriggerClose } from '../global/ui';
 
 import CartItem from '../components/ajax-cart-item';
 
@@ -25,6 +26,16 @@ const $cartItemsTarget = $('#k-ajaxcart-cartitems');
 const $cartSidebarToggle = $('#k-carttoggle');
 const $cartSidebarClose = $cartSidebar.find('.k-cart-sidebar__close');
 const cartSubtotal = document.querySelector('.k-cart-sidebar--subtotal');
+const tooMany = /*html*/ `
+  <div class="k-productform__error">
+    <p class="k-limit-reached">Maximum number of items reached.</p>
+  </div>
+`;
+
+const bundleSettings = {
+  quantities: $('.k-bundle-quantity'),
+  maxItems: $addItemToBundle.data('max-items'),
+};
 
 /**
  * Need this because bundles have a dynamic price, based on the items
@@ -188,98 +199,121 @@ async function addSingleItemToCart(e) {
   updateCartStatus(Object.values(cartItems), expandedProducts);
 }
 
-async function addBundleToCart(e) {
-  e.preventDefault();
-
-  const t = $(this);
-  const parent = t.closest('form');
-  const productId = parent.data('product-id');
-  const selectedChildItems = () => {
-    let selected = [];
-
-    $addItemToBundle.each((_, el) =>
-      el.checked ? selected.push($(el)) : null
-    );
-
-    return selected;
-  };
-  const minItems = parseInt(parent.data('min-items'));
-  const maxItems = parseInt(parent.data('max-items'));
-
-  if (
-    selectedChildItems().length > maxItems ||
-    selectedChildItems().length < minItems
-  ) {
-    return alert(`Please select ${minItems} items`);
-  }
-
-  t.attr('disabled', true);
+function triggerInlineCart($t) {
+  $t.attr('disabled', true);
   $backdrop.addClass('active');
   $cartSidebar.addClass('k-cart-sidebar--open');
   $cartSidebar.focus();
   cartSubtotal.textContent = 'Processing...';
+}
 
-  const getUserBundleSelections = function() {
-    const selections = [];
+async function addBundleToCart(e) {
+  e.preventDefault();
+  const maxItems = bundleSettings.maxItems;
+  const t = $(this);
 
-    selectedChildItems().forEach(function(el) {
-      const t = $(el);
-      const parentId = t.data('parent-id');
-      const bundledProductKey = t.data('bundled-product-key');
-      const variations = t.siblings().find('input[type="radio"]');
-      const selectedVariation = () => {
-        let selected;
-        variations.each((_, el) => (el.checked ? (selected = el) : null));
-        return $(selected);
-      };
+  const parent = t.closest('form');
+  const productId = parent.data('product-id');
+  const selected = [];
 
-      selections.push({
-        product_id: parentId,
-        bundled_product_key: bundledProductKey,
-        quantity: 1,
-        variation_id: selectedVariation().data('variant-id'),
-        attributes: {
-          strength: selectedVariation().data('variant-strength'),
-        },
-      });
+  bundleSettings.quantities.each(function(index, el) {
+    const $this = $(this);
+
+    if ($this.val() > 0) {
+      selected.push($this);
+    }
+  });
+
+  triggerInlineCart(t);
+
+  const parsedSelections = [];
+
+  selected.forEach(variant => {
+    parsedSelections.push({
+      product_id: variant.data('parent-id'),
+      bundled_product_key: variant.data('bundle-key'),
+      quantity: parseInt(variant.val()),
+      variation_id: variant.data('variant-id'),
+      attributes: {
+        strength: variant.data('variant-strength'),
+      },
     });
-
-    return selections;
-  };
+  });
 
   const {
     cart_items: cartItems,
     expanded_products: expandedProducts,
   } = await AjaxCart.addBundle(
     productId,
-    getUserBundleSelections(),
-    minItems,
+    parsedSelections,
+    maxItems,
     maxItems,
     price
   );
 
-  // handleCartSidebar(expandedProducts);
-
   t.attr('disabled', false);
-
   updateCartStatus(Object.values(cartItems), expandedProducts);
 }
 
-function addItemToBundle() {
+function getBundleItemRunningTotal() {
   let count = 0;
 
-  const t = $(this);
-  const maxItems = t.data('max-items');
-  const numSelected = () => {
-    $addItemToBundle.each((_, el) => (el.checked ? count++ : null));
-    return count;
-  };
+  bundleSettings.quantities.each(function(index, el) {
+    const $t = $(el);
+    count += parseInt($t.val());
+  });
+  return count;
+}
 
-  if (numSelected() > maxItems) {
-    count--; // because at this point it's been incremented 1 beyond the max
-    t.prop('checked', false);
-    return alert(`Please select ${maxItems} items.`);
+bundleSettings.quantities.change(function() {
+  const $t = $(this);
+  const $container = $t.closest('.k-productform--bundleselect__item--flex');
+  verifyItemCount($container, $t);
+});
+
+function verifyItemCount($container, $thisQuantity) {
+  const { maxItems } = bundleSettings;
+  const runningTotal = getBundleItemRunningTotal();
+
+  if (runningTotal > maxItems) {
+    const difference = runningTotal - maxItems;
+    $thisQuantity.val($thisQuantity.val() - difference);
   }
+
+  if (!$thisQuantity.val()) {
+    $thisQuantity.val(0);
+  }
+
+  handleItemError($container);
+}
+
+function handleItemError($container) {
+  const { maxItems } = bundleSettings;
+  const runningTotal = getBundleItemRunningTotal();
+  if (runningTotal < maxItems) {
+    // if the variant dropdown has an error message
+    if ($container[0].getAttribute('data-error')) {
+      $container[0].removeAttribute('data-error');
+      $container.find('.k-productform__error').remove();
+    }
+  } else if (runningTotal >= maxItems) {
+    event.stopPropagation();
+    // add the error message if it isn't already there.
+    if (!$container[0].getAttribute('data-error')) {
+      $container[0].setAttribute('data-error', 'true');
+      $container.find('.k-productform__group').after(tooMany);
+    }
+  }
+}
+
+function handleBundleItem() {
+  // assuming the user wants to add the item to the bundle
+  const t = $(this);
+  const $thisQuantity = t.siblings().find('.k-bundle-quantity');
+  const $container = $thisQuantity.closest(
+    '.k-productform--bundleselect__item--flex'
+  );
+  verifyItemCount($container, $thisQuantity);
 }
 
 async function decrementCartItem(e) {
@@ -307,10 +341,11 @@ async function incrementCartItem(e) {
 }
 
 export function closeSidebar() {
-  $backdrop.removeClass('active');
-  $cartSidebar.removeClass('k-cart-sidebar--open k-cart-sidebar--loaded');
+  $cartSidebar.removeClass('k-cart-sidebar--open', 'k-cart-sidebar--loaded');
   $body.removeAttr('style');
   $body.removeClass('cart-sidebar-open');
+
+  backdropTriggerClose();
 }
 
 // == event listeners == //
@@ -342,7 +377,7 @@ $removeAll.click(async function() {
 
 $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
-$addItemToBundle.click(addItemToBundle);
+$addItemToBundle.click(handleBundleItem);
 $cartSidebarClose.click(closeSidebar);
 $cartSidebarClose.keypress(function(e) {
   if (wasEnter(e)) {
@@ -367,7 +402,7 @@ function toggleCartSidebar(e) {
     $header.removeClass('is-open');
   }
 
-  $backdrop.addClass('active');
+  $backdrop.addClass('cart');
 
   const isOpen = $cartSidebar.hasClass('.k-cart-sidebar--loaded');
 

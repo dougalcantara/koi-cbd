@@ -1,10 +1,20 @@
-.k-headerpadding {
-  // transition: padding .4s $ease-out-circ;
+// .k-headerpadding {
+// transition: padding .4s $ease-out-circ;
+// }
+
+.k-limit-reached {
+  color: green;
 }
 
 .fade {
   opacity: 0;
   transition: opacity 0.35s $ease-out-circ;
+}
+
+.backdrop-active {
+  z-index: 100;
+  opacity: 0.9;
+  pointer-events: all;
 }
 
 .k-result-error {
@@ -52,9 +62,9 @@
   display: inline-block !important;
 }
 
-.k-goldstar--0 {
-  // margin-left: 0.5em !important;
-}
+// .k-goldstar--0 {
+// margin-left: 0.5em !important;
+// }
 
 .k-wraparound-link {
   position: absolute;

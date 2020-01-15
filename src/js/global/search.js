@@ -11,10 +11,10 @@ $searchTrigger.click(function() {
   if (isOpen) {
     closeAllDropdowns();
     $searchModal.removeClass('k-modal--open');
-    $backdrop.removeClass('active');
+    $backdrop.removeClass('search');
   } else {
     $searchModal.addClass('k-modal--open');
-    $backdrop.addClass('active');
+    $backdrop.addClass('search');
     $header.removeClass('is-open');
   }
 });
