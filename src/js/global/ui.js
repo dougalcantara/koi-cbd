@@ -157,14 +157,12 @@ export function backdropTriggerClose() {
   const headerDropdowns = $header.find('.k-dropdown');
 
   if ($backdrop.hasClass('menu')) {
-    console.log('case: menu');
     headerDropdowns.removeClass('k-dropdown--open');
     headerDropdowns.removeAttr('style');
     closeAllDropdowns();
   }
 
   if ($backdrop.hasClass('cart')) {
-    console.log('case: cart');
     $cartSidebar.removeClass('k-cart-sidebar--open');
     // closeSidebar();
   }
