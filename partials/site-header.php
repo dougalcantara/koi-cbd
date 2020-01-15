@@ -25,13 +25,13 @@ $url = site_url();
 
     </div>
   </div>
-  <div class="k-header--top k-promobanner">
+  <div class="k-header--top k-promobanner k-header__newsletter-trigger k-header__newsletter-trigger--mobile">
     <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
         <span class="k-upcase">Free shipping on all US orders over $35</span>
       </div>
       <div class="k-promobanner--item">
-        <span class="k-upcase k-header__newsletter-trigger">Sign up for our newsletter for 10% off</span>
+        <span class="k-upcase k-header__newsletter-trigger k-header__newsletter-trigger--desktop">Sign up for our newsletter for 10% off</span>
       </div>
     </div>
   </div>

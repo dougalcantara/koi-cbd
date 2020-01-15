@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import { $win } from '../global/selectors';
+import { $win, $body } from '../global/selectors';
+import { closeAllDropdowns } from '../components/site-header';
 
 const $trigger = $('.k-header__newsletter-trigger');
 const $signup = $('.k-header__newsletter-signup');
@@ -23,14 +24,22 @@ export function debounce(func, wait, immediate) {
   };
 }
 
-$trigger.click(() => {
+export function toggleNewsletterSignup(event) {
+  event.stopPropagation();
+
+  closeAllDropdowns();
+
+  $body.toggleClass('newsletter-signup');
+
   $signup.slideToggle({
     duration: 225,
     complete: () => {
       $signup.toggleClass(openClass);
     },
   });
-});
+}
+
+$trigger.click(toggleNewsletterSignup);
 
 $win.scroll(debounce(checkSignup, 10));
 

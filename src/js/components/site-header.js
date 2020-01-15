@@ -5,10 +5,12 @@ import {
   $searchModal,
   $win,
   $doc,
+  $body,
 } from '../global/selectors';
 import { breakpoints } from '../global/ui';
 import debounce from '../helpers/debounce';
 import wasEnter from '../helpers/wasEnter';
+import { toggleNewsletterSignup } from './newsletter-signup';
 
 const headerHeight = () => $header.outerHeight();
 const headerOffset = () => $header.find('.k-header--top').outerHeight();
@@ -27,6 +29,10 @@ let didScroll = false;
 
 function toggleNavDrawer() {
   const isActive = $header.hasClass('is-open');
+
+  if ($body.hasClass('newsletter-signup')) {
+    toggleNewsletterSignup();
+  }
 
   if (isActive) {
     $header.removeClass('is-open');
