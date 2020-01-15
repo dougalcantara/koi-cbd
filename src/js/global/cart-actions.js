@@ -224,7 +224,6 @@ async function addBundleToCart(e) {
     }
   });
 
-  console.log(selected);
   triggerInlineCart(t);
 
   const parsedSelections = [];
@@ -240,8 +239,6 @@ async function addBundleToCart(e) {
       },
     });
   });
-
-  console.log(parsedSelections);
 
   const {
     cart_items: cartItems,
@@ -268,7 +265,7 @@ function getBundleItemRunningTotal() {
   return count;
 }
 
-bundleSettings.quantities.change(function(index, el) {
+bundleSettings.quantities.change(function() {
   const $t = $(this);
   const $container = $t.closest('.k-productform--bundleselect__item--flex');
   verifyItemCount($container, $t);
