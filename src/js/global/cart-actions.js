@@ -208,25 +208,30 @@ function triggerInlineCart($t) {
 }
 
 async function addBundleToCart(e) {
+  const { maxItems } = bundleSettings;
+  const runningTotal = getBundleItemRunningTotal();
+
+  if (runningTotal < maxItems) {
+    const difference = maxItems - runningTotal;
+    alert(`Pick ${difference} more item(s).`);
+    return;
+  }
+
   e.preventDefault();
-  const maxItems = bundleSettings.maxItems;
   const t = $(this);
 
   const parent = t.closest('form');
   const productId = parent.data('product-id');
   const selected = [];
+  const parsedSelections = [];
 
-  bundleSettings.quantities.each(function(index, el) {
+  bundleSettings.quantities.each(function() {
     const $this = $(this);
 
     if ($this.val() > 0) {
       selected.push($this);
     }
   });
-
-  triggerInlineCart(t);
-
-  const parsedSelections = [];
 
   selected.forEach(variant => {
     parsedSelections.push({
@@ -239,6 +244,21 @@ async function addBundleToCart(e) {
       },
     });
   });
+
+  // prevent the ability to add a variety pack to the cart
+  // without selecting a variant for each item.
+  let hasError = false;
+  parsedSelections.forEach(parsedSelection => {
+    for (const key in parsedSelection) {
+      if (!parsedSelection[key] && hasError === false) {
+        hasError = true;
+        alert('You must select an option for each item.');
+      }
+    }
+  });
+  if (hasError) return;
+
+  triggerInlineCart(t);
 
   const {
     cart_items: cartItems,
@@ -290,12 +310,16 @@ function verifyItemCount($container, $thisQuantity) {
 function handleItemError($container) {
   const { maxItems } = bundleSettings;
   const runningTotal = getBundleItemRunningTotal();
+
+  const $allErrors = $('[data-error]');
+
   if (runningTotal < maxItems) {
     // if the variant dropdown has an error message
-    if ($container[0].getAttribute('data-error')) {
-      $container[0].removeAttribute('data-error');
-      $container.find('.k-productform__error').remove();
-    }
+    $allErrors.each(function() {
+      const $this = $(this);
+      $this[0].removeAttribute('data-error');
+      $this.find('.k-productform__error').remove();
+    });
   } else if (runningTotal >= maxItems) {
     event.stopPropagation();
     // add the error message if it isn't already there.
@@ -306,13 +330,20 @@ function handleItemError($container) {
   }
 }
 
-function handleBundleItem() {
+function handleBundleItem($context = false) {
   // assuming the user wants to add the item to the bundle
   const t = $(this);
   const $thisQuantity = t.siblings().find('.k-bundle-quantity');
-  const $container = $thisQuantity.closest(
+  let $container = $thisQuantity.closest(
     '.k-productform--bundleselect__item--flex'
   );
+
+  if (!$container.length && $context) {
+    $container = $context
+      .siblings()
+      .find('.k-productform--bundleselect__item--flex');
+  }
+
   verifyItemCount($container, $thisQuantity);
 }
 
@@ -377,7 +408,14 @@ $removeAll.click(async function() {
 
 $addBundleToCart.click(addBundleToCart);
 $addToCart.click(addSingleItemToCart);
-$addItemToBundle.click(handleBundleItem);
+$addItemToBundle.click(function() {
+  const $this = $(this);
+  if (!$this.is(':checked')) {
+    const $quantityInput = $this.siblings().find('.k-bundle-quantity');
+    $quantityInput.val(0);
+  }
+  handleBundleItem($this);
+});
 $cartSidebarClose.click(closeSidebar);
 $cartSidebarClose.keypress(function(e) {
   if (wasEnter(e)) {
