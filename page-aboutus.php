@@ -130,7 +130,7 @@ $testimonial_fields = array(
   'testimonials' => $site_content['homepage_testimonials'],
 );
 include(locate_template('partials/testimonial-slider.php'));
-get_template_part('partials/resources-callout');
+/* get_template_part('partials/resources-callout'); */ 
 
 $slider_fields = array(
   'headline' => $site_content['about_us_featured_products_heading'],

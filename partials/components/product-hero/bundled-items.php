@@ -28,40 +28,56 @@
 
       <div class="k-productform--bundleselect__item--drawer">
         <div class="k-productform--bundleselect__item--flex">
-        <?php
-        $allowed_variations = $bundled_item->get_data()['allowed_variations'];
+          <?php
+            $allowed_variations = $bundled_item->get_data()['allowed_variations'];
         
-        foreach($allowed_variations as $idx => $variant) {
-          $_variant = wc_get_product($variant);
-          $price = $_variant->get_price();
-          $variant_id = $_variant->get_id();
-          $attributes = $_variant->get_attributes();
-          $this_attribute = reset($attributes);
-          $price_with_discount = number_format($price - ($discount_amount * $price), 2);
-        ?>
-          <div class="k-productform--bundleselect__variant">
-            <input
-              type="radio"
-              id="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
-              name="<?php echo $bundled_item_key; ?>"
-              value="<?php echo $this_attribute; ?>"
-              data-variant-id="<?php echo $variant_id; ?>"
-              data-variant-price="<?php echo $price_with_discount; ?>"
-              data-variant-strength="<?php echo $this_attribute; ?>"
-              tabindex="-1"
-            />
-            <label
-              for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
-              class="k-productform--varianttoggle"
-              data-variant-price="<?php echo $price_with_discount; ?>"
-              data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
-            >
-              <span><?php echo $this_attribute; ?></span>
-            </label>
-          </div>
+            foreach($allowed_variations as $idx => $variant) {
+              $_variant = wc_get_product($variant);
+              $price = $_variant->get_price();
+              $variant_id = $_variant->get_id();
+              $attributes = $_variant->get_attributes();
+              $this_attribute = reset($attributes);
+              $price_with_discount = number_format($price - ($discount_amount * $price), 2);
+          ?>
+            <div class="k-productform--bundleselect__variant">
+              <input
+                type="radio"
+                id="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
+                name="<?php echo $bundled_item_key; ?>"
+                value="<?php echo $this_attribute; ?>"
+                data-parent-id="<?php echo $parent_id; ?>"
+                data-bundle-key="<?php echo $bundled_item_key; ?>"
+                data-variant-id="<?php echo $variant_id; ?>"
+                data-variant-price="<?php echo $price_with_discount; ?>"
+                data-variant-strength="<?php echo $this_attribute; ?>"
+                tabindex="-1"
+              />
+              <label
+                for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
+                class="k-productform--varianttoggle"
+                data-variant-price="<?php echo $price_with_discount; ?>"
+                data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
+              >
+                <span><?php echo $this_attribute; ?></span>
+              </label>
+            </div>
           <?php
           }
           ?>
+          <div class="k-productform__bundleselect-quantity">
+            <div class="k-productform__group">
+              <label class="k-weight--md" for="quantity">QTY</label>
+              <input
+                class="k-bundle-quantity"
+                type="number"
+                name="quantity"
+                step="1"
+                min="1"
+                max="<?php echo $max_items; ?>"
+                value="0"
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>

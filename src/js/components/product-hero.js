@@ -222,7 +222,46 @@ $bundledVariants.keypress(function(e) {
  */
 $bundledVariants.click(function(e) {
   const $t = $(this);
+  const $inputSibling = $t.siblings('input');
+
   let $selectedBundledVariants;
+
+  const transferAttributes = [
+    {
+      original: 'data-variant-price',
+      set: 'data-variant-price',
+    },
+    {
+      original: 'data-variant-strength',
+      set: 'data-variant-strength',
+    },
+    {
+      original: 'data-variant-id',
+      set: 'data-variant-id',
+    },
+    {
+      original: 'value',
+      set: 'data-value',
+    },
+    {
+      original: 'data-parent-id',
+      set: 'data-parent-id',
+    },
+    {
+      original: 'data-bundle-key',
+      set: 'data-bundle-key',
+    },
+  ];
+
+  const $container = $t.closest('.k-productform--bundleselect__item--flex');
+  const $quantityInput = $container.find('.k-bundle-quantity');
+
+  transferAttributes.forEach(dataAttribute => {
+    $quantityInput.attr(
+      dataAttribute.set,
+      $inputSibling.attr(dataAttribute.original)
+    );
+  });
 
   $t.addClass('bundled-variant-selected');
 

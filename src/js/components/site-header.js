@@ -5,10 +5,12 @@ import {
   $searchModal,
   $win,
   $doc,
+  $body,
 } from '../global/selectors';
 import { breakpoints } from '../global/ui';
 import debounce from '../helpers/debounce';
 import wasEnter from '../helpers/wasEnter';
+import { toggleNewsletterSignup } from './newsletter-signup';
 
 const headerHeight = () => $header.outerHeight();
 const headerOffset = () => $header.find('.k-header--top').outerHeight();
@@ -27,6 +29,10 @@ let didScroll = false;
 
 function toggleNavDrawer() {
   const isActive = $header.hasClass('is-open');
+
+  if ($body.hasClass('newsletter-signup')) {
+    toggleNewsletterSignup();
+  }
 
   if (isActive) {
     $header.removeClass('is-open');
@@ -75,21 +81,29 @@ $dropdownTriggers.click(function() {
     $clickedDropdown.removeClass('k-dropdown--open');
 
     if (!$searchModal.hasClass('k-modal--open')) {
-      $backdrop.removeClass('active');
+      $backdrop.removeClass('menu');
     }
   } else {
     $clickedDropdown.height($content.outerHeight());
     $clickedDropdown.addClass('k-dropdown--open');
-    $backdrop.addClass('active');
+    $backdrop.addClass('menu');
   }
 });
 
 export function closeAllDropdowns() {
+  /**
+   * Going forward, this function is resposible for resetting
+   * the header back to the closed state.
+   */
   $dropdownTriggers.each(function() {
     const $t = $(this);
     $t.next().height(0);
     $t.next().removeClass('k-dropdown--open');
   });
+
+  if ($backdrop.hasClass('menu')) {
+    $backdrop.removeClass('menu');
+  }
 }
 
 function handleMobileNav() {

@@ -80,9 +80,9 @@ function setDefaultResults() {
       labResults: [],
     },
     {
-      categoryName: 'hempExtractBalm',
-      sku: ['KHB 500 mg'],
-      button: $('[data-category="hempExtractBalm"]'),
+      categoryName: 'balms',
+      sku: ['KPB150MG', 'KHB500', 'KHB1000'],
+      button: $('[data-category="balms"]'),
       unit: '45g Container',
       labResults: [],
     },
@@ -116,8 +116,13 @@ function setDefaultResults() {
         let newestMatch = sampleTests.filter(
           test => test.productsku === sku
         )[0];
-        newestMatch.unit = category.unit;
-        category.labResults.push(new Test(newestMatch));
+
+        if (newestMatch) {
+          newestMatch.unit = category.unit;
+          category.labResults.push(new Test(newestMatch));
+        } else {
+          console.log(newestMatch);
+        }
       }
     });
 
@@ -216,24 +221,24 @@ function appendVariantTabs(category) {
   if (category.categoryName === 'lotion') {
     // lotion strength is *currently* always 200mg, so use the product name instead
     // this may change in the future as new products are added
-    category.labResults.forEach(sku => {
-      sku.results.strength = sku.results.ordername
+    category.labResults.forEach(Test => {
+      Test.results.strength = Test.results.ordername
         .split('Koi Lotion')[1]
         .split('200')[0];
-      tabs += getTabMarkup(sku.results, category);
+      tabs += getTabMarkup(Test.results, category);
     });
   } else if (category.categoryName === 'gummies') {
     // gummies *currently* only have 1 strength, so use the name instead.
     // this may change in the future as new products are added
-    category.labResults.forEach(sku => {
-      sku.results.strength = sku.results.ordername
+    category.labResults.forEach(Test => {
+      Test.results.strength = Test.results.ordername
         .split('Koi')[1]
         .split('Fruit')[0];
-      tabs += getTabMarkup(sku.results, category);
+      tabs += getTabMarkup(Test.results, category);
     });
   } else if (category) {
-    category.labResults.forEach(sku => {
-      tabs += getTabMarkup(sku.results, category);
+    category.labResults.forEach(Test => {
+      tabs += getTabMarkup(Test.results, category);
     });
   }
   $tabAppendTarget.html(tabs);

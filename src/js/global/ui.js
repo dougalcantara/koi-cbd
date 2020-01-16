@@ -18,7 +18,7 @@ import {
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
-import { closeSidebar } from './cart-actions';
+// import { closeSidebar } from './cart-actions';
 
 const IS_SAFARI =
   /constructor/i.test(window.HTMLElement) ||
@@ -153,24 +153,37 @@ $doc.ready(function() {
   }, 80);
 });
 
-$backdrop.click(function() {
-  if ($backdrop.hasClass('active')) {
-    const headerDropdowns = $header.find('.k-dropdown');
+export function backdropTriggerClose() {
+  const headerDropdowns = $header.find('.k-dropdown');
 
+  if ($backdrop.hasClass('menu')) {
     headerDropdowns.removeClass('k-dropdown--open');
     headerDropdowns.removeAttr('style');
-
-    $cartSidebar.removeClass('k-cart-sidebar--open');
-
-    $searchModal.removeClass('k-modal--open');
-
-    $reviewModal.removeClass('k-modal--open');
-
     closeAllDropdowns();
-    closeSidebar();
   }
 
-  $backdrop.removeClass('active');
+  if ($backdrop.hasClass('cart')) {
+    $cartSidebar.removeClass('k-cart-sidebar--open');
+    // closeSidebar();
+  }
+
+  if ($searchModal.hasClass('k-modal--open')) {
+    $searchModal.removeClass('k-modal--open');
+  }
+
+  if ($reviewModal.hasClass('k-modal--open')) {
+    $reviewModal.removeClass('k-modal--open');
+  }
+
+  $backdrop.removeAttr('class');
+}
+
+$backdrop.click(function() {
+  /**
+   * Regardless of under what conditions the backdrop is clicked,
+   * it should close once clicked.
+   */
+  backdropTriggerClose();
 });
 
 $logoutTrigger.click(function(e) {

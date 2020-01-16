@@ -116,6 +116,7 @@ if (sizeof($items_in_cart) == 0) { ?>
                         <li class="k-cart--item__bundleditem">
                           <a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
                           <span class="k-cart--item__bundleditem__price"><?php echo $price_with_discount . '<sup>' . ($discount_amount * 100) . '% off!</sup>'; ?></span>
+                          <span class="k-cart--item__bundleditem__quantity">Quantity: <?php echo $bundled_cart_item['quantity']; ?></span>
                         </li>
                       <?php
                       }

@@ -25,13 +25,13 @@ $url = site_url();
 
     </div>
   </div>
-  <div class="k-header--top k-promobanner">
+  <div class="k-header--top k-promobanner k-header__newsletter-trigger k-header__newsletter-trigger--mobile">
     <div class="k-inner k-inner--xl">
       <div class="k-promobanner--item">
         <span class="k-upcase">Free shipping on all US orders over $35</span>
       </div>
       <div class="k-promobanner--item">
-        <span class="k-upcase k-header__newsletter-trigger">Sign up for our newsletter for 10% off</span>
+        <span class="k-upcase k-header__newsletter-trigger k-header__newsletter-trigger--desktop">Sign up for our newsletter for 10% off</span>
       </div>
     </div>
   </div>
@@ -43,13 +43,13 @@ $url = site_url();
             <a class="k-upcase"><span>&#9660;</span> Shop</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures and Sprays</a></li>
+                <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures & Sprays</a></li>
                 <li><a href="<?php echo $url . '/cbd-gummies' ?>">CBD Gummies</a></li>
-                <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juice</a></li>
+                <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juices</a></li>
                 <li><a href="<?php echo $url . '/vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
                 <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-                <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD Pets</a></li>
-                <li><a href="<?php echo $url . '/merchandise'; ?>">Merchandise</a></li>
+                <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD for Pets</a></li>
+                <li><a href="<?php echo $url . '/merchandise'; ?>">Koi Merchandise</a></li>
                 <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
               </div>
             </ul>
@@ -79,7 +79,15 @@ $url = site_url();
               </div>
             </ul>
           </li>
-          <li><a class="k-upcase" href="<?php echo $url; ?>/account/">Account</a></li>
+          <li>
+            <a class="k-upcase" href="<?php echo $url; ?>/account/">
+              <?php if (is_user_logged_in()): ?>
+                Account
+              <?php else: ?>
+                Login
+              <?php endif; ?>
+            </a>
+          </li>
 
           <li class="k-header--cart">
             <a id="k-carttoggle" tabindex="0" aria-label="cart">
