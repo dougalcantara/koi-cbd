@@ -99,6 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="product-total">
 					<p class="k-bigtext">
+						<?php WC()->cart->calculate_totals(); ?>
 						<?php wc_cart_totals_shipping_html(); ?>
 					</p>
 				</div>
@@ -157,6 +158,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php wc_cart_totals_order_total_html(); ?>
 					</p>
 				</div>
+			</div>
+
+			<div class="k-review-order--item k-checkout__coupon-row">
+          <?php if (wc_coupons_enabled()) : ?>
+
+            <div class="k-checkout__coupon">
+              <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+              <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+            </div>
+
+            <div class="k-checkout__coupon-actions">
+              <a href="<?php echo site_url(); ?>/checkout/?apply_coupon=''"class="k-button k-button--dark">
+                <?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
+							</a>
+              <!-- <button type="submit" class="k-button k-button--default" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
+                <?php esc_html_e('Update cart', 'woocommerce'); ?>
+              </button> -->
+            </div>
+
+          <?php 
+          endif;
+          ?>				
 			</div>
 
 			<?php
