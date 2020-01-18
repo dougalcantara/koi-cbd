@@ -35,7 +35,7 @@ $shippingInputs.click(function() {
         window.location.reload();
       }
     }, 33);
-  }, 250);
+  }, 1250);
 });
 
 function toggleDrawer(e) {
