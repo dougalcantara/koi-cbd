@@ -17,13 +17,25 @@ $shippingInputs.click(function() {
   $details.addClass('processing');
   $review.addClass('processing');
 
-  const onAjaxComplete = setInterval(function() {
-    if ($.active === 0) {
-      console.log('Network requests complete. Refreshing..');
-      clearInterval(onAjaxComplete);
-      window.location.reload();
-    }
-  }, 33);
+  setTimeout(function() {
+    /**
+     * jQuery knows when all network requests are completed.
+     * However, we have to delay this shortly since the built-in WC JS
+     * triggers a custom event $('body').trigger('update_checkout');
+     * that initiates ajax requests.
+     *
+     * By delaying this interval shortly, we ensure that it doesnt begin
+     * the interval until the ajax requests started by WC JS have fired.
+     *
+     */
+    const onAjaxComplete = setInterval(function() {
+      if ($.active === 0) {
+        console.log('Network requests complete. Refreshing..');
+        clearInterval(onAjaxComplete);
+        window.location.reload();
+      }
+    }, 33);
+  }, 250);
 });
 
 function toggleDrawer(e) {
