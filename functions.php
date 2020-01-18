@@ -51,11 +51,6 @@ add_filter('show_admin_bar', 'disable_admin_bar');
 // }
 // add_action('woocommerce_thankyou', 'go_to_thank_you');
 
-function k_on_coupon_removed() {
-  WC()->cart->remove_coupons();
-}
-add_action('wp_ajax_removed_coupon', 'k_on_coupon_removed');
-add_action('wp_ajax_nopriv_removed_coupon', 'k_on_coupon_removed');
 
 // == begin AJAX fn's == //
 /**

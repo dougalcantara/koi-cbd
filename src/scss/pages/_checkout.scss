@@ -1,9 +1,30 @@
 .k-checkout {
+  select {
+    width: 100% !important;
+  }
+
+  .processing {
+    position: relative;
+    pointer-events: none;
+
+    * {
+      pointer-events: none;
+    }
+
+    &::after {
+      @include fill-parent();
+      display: block;
+      content: '';
+      z-index: 99;
+      background: $true-white;
+      opacity: 0.6;
+    }
+  }
   .reloading {
     position: relative;
 
     &::before {
-      content: 'Updating Shipping Method..';
+      content: 'Updating...';
       display: block;
       position: absolute;
       top: 25%;
@@ -12,6 +33,10 @@
       color: $true-white;
       z-index: 100;
       font-size: 150%;
+
+      > * {
+        pointer-events: none;
+      }
     }
 
     &::after {
@@ -22,6 +47,7 @@
       z-index: 99;
     }
   }
+
   &__headline {
     padding: 4em 0;
 
@@ -42,6 +68,41 @@
     & > .k-liner {
       padding: 1em 2em;
       background: $true-white;
+    }
+  }
+
+  &__coupon-row {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &__coupon {
+    flex-basis: 25%;
+    margin-right: 1em;
+  }
+
+  &__coupon-actions {
+    .submitting {
+      position: relative;
+      overflow: hidden;
+      // color: $accent-text;
+      z-index: 1;
+      &::after {
+        content: '';
+        display: block;
+        z-index: -1;
+        background: repeating-linear-gradient(
+          to right,
+          darken($primary, 50%) 0%,
+          darken($primary, 50%) 0.25%,
+          darken($bg-dark, 50%) 0.25%,
+          darken($bg-dark, 50%) 0.5%
+        );
+        animation: submitting 60s infinite linear;
+        @include fill-parent();
+        left: -2500%;
+        width: 3000%;
+      }
     }
   }
 }
@@ -307,6 +368,7 @@
 
     &__billing,
     &__shipping {
+      position: relative;
       display: flex;
       justify-content: space-between;
       flex-flow: row nowrap;
