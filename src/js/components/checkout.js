@@ -16,6 +16,7 @@ const $review = $('#order_review');
 $shippingInputs.click(function() {
   $details.addClass('processing');
   $review.addClass('processing');
+  $body.trigger('updated_checkout');
 
   setTimeout(function() {
     /**
@@ -29,6 +30,7 @@ $shippingInputs.click(function() {
      *
      */
     const onAjaxComplete = setInterval(function() {
+      console.log($.active);
       if ($.active === 0) {
         console.log('Network requests complete. Refreshing..');
         clearInterval(onAjaxComplete);
