@@ -5,6 +5,7 @@ $root = get_template_directory_uri();
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <script>
