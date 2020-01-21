@@ -1,0 +1,13 @@
+node_modules
+.*
+deploy-dev.sh
+deploy-prod.sh
+deploy-staging.sh
+gulpfile.js
+package.json
+package-lock.json
+README.md
+stash.php
+stash.txt
+webpack.config.js
+
