@@ -158,16 +158,20 @@
                   $bundle_price = 0;
 
                   $idx = 0;
+                  $bundle_full_price = 0;
                   foreach($bundled_items as $item) :
+                    $allowed_variants = $item->item_data['allowed_variations'];
+                    $first_allowed_variant = wc_get_product($allowed_variants[0]);
                     if ($idx < $max_items) {
                       $bundle_price += $item->get_price();
+                      $bundle_full_price += floatval($first_allowed_variant->get_price());
                     }
                     $idx++;
                   endforeach;
                 ?>
                   <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
                   <span class="k-productform--pricetarget" data-bundle-price="$<?php echo $bundle_price; ?>">$<?php echo $bundle_price; ?></span>
-                  <sup class="k-productform--fullprice">20% off!</sup>
+                  <sup class="k-productform--fullprice"><span class="k-strikethrough">$<?php echo $bundle_full_price; ?></span> 20% off!</sup>
                 <?php
                 } else { ?>
                   <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>

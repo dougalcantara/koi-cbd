@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $root = get_template_directory_uri();
 $order = wc_get_customer_last_order(get_current_user_id());
 
-if ($order) {
+if ($order && is_user_logged_in()) {
   $order_items           = $order->get_items(apply_filters('woocommerce_purchase_order_item_types', 'line_item'));
   $show_purchase_note    = $order->has_status(apply_filters('woocommerce_purchase_note_order_statuses', array('completed', 'processing')));
   $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id(); ?>
