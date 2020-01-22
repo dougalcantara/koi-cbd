@@ -211,6 +211,7 @@ function triggerInlineCart($t) {
 async function addBundleToCart(e) {
   const { maxItems } = bundleSettings;
   const runningTotal = getBundleItemRunningTotal();
+  e.preventDefault();
 
   if (runningTotal < maxItems) {
     const difference = maxItems - runningTotal;
@@ -218,7 +219,6 @@ async function addBundleToCart(e) {
     return;
   }
 
-  e.preventDefault();
   const t = $(this);
 
   const parent = t.closest('form');
