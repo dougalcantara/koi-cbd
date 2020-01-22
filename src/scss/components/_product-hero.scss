@@ -7,7 +7,7 @@
   &--bundle {
     .k-productform--price {
       text-align: left;
-      padding-left: 2em;
+      padding-left: 1em;
     }
   }
 
@@ -106,11 +106,11 @@
         order: -1;
         padding-top: 1em;
         flex-basis: 40%;
-        // align-self: center;
 
         p {
           margin: 0;
           line-height: 1.25;
+          font-size: 75%;
         }
       }
 
@@ -382,15 +382,14 @@
     }
 
     #k-bundle-price-prefix {
-      margin-bottom: -1em;
+      margin-bottom: 0em;
+      line-height: 1.1;
       display: block;
     }
 
     sup {
-      padding-left: 1em;
-      vertical-align: text-top;
-      margin-top: 1.33em;
-      display: inline-block;
+      line-height: 1.1;
+      display: block;
     }
   }
 
@@ -594,6 +593,10 @@
           order: 2;
           margin-top: 1em;
           flex-basis: 77.5%;
+
+          p {
+            font-size: 100%;
+          }
         }
       }
     }

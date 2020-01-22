@@ -5,6 +5,7 @@ $root = get_template_directory_uri();
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <script>
@@ -58,7 +59,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
-  <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css?v=1.3.1' ?>" />
+  <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css?v=1.5.2' ?>" />
 </head>
 <body <?php body_class(); ?>>
   <script>

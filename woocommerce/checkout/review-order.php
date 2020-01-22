@@ -32,6 +32,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				$_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
+				$running_bundle_total = 0;
+				$running_bundle_full_price = 0;
+
+				if (wc_pb_is_bundle_container_cart_item($cart_item)) {
+					$bundled_cart_items = wc_pb_get_bundled_cart_items($cart_item);
+					$discount_amount = reset(wc_get_product($_product->get_id())->get_bundled_items())->get_discount() / 100;
+
+					foreach($bundled_cart_items as $bundled_cart_item) {
+						$bundled_product = wc_get_product($bundled_cart_item['variation_id']);
+						$price = floatval($bundled_product->get_price());
+						$price_with_discount = number_format($price - ($discount_amount * $price), 2);
+						$running_bundle_total += $price_with_discount * $bundled_cart_item['quantity'];
+						$running_bundle_full_price += $price * $bundled_cart_item['quantity'];
+					}
+				}
 
 				// Don't list out bundled items, include them as sub-items under their parent product instead.
 				if (wc_pb_is_bundled_cart_item($cart_item)) {
@@ -48,7 +63,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 						<div class="product-total">
 							<p class="k-bigtext">
-								<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
+								<?php if ($_product->get_type() !== 'bundle'): ?>
+									<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
+								<?php else: ?>
+									<?php echo '$'.$running_bundle_total; ?>
+									<?php echo '<span class="k-strikethrough">'.$running_bundle_full_price.'</span>'; ?>
+								<?php endif; ?>
 							</p>
 						</div>
 						<?php if (wc_pb_is_bundle_container_cart_item($cart_item)) :
@@ -61,7 +81,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 									foreach($bundled_cart_items as $bundled_cart_item) :
 										$bundled_product = wc_get_product($bundled_cart_item['variation_id']);
 										$price = floatval($bundled_product->get_price());
-										$price_with_discount = number_format($price - ($discount_amount * $price), 2); ?>
+										$price_with_discount = number_format($price - ($discount_amount * $price), 2);
+										$running_bundle_total += $price_with_discount * $bundled_cart_item['quantity'];
+										$running_bundle_full_price += $price * $bundled_cart_item['quantity'];
+										?>
 										
 										<li>
 											<a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
@@ -99,6 +122,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="product-total">
 					<p class="k-bigtext">
+						<?php WC()->cart->calculate_totals(); ?>
 						<?php wc_cart_totals_shipping_html(); ?>
 					</p>
 				</div>
@@ -157,6 +181,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php wc_cart_totals_order_total_html(); ?>
 					</p>
 				</div>
+			</div>
+
+			<div class="k-review-order--item k-checkout__coupon-row">
+          <?php if (wc_coupons_enabled()) : ?>
+
+            <div class="k-checkout__coupon">
+              <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+              <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+            </div>
+
+            <div class="k-checkout__coupon-actions">
+              <a href="<?php echo site_url(); ?>/checkout/?apply_coupon=''"class="k-button k-button--dark">
+                <?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
+							</a>
+              <!-- <button type="submit" class="k-button k-button--default" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
+                <?php esc_html_e('Update cart', 'woocommerce'); ?>
+              </button> -->
+            </div>
+
+          <?php 
+          endif;
+          ?>				
 			</div>
 
 			<?php

@@ -3,25 +3,41 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-  
+
 $cart = WC()->cart;
 $cart_acf = get_fields();
 $items_in_cart = $cart->get_cart();
 $url = site_url();
+$user_id = get_current_user_id();
+$user_data = get_userdata($user_id);
 
 /**
  * Veterans get a 25% discount automatically applied in the form of a special coupon.
  */
-$user_is_veteran_role = in_array('veteran', get_userdata(get_current_user_id())->roles);
-$user_veteran_status = get_fields('user_' . get_current_user_id())['veteran_status'];
-$is_approved_veteran = $user_is_veteran_role && $user_veteran_status == 'Veteran Approved';
+function is_valid_veteran() {
+	global $user_id;
+	global $user_data;
+	global $cart;
+
+	// Accounts with 'veteran' role created before the new system launched get grandfathered in
+	$launch_date = 1578441600; 
+	$registered_before_new_system = strtotime($user_data->user_registered) < $launch_date;
+	$is_legacy_veteran = in_array('veteran', $user_data->roles) && $registered_before_new_system;
+
+	// Now check for our current setup:
+	$is_valid_veteran = get_fields('user_' . $user_id)['veteran_status'] == 'Veteran Approved';
+
+	return $is_legacy_veteran || $is_valid_veteran;
+}
+
 $veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
-$should_apply_coupon = $is_approved_veteran && !$veteran_coupon_already_applied;
+$do_apply = is_valid_veteran() && !$veteran_coupon_already_applied;
+
 /**
  * If the veteran coupon is not applied,
  * and the user is an approved veteran:
  */
-if ($should_apply_coupon) {
+if ($do_apply && !$veteran_coupon_already_applied) {
   $cart->apply_coupon('veteran coupon');
 }
 /**
@@ -29,7 +45,7 @@ if ($should_apply_coupon) {
  * or if a valid veteran decides to remove the coupon:
  */
 $valid_veteran_remove_coupon = $_GET['remove_coupon'] == 'veteran coupon';
-if (!$user_is_veteran_role && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
+if (!$user_is_veteran_role && $valid_veteran_remove_coupon) {
 	$cart->remove_coupon('veteran coupon');
 }
 
@@ -79,6 +95,8 @@ if (sizeof($items_in_cart) == 0) { ?>
             $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
             $is_product_bundle = wc_pb_is_bundle_container_cart_item($cart_item); // check if this item contains sub-items
             $is_bundled_item = wc_pb_is_bundled_cart_item($cart_item); // check if this is a sub-item of a bundle, in which case it should not be treated like an individual item
+            $running_bundle_total = 0;
+            $running_bundle_full_price = 0;
 
             if ($is_bundled_item) {
               continue; // don't render anything for this item; it does not belong on its own
@@ -112,6 +130,8 @@ if (sizeof($items_in_cart) == 0) { ?>
                         $bundled_product = wc_get_product($bundled_cart_item['variation_id']);
                         $price = floatval($bundled_product->get_price());
                         $price_with_discount = number_format($price - ($discount_amount * $price), 2);
+                        $running_bundle_total += $price_with_discount * $bundled_cart_item['quantity'];
+                        $running_bundle_full_price += $price * $bundled_cart_item['quantity'];
                       ?>
                         <li class="k-cart--item__bundleditem">
                           <a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
@@ -166,7 +186,7 @@ if (sizeof($items_in_cart) == 0) { ?>
                       <p class="k-bigtext k-cartItem--price-target"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
                       <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
                     <?php else: ?>
-                      <p class="k-bigtext">&nbsp;</p>
+                      <p class="k-bigtext"><?php echo '$'.$running_bundle_total; ?> <span class="k-strikethrough"><?php echo '$'.$running_bundle_full_price; ?></span></p>
                       <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
                     <?php endif; ?>
                   </div>
@@ -186,18 +206,22 @@ if (sizeof($items_in_cart) == 0) { ?>
           <?php if (wc_coupons_enabled()) : ?>
 
             <div class="k-cart--meta__coupon">
-              <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+              <?php /* <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
               <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+              */ ?>
+              <p>Have a coupon or gift card? Continue to Checkout to add them.</p>
             </div>
 
+            <?php /*
             <div class="k-cart--meta__actions">
               <button type="submit" class="k-button k-button--dark" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>">
                 <?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
               </button>
-              <!-- <button type="submit" class="k-button k-button--default" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
+              <button type="submit" class="k-button k-button--default" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
                 <?php esc_html_e('Update cart', 'woocommerce'); ?>
-              </button> -->
+              </button>
             </div>
+            */ ?>
 
           <?php 
           endif;

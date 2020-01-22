@@ -6,6 +6,21 @@
   color: green;
 }
 
+.k-strikethrough {
+  text-decoration: line-through;
+  color: $true-black;
+}
+
+@keyframes submitting {
+  0% {
+    transform: translateX(0%) skew(-9deg);
+  }
+
+  100% {
+    transform: translateX(90%) skew(-9deg);
+  }
+}
+
 .fade {
   opacity: 0;
   transition: opacity 0.35s $ease-out-circ;
