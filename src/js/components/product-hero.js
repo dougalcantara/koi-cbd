@@ -26,8 +26,7 @@ const $quantity = $('#k-num-to-add');
 const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
 const $selectRelatedItem = $productForm.find('select');
-
-const minItems = $productHero.data('min-items');
+const $fullPrice = $productForm.find('.k-productform--fullprice');
 
 function getFirstAvailableVariant() {
   let first = null;
@@ -224,8 +223,6 @@ $bundledVariants.click(function(e) {
   const $t = $(this);
   const $inputSibling = $t.siblings('input');
 
-  let $selectedBundledVariants;
-
   const transferAttributes = [
     {
       original: 'data-variant-price',
@@ -251,6 +248,10 @@ $bundledVariants.click(function(e) {
       original: 'data-bundle-key',
       set: 'data-bundle-key',
     },
+    {
+      original: 'data-full-price',
+      set: 'data-full-price',
+    },
   ];
 
   const $container = $t.closest('.k-productform--bundleselect__item--flex');
@@ -274,32 +275,54 @@ $bundledVariants.click(function(e) {
     .find('.bundled-variant-selected')
     .removeClass('bundled-variant-selected');
 
-  /**
-   * Keep track of selected variants
-   */
-  $selectedBundledVariants = $productForm.find(
-    '.k-productform--varianttoggle.bundled-variant-selected'
-  );
-
-  /**
-   * Once the num of selected variants matches the num of min
-   * items for this bundle, sum the price of all selected variants
-   * and update the price element with that sum.
-   *
-   * Also update price prefix to be a little more clear once all items
-   * are selected.
-   */
-  if ($selectedBundledVariants.length === minItems) {
-    let priceWithSelectedItems = 0;
-
-    $selectedBundledVariants.each(function() {
-      priceWithSelectedItems += $(this).data('variant-price');
-    });
-
-    $pricePrefix.text('with selected items:');
-    $priceTarget.text(`$${priceWithSelectedItems.toFixed(2)}`);
-  }
+  calculateDisplayPrice();
 });
+
+export function calculateDisplayPrice() {
+  const $quantityInput = $('.k-bundle-quantity');
+  /**
+   * Keep track of selected variants and their costs
+   * for outputting the price of the selected options.
+   */
+  let priceWithSelectedItems = 0;
+  let fullPriceWithSelectedItems = 0;
+
+  $quantityInput.each(function() {
+    const $this = $(this);
+    if ($this.val() > 0) {
+      const variantPrice = $this.val() * parseFloat(this.dataset.variantPrice);
+      priceWithSelectedItems += variantPrice;
+      fullPriceWithSelectedItems +=
+        $this.val() * parseFloat(this.dataset.fullPrice);
+    }
+  });
+
+  priceWithSelectedItems = priceWithSelectedItems.toFixed(2);
+
+  if (priceWithSelectedItems !== '0.00') {
+    $pricePrefix.text('with selected items:');
+    $priceTarget.text(`$${priceWithSelectedItems}`);
+  } else {
+    $pricePrefix.text('from');
+    $priceTarget.text($priceTarget[0].dataset.bundlePrice);
+  }
+
+  /**
+   * Ideally, this should be pulled from a data attribute
+   * that's server rendered with the % value of the discount
+   * set in WooCommerce.
+   */
+  const discount = '20% off!';
+  const displayFullPrice = fullPriceWithSelectedItems.toFixed(2);
+
+  $fullPrice.html(`
+    ${
+      displayFullPrice !== '0.00'
+        ? `<span class="k-strikethrough">$${displayFullPrice}</span> ${discount}`
+        : `${discount}`
+    }
+  `);
+}
 
 $doc.ready(function() {
   if (!$productHeroCarousel.length) return;

@@ -100,7 +100,11 @@ function applyCoupon(coupon) {
         100
       );
       setTimeout(function() {
-        location.reload();
+        if (!location.contains(`?apply_coupon=${coupon}`)) {
+          location = `${location}/?apply_coupon=${coupon}`;
+        } else {
+          location.reload();
+        }
       }, 650);
     },
   });

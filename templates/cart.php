@@ -79,6 +79,8 @@ if (sizeof($items_in_cart) == 0) { ?>
             $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
             $is_product_bundle = wc_pb_is_bundle_container_cart_item($cart_item); // check if this item contains sub-items
             $is_bundled_item = wc_pb_is_bundled_cart_item($cart_item); // check if this is a sub-item of a bundle, in which case it should not be treated like an individual item
+            $running_bundle_total = 0;
+            $running_bundle_full_price = 0;
 
             if ($is_bundled_item) {
               continue; // don't render anything for this item; it does not belong on its own
@@ -112,6 +114,8 @@ if (sizeof($items_in_cart) == 0) { ?>
                         $bundled_product = wc_get_product($bundled_cart_item['variation_id']);
                         $price = floatval($bundled_product->get_price());
                         $price_with_discount = number_format($price - ($discount_amount * $price), 2);
+                        $running_bundle_total += $price_with_discount * $bundled_cart_item['quantity'];
+                        $running_bundle_full_price += $price * $bundled_cart_item['quantity'];
                       ?>
                         <li class="k-cart--item__bundleditem">
                           <a href="<?php echo $bundled_product->get_permalink(); ?>"><?php echo $bundled_product->get_name(); ?></a>
@@ -166,7 +170,7 @@ if (sizeof($items_in_cart) == 0) { ?>
                       <p class="k-bigtext k-cartItem--price-target"><?php echo $cart->get_product_subtotal($_product, $cart_item['quantity']); ?></p>
                       <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
                     <?php else: ?>
-                      <p class="k-bigtext">&nbsp;</p>
+                      <p class="k-bigtext"><?php echo '$'.$running_bundle_total; ?> <span class="k-strikethrough"><?php echo '$'.$running_bundle_full_price; ?></span></p>
                       <button class="k-cart-sidebar__item-update k-button k-button--primary" type="button">Update</button>
                     <?php endif; ?>
                   </div>
