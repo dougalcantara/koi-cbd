@@ -3,25 +3,41 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-  
+
 $cart = WC()->cart;
 $cart_acf = get_fields();
 $items_in_cart = $cart->get_cart();
 $url = site_url();
+$user_id = get_current_user_id();
+$user_data = get_userdata($user_id);
 
 /**
  * Veterans get a 25% discount automatically applied in the form of a special coupon.
  */
-$user_is_veteran_role = in_array('veteran', get_userdata(get_current_user_id())->roles);
-$user_veteran_status = get_fields('user_' . get_current_user_id())['veteran_status'];
-$is_approved_veteran = $user_is_veteran_role && $user_veteran_status == 'Veteran Approved';
+function is_valid_veteran() {
+	global $user_id;
+	global $user_data;
+	global $cart;
+
+	// Accounts with 'veteran' role created before the new system launched get grandfathered in
+	$launch_date = 1578441600; 
+	$registered_before_new_system = strtotime($user_data->user_registered) < $launch_date;
+	$is_legacy_veteran = in_array('veteran', $user_data->roles) && $registered_before_new_system;
+
+	// Now check for our current setup:
+	$is_valid_veteran = get_fields('user_' . $user_id)['veteran_status'] == 'Veteran Approved';
+
+	return $is_legacy_veteran || $is_valid_veteran;
+}
+
 $veteran_coupon_already_applied = in_array('veteran coupon', $cart->get_applied_coupons());
-$should_apply_coupon = $is_approved_veteran && !$veteran_coupon_already_applied;
+$do_apply = is_valid_veteran() && !$veteran_coupon_already_applied;
+
 /**
  * If the veteran coupon is not applied,
  * and the user is an approved veteran:
  */
-if ($should_apply_coupon) {
+if ($do_apply && !$veteran_coupon_already_applied) {
   $cart->apply_coupon('veteran coupon');
 }
 /**
@@ -29,7 +45,7 @@ if ($should_apply_coupon) {
  * or if a valid veteran decides to remove the coupon:
  */
 $valid_veteran_remove_coupon = $_GET['remove_coupon'] == 'veteran coupon';
-if (!$user_is_veteran_role && $veteran_coupon_already_applied || $valid_veteran_remove_coupon) {
+if (!$user_is_veteran_role && $valid_veteran_remove_coupon) {
 	$cart->remove_coupon('veteran coupon');
 }
 
