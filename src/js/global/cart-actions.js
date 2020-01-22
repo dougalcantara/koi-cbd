@@ -11,6 +11,7 @@ import {
 } from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
 import { backdropTriggerClose } from '../global/ui';
+import { calculateDisplayPrice } from '../components/product-hero';
 
 import CartItem from '../components/ajax-cart-item';
 
@@ -289,6 +290,7 @@ bundleSettings.quantities.change(function() {
   const $t = $(this);
   const $container = $t.closest('.k-productform--bundleselect__item--flex');
   verifyItemCount($container, $t);
+  calculateDisplayPrice();
 });
 
 function verifyItemCount($container, $thisQuantity) {
@@ -413,6 +415,7 @@ $addItemToBundle.click(function() {
   if (!$this.is(':checked')) {
     const $quantityInput = $this.siblings().find('.k-bundle-quantity');
     $quantityInput.val(0);
+    calculateDisplayPrice();
   }
   handleBundleItem($this);
 });
