@@ -73,4 +73,4 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     })();
   </script>
   <?php get_template_part('partials/site-header'); ?>
-  <main role="main" id="k-main" tabindex="0">
+  <main role="main" id="k-main" tabindex="0" class="mag-override-woo">
