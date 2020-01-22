@@ -27,6 +27,7 @@ const $prev = $productHeroCarousel.find('.k-producthero__prev');
 const $next = $productHeroCarousel.find('.k-producthero__next');
 const $selectRelatedItem = $productForm.find('select');
 const $fullPrice = $productForm.find('.k-productform--fullprice');
+const bundleFullPrice = $fullPrice.html();
 
 function getFirstAvailableVariant() {
   let first = null;
@@ -319,7 +320,7 @@ export function calculateDisplayPrice() {
     ${
       displayFullPrice !== '0.00'
         ? `<span class="k-strikethrough">$${displayFullPrice}</span> ${discount}`
-        : `${discount}`
+        : `${bundleFullPrice}`
     }
   `);
 }

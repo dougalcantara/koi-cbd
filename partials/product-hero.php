@@ -158,19 +158,23 @@
                   $bundle_price = 0;
 
                   $idx = 0;
+                  $factory = new WC_Product_Factory();
+                  $bundle_full_price = 0;
                   foreach($bundled_items as $item) :
+                    $_product = $factory->get_product($item->product_id);
                     if ($idx < $max_items) {
                       $bundle_price += $item->get_price();
+                      $bundle_full_price += $_product->get_price();
                     }
                     $idx++;
                   endforeach;
                 ?>
                   <span class="k-accent-text" id="k-bundle-price-prefix">from</span>
                   <span class="k-productform--pricetarget" data-bundle-price="$<?php echo $bundle_price; ?>">$<?php echo $bundle_price; ?></span>
-                  <sup class="k-productform--fullprice">20% off!</sup>
+                  <sup class="k-productform--fullprice"><span class="k-strikethrough"><?php echo $bundle_full_price; ?></span> 20% off!</sup>
                 <?php
                 } else { ?>
-                  <span class="k-productform--pricetarget">$<?php echo $product->get_price(); ?></span>
+                  <span class="k-productform--pricetarget">$<?php echo $_product->get_price(); ?></span>
                 <?php
                 }
                 ?>
