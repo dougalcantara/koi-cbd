@@ -36,12 +36,16 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				<div class="k-productform__options">
 					<div class="label"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></td>
 					<div class="value">
-						<?php
-							wc_dropdown_variation_attribute_options( array(
-								'options'   => $options,
-								'attribute' => $attribute_name,
-								'product'   => $product,
-							) );
+						<div class="k-productform__select-container">
+							<?php
+								wc_dropdown_variation_attribute_options( array(
+									'options'   => $options,
+									'attribute' => $attribute_name,
+									'product'   => $product,
+								));
+							?>
+						</div>
+						<?php 
 							echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';
 						?>
 					</div>

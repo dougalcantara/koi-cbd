@@ -434,8 +434,14 @@ $cartSidebarToggle.keypress(function(e) {
   }
 });
 
-function toggleCartSidebar(e) {
-  e.preventDefault();
+export function toggleCartSidebar(e = false, triggered = false) {
+  if (e) {
+    e.preventDefault();
+  }
+
+  if (triggered) {
+    window.__openCart = null;
+  }
 
   closeAllDropdowns();
 

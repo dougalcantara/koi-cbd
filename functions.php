@@ -105,6 +105,11 @@ function k_ajax_add_product() {
 add_action('wp_ajax_add_product', 'k_ajax_add_product');
 add_action('wp_ajax_nopriv_add_product', 'k_ajax_add_product');
 
+function k_on_add_to_cart() {
+  echo "<script> window.__openCart = true; </script>";
+}
+add_action('woocommerce_add_to_cart', 'k_on_add_to_cart');
+
 /**
  * Add bundle to cart
  * args - product_id, selected_child_items[]
