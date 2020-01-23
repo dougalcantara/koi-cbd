@@ -773,6 +773,11 @@ a:hover,
   color: green;
 }
 
+.k-strikethrough {
+  text-decoration: line-through;
+  color: #000;
+}
+
 @-webkit-keyframes submitting {
   0% {
     -webkit-transform: translateX(0%) skew(-9deg);
@@ -3248,7 +3253,7 @@ form input[type='radio'] + label:hover {
 
 .k-producthero--bundle .k-productform--price {
   text-align: left;
-  padding-left: 2em;
+  padding-left: 1em;
 }
 
 .k-producthero--gallery {
@@ -3358,6 +3363,7 @@ form input[type='radio'] + label:hover {
 .k-productform--bundle .k-productform__error p {
   margin: 0;
   line-height: 1.25;
+  font-size: 75%;
 }
 
 .k-productform--bundle .k-productform__bundleselect-quantity {
@@ -3667,15 +3673,14 @@ form input[type='radio'] + label:hover {
 }
 
 .k-productform--price #k-bundle-price-prefix {
-  margin-bottom: -1em;
+  margin-bottom: 0em;
+  line-height: 1.1;
   display: block;
 }
 
 .k-productform--price sup {
-  padding-left: 1em;
-  vertical-align: text-top;
-  margin-top: 1.33em;
-  display: inline-block;
+  line-height: 1.1;
+  display: block;
 }
 
 .k-productform--submit {
@@ -3884,6 +3889,9 @@ form input[type='radio'] + label:hover {
     margin-top: 1em;
     -ms-flex-preferred-size: 77.5%;
     flex-basis: 77.5%;
+  }
+  .k-productform--bundle .k-productform__error p {
+    font-size: 100%;
   }
 }
 
