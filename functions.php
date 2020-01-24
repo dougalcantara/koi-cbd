@@ -542,3 +542,16 @@ function check_login() {
     wp_redirect(home_url() . '/login');
   }
 }
+
+function register_custom_menus() {
+  register_nav_menus(
+    array(
+      'categories-menu' => __('Shop Menu'),
+      'resources-menu' => __('Resources Menu'),
+      'about-menu' => __('About Menu'),
+      'footer-company-menu' => __('Footer - Company Menu'),
+      'footer-legal-menu' => __('Footer - Legal Menu'),
+    )
+  );
+}
+add_action('init', 'register_custom_menus');

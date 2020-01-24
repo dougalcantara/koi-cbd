@@ -5,12 +5,7 @@
   <div class="hero-media">
     <div class="hero-media-img">
       <img
-          src="<?php echo get_template_directory_uri(); ?>/dist/hero-img-512.jpg"
-          srcset="<?php echo get_template_directory_uri(); ?>/dist/hero-img-256.jpg 256w,
-                <?php echo get_template_directory_uri(); ?>/dist/hero-img-512.jpg 512w,
-                <?php echo get_template_directory_uri(); ?>/dist/hero-img-768.jpg 768w,
-                <?php echo get_template_directory_uri(); ?>/dist/hero-img-1024.jpg 1024w,
-                <?php echo get_template_directory_uri(); ?>/dist/hero-img-1920.jpg 1920w"
+          src="<?php echo $hero_fields['bgImg']; ?>"
           alt="<?php echo $hero_fields['headline']; ?>" />
     </div>
     <?php if (get_field('hero_background_video', 'option')): ?>
