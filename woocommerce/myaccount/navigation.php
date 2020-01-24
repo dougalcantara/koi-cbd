@@ -20,10 +20,18 @@ if (!defined('ABSPATH')) {
 }
 
 do_action('woocommerce_before_account_navigation');
+
+?>
+<?php 
+	$current_user = wp_get_current_user();
+	$username = $current_user->display_name;
 ?>
 
 <nav class="woocommerce-MyAccount-navigation">
 	<div class="k-dashboard--sidebar__liner">
+		<span class="k-dashboard__greeting">
+			<span class="k-headline k-headline--sm"><?php echo $username; ?></span>
+		</span>
 		<ul>
 			<?php foreach (wc_get_account_menu_items() as $endpoint => $label) : ?>
 				<li class="<?php echo wc_get_account_menu_item_classes($endpoint); ?>">
@@ -31,6 +39,11 @@ do_action('woocommerce_before_account_navigation');
 				</li>
 			<?php endforeach; ?>
 		</ul>
+		<div class="k-dashboard--sidebar__wrong-user">
+			<!-- <p class="k-wrong-account">
+				<a href="#0" class="k-button k-button--primary k-customer-logout">Log out</a>
+			</p> -->
+		</div>
 	</div>
 </nav>
 

@@ -1,0 +1,81 @@
+.woocommerce-account #mag-overwrite-woo {
+  @extend .k-block--md;
+  background: $bg-gray;
+
+  .k-inner {
+    @include clearfix();
+  }
+
+  .woocommerce-MyAccount-navigation {
+    margin-bottom: 2em;
+  }
+
+  .k-dashboard {
+    &__greeting {
+      display: block;
+      padding: 1em;
+      background: $bg-gray;
+    }
+    &--sidebar__liner {
+      padding: 1em;
+      background: $true-white;
+      ul {
+        padding: 0 1em 1em;
+        background: $bg-gray;
+
+        &::before {
+          content: 'Manage Account';
+          text-transform: uppercase;
+          color: $primary;
+        }
+
+        li:last-of-type {
+          a {
+            color: $primary;
+          }
+        }
+      }
+
+      a,
+      a:visited {
+        color: $true-black;
+      }
+
+      a:hover {
+        color: $primary;
+      }
+    }
+
+    &--sidebar__wrong-user {
+      padding: 0 1em 1em;
+      background: $bg-gray;
+
+      p {
+        margin: 0;
+      }
+
+      .k-customer-logout {
+        display: block;
+      }
+    }
+  }
+
+  .woocommerce-message {
+    border-top-color: $primary;
+    &::before {
+      color: $primary;
+    }
+  }
+
+  .edit-account {
+    label {
+      text-transform: uppercase;
+    }
+  }
+
+  .woocommerce-Button {
+    @extend .k-button;
+    @extend .k-button--primary;
+    text-transform: uppercase;
+  }
+}
