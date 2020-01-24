@@ -5,7 +5,7 @@
   <div class="hero-media">
     <div class="hero-media-img">
       <img
-          src="<?php echo $hero_fields['bgImg']; ?>"
+          src="<?php echo $hero_fields['bgImg']['src']; ?>"
           alt="<?php echo $hero_fields['headline']; ?>" />
     </div>
     <?php if (get_field('hero_background_video', 'option')): ?>
