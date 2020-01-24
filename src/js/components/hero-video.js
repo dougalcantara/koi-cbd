@@ -5,6 +5,8 @@
       player = video.querySelector('video'),
       img = document.querySelector('.hero-media-img');
 
+    let mobile = true;
+
     // Set the name of the hidden property and the change event for visibility
     let hidden, visibilityChange;
     if (typeof document.hidden !== 'undefined') {
@@ -37,17 +39,23 @@
       );
     }
 
-    // if we get approval to remove looping, uncomment
-    player.addEventListener('canplaythrough', () => {
-      // if (!played) {
-      player.play();
-      video.classList.add('active');
-      // }
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.innerWidth >= 767) {
+        mobile = false;
+        player.setAttribute('src', player.dataset.src);
+
+        player.addEventListener('canplaythrough', () => {
+          if (!played && mobile === false) {
+            player.play();
+            video.classList.add('active');
+          }
+        });
+      }
     });
 
-    // player.addEventListener('ended', () => {
-    //   played = true;
-    //   video.classList.remove('active');
-    // });
+    player.addEventListener('ended', () => {
+      played = true;
+      video.classList.remove('active');
+    });
   }
 })();

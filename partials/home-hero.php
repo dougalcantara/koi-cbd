@@ -13,9 +13,11 @@
                 <?php echo get_template_directory_uri(); ?>/dist/hero-img-1920.jpg 1920w"
           alt="<?php echo $hero_fields['headline']; ?>" />
     </div>
-    <div class="hero-media-video">
-      <video src="<?php the_field('hero_background_video', 'option'); ?>" loop muted playsinline></video>
-    </div>
+    <?php if (get_field('hero_background_video', 'option')): ?>
+      <div class="hero-media-video">
+        <video data-src="<?php the_field('hero_background_video', 'option'); ?>" muted playsinline></video>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="k-inner k-inner--md">
     <div class="k-hero--text">

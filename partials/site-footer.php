@@ -82,9 +82,21 @@
         </ul>
       </div>
       <div class="k-footer--item k-footer--badges">
-        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
-        <img src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
-        <img src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
+          </div>
+        </figure>
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
+          </div>
+        </figure>
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
+          </div>
+        </figure>
       </div>
     </div>
   </div>
