@@ -11,8 +11,8 @@
           <figure class="k-figure">
             <div class="k-figure--liner">
               <img
-                src="<?php echo $testimonial['author_image']['url']; ?>"
-                alt="Testimonial Author Profile Image"
+                data-src="<?php echo $testimonial['author_image']['url']; ?>"
+                alt="<?php echo $testimonial['author_image']['alt']; ?>"
                 class="k-figure--img"
               />
             </div>

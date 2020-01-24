@@ -85,9 +85,18 @@
     justify-content: space-around;
     align-items: flex-start;
 
-    img {
+    .k-figure {
+      position: relative;
       flex-basis: 33%;
       max-width: 6.25em;
+
+      &--liner {
+        padding-bottom: 100%;
+      }
+
+      img {
+        @include fill-parent();
+      }
     }
   }
 

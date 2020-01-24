@@ -89,10 +89,6 @@
     align-items: center;
     justify-content: center;
 
-    .k-accent-text {
-      font-size: 80%;
-    }
-
     ul {
       @include unstyle-list();
       margin-right: 1em;
