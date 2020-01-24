@@ -9,6 +9,8 @@
   }
 
   #lfe-root {
+    position: relative;
+    z-index: 1;
     form label {
       min-width: 0;
     }
