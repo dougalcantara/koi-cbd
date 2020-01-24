@@ -32,7 +32,7 @@ import './components/location-finder';
 import './components/checkout-validation';
 import './components/prod-qty';
 import './components/cart-template';
-import './components/account';
+// import './components/account';
 import './components/hero-video';
 
 import 'promise-polyfill/src/polyfill';

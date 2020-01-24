@@ -49,6 +49,7 @@
                 data-bundle-key="<?php echo $bundled_item_key; ?>"
                 data-variant-id="<?php echo $variant_id; ?>"
                 data-variant-price="<?php echo $price_with_discount; ?>"
+                data-full-price="<?php echo $price; ?>"
                 data-variant-strength="<?php echo $this_attribute; ?>"
                 tabindex="-1"
               />
@@ -56,6 +57,7 @@
                 for="<?php echo 'bundled-item-variant-'.$idx.'-'.$bundled_item_key; ?>"
                 class="k-productform--varianttoggle"
                 data-variant-price="<?php echo $price_with_discount; ?>"
+                data-full-price="<?php echo $price; ?>"
                 data-variant-strength="<?php echo 'strength|'.$this_attribute; ?>"
               >
                 <span><?php echo $this_attribute; ?></span>
@@ -72,7 +74,7 @@
                 type="number"
                 name="quantity"
                 step="1"
-                min="1"
+                min="0"
                 max="<?php echo $max_items; ?>"
                 value="0"
               >

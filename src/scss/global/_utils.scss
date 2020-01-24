@@ -6,6 +6,11 @@
   color: green;
 }
 
+.k-strikethrough {
+  text-decoration: line-through;
+  color: $true-black;
+}
+
 @keyframes submitting {
   0% {
     transform: translateX(0%) skew(-9deg);
