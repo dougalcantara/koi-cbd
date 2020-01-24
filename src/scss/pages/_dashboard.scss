@@ -2,6 +2,10 @@
   @extend .k-block--md;
   background: $bg-gray;
 
+  .k-inner {
+    @include clearfix();
+  }
+
   .woocommerce-MyAccount-navigation {
     margin-bottom: 2em;
   }
