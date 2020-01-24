@@ -1,5 +1,5 @@
 (() => {
-  if (document.querySelector('.hero-media')) {
+  if (document.querySelector('.hero-media video')) {
     let played = false;
     const video = document.querySelector('.hero-media-video'),
       player = video.querySelector('video'),
