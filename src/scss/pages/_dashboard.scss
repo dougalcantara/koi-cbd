@@ -2,7 +2,7 @@
   @extend .k-block--md;
   background: $bg-gray;
 
-  > .k-inner {
+  .k-inner {
     @include clearfix();
   }
 
