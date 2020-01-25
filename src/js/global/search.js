@@ -4,6 +4,11 @@ import { closeAllDropdowns } from '../components/site-header';
 
 const $searchTrigger = $('.k-searchtrigger');
 const $searchModalForm = $searchModal.find('form');
+const $searchInput = $('#k-search-input');
+
+$searchInput.click(function() {
+  $(this).addClass('active');
+});
 
 $searchTrigger.click(function() {
   const isOpen = $searchModal.hasClass('k-modal--open');

@@ -43,14 +43,9 @@ $url = site_url();
             <a class="k-upcase"><span>&#9660;</span> Shop</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures & Sprays</a></li>
-                <li><a href="<?php echo $url . '/cbd-gummies' ?>">CBD Gummies</a></li>
-                <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juices</a></li>
-                <li><a href="<?php echo $url . '/vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
-                <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-                <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD for Pets</a></li>
-                <li><a href="<?php echo $url . '/merchandise'; ?>">Koi Merchandise</a></li>
-                <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
+
+                <?php wp_nav_menu( array( 'theme_location' => 'categories-menu')) ?>
+
               </div>
             </ul>
           </li>
@@ -58,9 +53,9 @@ $url = site_url();
             <a class="k-upcase"><span>&#9660;</span> Resources</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="<?php echo $url . '/blog'; ?>">Koi Blog</a></li>
-                <!-- <li><a href="<?php echo $url . '/product-finder'; ?>">Product Finder</a></li> -->
-                <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
+
+                <?php wp_nav_menu( array( 'theme_location' => 'resources-menu')) ?>
+
               </div>
             </ul>
           </li>
@@ -74,8 +69,9 @@ $url = site_url();
             <a class="k-upcase"><span>&#9660;</span>About Us</a>
             <ul class="k-dropdown">
               <div class="k-dropdown--liner">
-                <li><a href="<?php echo $url . '/about-us' ?>">Koi Story</a></li>
-                <li><a href="<?php echo $url . '/contact'; ?>">FAQ / Contact</a></li>
+
+                <?php wp_nav_menu( array( 'theme_location' => 'about-menu')) ?>
+
               </div>
             </ul>
           </li>
