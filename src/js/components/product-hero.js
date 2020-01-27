@@ -12,7 +12,6 @@ export default $ => {
       primaryPriceField: $('.summary .woocommerce-Price-amount'),
       variantStores: $('[data-product_variations]'),
       minMaxStore: $('.min_max_items'),
-      addToCart: $('.single_add_to_cart_button'),
     },
 
     data: {
@@ -54,13 +53,7 @@ export default $ => {
 
     methods: {
       addListeners: () => {
-        const {
-          image,
-          bundleDropdownTriggers,
-          variantSelects,
-          form,
-          addToCart,
-        } = module.$nodes;
+        const { image, bundleDropdownTriggers, variantSelects } = module.$nodes;
         const { methods } = module;
 
         // prevent opening image file
@@ -78,30 +71,6 @@ export default $ => {
         variantSelects.change(function(index, el) {
           methods.checkValue($(this));
         });
-
-        window.addEventListener('beforeunload', function() {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          window.location = window.location;
-        });
-      },
-
-      addToCart: el => {
-        const formData = new FormData(el); // Create an arbitrary FormData instance
-
-        $.ajax(
-          wc_add_to_cart_params.wc_ajax_url
-            .toString()
-            .replace('%%endpoint%%', 'add_to_cart'),
-          {
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function(res) {
-              console.log(res);
-            },
-          }
-        );
       },
 
       checkValue: $el => {

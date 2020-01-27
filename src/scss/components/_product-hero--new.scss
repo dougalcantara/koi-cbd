@@ -2,6 +2,14 @@
   .price {
     color: $primary !important;
   }
+  button[type='submit'] {
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+}
+
+.woocommerce-product-gallery__wrapper a {
+  cursor: default;
 }
 
 form.cart {
@@ -94,11 +102,6 @@ form.cart {
   &__options {
     label {
       margin-bottom: 1em;
-    }
-
-    button[type='submit'] {
-      font-weight: 400;
-      text-transform: capitalize;
     }
   }
 
