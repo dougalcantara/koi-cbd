@@ -6,7 +6,11 @@ export default $ => {
   const module = {
     $nodes: {
       form: $('form.cart'),
-      image: $('.woocommerce-product-gallery__wrapper'),
+      imageContainer: $('.woocommerce-product-gallery__wrapper'),
+      featuredImage: $(
+        '.woocommerce-product-gallery__wrapper div[data-thumb]:first-of-type'
+      ),
+      imageLinks: $('.woocommerce-product-gallery__wrapper a'),
       bundleDropdownTriggers: $('.bundled_products .bundled_product_checkbox'),
       variantSelects: $('.k-productform__select-container select'),
       primaryPriceField: $('.summary .woocommerce-Price-amount'),
@@ -47,19 +51,15 @@ export default $ => {
           methods.displayInitialPrice();
         }
 
+        methods.setBlankAttr();
         methods.addListeners();
       },
     },
 
     methods: {
       addListeners: () => {
-        const { image, bundleDropdownTriggers, variantSelects } = module.$nodes;
         const { methods } = module;
-
-        // prevent opening image file
-        image.click(function() {
-          event.preventDefault();
-        });
+        const { bundleDropdownTriggers, variantSelects } = module.$nodes;
 
         // flip dropdown arrow upside-down
         bundleDropdownTriggers.click(function() {
@@ -106,6 +106,12 @@ export default $ => {
           ${data.currency}${data.lowestPrice}
           <span class="k-strikethrough">${data.currency}${data.regularPrice}</span>
         `);
+      },
+
+      setBlankAttr: () => {
+        const { $nodes } = module;
+        $nodes.imageLinks.attr('target', '_blank');
+        $nodes.imageLinks.attr('rel', 'noopener noreferrer');
       },
 
       setBundleSettings: () => {
