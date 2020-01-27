@@ -95,6 +95,11 @@ form.cart {
     label {
       margin-bottom: 1em;
     }
+
+    button[type='submit'] {
+      font-weight: 400;
+      text-transform: capitalize;
+    }
   }
 
   &__pricelabel {

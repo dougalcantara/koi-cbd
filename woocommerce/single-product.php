@@ -19,6 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+function formatAttrName($string)
+{
+  $arr = explode('-', $string);
+
+  foreach ($arr as $idx => $str) {
+    $arr[$idx] = ucfirst($str);
+  }
+
+  return join(' ', $arr);
+}
+
 get_header( 'shop' ); ?>
 
 	<?php
@@ -31,12 +42,20 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
+	<?php include(locate_template('partials/product-rich-snippets.php')); ?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
+		<?php
+		  $product_id = $product->get_id();
+  		$product_acf = get_fields();
+  		$cat_name = get_the_terms($product_id, 'product_cat');
+  		$product_category = reset($cat_name)->slug;
+  		$product_wc_type = $product->get_type();
+		?>
 			<div class="k-inner k-inner--md">
 				<?php wc_get_template_part( 'content', 'single-product' ); ?>
 			</div>
 		<?php endwhile; // end of the loop. ?>
-
 	<?php
 		/**
 		 * woocommerce_after_main_content hook.
@@ -45,7 +64,42 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 	?>
+	</div>
+</div>
+<?php
+  new Breadcrumbs([
+    [
+      'name' => 'Home',
+      'url' => home_url()
+    ],
+    [
+      'name' => 'Shop All',
+      'url' => home_url() . '/cbd-products'
+    ],
+    [
+      'name' => $product_category = reset($cat_name)->name,
+      'url' => home_url() . '/' . $product_category = reset($cat_name)->slug
+    ],
+    [
+      'name' => $product->name,
+      'url' => home_url() . '/product/' . $product->slug
+    ]
+  ]);
+?>
+<?php
+	include(locate_template('partials/product-details.php'));
+  if ($product_category != 'merchandise' && $product_category != 'vape-devices-cartridges') {
+		// these categories don't have lab results associated with them
+    include(locate_template('partials/product-latest-batch.php'));	
+	}
+	include(locate_template('partials/product-reviews.php'));
+  $slider_fields = array(
+    'headline' => 'Shop Customer Favorites',
+    'products' => $product_acf['other_recommended_products'],
+  );
 
+  include(locate_template('partials/promo-slider.php'));	
+?>
 	<?php
 		/**
 		 * woocommerce_sidebar hook.
