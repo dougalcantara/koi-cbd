@@ -554,3 +554,15 @@ add_action( 'init', 'woo_remove_wc_breadcrumbs' );
 function woo_remove_wc_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
+function register_custom_menus() {
+  register_nav_menus(
+    array(
+      'categories-menu' => __('Shop Menu'),
+      'resources-menu' => __('Resources Menu'),
+      'about-menu' => __('About Menu'),
+      'footer-company-menu' => __('Footer - Company Menu'),
+      'footer-legal-menu' => __('Footer - Legal Menu'),
+    )
+  );
+}
+add_action('init', 'register_custom_menus');

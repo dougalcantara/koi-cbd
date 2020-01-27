@@ -93,9 +93,8 @@
     font-family: $heading-font;
     font-size: 200%;
 
-    &:focus {
+    &.active {
       outline: none;
-
       & + label {
         transform: translateY(-100%);
       }

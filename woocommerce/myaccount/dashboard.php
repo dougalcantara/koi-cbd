@@ -32,8 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$username = $current_user->display_name;
 ?>
-	Hello, <?php echo $username; ?> <span>(Not <?php echo $username; ?>?)</span> <a href="#0" class="k-button k-button--primary k-customer-logout">Log out</a>
-</p>
 
 <p class="my-dashboard"><?php
 	printf(

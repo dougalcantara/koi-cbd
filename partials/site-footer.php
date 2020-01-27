@@ -49,42 +49,40 @@
       <div class="k-footer--item k-footer--links k-rte-content">
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Shop CBD</h4>
-          <ul>
-            <li><a href="<?php echo $url . '/cbd-tinctures'; ?>">CBD Tinctures & Sprays</a></li>
-            <li><a href="<?php echo $url . '/cbd-gummies' ?>">CBD Gummies</a></li>
-            <li><a href="<?php echo $url . '/cbd-vape-juice' ?>">CBD Vape Juices</a></li>
-            <li><a href="<?php echo $url . '/vape-devices-cartridges' ?>">CBD Vape Devices & Cartridges</a></li>
-            <li><a href="<?php echo $url . '/cbd-topicals'; ?>">CBD Topicals</a></li>
-            <li><a href="<?php echo $url . '/cbd-for-pets'; ?>">CBD for Pets</a></li>
-            <li><a href="<?php echo $url . '/merchandise'; ?>">Koi Merchandise</a></li>
-            <li><a href="<?php echo $url . '/cbd-products'; ?>">All CBD Products</a></li>
-          </ul>
+
+          <?php wp_nav_menu( array( 'theme_location' => 'categories-menu' ) ); ?>
+          
         </div>
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Company</h4>
-          <ul>
-            <li><a href="<?php echo $url . '/about-us'; ?>">About Us</a></li>
-            <li><a href="<?php echo $url . '/lab-results'; ?>">Lab Results</a></li>
-            <li><a href="<?php echo $url . '/store-finder'; ?>">Store Finder</a></li>
-            <li><a href="https://wholesale.koicbd.com/">Wholesale</a></li>
-            <li><a href="<?php echo $url . '/veteran-program'; ?>">Veterans</a></li>
-            <li><a href="<?php echo $url . '/contact'; ?>">Help Desk</a></li>
-          </ul>
+
+          <?php wp_nav_menu( array( 'theme_location' => 'footer-company-menu' ) ); ?>
+
         </div>
         <div class="k-footer--links__item">
           <h4 class="k-upcase k-weight--lg">Legal</h4>
-          <ul>
-            <li><a href="<?php echo $url . '/terms-and-conditions'; ?>">Terms & Conditions</a></li>
-            <li><a href="<?php echo $url . '/privacy-policy'; ?>">Privacy Policy</a></li>
-            <li><a href="<?php echo $url . '/shipping-policy'; ?>">Shipping Policy</a></li>
-          </ul>
+
+          <?php wp_nav_menu( array( 'theme_location' => 'footer-legal-menu') ); ?>
+
         </div>
         </ul>
       </div>
       <div class="k-footer--item k-footer--badges">
-        <img src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
-        <img src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
-        <img src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/us-hemp-roundtable-logo.png'; ?>" alt="Hemp Industries Association">
+          </div>
+        </figure>
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/hemp-industries-association-logo.png'; ?>" alt="Hemp Roundtable">
+          </div>
+        </figure>
+        <figure class="k-figure">
+          <div class="k-figure--liner">
+            <img data-src="<?php echo $root.'/dist/img/california-hemp-council-logo.png'; ?>" alt="California Hemp Council">
+          </div>
+        </figure>
       </div>
     </div>
   </div>

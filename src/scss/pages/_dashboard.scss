@@ -1,0 +1,142 @@
+.woocommerce-account #mag-overwrite-woo {
+  @extend .k-block--md;
+  background: $bg-gray;
+
+  .k-inner {
+    @include clearfix();
+  }
+
+  .woocommerce-MyAccount-navigation {
+    margin-bottom: 2em;
+  }
+
+  .k-dashboard {
+    &__greeting {
+      display: block;
+      padding: 1em;
+      background: $bg-gray;
+    }
+    &--sidebar__liner {
+      padding: 1em;
+      background: $true-white;
+      ul {
+        padding: 0 1em 1em;
+        background: $bg-gray;
+
+        &::before {
+          content: 'Manage Account';
+          text-transform: uppercase;
+          color: $primary;
+        }
+
+        li:last-of-type {
+          a {
+            color: $primary;
+          }
+        }
+      }
+
+      a,
+      a:visited {
+        color: $true-black;
+      }
+
+      a:hover {
+        color: $primary;
+      }
+    }
+
+    &--sidebar__wrong-user {
+      padding: 0 1em 1em;
+      background: $bg-gray;
+
+      p {
+        margin: 0;
+      }
+
+      .k-customer-logout {
+        display: block;
+      }
+    }
+  }
+
+  .woocommerce-message {
+    border-top-color: $primary;
+    &::before {
+      color: $primary;
+    }
+  }
+
+  .edit-account {
+    label {
+      text-transform: uppercase;
+    }
+  }
+
+  .woocommerce-Button {
+    @extend .k-button;
+    @extend .k-button--primary;
+  }
+}
+
+#mag-overwrite-woo {
+  .woocommerce-ResetPassword {
+    .woocommerce-form-row {
+      width: 100%;
+    }
+
+    input[type='text'] {
+      width: 100%;
+    }
+
+    .woocommerce-Button {
+      background: $primary !important;
+      appearance: none !important;
+      display: block !important;
+      color: $true-white !important;
+      padding: 1.25em 1.15em !important;
+      border-radius: 0.4em !important;
+      text-align: center !important;
+      border: 1px solid !important;
+      font-family: $body-font;
+      font-weight: 400;
+      transition: background 1s $ease-out-circ, color 1s $ease-out-circ,
+        border-color 1s $ease-out-circ;
+    }
+  }
+}
+
+.woocommerce-form-login {
+  border: none !important;
+
+  .woocommerce-button {
+    background: $primary !important;
+    appearance: none !important;
+    display: block !important;
+    color: $true-white !important;
+    padding: 1.25em 1.15em !important;
+    border-radius: 0.4em !important;
+    text-align: center !important;
+    border: 1px solid !important;
+    font-family: $body-font;
+    font-weight: 400;
+    transition: background 1s $ease-out-circ, color 1s $ease-out-circ,
+      border-color 1s $ease-out-circ;
+  }
+}
+
+.woocommerce-account {
+  .woocommerce-notices-wrapper {
+    position: relative;
+    z-index: 100;
+  }
+}
+
+@media (min-width: $bp-lg) {
+  .woocommerce-account #mag-overwrite-woo {
+  }
+
+  .woocommerce-ResetPassword {
+    width: 50%;
+  }
+}
