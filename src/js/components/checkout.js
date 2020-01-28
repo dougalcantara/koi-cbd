@@ -1,11 +1,9 @@
 import $ from 'jquery';
-import { $doc, $win, $backdrop, $body } from '../global/selectors';
-import AjaxCart from '../global/ajax-cart';
+import { $body } from '../global/selectors';
 
 const $parent = $('.k-checkout form');
 const $shippingDetailsTrigger = $('#ship-to-different-address');
-const $drawer = $parent.find('.k-checkout--shipping');
-const $heightTarget = $drawer.find('.k-checkout--shipping__heighttarget');
+const $drawer = $parent.find('.k-checkout__shipping-drawer');
 const $shippingInputs = $('#shipping_method input');
 const $couponButton = $('.k-checkout__coupon-actions a');
 const $couponField = $('.k-checkout__coupon input');
@@ -42,20 +40,20 @@ $shippingInputs.click(function() {
 
 function toggleDrawer(e) {
   if ($drawer.hasClass('open')) {
-    $drawer.height(0);
+    $drawer.slideUp();
     $drawer.removeClass('open');
   } else {
-    $drawer.height($heightTarget.outerHeight());
     $drawer.addClass('open');
+    $drawer.slideDown();
   }
 }
 
 $couponButton.click(function() {
-  event.preventDefault();
-
-  const $t = $(this);
-  $t.addClass('submitting');
-  applyCoupon($couponField.val());
+  // event.preventDefault();
+  console.log($couponField.val());
+  // const $t = $(this);
+  // $t.addClass('submitting');
+  // applyCoupon($couponField.val());
 });
 
 let ticker = 0;
@@ -77,62 +75,62 @@ const waiting = setInterval(() => {
   }
 }, 100);
 
-function applyCoupon(coupon) {
-  const { wc_checkout_params: wc, location } = window;
+// function applyCoupon(coupon) {
+//   const { wc_checkout_params: wc, location } = window;
 
-  $('.woocommerce-message').remove();
-  $details.addClass('processing');
-  $review.addClass('processing');
+//   $('.woocommerce-message').remove();
+//   $details.addClass('processing');
+//   $review.addClass('processing');
 
-  $.ajax({
-    type: 'POST',
-    url: wc.wc_ajax_url.toString().replace('%%endpoint%%', 'apply_coupon'),
-    data: {
-      security: wc.apply_coupon_nonce,
-      coupon_code: coupon,
-    },
-    success: function(e) {
-      $('form.woocommerce-checkout').before(e);
-      $body.animate(
-        {
-          scrollTop: 0,
-        },
-        100
-      );
-      setTimeout(function() {
-        location.reload();
-      }, 650);
-    },
-  });
-}
+//   $.ajax({
+//     type: 'POST',
+//     url: wc.wc_ajax_url.toString().replace('%%endpoint%%', 'apply_coupon'),
+//     data: {
+//       security: wc.apply_coupon_nonce,
+//       coupon_code: coupon,
+//     },
+//     success: function(e) {
+//       $('form.woocommerce-checkout').before(e);
+//       $body.animate(
+//         {
+//           scrollTop: 0,
+//         },
+//         100
+//       );
+//       setTimeout(function() {
+//         location.reload();
+//       }, 650);
+//     },
+//   });
+// }
 
-function removeCoupon(coupon) {
-  const { wc_checkout_params: wc, location } = window;
+// function removeCoupon(coupon) {
+//   const { wc_checkout_params: wc, location } = window;
 
-  $('.woocommerce-message').remove();
-  $details.addClass('processing');
-  $review.addClass('processing');
+//   $('.woocommerce-message').remove();
+//   $details.addClass('processing');
+//   $review.addClass('processing');
 
-  $.ajax({
-    type: 'POST',
-    url: wc.wc_ajax_url.toString().replace('%%endpoint%%', 'remove_coupon'),
-    data: {
-      security: wc.remove_coupon_nonce,
-      coupon: coupon,
-    },
-    success: function(e) {
-      $('form.woocommerce-checkout').before(e);
-      $body.animate(
-        {
-          scrollTop: 0,
-        },
-        100
-      );
-      setTimeout(function() {
-        location.reload();
-      }, 650);
-    },
-  });
-}
+//   $.ajax({
+//     type: 'POST',
+//     url: wc.wc_ajax_url.toString().replace('%%endpoint%%', 'remove_coupon'),
+//     data: {
+//       security: wc.remove_coupon_nonce,
+//       coupon: coupon,
+//     },
+//     success: function(e) {
+//       $('form.woocommerce-checkout').before(e);
+//       $body.animate(
+//         {
+//           scrollTop: 0,
+//         },
+//         100
+//       );
+//       setTimeout(function() {
+//         location.reload();
+//       }, 650);
+//     },
+//   });
+// }
 
 $shippingDetailsTrigger.click(toggleDrawer);

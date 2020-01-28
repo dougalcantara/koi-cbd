@@ -184,21 +184,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 
 			<div class="k-review-order--item k-checkout__coupon-row">
-          <?php if (wc_coupons_enabled()) : ?>
+					<?php if (wc_coupons_enabled()) : ?>
 
-            <div class="k-checkout__coupon">
-              <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
-              <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
-            </div>
+						<?php wc_get_template('checkout/form-coupon.php'); ?>
 
-            <div class="k-checkout__coupon-actions">
-              <a href="<?php echo site_url(); ?>/checkout/?apply_coupon=''"class="k-button k-button--dark">
-                <?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
-							</a>
-              <!-- <button type="submit" class="k-button k-button--default" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>">
-                <?php esc_html_e('Update cart', 'woocommerce'); ?>
-              </button> -->
-            </div>
+						<?php /* 
+						<form class="checkout_coupon woocommerce-form-coupon" method="post">
+            	<div class="k-checkout__coupon">
+            	  <label for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+								<input
+									type="text"
+									name="coupon_code"
+									class="input-text"
+									id="coupon_code" 
+									placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>"
+									value=""
+								/>
+            	</div>
+
+            	<div class="k-checkout__coupon-actions">
+            	  <a href="<?php echo site_url(); ?>/checkout/?apply_coupon=''"class="k-button k-button--dark">
+            	    <?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
+								</a>
+							</div>
+
+						</form>
+
+						*/ ?>
 
           <?php 
           endif;

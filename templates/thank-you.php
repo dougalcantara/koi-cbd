@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $root = get_template_directory_uri();
 $order = wc_get_customer_last_order(get_current_user_id());
+$session = WC()->session();
+var_dump($session);
 
 if ($order) {
   $order_items           = $order->get_items(apply_filters('woocommerce_purchase_order_item_types', 'line_item'));

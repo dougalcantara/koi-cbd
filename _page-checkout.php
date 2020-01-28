@@ -8,9 +8,9 @@ if (!defined('ABSPATH')) {
 }
 
 // Upon a successful purchase, send the user to our custom Thank You page instead of the default Woo stuff
-if (strpos($wp->request, 'order-received')) {
-	wp_redirect(site_url() . '/order-received', 301);
-}
+// if (strpos($wp->request, 'order-received')) {
+// 	wp_redirect(site_url() . '/order-received', 301);
+// }
 
 get_header();
 
