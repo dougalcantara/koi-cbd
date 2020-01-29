@@ -1,0 +1,61 @@
+.woocommerce-order-received {
+  ul.woocommerce-order-overview {
+    @include unstyle-list();
+    &::before {
+      display: none;
+    }
+
+    li {
+      float: none;
+      border: none;
+    }
+  }
+
+  table.woocommerce-table--order-details {
+    thead {
+      background: lighten($accent-text, 5%);
+
+      th {
+        font-family: $heading-font;
+        font-size: 1.17em;
+        font-weight: normal;
+      }
+
+      th:last-of-type {
+        text-align: right;
+      }
+    }
+
+    tbody,
+    tfoot {
+      td:last-of-type {
+        text-align: right;
+      }
+    }
+
+    a,
+    a:visited {
+      color: $primary;
+    }
+  }
+
+  small.shipped_via {
+    display: block;
+  }
+
+  .woocommerce-customer-details {
+    address {
+      padding-left: 0;
+      border: none;
+    }
+  }
+}
+
+@media (min-width: $bp-sm) {
+}
+
+@media (min-width: $bp-md) {
+}
+
+@media (min-width: $bp-lg) {
+}
