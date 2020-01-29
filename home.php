@@ -38,6 +38,7 @@
 
   $overview_fields = array(
     'headline' => $site_content['product_overview_headline'],
+    'main_image' => $site_content['product_overview_main_image'],
     'supporting_copy' => $site_content['product_overview_supporting_copy'],
     'main_link' => $site_content['product_overview_main_link'],
     'tinctures_copy' => $site_content['product_overview_tinctures_supporting_copy'],

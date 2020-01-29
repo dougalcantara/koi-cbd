@@ -7,7 +7,8 @@
   <div class="k-inner k-inner--md k-overview--intro">
     <div class="k-overview--intro__image">
       <figure class="k-figure">
-        <img class="k-figure--img" data-src="<?php echo $root.'/dist/img/koi_products_group.png'; ?>" alt="Overview Lifestyle Image">
+        <!-- dev only, how to access an img from ACF -->
+        <img class="k-figure--img" data-src="<?php echo $overview_fields['main_image']['url']; ?>" alt="<?php echo $overview_fields['main_image']['alt']; ?>">
       </figure>
     </div>
     <div class="k-overview--intro__text">
