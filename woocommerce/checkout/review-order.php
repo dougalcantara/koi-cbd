@@ -182,7 +182,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</p>
 				</div>
 			</div>
-
 			<div class="k-review-order--item k-checkout__coupon-row">
 					<?php if (wc_coupons_enabled()) : ?>
 

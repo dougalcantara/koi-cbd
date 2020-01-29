@@ -129,10 +129,18 @@
   }
 }
 
+@media (min-width: $bp-lg) {
+  .k-productcard {
+    &--reviews {
+      width: 90%;
+    }
+  }
+}
+
 @media (min-width: $bp-xxl) {
   .k-productcard {
     &--reviews {
-      width: 75%;
+      width: 80%;
     }
   }
 }

@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import { $doc, $body, $reviewModal, $backdrop } from '../global/selectors';
+import { $doc, $reviewModal, $backdrop } from '../global/selectors';
+import { scrollToTarget } from '../helpers/scrollToTarget';
 import ProductReview from '../helpers/ProductReview';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 
@@ -80,15 +81,6 @@ function observeReviews(allReviews, subscription) {
       clearInterval(allReviewsLoaded);
     }
   }, 100);
-}
-
-function scrollToTarget($target) {
-  $body.animate(
-    {
-      scrollTop: $target.offset().top,
-    },
-    50
-  );
 }
 
 function checkSelectedSlide(flkty, $prev, $next) {
