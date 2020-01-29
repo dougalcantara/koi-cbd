@@ -218,6 +218,19 @@
       }
     }
   }
+
+  &__price-star {
+    color: $primary;
+    font-weight: bold;
+    margin-right: 0.5ch;
+  }
+
+  &__price-notice {
+    p {
+      margin: 0;
+      font-size: 80%;
+    }
+  }
 }
 
 @media (min-width: $bp-md) {

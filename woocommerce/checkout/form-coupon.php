@@ -22,17 +22,15 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 }
 
 ?>
-<div class="k-formcoupon">
-	<div class="k-checkout__coupon">
-		<!-- <p class="form-row form-row-first"> -->
-			<label for="coupon_code">Coupon:</label>
-			<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-			<!-- </p> -->
-	</div>
-	<div class="k-checkout__coupon-actions">
-		<!-- <p class="form-row form-row-last"> -->
-			<a type="submit" class="k-button k-button--dark" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
-			<!-- </p> -->
-	</div>
 
+<div class="k-checkout__coupon">
+	<!-- <p class="form-row form-row-first"> -->
+		<label for="coupon_code">Coupon:</label>
+		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+		<!-- </p> -->
+</div>
+<div class="k-checkout__coupon-actions">
+	<!-- <p class="form-row form-row-last"> -->
+		<a type="submit" class="k-button k-button--dark" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
+		<!-- </p> -->
 </div>

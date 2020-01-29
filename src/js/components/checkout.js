@@ -29,7 +29,6 @@ $shippingInputs.click(function() {
      *
      */
     const onAjaxComplete = setInterval(function() {
-      console.log($.active);
       if ($.active === 0) {
         console.log('Network requests complete. Refreshing..');
         clearInterval(onAjaxComplete);
@@ -77,7 +76,6 @@ const waiting = setInterval(() => {
 
 function applyCoupon(coupon) {
   const { wc_checkout_params: wc, location } = window;
-
   $('.woocommerce-message').remove();
   $details.addClass('processing');
   $review.addClass('processing');
@@ -93,6 +91,24 @@ function applyCoupon(coupon) {
       $('form.woocommerce-checkout').before(e);
       scrollToTarget($('.woocommerce-notices-wrapper').first(), true);
       setTimeout(function() {
+        $body.trigger('applied_coupon');
+        /**
+         * jQuery knows when all network requests are completed.
+         * However, we have to delay this shortly since the built-in WC JS
+         * triggers a custom event $('body').trigger('update_checkout');
+         * that initiates ajax requests.
+         *
+         * By delaying this interval shortly, we ensure that it doesnt begin
+         * the interval until the ajax requests started by WC JS have fired.
+         *
+         */
+        const onAjaxComplete = setInterval(function() {
+          if ($.active === 0) {
+            console.log('Network requests complete. Refreshing..');
+            clearInterval(onAjaxComplete);
+            window.location.reload();
+          }
+        }, 33);
         location.reload();
       }, 650);
     },
@@ -115,12 +131,7 @@ function removeCoupon(coupon) {
     },
     success: function(e) {
       $('form.woocommerce-checkout').before(e);
-      $body.animate(
-        {
-          scrollTop: 0,
-        },
-        100
-      );
+      scrollToTarget($('.woocommerce-notices-wrapper').first(), true);
       setTimeout(function() {
         location.reload();
       }, 650);
