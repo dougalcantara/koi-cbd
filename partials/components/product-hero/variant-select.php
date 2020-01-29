@@ -1,4 +1,6 @@
-<?php if ($product_category != 'cbd-gummies'): ?>
+<?php if ($product_category == 'cbd-topicals'): ?>
+<p class="k-productform--item k-productform--heading">Choose CBD scent:</p>
+<?php elseif ($product_category != 'cbd-gummies'): ?>
 <p class="k-productform--item k-productform--heading">Choose CBD strength:</p>
 <?php else: ?>
 <p class="k-productform--item k-productform--heading">Choose Style & Quantity:</p>
