@@ -10,7 +10,10 @@
   <div class="k-cart-sidebar__actions">
     <div class="k-liner">
       <div class="k-cart-sidebar__summary">
-        <h4 class="k-headline k-cart-sidebar__subtotal"><strong>Subtotal:</strong> <span class="k-cart-sidebar--subtotal" aria-label="cart subtotal"></span></h4>
+        <h4 class="k-headline k-cart-sidebar__subtotal"><strong>Subtotal:</strong> <span class="k-cart-sidebar--subtotal" aria-label="cart subtotal"></span><sup class="k-cart-sidebar__price-star">*</sup></h4>
+        <div class="k-cart-sidebar__price-notice">
+          <p class="k-accent-text"><span class="k-cart-sidebar__price-star"><sup>*</sup></span>View total after promotional discounts at checkout.</p>
+        </div>
       </div>
     </div>
     <div class="k-liner">

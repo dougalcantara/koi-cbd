@@ -1,11 +1,10 @@
 import $ from 'jquery';
-import { $doc, $win, $backdrop, $body } from '../global/selectors';
-import AjaxCart from '../global/ajax-cart';
+import { $body, $html } from '../global/selectors';
+import { scrollToTarget } from '../helpers/scrollToTarget';
 
 const $parent = $('.k-checkout form');
 const $shippingDetailsTrigger = $('#ship-to-different-address');
-const $drawer = $parent.find('.k-checkout--shipping');
-const $heightTarget = $drawer.find('.k-checkout--shipping__heighttarget');
+const $drawer = $parent.find('.k-checkout__shipping-drawer');
 const $shippingInputs = $('#shipping_method input');
 const $couponButton = $('.k-checkout__coupon-actions a');
 const $couponField = $('.k-checkout__coupon input');
@@ -30,7 +29,6 @@ $shippingInputs.click(function() {
      *
      */
     const onAjaxComplete = setInterval(function() {
-      console.log($.active);
       if ($.active === 0) {
         console.log('Network requests complete. Refreshing..');
         clearInterval(onAjaxComplete);
@@ -42,17 +40,16 @@ $shippingInputs.click(function() {
 
 function toggleDrawer(e) {
   if ($drawer.hasClass('open')) {
-    $drawer.height(0);
+    $drawer.slideUp();
     $drawer.removeClass('open');
   } else {
-    $drawer.height($heightTarget.outerHeight());
     $drawer.addClass('open');
+    $drawer.slideDown();
   }
 }
 
 $couponButton.click(function() {
   event.preventDefault();
-
   const $t = $(this);
   $t.addClass('submitting');
   applyCoupon($couponField.val());
@@ -79,7 +76,6 @@ const waiting = setInterval(() => {
 
 function applyCoupon(coupon) {
   const { wc_checkout_params: wc, location } = window;
-
   $('.woocommerce-message').remove();
   $details.addClass('processing');
   $review.addClass('processing');
@@ -93,13 +89,26 @@ function applyCoupon(coupon) {
     },
     success: function(e) {
       $('form.woocommerce-checkout').before(e);
-      $body.animate(
-        {
-          scrollTop: 0,
-        },
-        100
-      );
+      scrollToTarget($('.woocommerce-notices-wrapper').first(), true);
       setTimeout(function() {
+        $body.trigger('applied_coupon');
+        /**
+         * jQuery knows when all network requests are completed.
+         * However, we have to delay this shortly since the built-in WC JS
+         * triggers a custom event $('body').trigger('update_checkout');
+         * that initiates ajax requests.
+         *
+         * By delaying this interval shortly, we ensure that it doesnt begin
+         * the interval until the ajax requests started by WC JS have fired.
+         *
+         */
+        const onAjaxComplete = setInterval(function() {
+          if ($.active === 0) {
+            console.log('Network requests complete. Refreshing..');
+            clearInterval(onAjaxComplete);
+            window.location.reload();
+          }
+        }, 33);
         location.reload();
       }, 650);
     },
@@ -122,12 +131,7 @@ function removeCoupon(coupon) {
     },
     success: function(e) {
       $('form.woocommerce-checkout').before(e);
-      $body.animate(
-        {
-          scrollTop: 0,
-        },
-        100
-      );
+      scrollToTarget($('.woocommerce-notices-wrapper').first(), true);
       setTimeout(function() {
         location.reload();
       }, 650);
