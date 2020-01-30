@@ -569,3 +569,8 @@ function register_custom_menus() {
   );
 }
 add_action('init', 'register_custom_menus');
+
+add_action( 'woocommerce_single_product_summary', 'do_flavor_dropdown', 20);
+function do_flavor_dropdown() {
+  wc_get_template('single-product/flavor-dropdown.php');
+}

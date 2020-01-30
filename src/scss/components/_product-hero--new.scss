@@ -6,6 +6,20 @@
     font-weight: 400;
     text-transform: capitalize;
   }
+
+  .k-productform__flavorselect select {
+    appearance: none;
+    background: none;
+    padding: 1.0125em 1.15em;
+    border: 1px solid #dedede;
+    border-radius: 0.25em !important;
+    margin-top: 0;
+    text-overflow: ellipsis;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .woocommerce-product-gallery__wrapper a {
@@ -33,7 +47,6 @@ form.cart {
     border: 1px solid #dedede;
     border-radius: 0.25em !important;
     margin-top: 0;
-    width: 100%;
     text-overflow: ellipsis;
     &:hover {
       cursor: pointer;

@@ -16,6 +16,7 @@ export default $ => {
       primaryPriceField: $('.summary .woocommerce-Price-amount'),
       variantStores: $('[data-product_variations]'),
       minMaxStore: $('.min_max_items'),
+      flavorDropdown: $('.k-productform__flavorselect__main select'),
     },
 
     data: {
@@ -59,7 +60,12 @@ export default $ => {
     methods: {
       addListeners: () => {
         const { methods } = module;
-        const { bundleDropdownTriggers, variantSelects } = module.$nodes;
+        const {
+          bundleDropdownTriggers,
+          variantSelects,
+          imageLinks,
+          flavorDropdown,
+        } = module.$nodes;
 
         // flip dropdown arrow upside-down
         bundleDropdownTriggers.click(function() {
@@ -67,9 +73,18 @@ export default $ => {
           $label.toggleClass('bundled_product_optional_checkbox--active');
         });
 
+        // prevent opening image URLs entirely
+        imageLinks.click(function() {
+          event.preventDefault();
+        });
+
         // change ::after color/padding when a value is selected
         variantSelects.change(function(index, el) {
           methods.checkValue($(this));
+        });
+
+        flavorDropdown.change(function() {
+          methods.jumpToFlavor($(this));
         });
       },
 
@@ -106,6 +121,10 @@ export default $ => {
           ${data.currency}${data.lowestPrice}
           <span class="k-strikethrough">${data.currency}${data.regularPrice}</span>
         `);
+      },
+
+      jumpToFlavor: $this => {
+        window.location.href = $this.val();
       },
 
       setBlankAttr: () => {
