@@ -16,6 +16,7 @@ export default $ => {
       primaryPriceField: $('.summary .woocommerce-Price-amount'),
       variantStores: $('[data-product_variations]'),
       minMaxStore: $('.min_max_items'),
+      flavorDropdown: $('.k-productform__flavorselect__main select'),
     },
 
     data: {
@@ -63,6 +64,7 @@ export default $ => {
           bundleDropdownTriggers,
           variantSelects,
           imageLinks,
+          flavorDropdown,
         } = module.$nodes;
 
         // flip dropdown arrow upside-down
@@ -79,6 +81,10 @@ export default $ => {
         // change ::after color/padding when a value is selected
         variantSelects.change(function(index, el) {
           methods.checkValue($(this));
+        });
+
+        flavorDropdown.change(function() {
+          methods.jumpToFlavor($(this));
         });
       },
 
@@ -115,6 +121,10 @@ export default $ => {
           ${data.currency}${data.lowestPrice}
           <span class="k-strikethrough">${data.currency}${data.regularPrice}</span>
         `);
+      },
+
+      jumpToFlavor: $this => {
+        window.location.href = $this.val();
       },
 
       setBlankAttr: () => {
