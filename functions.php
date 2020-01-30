@@ -461,6 +461,9 @@ function change_msg_no_available_shipping_methods( $default_msg ) {
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link');
 
+// remove before checkout coupon form
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
 
 // Create and display the custom field in product general setting tab
 add_action( 'woocommerce_product_options_general_product_data', 'add_custom_field_general_product_fields' );

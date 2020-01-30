@@ -1,6 +1,6 @@
 .summary.entry-summary {
   .price {
-    color: $primary !important;
+    color: $true-black !important;
   }
   button[type='submit'] {
     font-weight: 400;
@@ -106,6 +106,7 @@ form.cart {
   }
 
   &__pricelabel {
+    text-transform: uppercase;
     margin: 0;
   }
 
