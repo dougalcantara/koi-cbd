@@ -5,7 +5,7 @@ import ProductReview from '../helpers/ProductReview';
 import preventScrollOnDrag from '../helpers/FlickityEvents';
 
 $doc.ready(() => {
-  const productStore = document.querySelector('.k-producthero');
+  const productStore = document.querySelector('.k-productreviews');
   if (!productStore) return;
 
   const sku = productStore.dataset.productSku;
