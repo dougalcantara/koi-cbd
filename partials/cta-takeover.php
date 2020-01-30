@@ -4,7 +4,7 @@
 
 <section class="k-ctabanner k-ctabanner--takeover">
   <div class="k-inner k-inner--xl">
-    <div class="k-ctabanner--bgimg" data-src="<?php echo $root.'/dist/img/koi-cta-takeover-bg.jpg'; ?>"></div>
+    <div class="k-ctabanner--bgimg" data-src="<?php echo $cta_fields['image']['url']; ?>" alt="<?php echo $cta_fields['image']['alt']; ?>"></div>
     
     <div class="k-inner k-inner--md">
       <div class="k-ctabanner--content k-block k-block--md">

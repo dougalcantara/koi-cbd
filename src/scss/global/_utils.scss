@@ -2,6 +2,22 @@
 // transition: padding .4s $ease-out-circ;
 // }
 
+.woocommerce-info,
+.woocommerce-message {
+  border-top-color: $primary;
+
+  &::before {
+    color: $primary;
+  }
+}
+
+.k-price-preheading {
+  color: $true-black;
+  line-height: 1;
+  font-size: 80%;
+  display: block;
+}
+
 .k-limit-reached {
   color: green;
 }

@@ -11,7 +11,7 @@ import {
 } from './selectors';
 import { closeAllDropdowns } from '../components/site-header';
 import { backdropTriggerClose } from '../global/ui';
-import { calculateDisplayPrice } from '../components/product-hero';
+// import { calculateDisplayPrice } from '../components/product-hero';
 
 import CartItem from '../components/ajax-cart-item';
 
@@ -290,7 +290,7 @@ bundleSettings.quantities.change(function() {
   const $t = $(this);
   const $container = $t.closest('.k-productform--bundleselect__item--flex');
   verifyItemCount($container, $t);
-  calculateDisplayPrice();
+  // calculateDisplayPrice();
 });
 
 function verifyItemCount($container, $thisQuantity) {
@@ -434,8 +434,14 @@ $cartSidebarToggle.keypress(function(e) {
   }
 });
 
-function toggleCartSidebar(e) {
-  e.preventDefault();
+export function toggleCartSidebar(e = false, triggered = false) {
+  if (e) {
+    e.preventDefault();
+  }
+
+  if (triggered) {
+    window.__openCart = null;
+  }
 
   closeAllDropdowns();
 

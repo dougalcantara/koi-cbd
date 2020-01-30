@@ -1,4 +1,9 @@
-<section class="k-productreviews k-block k-block--md" id="product-reviews">
+<section 
+  class="k-productreviews k-block k-block--md"
+  id="product-reviews"
+  data-product-sku="<?php echo $product->get_sku(); ?>"
+  data-product-title="<?php echo the_title(); ?>"  
+>
   <div class="k-inner k-inner--md">
 
     <div class="k-productreviews--title">

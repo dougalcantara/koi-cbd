@@ -272,7 +272,10 @@ if (sizeof($items_in_cart) == 0) { ?>
               ? $_subtotal = number_format($cart->get_subtotal() - ($cart->get_subtotal() * ($discount_amount / 100)), 2) 
               : $_subtotal = $cart->get_subtotal();
           ?>
-          <p class="k-bigtext">$<?php echo $_subtotal; ?></p>
+          <p class="k-bigtext">$<?php echo $_subtotal; ?><sup class="k-cart-sidebar__price-star">*</sup></p>
+          <div class="k-cart-sidebar__price-notice">
+            <p><sup class="k-cart-sidebar__price-star">*</sup>View total after promotional discounts at checkout.</p>
+          </div>
         </div>
 
         <div class="k-cart__continue">

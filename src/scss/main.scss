@@ -21,6 +21,7 @@
 @import 'components/cta-banner';
 @import 'components/process-preview';
 @import 'components/product-hero';
+@import 'components/product-hero--new';
 @import 'components/product-details';
 @import 'components/product-latest-batch';
 @import 'components/product-faq-accordion';
@@ -38,6 +39,8 @@
 @import 'components/newsletter-cta';
 @import 'components/breadcrumbs';
 @import 'components/social-icons';
+
+@import 'components/bundled-products';
 
 @import 'pages/home';
 @import 'pages/blog-listing';
@@ -57,5 +60,6 @@
 @import 'pages/404';
 @import 'pages/product-rec';
 @import 'pages/dashboard';
+@import 'pages/order-received';
 
 @import 'global/IE';
