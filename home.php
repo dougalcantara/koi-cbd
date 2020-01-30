@@ -40,12 +40,25 @@
     'headline' => $site_content['product_overview_headline'],
     'supporting_copy' => $site_content['product_overview_supporting_copy'],
     'main_link' => $site_content['product_overview_main_link'],
+    'main_image' => $site_content['product_overview_main_image'],
     'tinctures_copy' => $site_content['product_overview_tinctures_supporting_copy'],
+    'tinctures_bg_image' => $site_content['product_overview_tinctures_bg_image'],
+    'tinctures_corner_image' => $site_content['product_overview_tinctures_corner_image'],
     'topicals_copy' => $site_content['product_overview_topicals_supporting_copy'],
+    'topicals_bg_image' => $site_content['product_overview_topicals_bg_image'],
+    'topicals_corner_image' => $site_content['product_overview_topicals_corner_image'],
     'pets_copy' => $site_content['product_overview_pets_supporting_copy'],
+    'pets_bg_image' => $site_content['product_overview_pets_bg_image'],
+    'pets_corner_image' => $site_content['product_overview_pets_corner_image'],
     'edibles_copy' => $site_content['product_overview_edibles_supporting_copy'],
+    'edibles_bg_image' => $site_content['product_overview_edibles_bg_image'],
+    'edibles_corner_image' => $site_content['product_overview_edibles_corner_image'],
     'vape_copy' => $site_content['product_overview_vape_supporting_copy'],
+    'vape_bg_image' => $site_content['product_overview_vape_bg_image'],
+    'vape_corner_image' => $site_content['product_overview_vape_corner_image'],
     'merch_copy' => $site_content['product_overview_merch_supporting_copy'],
+    'merch_bg_image' => $site_content['product_overview_merch_bg_image'],
+    'merch_corner_image' => $site_content['product_overview_merch_corner_image'],
   );
   include(locate_template('partials/home-overview.php'));
 
@@ -58,6 +71,7 @@
     'preheading' => $site_content['cta_banner_preheading'],
     'heading' => $site_content['cta_banner_heading'],
     'link' => $site_content['cta_banner_link'],
+    'image' => $site_content['cta_banner_image'],
   );
   include(locate_template('partials/cta-banner.php'));
   
