@@ -59,12 +59,21 @@ export default $ => {
     methods: {
       addListeners: () => {
         const { methods } = module;
-        const { bundleDropdownTriggers, variantSelects } = module.$nodes;
+        const {
+          bundleDropdownTriggers,
+          variantSelects,
+          imageLinks,
+        } = module.$nodes;
 
         // flip dropdown arrow upside-down
         bundleDropdownTriggers.click(function() {
           const $label = $(this).closest('.bundled_product_optional_checkbox');
           $label.toggleClass('bundled_product_optional_checkbox--active');
+        });
+
+        // prevent opening image URLs entirely
+        imageLinks.click(function() {
+          event.preventDefault();
         });
 
         // change ::after color/padding when a value is selected

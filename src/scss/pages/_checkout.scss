@@ -404,10 +404,10 @@
       position: relative;
       display: flex;
       justify-content: space-between;
+      flex-flow: row wrap;
     }
 
     &__billing {
-      flex-flow: row wrap;
       padding-bottom: 4em;
       border-bottom: 1px solid #dedede;
     }
@@ -415,7 +415,11 @@
     &__shipping {
       margin-top: 4em;
       padding-top: 4em;
-      flex-flow: row nowrap;
+
+      .woocommerce-additional-fields {
+        flex-basis: 50%;
+        margin-left: auto;
+      }
     }
 
     &__title {
