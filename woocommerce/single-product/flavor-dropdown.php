@@ -12,7 +12,7 @@ global $product;
 $cat_name = get_the_terms($product->get_id(), 'product_cat');
 $product_category = reset($cat_name)->slug;
 
-if (reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
+if (strpos($product->name, 'Variety') === false && reset($product->get_category_ids()) == 265 || reset($product->get_category_ids()) == 256) : // CBD Oil/Tincture
 
   $other_tinctures = wc_get_products(array(
     'limit' => -1,
