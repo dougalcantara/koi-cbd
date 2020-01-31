@@ -34,7 +34,7 @@ function k_product_card($args) {
       <div class="k-productcard--reviews k-reviewembed">
 
       <?php if ($args['product_total_reviews'] <= 0): ?>
-        <p class="k-accent-text">
+        <p class-"k-accent-text">
           <a href="#0" class="k-accent-text k-createreview">Be the first to review!</a>
         </p>
       <?php else: ?>
