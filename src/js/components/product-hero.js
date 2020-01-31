@@ -17,6 +17,7 @@ export default $ => {
       variantStores: $('[data-product_variations]'),
       minMaxStore: $('.min_max_items'),
       flavorDropdown: $('.k-productform__flavorselect__main select'),
+      variationTables: $('table.variations'),
     },
 
     data: {
@@ -25,6 +26,7 @@ export default $ => {
       bundleSettings: {},
       lowestPrice: 0,
       regularPrice: 0,
+      productID: 0,
     },
 
     hooks: {
@@ -50,6 +52,7 @@ export default $ => {
           methods.setBundleSettings();
           methods.setProductVariants();
           methods.displayInitialPrice();
+          methods.setDropdownText();
         }
 
         methods.setBlankAttr();
@@ -137,6 +140,37 @@ export default $ => {
         const { $nodes, data } = module;
         data.bundleSettings.min = $nodes.minMaxStore.data('min');
         data.bundleSettings.max = $nodes.minMaxStore.data('max');
+      },
+
+      setDropdownText: () => {
+        /**
+         * Client wants to change dropdown text that will affect bundles.
+         * Currently, there are only two bundles where this text will be applicable.
+         * To reduce future web edits to undo this change, just change it client-side
+         * instead.
+         */
+        const { $nodes } = module;
+        const { variationTables } = $nodes;
+
+        variationTables.each(function(index, el) {
+          const $this = $(el);
+          const label = $this.find('label');
+
+          if (label.length === 1) {
+            const onlyOption = label.text().split(' ')[0];
+            const dropdownLabel = $this
+              .parent()
+              .siblings('.bundled_product_optional_checkbox');
+            const textNode = dropdownLabel.contents().last();
+            textNode[0].textContent = onlyOption;
+
+            if (onlyOption === 'Strength') {
+              label.html(`
+                Milligrams <abbr class="required">*</abbr>
+              `);
+            }
+          }
+        });
       },
 
       setProductVariants: () => {
