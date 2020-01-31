@@ -88,7 +88,7 @@ get_header( 'shop' ); ?>
 ?>
 <?php
 	include(locate_template('partials/product-details.php'));
-  if ($product_category != 'merchandise' && $product_category != 'vape-devices-cartridges') {
+  if ($product_category != 'merchandise' && $product_category != 'vape-devices-cartridges' && strpos($product->name, 'Valentine') === false) {
 		// these categories don't have lab results associated with them
     include(locate_template('partials/product-latest-batch.php'));	
 	}
