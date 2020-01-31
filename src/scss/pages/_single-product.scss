@@ -1,3 +1,25 @@
 body.single-product .breadcrumbs {
   border: none;
 }
+
+.mag-override-woo {
+  .product.type-product {
+    @include clearfix();
+    padding-bottom: 2em;
+  }
+}
+
+@media (min-width: 769px) {
+  .mag-override-woo {
+    .product.type-product {
+      @include clearfix();
+      padding: $padding-xs 0;
+    }
+
+    .product {
+      .woocommerce-product-gallery.images {
+        width: 40%;
+      }
+    }
+  }
+}

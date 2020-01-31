@@ -59,7 +59,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
-  <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css?v=1.8.2' ?>" />
+  <link rel="stylesheet" href="<?php echo $root.'/dist/css/main.css?v=1.11.2' ?>" />
 </head>
 <body <?php body_class(); ?>>
   <script>
@@ -73,4 +73,4 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     })();
   </script>
   <?php get_template_part('partials/site-header'); ?>
-  <main role="main" id="k-main" tabindex="0">
+  <main role="main" id="k-main" tabindex="0" class="mag-override-woo">

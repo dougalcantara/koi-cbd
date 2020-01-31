@@ -105,6 +105,11 @@ function k_ajax_add_product() {
 add_action('wp_ajax_add_product', 'k_ajax_add_product');
 add_action('wp_ajax_nopriv_add_product', 'k_ajax_add_product');
 
+function k_on_add_to_cart() {
+  echo "<script> window.__openCart = true; </script>";
+}
+add_action('woocommerce_add_to_cart', 'k_on_add_to_cart');
+
 /**
  * Add bundle to cart
  * args - product_id, selected_child_items[]
@@ -456,6 +461,9 @@ function change_msg_no_available_shipping_methods( $default_msg ) {
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link');
 
+// remove before checkout coupon form
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
 
 // Create and display the custom field in product general setting tab
 add_action( 'woocommerce_product_options_general_product_data', 'add_custom_field_general_product_fields' );
@@ -543,6 +551,12 @@ function check_login() {
   }
 }
 
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+add_action( 'init', 'woo_remove_wc_breadcrumbs' );
+function woo_remove_wc_breadcrumbs() {
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+}
 function register_custom_menus() {
   register_nav_menus(
     array(
@@ -555,3 +569,8 @@ function register_custom_menus() {
   );
 }
 add_action('init', 'register_custom_menus');
+
+add_action( 'woocommerce_single_product_summary', 'do_flavor_dropdown', 20);
+function do_flavor_dropdown() {
+  wc_get_template('single-product/flavor-dropdown.php');
+}
