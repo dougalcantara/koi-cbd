@@ -60,7 +60,7 @@ function updateCartStatus(cartItems, expandedProducts) {
       return;
     }
 
-    numInCart += item.quantity;
+    numInCart += parseInt(item.quantity);
   });
 
   if (numInCart) {

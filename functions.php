@@ -198,6 +198,9 @@ function k_ajax_get_cart() {
     $product = wc_get_product($cart_item['product_id']);
 
     if ($product->get_type() == 'variable') {
+      if (!$cart_item['variation_id']) {
+        continue;
+      }
       $product = wc_get_product($cart_item['variation_id']);
     } else {
       $product = wc_get_product($cart_item['product_id']);
