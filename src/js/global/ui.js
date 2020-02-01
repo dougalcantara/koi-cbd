@@ -15,6 +15,7 @@ import {
   $myOpenSearch,
   $myOpenMenu,
   $myOpenNews,
+  $body,
 } from './selectors';
 
 import { closeAllDropdowns } from '../components/site-header';
@@ -173,6 +174,10 @@ export function backdropTriggerClose() {
 
   if ($reviewModal.hasClass('k-modal--open')) {
     $reviewModal.removeClass('k-modal--open');
+  }
+
+  if ($body.hasClass('cart-sidebar-open')) {
+    $body.removeClass('cart-sidebar-open');
   }
 
   $backdrop.removeAttr('class');
