@@ -108,7 +108,11 @@ add_action('wp_ajax_nopriv_add_product', 'k_ajax_add_product');
 function k_on_add_to_cart() {
   echo "<script> window.__openCart = true; </script>";
 }
-add_action('woocommerce_add_to_cart', 'k_on_add_to_cart');
+/**
+ * Disabled flyout cart after add_to_cart due to script being received in the
+ * responseText of a network request and creating a parsererror.
+ */
+// add_action('woocommerce_add_to_cart', 'k_on_add_to_cart');
 
 /**
  * Add bundle to cart
