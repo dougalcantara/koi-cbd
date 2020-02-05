@@ -31,7 +31,8 @@ $url = site_url();
         <span class="k-upcase">Free shipping on all US orders over $35</span>
       </div>
       <div class="k-promobanner--item">
-        <span class="k-upcase k-header__newsletter-trigger k-header__newsletter-trigger--desktop">Sign up for our newsletter for 10% off</span>
+      <?php $newsletter_field = get_field('header_newsletter_copy', 'options'); ?>
+        <span class="k-upcase k-header__newsletter-trigger k-header__newsletter-trigger--desktop"><?php echo $newsletter_field; ?></span>
       </div>
     </div>
   </div>
