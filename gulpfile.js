@@ -6,7 +6,8 @@ const sass = require('gulp-sass');
 const smaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
-const cssnano = require('gulp-cssnano');
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
 
 const PATHS = {
   css: {
@@ -45,13 +46,15 @@ function html(done) {
 }
 
 function scss(done) {
+  const plugins = [cssnano()];
+
   if (process.env.NODE_ENV === 'production') {
     console.log('No css sourcemaps generated for production.');
     gulp
       .src(PATHS.css.input)
       .pipe(plumber())
       .pipe(sass({ outputStyle: 'expanded' }))
-      .pipe(cssnano())
+      .pipe(postcss(plugins))
       .on('error', sass.logError)
       .pipe(
         prefix({

@@ -110,7 +110,7 @@ if (sizeof($items_in_cart) == 0) { ?>
 
                   <div class="k-cart--item__thumbnail">
                     <a href="<?php echo $product_permalink; ?>">
-                      <img src="<?php echo get_the_post_thumbnail_url($product_id); ?>" alt="<?php echo $_product->get_name(); ?>" />
+                      <img src="<?php echo wp_get_attachment_url($_product->image_id); ?>" alt="<?php echo $_product->get_name(); ?>" />
                     </a>
                   </div>
 
