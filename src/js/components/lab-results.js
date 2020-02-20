@@ -128,6 +128,13 @@ function setDefaultResults() {
       unit: '30-capsule bottle',
       labResults: [],
     },
+    {
+      categoryName: 'bathBombs',
+      sku: ['BATHBOMBORANGE', 'BATHBOMBBLUE', 'BATHBOMBGREEN'],
+      button: $('[data-category="bathBombs"]'),
+      unit: '100mg bath bomb',
+      labResults: [],
+    },
   ];
 
   window.__defaults.forEach(category => {
