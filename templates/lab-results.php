@@ -85,6 +85,18 @@ get_header();
       <div data-category="petSpray" class="k-recentresults__category-button k-button k-button--default">
         <span>Pet Spray</span>
       </div>
+      <div data-category="hempFlower" class="k-recentresults__category-button k-button k-button--default">
+        <span>Hemp Flower</span>
+      </div>
+      <div data-category="inhalers" class="k-recentresults__category-button k-button k-button--default">
+        <span>Inhalers</span>
+      </div>
+      <div data-category="softgels" class="k-recentresults__category-button k-button k-button--default">
+        <span>Softgels</span>
+      </div>
+      <div data-category="---" class="k-recentresults__category-button k-button k-button--default" style="visibility: hidden;">
+        <span>---</span>
+      </div>
     </div>
 
     <div class="k-recentresults__spacer"></div>

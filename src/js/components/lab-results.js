@@ -107,6 +107,27 @@ function setDefaultResults() {
       unit: '60mL Spray Bottle',
       labResults: [],
     },
+    {
+      categoryName: 'hempFlower',
+      sku: ['HeavensKush4G'],
+      button: $('[data-category="hempFlower"]'),
+      unit: '4 G tin',
+      labResults: [],
+    },
+    {
+      categoryName: 'inhalers',
+      sku: ['INH-MOJ-002-1000', 'INH-DRM-002-1000'],
+      button: $('[data-category="inhalers"]'),
+      unit: '2 mL inhaler',
+      labResults: [],
+    },
+    {
+      categoryName: 'softgels',
+      sku: ['CAP-NAT-030-0750', 'CAP-MLT-030-0750'],
+      button: $('[data-category="softgels"]'),
+      unit: '30-capsule bottle',
+      labResults: [],
+    },
   ];
 
   window.__defaults.forEach(category => {
