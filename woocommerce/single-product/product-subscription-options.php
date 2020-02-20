@@ -37,7 +37,7 @@ function no_opt(){
 		if ( $display_dropdown ) {
 
 			if ( $dropdown_label ) {
-				?><span class="wcsatt-options-product-dropdown-label"> Frequency <?php // echo $dropdown_label; ?></span><?php
+				?><span class="wcsatt-options-product-dropdown-label"> frequency options: <?php // echo $dropdown_label; ?></span><?php
 			}
 
 			?><select class="wcsatt-options-product-dropdown" name="convert_to_sub_dropdown<?php echo absint( $product_id ); ?>"><?php
