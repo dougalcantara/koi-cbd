@@ -94,8 +94,8 @@ get_header();
       <div data-category="softgels" class="k-recentresults__category-button k-button k-button--default">
         <span>Softgels</span>
       </div>
-      <div data-category="---" class="k-recentresults__category-button k-button k-button--default" style="visibility: hidden;">
-        <span>---</span>
+      <div data-category="bathBombs" class="k-recentresults__category-button k-button k-button--default">
+        <span>Bath Bombs</span>
       </div>
     </div>
 
