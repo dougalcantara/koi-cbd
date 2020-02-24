@@ -1,0 +1,57 @@
+#banner-lp{width:100%; font-family:GT America,sans-serif; padding:22% 0% 5% 0%;
+	.k-inner{display:flex; flex-wrap:wrap;}
+	.banner-l{width:48%; margin:0 0%;}
+	.banner-r{width:44%; margin:0 0% 0% 6%;}
+}
+
+.banner-small-titles{font-size:16px; line-height:16px; color:#fff; text-transform:uppercase;}
+.banner-titles{font-family:Recoleta Regular,serif; font-size:65px; line-height:65px; color:#fff; padding:10px 0px 0px 0px;}
+.banner-description{font-size:16px; line-height:26px; color:#fff; margin-bottom:-25px;}
+
+#boxes-section{width:100%; font-family:GT America,sans-serif; padding:70px 0px;
+	.content-area{display:flex; flex-wrap:wrap; width:100%; max-width:1400px; margin:0 auto;}
+}
+.box-area{width:27.33%; margin:3%;}
+.icon-box-area img{width:100%; max-width:100px;}
+.title-box-area{font-size:21px; padding:20px 0px 15px 0px;}
+.description-box-area{font-size:14px; line-height:24px;}
+
+#middle-area-section{width:95%; border-radius:8px; text-align:center; font-family:GT America,sans-serif; padding:13% 0px 11% 0px !important; background-attachment: fixed !important; margin:0 auto;}
+.middle-area-small{font-size:16px; text-transform:uppercase; color:#c0d8be;}
+.middle-area-big{font-family:Recoleta Regular,serif; font-size:50px; line-height:50px; color:#fff; padding:40px 0px 90px 0px;}
+.middle-area-link{color:#fff !important; font-size:18px; line-height:18px; border:1px solid #fff !important; padding:25px 60px !important; display:inline-block; border-radius:6px;}
+
+#sign-up-area{width:100%; text-align:center; padding:8% 0% 2% 0% !important;
+	.content-sign-up-area{width:95%; max-width:825px; margin:0 auto;}
+}
+#sign-up-area .k-button{padding:15px 60px !important;}
+.title-sign-up-section{font-family:Recoleta Regular,serif; font-size:50px; line-height:50px; color:#000;}
+.content-sign-up-section{font-size:16px; line-height:24px; margin-top:40px; margin-bottom:50px;}
+
+@media only screen and (max-width:768px){
+#banner-lp{padding:50px 0% 50px 0%;
+	.k-inner{display:flex; flex-wrap:wrap;}
+	.banner-l{width:100%; margin:0 0% 10px 0%; text-align:center;}
+	.banner-r{width:100%; margin:0 0% 0px 0%; text-align:center;}
+}
+
+.banner-titles{font-size:45px; line-height:45px; color:#fff; padding:10px 0px 0px 0px;}
+.banner-description{font-size:16px; line-height:24px; color:#fff; margin-bottom:0px;}
+
+#boxes-section{padding:50px 0px;}
+.box-area{width:96%; margin:4% 2% 2% 2%;}
+.icon-box-area{width:80px; margin:0 auto;}
+.title-box-area{font-size:21px; padding:0px 0px 0px 0px; text-align:center;}
+.description-box-area{font-size:14px; line-height:24px; text-align:center;}
+
+#middle-area-section{padding:50px 0px 50px 0px !important;}
+.middle-area-big{font-size:35px; line-height:40px; padding:25px 0px 40px 0px;}
+.middle-area-link{font-size:16px; line-height:16px; padding:15px 40px !important;}
+
+#sign-up-area{padding:50px 0% 50px 0% !important;
+	.content-sign-up-area{width:95%; max-width:825px; margin:0 auto;}
+	.k-button{padding:12px 50px !important;}
+}
+.title-sign-up-section{font-size:35px; line-height:40px;}
+.content-sign-up-section{font-size:14px; line-height:24px; margin-top:20px; margin-bottom:25px;}
+}
