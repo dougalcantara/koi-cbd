@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</li>
 </ul>
 </div>
-<!--<div class="select_options_text">
-Subscribe & Save 10%
-</div>-->
+<div class="select_options_text">
+Subscribe & Save
+</div>
 <div class="clear"></div>
