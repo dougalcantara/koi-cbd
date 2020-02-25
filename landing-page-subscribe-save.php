@@ -5,7 +5,7 @@ defined('ABSPATH') || exit;
 $root = get_template_directory_uri();
 $site_content = get_fields('option');
 
-get_header();
+get_header('lp');
 ?>
 <section id="banner-lp" style="background:url('<?php the_field('background_banner'); ?>') no-repeat; background-size:cover;">
 	<div class="k-inner k-inner--md">
@@ -39,33 +39,77 @@ get_header();
 			<div class="icon-box-area">
 				<img src="<?php the_sub_field('icon_box_section'); ?>" alt="box-icon"/>
 			</div><!--end icon-box-area-->
-			<div class="title-box-area"><?php the_sub_field('title_box_section'); ?></div><!--end title-box-area-->
+			<div class="title-box-area-v2"><?php the_sub_field('title_box_section'); ?></div><!--end title-box-area-v2-->
 			<div class="description-box-area"><?php the_sub_field('description_box_section'); ?></div><!--end description-box-area-->
 		</div><!--end box-area-->   	
 		<?php endwhile; endif; ?>
 	</div><!--end k-inner k-inner--md-->
 </section><!--end boxes-section-->
 
+<?php if(get_field('big_text_banner')){ ?>
 <section id="middle-area-section" style="background:url('<?php the_field('banner_background_image'); ?>') no-repeat center; background-size:cover;">
 	<div class="middle-area-small"><?php the_field('small_text_banner'); ?></div>
 	<div class="middle-area-big"><?php the_field('big_text_banner'); ?></div>
 	<a class="middle-area-link" href="<?php the_field('button_url'); ?>" rel="link"><?php the_field('button_text_banner'); ?></a>
 </section><!--end banner-section-lp-->
+<?php } ?>
 
 <section id="sign-up-area">
 	<div class="content-sign-up-area">
-		<div class="title-sign-up-section">
-			<?php the_field('title_sign_up_section'); ?>
+		<div class="title-sign-up-section" style="text-align:left;">
+			General
 		</div><!--end title-sign-up-section-->
 		<div class="content-sign-up-section">
-			<?php the_field('content_sign_up_section'); ?>
+		<?php
+		$id_a = "1";
+		if( have_rows('questions_and_answers') ):
+		while ( have_rows('questions_and_answers') ) : the_row(); 
+		$id = $id_a++;
+		?>
+		<script>
+		function qa<?php echo $id; ?>(){
+		document.getElementById("answer_<?php echo $id; ?>").style.display = "block";
+		document.getElementById("close_<?php echo $id; ?>").style.display = "none";
+		document.getElementById("open_<?php echo $id; ?>").style.display = "block";
+		}
+		function qaclose<?php echo $id; ?>(){
+		document.getElementById("answer_<?php echo $id; ?>").style.display = "none";
+		document.getElementById("close_<?php echo $id; ?>").style.display = "block";
+		document.getElementById("open_<?php echo $id; ?>").style.display = "none";
+		}
+		</script>
+		
+		<div class="content-box-qa">
+			<div class="box-qa">
+				<div class="title-qa">
+				<?php echo get_sub_field('question'); ?>
+				</div>
+				<div id="close_<?php echo $id; ?>" class="simbol-qa-pos" onclick="qa<?php echo $id; ?>();" style="display:block;">+</div>
+				<div id="open_<?php echo $id; ?>" class="simbol-qa-neg" onclick="qaclose<?php echo $id; ?>();" style="display:none;">-</div>
+			</div>
+			<div id="answer_<?php echo $id; ?>" class="box-content-qa" style="display:none;"><?php echo get_sub_field('answer'); ?></div>
+		</div><!--end content-box-qa-->
+		<?php endwhile; endif; ?>
 		</div><!--end content-sign-up-section-->
-		<a href="<?php the_field('button_url_sign_up'); ?>" class="k-button k-button--primary"><?php the_field('button_text_sign_up'); ?></a>
 	</div><!--end content-sign-up-area-->
 </section><!--end sign-up-area-->
 
 <?php
+  echo "<section id='landing-page-sections'>";
+  $testimonial_fields = array(
+    'testimonials' => $site_content['homepage_testimonials'],
+  );
+  include(locate_template('partials/testimonial-slider.php'));
+  $slider_fields = array(
+    'headline' => $site_content['product_slider_headline'],
+    'products' => $site_content['product_slider_products'],
+    'half_padding_top' => true,
+  );
+  include(locate_template('partials/promo-slider.php'));
 
+    echo "</section>";
 
+?>
+<?php
 get_footer();
 ?>
