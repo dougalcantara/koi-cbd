@@ -119,10 +119,10 @@ get_header();
 
 <?php
   echo "<section id='landing-page-sections'>";
-  $testimonial_fields = array(
-    'testimonials' => $site_content['homepage_testimonials'],
-  );
-  include(locate_template('partials/testimonial-slider.php'));
+  // $testimonial_fields = array(
+  //  'testimonials' => $site_content['homepage_testimonials'],
+  // );
+  // include(locate_template('partials/testimonial-slider.php'));
   $slider_fields = array(
     'headline' => $site_content['product_slider_headline'],
     'products' => $site_content['product_slider_products'],
